@@ -361,9 +361,10 @@ textures:
 
 sources:
     mapzen: 
-        type: MVT
-        # url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
-        url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.mvt
+        type: TopoJSON
+        #url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
     normals: # normals
         type: Raster
@@ -578,13 +579,33 @@ styles:
         shaders:
             uniforms:
                 u_envmap: images/relief-shading-environment-map.jpg
-                u_scale: 1.5 # higher values are more exaggerated
+                u_scale: 4.5 # higher values are more exaggerated
+                # z0 = 0.0001
+                # z1 = 0.0001
+                # z2 = 3.5
+                # z3 = 4.5
+                # z4 = 4.5
+                # z5 = 4.
+                # z6 = 3.5
+                # z7 = 2.5
+                # z8 = 2.5
+                # z9 = 2.
+                # z10 = 1.7
+                # z11 = 1.5
+                # z12 = 1.5
+                # z13 = 1.3
+                # z14 = 1.2
+                # z15 = 1.
+                # z16 = 0.8
+                # z17 = 0.4
+                # z17.8 = 0.1
+                # z18+ = 0.001
                 u_scale_end: 0.001
-                u_scale_fade_start: 15.
-                u_scale_fade_duration: 3.
+                u_scale_fade_start: 3.
+                u_scale_fade_duration: 15.
                 u_color: [.9, .9, .9]
-                u_color_fade_start: 17.
-                u_color_fade_duration: 2.
+                u_color_fade_start: 20.
+                u_color_fade_duration: 1.
             blocks:
                 global: |
                     // Simplified view-independent environment map
@@ -599,12 +620,12 @@ styles:
                 color: |                    
                     normal.z /= u_scale; // turn terrain exaggeration up/down
                     // fade out spheremap normals
-                    float m = clamp((u_scale_fade_start + 2. - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
+                    float m = clamp((u_scale_fade_start + u_scale_fade_duration - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
                     normal.z /= m;
 
                     normal = normalize(normal);
                     color = terrainEnvmap(u_envmap, normal);
-                    //color *= v_color; // apply layer color
+                    color *= v_color; // apply layer color
                     // fade from spheremap to a solid color
                     float c = clamp((u_map_position.z - u_color_fade_start) * 1./u_color_fade_duration, 0., 1.);
                     color.rgb = mix(color.rgb, u_color, c);
@@ -691,6 +712,9 @@ styles:
     text-blend-order:
         base: text
         blend_order: 1
+    lines_transparent:
+        base: lines
+        blend: overlay
 
 
 layers:
@@ -753,8 +777,7 @@ layers:
                 - man_made: [pier]
         draw:
             lines:
-                color: green #[0.369,0.820,0.797]     # footway (single file hiking path)
-                width: [[0,1px]]
+                color: [0., .5, 0.]     # footway (single file hiking path)
                 order: 999
                 interactive: true
         paths:
@@ -763,12 +786,42 @@ layers:
                 lines:
                     width: [[0,2px]]
                     order: 1001
+            no_name_early_not_designated:
+                filter: { name: false, $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        width: [[0,1px]]
+            in_zoo_golf_course:
+                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        visible: false
         foots_steps:
-            filter: { highway: [footway, steps], name: true }
+            filter: { highway: [footway, steps] }
             draw:
                 lines:
                     width: [[0,2px]]
                     order: 1000
+            steps_early:
+                filter: { $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        width: [[0,1.5px]]
+            no_name:
+                filter: { name: false }
+                draw:
+                    lines:
+                        width: [[0,1px]]
+                no_name_late:
+                    filter: { $zoom: [14] }
+                    draw:
+                        lines:
+                            visible: false
+#            in_zoo_golf_course:
+#                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+#                draw:
+#                    lines:
+#                        visible: false
         cycleway:
             filter: { highway: cycleway }
             draw:
