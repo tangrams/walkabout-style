@@ -732,14 +732,14 @@ layers:
             draw:
                 lines:
                     color: blue
-                    width: 1.5px
+                    width: 0.2px
                     order: 1001
         arete:
             filter: { kind: arete }
             draw:
                 lines:
                     color: red
-                    width: 1px
+                    width: 0.2px
                     order: 1000
         ridge_valley:
             filter: { kind: [ridge, valley] }
@@ -812,21 +812,31 @@ layers:
                 draw:
                     lines:
                         width: [[0,1px]]
-                no_name_late:
-                    filter: { $zoom: [14] }
+#                no_name_late:
+#                    filter: { $zoom: [14] }
+#                    draw:
+#                        lines:
+#                            visible: false
+                in_zoo_golf_course:
+                    filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: { max: 15 } }
                     draw:
                         lines:
                             visible: false
-#            in_zoo_golf_course:
-#                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
-#                draw:
-#                    lines:
-#                        visible: false
+                in_zoo_golf_course-z14:
+                    filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: [15] }
+                    draw:
+                        lines:
+                            width: [[0,0.5px]]
+                in_park:
+                    filter: { landuse_kind: [park, national_park], $zoom: { max: 15 } }
+                    draw:
+                        lines:
+                            width: [[0,0.6px]]
         cycleway:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: [0.560,0.693,1.000]
+                    color: [0.5,0.5,1.]
                     width: [[0,1.5px]]
                     order: 1002
         labels-path:
@@ -1005,14 +1015,19 @@ layers:
                         width: 1px
         river:
             #river center lines, not boundaries for polygons
-            filter: { kind: [river,canal,stream,dam,ditch,drain], $zoom: { min: 14 }, not: { is_tunnel: true } }
+            filter: { kind: [river,canal,stream,dam,ditch,drain], $zoom: { min: 11 }, not: { is_tunnel: true } }
             draw:
                 lines:
                     order: function() { return feature.sort_key; }
                     interactive: true
                     color: [0.592,0.929,0.961]
-                    width: [[14,2.5px],[15,4.0px],[17,8.0px],[18,10.0px]]
+                    #color: [[11,[0.753,0.820,0.835]],[12,[0.710,0.800,0.824]],[13,[0.886,0.937,0.988]]]
+                    #width: [[14,2.5px],[15,4.0px],[17,8.0px],[18,10.0px]]
+                    width: [[10,0px],[11,0.25px],[12,0.5px],[13,0.8px],[14,2px],[15,3px],[16,4px],[17,5m]]
                     cap: round
+                    outline:
+                        #color: [[11,[0.671,0.788,0.812]],[13,[0.710,0.800,0.824]],[14,[0.635,0.812,0.843]]]
+                        width: [[9,0px],[11,0px],[12,0px],[13,0.5px],[14,0.75px],[15,0.75px],[16,0.75px],[17,1px]]
 
 
     roads:
