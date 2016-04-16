@@ -367,7 +367,11 @@ sources:
         rasters: [normals]
     normals: # normals
         type: Raster
+        # prod is doesn't have low zoom detail, use dev
         url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
+        # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
+        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
+        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
         max_zoom: 15
 
 # sources:
@@ -573,10 +577,17 @@ styles:
         raster: normal
         shaders:
             uniforms:
-                u_scale: 1 # higher values are more exaggerated
                 u_envmap: images/relief-shading-environment-map.jpg
+                u_scale: 1.5 # higher values are more exaggerated
+                u_scale_end: 0.001
+                u_scale_fade_start: 15.
+                u_scale_fade_duration: 3.
+                u_color: [.9, .9, .9]
+                u_color_fade_start: 17.
+                u_color_fade_duration: 2.
             blocks:
                 global: |
+                    // Simplified view-independent environment map
                     vec4 terrainEnvmap (in sampler2D _tex, in vec3 _normal) {
                         const vec3 eye = vec3(0.,0.,-1.);
                         vec3 r = reflect(eye, _normal);
@@ -587,9 +598,16 @@ styles:
                     }
                 color: |                    
                     normal.z /= u_scale; // turn terrain exaggeration up/down
+                    // fade out spheremap normals
+                    float m = clamp((u_scale_fade_start + 2. - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
+                    normal.z /= m;
+
                     normal = normalize(normal);
                     color = terrainEnvmap(u_envmap, normal);
-                    color *= v_color; // apply layer color
+                    //color *= v_color; // apply layer color
+                    // fade from spheremap to a solid color
+                    float c = clamp((u_map_position.z - u_color_fade_start) * 1./u_color_fade_duration, 0., 1.);
+                    color.rgb = mix(color.rgb, u_color, c);
 
     water-grid:
         mix: grid
