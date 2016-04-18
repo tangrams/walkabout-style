@@ -7,38 +7,38 @@ labels-global:
     - &icon_visible_populated_places  true
     - &text_visible_neighbourhoods    false
     - &text_visible_neighbourhoods_e  false
-    - &text_visible_building          true
+    - &text_visible_building          false
     - &text_visible_address           true
-    - &text_visible_water_labels      true
-    - &label_visible_landuse_green    true
-    - &icon_visible_landuse_green     true
-    - &text_visible_landuse_green     true
-    - &label_visible_poi_landuse      true
-    - &icon_visible_poi_landuse       true
-    - &text_visible_poi_landuse       true
-    - &label_visible_poi_landuse_e    true
-    - &icon_visible_poi_landuse_e     true
-    - &text_visible_poi_landuse_e     true
+    - &text_visible_water_labels      false
+    - &label_visible_landuse_green    false
+    - &icon_visible_landuse_green     false
+    - &text_visible_landuse_green     false
+    - &label_visible_poi_landuse      false
+    - &icon_visible_poi_landuse       false
+    - &text_visible_poi_landuse       false
+    - &label_visible_poi_landuse_e    false
+    - &icon_visible_poi_landuse_e     false
+    - &text_visible_poi_landuse_e     false
     - &label_visible_station          true
     - &icon_visible_station           false
     - &text_visible_station           false
-    - &text_visible_highway           true
-    - &text_visible_highway_e         true
-    - &text_visible_trunk_primary     true
+    - &text_visible_highway           false
+    - &text_visible_highway_e         false
+    - &text_visible_trunk_primary     false
     - &text_visible_trunk_primary_e2  false
     - &text_visible_trunk_primary_e   false
-    - &text_visible_secondary         true
+    - &text_visible_secondary         false
     - &text_visible_secondary_e       false
-    - &text_visible_tertiary          true
+    - &text_visible_tertiary          false
     - &text_visible_tertiary_e        false
-    - &text_visible_minor_road        true
-    - &text_visible_minor_road_e      true
-    - &text_visible_service_road      true
-    - &text_visible_path              true
-    - &text_visible_piste             true
-    - &text_visible_steps             true
+    - &text_visible_minor_road        false
+    - &text_visible_minor_road_e      false
+    - &text_visible_service_road      false
+    - &text_visible_path              false
+    - &text_visible_piste             false
+    - &text_visible_steps             false
     - &text_visible_aerialway         true
-    - &text_visible_shields           true
+    - &text_visible_shields           false
     - &text_visible_exits             true
     - &text_visible_exits_e           false
 
@@ -52,7 +52,7 @@ settings:
     roads:
         - &highway1                   [1.00,1.00,1.00]
         - &highway_link1              [0.00, 0.00, 0.00]
-        - &highway_casing1            [0.40, 0.40, 0.40]
+        - &highway_casing1            [0.894,0.906,0.914]
         - &highway_tunnel1            [0.930,0.930,0.930]
         - &highway_tunnel_casing1     [1.00, 1.00, 1.00]
         - &highway_link_tunnel_casing1 [1.00, 1.00, 1.00]
@@ -193,7 +193,7 @@ settings:
         - &text_fill_beach    [0.35,0.35,0.35]      # black
         - &text_fill_piste   [0.675,0.675,0.675]    # dark gray
         - &text_fill_piste_e [0.675,0.675,0.675]    # dark gray early
-        - &text_stroke '#fff'                       # land color
+        - &text_stroke [0.894,0.906,0.914]          # land color
         - &text_stroke_park '#fff'                  # land color
         - &text_stroke_water '#fff'
         - &text_stroke_address   [1.0,1.0,1.0]      # address stroke color
@@ -371,7 +371,7 @@ sources:
         # prod is doesn't have low zoom detail, use dev
         url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
         # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
-        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
+        # url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
         max_zoom: 15
 
@@ -718,163 +718,163 @@ styles:
 
 
 layers:
-    natural-overlay:
-        data: { source: mapzen, layer: earth }
-        filter: { kind: [cliff, arete, ridge, valley] }
-        draw:
-            lines:
-                color: black
-                width: 0.5px
-                order: 999
-                interactive: true
-        cliff:
-            filter: { kind: cliff }
-            draw:
-                lines:
-                    color: blue
-                    width: 0.2px
-                    order: 1001
-        arete:
-            filter: { kind: arete }
-            draw:
-                lines:
-                    color: red
-                    width: 0.2px
-                    order: 1000
-        ridge_valley:
-            filter: { kind: [ridge, valley] }
-            draw:
-                lines:
-                    visible: false
-                text-blend-order:
-                    priority: 50
-                    font:
-                        fill: black
-                        weight: 200
-                        size: 10px
-                        style: italic
-                        #stroke: { color: [0.976,0.541,0.490], width: 3 }
-            ridge:
-                filter: { kind: ridge }
-                draw:
-                    lines:
-                        visible: false
-                    text-blend-order:
-                        font:
-                            fill: black
-                            weight: 200
-                            size: 10px
-                            style: italic
-                            #stroke: { color: blue, width: 3 }
+#     natural-overlay:
+#         data: { source: mapzen, layer: earth }
+#         filter: { kind: [cliff, arete, ridge, valley] }
+#         draw:
+#             lines:
+#                 color: black
+#                 width: 0.5px
+#                 order: 999
+#                 interactive: true
+#         cliff:
+#             filter: { kind: cliff }
+#             draw:
+#                 lines:
+#                     color: blue
+#                     width: 0.2px
+#                     order: 1001
+#         arete:
+#             filter: { kind: arete }
+#             draw:
+#                 lines:
+#                     color: red
+#                     width: 0.2px
+#                     order: 1000
+#         ridge_valley:
+#             filter: { kind: [ridge, valley] }
+#             draw:
+#                 lines:
+#                     visible: false
+#                 text-blend-order:
+#                     priority: 50
+#                     font:
+#                         fill: black
+#                         weight: 200
+#                         size: 10px
+#                         style: italic
+#                         #stroke: { color: [0.976,0.541,0.490], width: 3 }
+#             ridge:
+#                 filter: { kind: ridge }
+#                 draw:
+#                     lines:
+#                         visible: false
+#                     text-blend-order:
+#                         font:
+#                             fill: black
+#                             weight: 200
+#                             size: 10px
+#                             style: italic
+#                             #stroke: { color: blue, width: 3 }
 
-    path-overlay:
-        data: { source: mapzen, layer: roads }
-        filter: 
-            all:
-                - kind: path
-            not: 
-                - highway: [track]
-                - man_made: [pier]
-        draw:
-            lines:
-                color: [0., .5, 0.]     # footway (single file hiking path)
-                order: 999
-                interactive: true
-        paths:
-            filter: { highway: path }         # bigger path, sometimes paved (walk with friends side-by-side)
-            draw:
-                lines:
-                    width: [[0,2px]]
-                    order: 1001
-            no_name_early_not_designated:
-                filter: { name: false, $zoom: { max: 15 } }
-                draw:
-                    lines:
-                        width: [[0,1px]]
-            in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
-                draw:
-                    lines:
-                        visible: false
-        foots_steps:
-            filter: { highway: [footway, steps] }
-            draw:
-                lines:
-                    width: [[0,2px]]
-                    order: 1000
-            steps_early:
-                filter: { $zoom: { max: 15 } }
-                draw:
-                    lines:
-                        width: [[0,1.5px]]
-            no_name:
-                filter: { name: false }
-                draw:
-                    lines:
-                        width: [[0,1px]]
-#                no_name_late:
-#                    filter: { $zoom: [14] }
-#                    draw:
-#                        lines:
-#                            visible: false
-                in_zoo_golf_course:
-                    filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: { max: 15 } }
-                    draw:
-                        lines:
-                            visible: false
-                in_zoo_golf_course-z14:
-                    filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: [15] }
-                    draw:
-                        lines:
-                            width: [[0,0.5px]]
-                in_park:
-                    filter: { landuse_kind: [park, national_park], $zoom: { max: 15 } }
-                    draw:
-                        lines:
-                            width: [[0,0.6px]]
-        cycleway:
-            filter: { highway: cycleway }
-            draw:
-                lines:
-                    color: [0.5,0.5,1.]
-                    width: [[0,1.5px]]
-                    order: 1002
-        labels-path:
-            #filter: { $zoom: { min: 17 } }
-            draw:
-                text-blend-order:
-                    priority: 58
-                    visible: *text_visible_path
-                    font:
-                        # need a fill color?
-                        fill: green
-                        size: 12px
-                        stroke: { color: *text_stroke, width: 4 }
+#     path-overlay:
+#         data: { source: mapzen, layer: roads }
+#         filter: 
+#             all:
+#                 - kind: path
+#             not: 
+#                 - highway: [track]
+#                 - man_made: [pier]
+#         draw:
+#             lines:
+#                 color: [0., .5, 0.]     # footway (single file hiking path)
+#                 order: 999
+#                 interactive: true
+#         paths:
+#             filter: { highway: path }         # bigger path, sometimes paved (walk with friends side-by-side)
+#             draw:
+#                 lines:
+#                     width: [[0,2px]]
+#                     order: 1001
+#             no_name_early_not_designated:
+#                 filter: { name: false, $zoom: { max: 15 } }
+#                 draw:
+#                     lines:
+#                         width: [[0,1px]]
+#             in_zoo_golf_course:
+#                 filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+#                 draw:
+#                     lines:
+#                         visible: false
+#         foots_steps:
+#             filter: { highway: [footway, steps] }
+#             draw:
+#                 lines:
+#                     width: [[0,2px]]
+#                     order: 1000
+#             steps_early:
+#                 filter: { $zoom: { max: 15 } }
+#                 draw:
+#                     lines:
+#                         width: [[0,1.5px]]
+#             no_name:
+#                 filter: { name: false }
+#                 draw:
+#                     lines:
+#                         width: [[0,1px]]
+# #                no_name_late:
+# #                    filter: { $zoom: [14] }
+# #                    draw:
+# #                        lines:
+# #                            visible: false
+#                 in_zoo_golf_course:
+#                     filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: { max: 15 } }
+#                     draw:
+#                         lines:
+#                             visible: false
+#                 in_zoo_golf_course-z14:
+#                     filter: { landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian], $zoom: [15] }
+#                     draw:
+#                         lines:
+#                             width: [[0,0.5px]]
+#                 in_park:
+#                     filter: { landuse_kind: [park, national_park], $zoom: { max: 15 } }
+#                     draw:
+#                         lines:
+#                             width: [[0,0.6px]]
+#         cycleway:
+#             filter: { highway: cycleway }
+#             draw:
+#                 lines:
+#                     color: [0.5,0.5,1.]
+#                     width: [[0,1.5px]]
+#                     order: 1002
+#         labels-path:
+#             #filter: { $zoom: { min: 17 } }
+#             draw:
+#                 text-blend-order:
+#                     priority: 58
+#                     visible: *text_visible_path
+#                     font:
+#                         # need a fill color?
+#                         fill: green
+#                         size: 12px
+#                         stroke: { color: *text_stroke, width: 4 }
 
 
-    track-overlay:
-        data: { source: mapzen, layer: roads }
-        filter: 
-            all:
-                - kind: path
-                - highway: [track]              # dirt or gravel "road", used by hikers
-        draw:
-            lines:
-                color: brown
-                width: 1px
-                order: 990
-                interactive: true
-        labels-track:
-            #filter: { $zoom: { min: 17 } }
-            draw:
-                text-blend-order:
-                    priority: 58
-                    visible: *text_visible_path
-                    font:
-                        # need a fill color?
-                        fill: brown
-                        size: 12px
-                        stroke: { color: *text_stroke, width: 4 }
+#     track-overlay:
+#         data: { source: mapzen, layer: roads }
+#         filter: 
+#             all:
+#                 - kind: path
+#                 - highway: [track]              # dirt or gravel "road", used by hikers
+#         draw:
+#             lines:
+#                 color: brown
+#                 width: 1px
+#                 order: 990
+#                 interactive: true
+#         labels-track:
+#             #filter: { $zoom: { min: 17 } }
+#             draw:
+#                 text-blend-order:
+#                     priority: 58
+#                     visible: *text_visible_path
+#                     font:
+#                         # need a fill color?
+#                         fill: brown
+#                         size: 12px
+#                         stroke: { color: *text_stroke, width: 4 }
 
     # scree:
     #     data: { source: mapzen, layer: landuse }
@@ -1076,11 +1076,11 @@ layers:
             filter: { source: 'naturalearthdata.com' }
             draw:
                 lines:
-                    color: [[5, [0.5,0.5,0.5]],[6, black]]
+                    color: [[5, [0.5,0.5,0.5]],[6, [0.350,0.350,0.350]]]
                     width: [[5, 0.5px], [6, 0.5px], [7, 0.75px], [9, 1.5px], [14, 1.5px], [16, 4px], [17, 10m]]
-                    # outline:
-                    #     color: *highway_casing1
-                    #     width: [[9, 0px], [10, 0px], [12, 1px], [16, 2px]]
+                    outline:
+                        color: *highway_casing1
+                        width: [[9, 0px], [10, 0px], [12, 1px], [16, 2px]]
             major_road:
                 filter: { type: ['Secondary Highway','Road'] }
                 draw:
@@ -1088,8 +1088,8 @@ layers:
                         color: [[5, [0.75,0.75,0.75]], [8, [0.4,0.4,0.4]], [13, [0.4,0.4,0.4]], [17, *major_road1]]
                         #color: red
                         width: [[5, 0.25px], [7, 0.5px], [7, 0.75px], [9, 1px], [10, 9px], [11, 9px], [13, 1px], [16, 2.5px], [19, 6m]]
-                        # outline:
-                        #     width: [[8, 0.0px], [9, 0.0px], [11, .5px], [16, .75px]]
+                        outline:
+                            width: [[8, 0.0px], [9, 0.0px], [11, .5px], [16, .75px]]
             minor_road:
                 filter: { type: 'Unknown' }
                 draw:
@@ -1110,20 +1110,20 @@ layers:
             filter: { kind: highway }
             draw:
                 lines:
-                    color: [[8, [0.0,0.0,0.0]], [15, [0.0,0.0,0.0]], [16, [1.0,1.0,1.0]]]
+                    color: [[8, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
                     width: [[8, 1px], [12, 1px], [14, 1.75px], [15, 3px], [16, 3px], [17, 5px], [18, 4m], [19, 5m]]
                     outline:
-                        color: [[8, [1.0,1.0,1.0]], [15, [1.0,1.0,1.0]], [16, [0.00,0.00,0.00]]]
+                        color: [[8, [0.894,0.906,0.914]], [15, [0.894,0.906,0.914]], [16, [0.350,0.350,0.350]]]
                         width: [[8,0px], [15,0px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
             link:
                 filter: { is_link: yes } # on- and off-ramps, etc
                 draw:
                     lines:
                         #color: *highway_link1
-                        color: [[9, [0.0,0.0,0.0]], [15, [0.0,0.0,0.0]], [16, [1.0,1.0,1.0]]]
+                        color: [[9, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
                         width: [[9, 0px], [11, 0.15px], [12, 0.5px], [13, 0.75px], [14, 0.75px], [15, 1.5px], [16, 2px], [17, 2px], [18, 4px], [19, 8px]]
                         outline:
-                            color: [[9,[1.0,1.0,1.0]], [15,[1.0,1.0,1.0]], [16,[0.00,0.00,0.00]]]
+                            color: [[9,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16,[0.350,0.350,0.350]]]
                             width: [[9, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 2px]]
                 early_link:
                     filter: { $zoom: {min: 13, max: 15} }
@@ -1298,11 +1298,11 @@ layers:
                 filter: { highway: [trunk, primary] }
                 draw:
                     lines:
-                        color: [[8, [0.8,0.8,0.8]], [10, [0.8,0.8,0.8]], [12, [0.5,0.5,0.5]], [13, [0.4,0.4,0.4]], [14, [0.3,0.3,0.3]], [15, [0.1,0.1,0.1]], [16, [1.0,1.0,1.0]]]
+                        color: [[8, [0.8,0.8,0.8]], [10, [0.8,0.8,0.8]], [12, [0.50,0.50,0.50]], [13, [0.50,0.50,0.50]], [14, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
                         width: [[8, 0.5px], [11, 0.5px], [12, 0.75px], [13, 0.75px], [14, 1px], [15, 1.25px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
                         outline:
-                            color: [[8,[1.0,1.0,1.0]], [15,[1.0,1.0,1.0]], [16,[0.00,0.00,0.00]]]
-                            width: [[8,1.5px], [16,1.5px], [17, 3px], [18, 4px]]
+                            color: [[8,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16,[0.350,0.350,0.350]]]
+                            width: [[8,1.5px], [13,0px], [16,1.5px], [17, 3px], [18, 4px]]
                 early:
                     filter: { $zoom: { max: 16 } }
                     draw:
@@ -1320,11 +1320,11 @@ layers:
                     filter: { ref: true }
                     draw:
                         lines:
-                            color: [[8, [0.5,0.5,0.5]], [11, [0.65,0.65,0.65]], [12, [0.2,0.2,0.2]], [13, [0.4,0.4,0.4]], [14, [0.0,0.0,0.0]], [15, [0.0,0.0,0.0]], [16, [1.0,1.0,1.0]]]
+                            color: [[8, [0.5,0.5,0.5]], [11, [0.65,0.65,0.65]], [12, [0.5,0.5,0.5]], [13, [0.50,0.50,0.50]], [14, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
                             width: [[9, 0.5px], [10, 0.65px], [11, 0.65px], [12, 0.65px], [13, 0.65px], [14, 1.25px], [15, 1.25px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
                             outline:
-                                color: [[8,[1.0,1.0,1.0]], [15,[1.0,1.0,1.0]], [16,[0.00,0.00,0.00]]]
-                                width: [[8,1.5px], [16,1.5px], [17, 3px], [18, 4px]]
+                                color: [[8,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16,[0.350,0.350,0.350]]]
+                                width: [[8,0px], [12,0px], [16,1.5px], [17, 3px], [18, 4px]]
                     early:
                         filter: { $zoom: { max: 16 } }
                         draw:
@@ -1525,11 +1525,11 @@ layers:
                 filter: { highway: secondary }
                 draw:
                     lines:
-                        color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.6,0.6,0.6]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [15, [0.35,0.35,0.35]], [16, [0.0,0.0,0.0]], [17, [1.0,1.0,1.0]]]
+                        color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.55,0.55,0.55]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [15, [0.35,0.35,0.35]], [16, [0.0,0.0,0.0]], [17, [1.0,1.0,1.0]]]
                         width: [[10, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
-                        # outline:
-                        #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                        #     width: [[10,2px], [16,0px], [17, 2px], [18, 2px]]
+                        outline:
+                            color: [[10, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
+                            width: [[10,0px], [16,0px], [17, 2px], [18, 2px]]
                 early:
                     filter: { $zoom: { max: 16 } }
                     draw:
@@ -1541,11 +1541,11 @@ layers:
                     filter: { ref: true, $zoom: { min: 12} }
                     draw:
                         lines:
-                            color: [[12, [0.6,0.6,0.6]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [16, [0.35,0.35,0.35]], [17, [1.0,1.0,1.0]]]
+                            color: [[12, [0.55,0.55,0.55]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [16, [0.35,0.35,0.35]], [17, [1.0,1.0,1.0]]]
                             width: [[11, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
-                            # outline:
-                            #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                            #     width: [[10,2px], [16,0px], [17, 2px], [18, 2px]]
+                            outline:
+                                color: [[10, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
+                                width: [[10,0px], [16,0px], [17, 2px], [18, 2px]]
                     early:
                         filter: { $zoom: { max: 15 } }
                         draw:
@@ -1560,7 +1560,7 @@ layers:
                                 color: [[13,[0.70,0.70,0.70]], [14,[0.70,0.70,0.70]], [15,[0.8,0.8,0.8]], [16,[0.85,0.85,0.85]], [17,[0.950,0.950,0.950]]]
                                 outline:
                                     color: [[13, [1.00,1.00,1.00]], [16, [1.00,1.00,1.00]], [17, [0.85,0.85,0.85]]]
-                                    width: [[10,2px], [17, 2px], [18, 2px]]
+                                    width: [[10,0px], [17, 2px], [18, 2px]]
                     labels-secondary-routes:
                         filter: { $zoom: [13] }
                         draw:
@@ -1600,10 +1600,10 @@ layers:
                     filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden] }
                     draw:
                         lines:
-                            color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.6,0.6,0.6]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [15, [0.35,0.35,0.35]], [16, [0.0,0.0,0.0]], [17, [1.0,1.0,1.0]]]
+                            color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.6,0.6,0.6]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [15, [0.35,0.35,0.35]], [16, [0.350,0.350,0.350]], [17, [1.0,1.0,1.0]]]
                             width: [[10, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                             outline:
-                                color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                                color: [[10, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
                                 width: [[12, 0px], [13, 0.5px], [14, 1.0px], [16,0px], [17, 2px], [18, 2px]]
                     # golf_course:
                     #     filter: { landuse_kind: golf_course }
@@ -1695,9 +1695,9 @@ layers:
                     lines:
                         color: [[11, [0.885,0.885,0.885]], [13, [0.60,0.60,0.60]], [15, [0.60,0.60,0.60]], [16, [0.30,0.30,0.30]], [17, [1.0,1.0,1.0]]]
                         width: [[11, 0.5px], [12, 0.65px], [13, 0.65px], [14, 1px], [15, 1px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
-                        # outline:
-                        #     color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                        #     width: [[11, 2px], [16,0px], [17, 2px], [18, 2px]]
+                        outline:
+                            color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
+                            width: [[11, 2px], [16,0px], [17, 2px], [18, 2px]]
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
@@ -1712,7 +1712,7 @@ layers:
                             color: [[11, [0.885,0.885,0.885]], [13, [0.8,0.8,0.8]], [14, [0.75,0.75,0.75]], [15, [0.6,0.6,0.6]], [17, [1.0,1.0,1.0]]]
                             width: [[11, 0.5px], [12, 0.75px], [13, 1px], [14, 1px], [15, 1px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                             outline:
-                                color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                                color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
                                 width: [[11, 2px], [16,0px], [17, 2px], [18, 2px]]
                     early:
                         filter: { $zoom: { max: 15 } }
@@ -1735,7 +1735,7 @@ layers:
                             color: [[14, [0.75,0.75,0.75]], [15, [0.60, 0.60, 0.60]], [16, [0.3,0.3,0.3]], [17, [1.00,1.00,1.00]]]
                             width: [[11, 0.0px], [12, 0.15px], [14, 0.15px], [15, 0.75px], [16, 1.25px], [17, 2px], [18, 2px], [19, 4px]]
                             outline:
-                                color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                                color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.350,0.350,0.350]]]
                                 width: [[11, 0px], [16, 0px], [17, 1px], [18, 1px]]
                 in_park:
                     filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden] }
@@ -1744,7 +1744,7 @@ layers:
                             #width: [[11, 0.0px], [12, .5px], [14, 1.5px], [16, 2.0px], [19, 7m]]
                             color: [[11, [0.885,0.885,0.885]], [13, [0.60,0.60,0.60]], [15, [0.60,0.60,0.60]], [16, [0.30,0.30,0.30]], [17, [1.0,1.0,1.0]]]
                             outline:
-                                color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                                color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]]]
                                 width: [[11, 2px], [16,0px], [17, 2px], [18, 2px]]
                     # golf_course:
                     #     filter: { landuse_kind: golf_course }
@@ -1840,11 +1840,11 @@ layers:
             filter: { kind: minor_road, not: { highway: service, aeroway: [runway, taxiway] } }
             draw:
                 lines:
-                    color: [[11, [0.885,0.885,0.885]], [13, [0.80,0.80,0.80]], [14, [0.75,0.75,0.75]], [15, [0.5,0.5,0.5]], [16, [0.3,0.3,0.3]], [17, [1.0,1.0,1.0]]]
+                    color: [[11, [0.885,0.885,0.885]], [13, [0.600,0.600,0.600]], [14, [0.600,0.600,0.600]], [15, [0.5,0.5,0.5]], [16, [0.350,0.350,0.350]], [17, [1.0,1.0,1.0]]]
                     width: [[11, 0.35px], [13, 0.5px], [14, 1px], [15, 1px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
-                    # outline:
-                    #     color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.30,0.30,0.30]], [18, [0.00,0.00,0.00]]]
-                    #     width: [[11, 1px], [16, 0px], [17, 1.5px], [18, 1.5px]]
+                    outline:
+                        color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]], [18, [0.350,0.350,0.350]]]
+                        width: [[11, 0px], [16, 0px], [17, 1.5px], [18, 1.5px]]
             early:
                 filter: { $zoom: { max: 16 } }
                 draw:
@@ -1867,7 +1867,7 @@ layers:
                     lines:
                         color: [[11, [0.885,0.885,0.885]], [13, [0.75,0.75,0.75]], [14, [0.70,0.70,0.70]], [15, [0.6,0.6,0.6]], [16, [0.3,0.3,0.3]], [17, [1.0,1.0,1.0]]]
                         outline:
-                            color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.30,0.30,0.30]], [18, [0.00,0.00,0.00]]]
+                            color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17, [0.350,0.350,0.350]], [18, [0.350,0.350,0.350]]]
                             width: [[11, 1px], [16, 0px], [17, 1.5px]]
             #     golf_course:
             #         filter: { landuse_kind: golf_course }
