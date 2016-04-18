@@ -4225,7 +4225,7 @@ layers:
                             stroke: { color: [1.0,1.0,1.0,0.85], width: 4 }
 
     pois_and_landuse_labels:
-        data: { source: mapzen, layer: [pois,landuse,buildings] }
+        data: { source: mapzen, layer: [pois,landuse] }
         visible: *label_visible_poi_landuse
         filter: 
             not: { kind: [building,farm,tree,gate,address,apron] }
