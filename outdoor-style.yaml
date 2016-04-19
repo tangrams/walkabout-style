@@ -748,35 +748,35 @@ layers:
 #                             style: italic
 #                             #stroke: { color: blue, width: 3 }
 
-#     path-overlay:
-#         data: { source: mapzen, layer: roads }
-#         filter: 
-#             all:
-#                 - kind: path
-#             not: 
-#                 - highway: [track]
-#                 - man_made: [pier]
-#         draw:
-#             lines:
-#                 color: [0., .5, 0.]     # footway (single file hiking path)
-#                 order: 999
-#                 interactive: true
-#         paths:
-#             filter: { highway: path }         # bigger path, sometimes paved (walk with friends side-by-side)
-#             draw:
-#                 lines:
-#                     width: [[0,2px]]
-#                     order: 1001
-#             no_name_early_not_designated:
-#                 filter: { name: false, $zoom: { max: 15 } }
-#                 draw:
-#                     lines:
-#                         width: [[0,1px]]
-#             in_zoo_golf_course:
-#                 filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
-#                 draw:
-#                     lines:
-#                         visible: false
+    path-overlay:
+        data: { source: mapzen, layer: roads }
+        filter: 
+            all:
+                - kind: path
+            not: 
+                - highway: [track]
+                - man_made: [pier]
+        draw:
+            dashedline:
+                color: [0., .5, 0.]     # footway (single file hiking path)
+                order: 999
+                interactive: true
+        paths:
+            filter: { highway: path }         # bigger path, sometimes paved (walk with friends side-by-side)
+            draw:
+                lines:
+                    width: [[0,2px]]
+                    order: 1001
+            no_name_early_not_designated:
+                filter: { name: false, $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        width: [[0,1px]]
+            in_zoo_golf_course:
+                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        visible: false
 #         foots_steps:
 #             filter: { highway: [footway, steps] }
 #             draw:
@@ -1492,7 +1492,7 @@ layers:
                         color: [[10, [0.4,0.4,0.4]], [14, [0.75,0.75,0.75]], [15, [0.89, 0.89, 0.89]], [16, [1.0,1.0,1.0]]]
                         width: [[10, 0.5px], [14, 1.5px], [15, 1px], [16, 1.75px], [17, 2px], [18, 3px], [19, 8px]]
                         outline:
-                            color: [[10, [1.0,1.0,1.0]], [15, [0.50,0.50,0.50]], [16, [0.350,0.350,0.350]], [17,[0.650,0.650,0.650]]]
+                            color: [[10, [1.0,1.0,1.0]], [15, [0.50,0.50,0.50]], [16, [0.50,0.50,0.50]], [17,[0.650,0.650,0.650]]]
                             width: [[10, 0px], [14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 1px]]
             tunnel:
                 filter: {is_tunnel: yes, $zoom: {min: 13} }
@@ -1500,7 +1500,7 @@ layers:
                     lines:
                         color: [[13,[0.70,0.70,0.70]], [14,[0.70,0.70,0.70]], [15,[0.8,0.8,0.8]], [16,[0.950,0.950,0.950]]]
                         outline:
-                            color: [[13, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [0.85,0.85,0.85]]]
+                            color: [[13, [0.894,0.906,0.914]], [15, [0.894,0.906,0.914]], [16, [0.85,0.85,0.85]]]
                             width: [[8,1.5px], [16,1.5px], [17, 3px], [18, 3px]]
             secondary:
                 filter: { highway: secondary }
