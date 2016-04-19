@@ -5515,7 +5515,7 @@ layers:
                 draw:
                     terrain:
                         interactive: false
-                        color: [0.940,0.998,0.990]
+                        color: [0.890,1.00,1.00]
                         # todo: what is this?
                         order: 18
                         visible: true
@@ -5551,7 +5551,7 @@ layers:
                 draw:
                     terrain:
                         # color: [1.00,0.974,0.950]
-                        color: [0.965,0.995,0.965]
+                        color: [0.945,0.995,0.945]
                         visible: true
                 wilderness-areas:
                     filter: function() { return feature.name && feature.name.indexOf("Wilderness") > -1 }
@@ -5564,7 +5564,7 @@ layers:
                     filter: { protect_class: ["6",6] }
                     draw:
                         terrain:
-                            color: [0.965,0.995,0.965] #*green7
+                            color: [0.945,0.995,0.945] #*green7
                             visible: true
 
             # gotta be a protected area to draw green, not just a landcover type
@@ -5615,7 +5615,7 @@ layers:
                 # default for national forests and more?
                 draw:
                     terrain:
-                        color: [0.945,0.985,0.985]
+                        color: [0.915,0.995,0.995]
                         visible: true
             # urban:
             #     filter: { kind: [urban, rural, residential] }
