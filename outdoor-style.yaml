@@ -5,40 +5,40 @@ labels-global:
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
-    - &text_visible_neighbourhoods    false
-    - &text_visible_neighbourhoods_e  false
-    - &text_visible_building          false
-    - &text_visible_address           false
-    - &text_visible_water_labels      false
-    - &label_visible_landuse_green    false
-    - &icon_visible_landuse_green     false
-    - &text_visible_landuse_green     false
-    - &label_visible_poi_landuse      false
-    - &icon_visible_poi_landuse       false
-    - &text_visible_poi_landuse       false
-    - &label_visible_poi_landuse_e    false
-    - &icon_visible_poi_landuse_e     false
-    - &text_visible_poi_landuse_e     false
-    - &label_visible_station          false
-    - &icon_visible_station           false
-    - &text_visible_station           false
-    - &text_visible_highway           false
-    - &text_visible_highway_e         false
-    - &text_visible_trunk_primary     false
-    - &text_visible_trunk_primary_e2  false
-    - &text_visible_trunk_primary_e   false
-    - &text_visible_secondary         false
-    - &text_visible_secondary_e       false
-    - &text_visible_tertiary          false
-    - &text_visible_tertiary_e        false
-    - &text_visible_minor_road        false
-    - &text_visible_minor_road_e      false
-    - &text_visible_service_road      false
-    - &text_visible_path              false
-    - &text_visible_piste             false
-    - &text_visible_steps             false
-    - &text_visible_aerialway         false
-    - &text_visible_shields           false
+    - &text_visible_neighbourhoods    true
+    - &text_visible_neighbourhoods_e  true
+    - &text_visible_building          true
+    - &text_visible_address           true
+    - &text_visible_water_labels      true
+    - &label_visible_landuse_green    true
+    - &icon_visible_landuse_green     true
+    - &text_visible_landuse_green     true
+    - &label_visible_poi_landuse      true
+    - &icon_visible_poi_landuse       true
+    - &text_visible_poi_landuse       true
+    - &label_visible_poi_landuse_e    true
+    - &icon_visible_poi_landuse_e     true
+    - &text_visible_poi_landuse_e     true
+    - &label_visible_station          true
+    - &icon_visible_station           true
+    - &text_visible_station           true
+    - &text_visible_highway           true
+    - &text_visible_highway_e         true
+    - &text_visible_trunk_primary     true
+    - &text_visible_trunk_primary_e2  true
+    - &text_visible_trunk_primary_e   true
+    - &text_visible_secondary         true
+    - &text_visible_secondary_e       true
+    - &text_visible_tertiary          true
+    - &text_visible_tertiary_e        true
+    - &text_visible_minor_road        true
+    - &text_visible_minor_road_e      true
+    - &text_visible_service_road      true
+    - &text_visible_path              true
+    - &text_visible_piste             true
+    - &text_visible_steps             true
+    - &text_visible_aerialway         true
+    - &text_visible_shields           true
     - &text_visible_exits             true
     - &text_visible_exits_e           false
 
@@ -190,13 +190,13 @@ settings:
         - &text_fill_address  [0.60,0.60,0.60]      # HUH
         - &text_fill_water   '#000'                 # blue
         - &text_fill_park    [0.175,0.175,0.175]    # green
-        - &text_fill_beach    [0.35,0.35,0.35]      # black
-        - &text_fill_piste   [0.675,0.675,0.675]    # dark gray
-        - &text_fill_piste_e [0.675,0.675,0.675]    # dark gray early
-        - &text_stroke [0.894,0.906,0.914]          # land color
-        - &text_stroke_park '#fff'                  # land color
-        - &text_stroke_water '#fff'
-        - &text_stroke_address   [1.0,1.0,1.0]      # address stroke color
+        - &text_fill_beach   [0.35,0.35,0.35]      # black
+        - &text_fill_piste   [0.894,0.906,0.914]    # dark gray
+        - &text_fill_piste_e [0.894,0.906,0.914]    # dark gray early
+        - &text_stroke       [0.894,0.906,0.914]    # land color
+        - &text_stroke_park  [0.894,0.906,0.914]     # land color
+        - &text_stroke_water [0.894,0.906,0.914]
+        - &text_stroke_address   [0.894,0.906,0.914]      # address stroke color
         - &townspot_sprite   townspot-m-rev         # depends on land color and text settings
         - &text_font_family  'Open Sans'            # branding in asperational Unicode, yo (or Helvetica)
 
@@ -369,9 +369,9 @@ sources:
     normals: # normals
         type: Raster
         # prod is doesn't have low zoom detail, use dev
-        #url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
+        url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
         # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
-        url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
+        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
         max_zoom: 15
 
@@ -632,7 +632,7 @@ styles:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
                 u_envmap: images/draw-test8.jpg
-                u_scale: 4.5 # higher values are more exaggerated
+                u_scale: 4. # higher values are more exaggerated
                 u_scale_end: 0.001
                 u_scale_fade_start: 3.
                 u_scale_fade_duration: 15.
@@ -652,7 +652,7 @@ styles:
                     normal.z /= u_scale; // turn terrain exaggeration up/down
                     // fade out spheremap normals with a function
                     // https://www.desmos.com/calculator/ptgkzcnfyc
-                    float m = 4.5 * (u_map_position.z - 1.) * pow(e, u_map_position.z * -.29);
+                    float m = 4. * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     // https://www.desmos.com/calculator/sanlujpfmc
                     //float a = -0.0013719
                     //float b = 0.057575
@@ -3942,7 +3942,7 @@ layers:
                             weight: 400
                             fill: [0.600,0.600,0.600]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.7], width: 4 }
+                            stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z12:
                 filter:
                     all:
@@ -3965,9 +3965,9 @@ layers:
                         font:
                             size: 10px
                             weight: 400
-                            fill: [0.600,0.600,0.600]
+                            fill: [0.400,0.400,0.400]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.7], width: 4 }
+                            stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z13:
                 filter:
                     all:
@@ -3990,9 +3990,9 @@ layers:
                         font:
                             size: 12px
                             weight: 300
-                            fill: [0.620,0.620,0.620]
+                            fill: [0.420,0.420,0.420]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.7], width: 6 }
+                            stroke: { color: [0.904,0.916,0.924], width: 4 }
             neighborhood-z14:
                 filter:
                     all:
@@ -4013,11 +4013,11 @@ layers:
                         text_wrap: 12
                         visible: *text_visible_neighbourhoods
                         font:
-                            size: 16px
+                            size: 14px
                             weight: 200
-                            fill: [0.600,0.600,0.600]
+                            fill: [0.400,0.400,0.400]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.7], width: 6 }
+                            stroke: { color: [0.914,0.926,0.934], width: 5 }
             neighborhood-z15:
                 filter:
                     all:
@@ -4038,11 +4038,11 @@ layers:
                         text_wrap: 12
                         visible: *text_visible_neighbourhoods
                         font:
-                            size: 21px
+                            size: 18px
                             weight: 200
-                            fill: [0.650,0.650,0.650]
+                            fill: [0.500,0.500,0.500]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.6], width: 8 }
+                            stroke: { color: [0.914,0.926,0.934], width: 6 }
                 z15-new:
                     filter: 
                         all:
@@ -4071,11 +4071,11 @@ layers:
                         priority: 18
                         visible: *text_visible_neighbourhoods
                         font:
-                            size: 24px
+                            size: 20px
                             weight: 300
                             fill: [0.00,0.00,0.00,0.50]
                             transform: uppercase
-                            stroke: { color: [1.0,1.0,1.0,0.85], width: 4 }
+                            stroke: { color: [0.914,0.926,0.934], width: 6 }
 
     pois_and_landuse_labels:
         data: { source: mapzen, layer: [pois,landuse] }
