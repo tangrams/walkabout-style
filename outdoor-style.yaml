@@ -1453,7 +1453,7 @@ layers:
                     filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden] }
                     draw:
                         lines:
-                            color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.6,0.6,0.6]], [13, [0.4,0.4,0.4]], [14, [0.35,0.35,0.35]], [15, [0.35,0.35,0.35]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                            color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
                             width: [[10, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                             outline:
                                 color: [[10, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
@@ -1464,18 +1464,25 @@ layers:
                     #         lines:
                     #             outline:
                     #                 color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                    # nature_reserve:
-                    #     filter: { landuse_kind: nature_reserve }
-                    #     draw:
-                    #         lines:
-                    #             outline:
-                    #                 color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                    # conservation:
-                    #     filter: { landuse_kind: conservation }
-                    #     draw:
-                    #         lines:
-                    #             outline:
-                    #                 color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    nature_reserve:
+                        filter: { landuse_kind: nature_reserve }
+                        draw:
+                            lines:
+                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                                # outline:
+                                #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    conservation:
+                        filter: { landuse_kind: conservation }
+                        draw:
+                            lines:
+                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                                # outline:
+                                #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    wood:
+                        filter: { landuse_kind: wood }
+                        draw:
+                            lines:
+                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
                     # zoo:
                     #     filter: { landuse_kind: zoo }
                     #     draw:
@@ -5698,45 +5705,45 @@ layers:
         #                 polygons:
         #                     color: [0.970,0.970,0.970]
         #                     visible: true
-        # tier5:
-        #     filter:
-        #         any:
-        #             # limit show smaller landuse areas to higher zooms
-        #             - { $zoom: { min: 10 }, area: { min: 1000000 } }
-        #             - { $zoom: { min: 11 }, area: { min: 400000 } }
-        #             - { $zoom: { min: 12 }, area: { min: 200000 } }
-        #             - { $zoom: { min: 13 }, area: { min: 50000 } }
-        #             - { $zoom: { min: 14 }, area: { min: 20000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 10000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 2000 } }
-        #             - { $zoom: { min: 16 } }
-        #         all:
-        #             - kind:
-        #                 - theme_park
-        #                 - resort
-        #                 - aquarium
-        #                 - winery
-        #                 - maze
-        #                 - beach
-        #     tourism-related:
-        #         filter:
-        #             kind:
-        #                 - theme_park
-        #                 - resort
-        #                 - aquarium
-        #                 - winery
-        #                 - maze
-        #         draw:
-        #             dots:
-        #                 color: *grey10
-        #                 visible: true
-        #     beach:
-        #         filter:
-        #             kind: beach
-        #         draw:
-        #             dots:
-        #                 color: [0.780,0.740,0.538]
-        #                 visible: true
+        tier5:
+            filter:
+                any:
+                    # limit show smaller landuse areas to higher zooms
+                    - { $zoom: { min: 10 }, area: { min: 1000000 } }
+                    - { $zoom: { min: 11 }, area: { min: 400000 } }
+                    - { $zoom: { min: 12 }, area: { min: 200000 } }
+                    - { $zoom: { min: 13 }, area: { min: 50000 } }
+                    - { $zoom: { min: 14 }, area: { min: 20000 } }
+                    - { $zoom: { min: 15 }, area: { min: 10000 } }
+                    - { $zoom: { min: 15 }, area: { min: 2000 } }
+                    - { $zoom: { min: 16 } }
+                all:
+                    - kind:
+                        - theme_park
+                        - resort
+                        - aquarium
+                        - winery
+                        - maze
+                        - beach
+            # tourism-related:
+            #     filter:
+            #         kind:
+            #             - theme_park
+            #             - resort
+            #             - aquarium
+            #             - winery
+            #             - maze
+            #     draw:
+            #         polygons:
+            #             color: *grey10
+            #             visible: true
+            beach:
+                filter:
+                    kind: beach
+                draw:
+                    terrain:
+                        color: [0.975,0.975,0.828]
+                        visible: true
         # tier6:
         #     filter:
         #         any:
@@ -5835,7 +5842,7 @@ layers:
         #            order: 1000 #function() { return feature.sort_key; }
         #            color: grey
         #            visible: true
-    
+
     natural-overlay:
         data: { source: mapzen, layer: earth }
         filter: { kind: [cliff, arete, ridge, valley] }
@@ -5892,11 +5899,11 @@ layers:
                 - man_made: [pier]
         draw:
             lines:
-                color: [0.315,0.678,0.769]
+                color: [0.302,0.649,0.740]
             dashedline:
-                color: [0.315,0.678,0.769]
+                color: [0.302,0.649,0.740]
             dots-lines:
-                color: [0.315,0.678,0.769]
+                color: [0.302,0.649,0.740]
                 # color: [0.292,0.650,0.644]
                 # color: [0.416,0.750,0.746]
         # bigger path, sometimes paved (walk with friends side-by-side), also tracks that are no vehicles
@@ -6064,7 +6071,7 @@ layers:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: [0.315,0.678,0.769]
+                    color: [0.302,0.649,0.740]
                     width: [[13, 1px], [14, 2px], [15, 3px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                     order: 1004
             late:
@@ -6075,7 +6082,7 @@ layers:
                         join: round
                         cap: round
                         outline:
-                            color: [0.315,0.678,0.769]
+                            color: [0.302,0.649,0.740]
                             join: round
                             cap: round
                             width: [[16, 2px], [17, 3px], [18, 2px], [19, 2px]]
@@ -6103,7 +6110,7 @@ layers:
         draw:
             lines:
                 color: [0.710,0.553,0.522]
-                width: [[13, 0.6px], [14, 1.5px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
+                width: [[13, 1px], [14, 1.5px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
         late:
@@ -6139,7 +6146,7 @@ layers:
         draw:
             lines:
                 color: [0.710,0.553,0.522]
-                width: [[13, 1px], [14, 2px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
+                width: [[13, 1px], [14, 1.5px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
         late:
