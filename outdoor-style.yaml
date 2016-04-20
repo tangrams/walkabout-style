@@ -5892,11 +5892,12 @@ layers:
                 - man_made: [pier]
         draw:
             lines:
-                color: [0.292,0.650,0.644]
+                color: [0.315,0.678,0.769]
             dashedline:
-                color: [0.292,0.650,0.644]
+                color: [0.315,0.678,0.769]
             dots-lines:
-                color: [0.292,0.650,0.644]
+                color: [0.315,0.678,0.769]
+                # color: [0.292,0.650,0.644]
                 # color: [0.416,0.750,0.746]
         # bigger path, sometimes paved (walk with friends side-by-side), also tracks that are no vehicles
         paths:
@@ -6059,8 +6060,8 @@ layers:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: [0.333,0.741,0.734]
-                    width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                    color: [0.315,0.678,0.769]
+                    width: [[13, 1px], [14, 2px], [15, 3px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                     order: 1004
             late:
                 filter: { $zoom: { min: 16 } }
@@ -6070,10 +6071,10 @@ layers:
                         join: round
                         cap: round
                         outline:
-                            color: [0.333,0.741,0.734]
+                            color: [0.315,0.678,0.769]
                             join: round
                             cap: round
-                            width: [[16, 2px], [17, 1px], [18, 2px], [19, 2px]]
+                            width: [[16, 2px], [17, 3px], [18, 2px], [19, 2px]]
                             order: 999
             labels-cycleway:
                 #filter: { $zoom: { min: 17 } }
