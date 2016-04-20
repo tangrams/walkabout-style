@@ -4081,7 +4081,7 @@ layers:
         data: { source: mapzen, layer: [pois,landuse] }
         visible: *label_visible_poi_landuse
         filter: 
-            not: { kind: [building,farm,tree,gate,address,apron] }
+            not: { kind: [building,farm,tree,gate,address,apron,residential] }
             any:
                 - area: false
                   all:
@@ -4243,7 +4243,7 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: [0.350,0.350,0.350]
+                                fill: green #[0.350,0.350,0.350]
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 4 }
                     natl-park-labels-z4-z5:
@@ -4300,7 +4300,7 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: [0.350,0.350,0.350]
+                                fill: green #[0.350,0.350,0.350]
                                 size: 10px
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 3 }
@@ -4383,7 +4383,7 @@ layers:
                         visible: *text_visible_landuse_green
                         interactive: true
                         font:
-                            fill: *text_fill_beach
+                            fill: orange #*text_fill_beach
                             stroke:
                                 color: *text_stroke_park
             airport:
@@ -4415,7 +4415,7 @@ layers:
                         priority: 41
                         text_source: function() { if(feature.iata) { return feature.name + ' (' + feature.iata + ')'; } else { return feature.name; } }
                         font:
-                            fill: *text_fill
+                            fill: purple #*text_fill
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4455,7 +4455,7 @@ layers:
                         visible: *text_visible_landuse_green
                         priority: 42
                         font:
-                            fill: [0.350,0.350,0.350]
+                            fill: brown #[0.350,0.350,0.350]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4488,7 +4488,7 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: *text_fill
+                            fill: brown #*text_fill
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4516,7 +4516,7 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: *text_fill
+                            fill: blue #*text_fill
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                     icons:
@@ -4551,7 +4551,7 @@ layers:
                         visible: *text_visible_poi_landuse
                         priority: 44
                         font:
-                            fill: *text_fill
+                            fill: green #*text_fill
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 early-sizing:
@@ -4588,7 +4588,7 @@ layers:
                         visible: *text_visible_poi_landuse
                         priority: 44
                         font:
-                            fill: [0.50,0.50,0.50]
+                            fill: [0.15,0.15,0.15] #[0.50,0.50,0.50]
                             weight: 600
                             size: 10px
                             stroke: { color: [1.0,1.0,1.0,0.85], width: 3 }
@@ -5345,7 +5345,7 @@ layers:
                 text-blend-order: { font: { size: 12px } }
 
     ocean-sea-labels:
-        data: { source: osm, layer: places }
+        data: { source: mapzen, layer: water }
         visible: *text_visible_water_labels
         filter: { name: true, kind: [sea, ocean] }
         draw:
@@ -5836,67 +5836,61 @@ layers:
         #             dots:
         #                 color: [0.765,0.765,0.765]
         #                 visible: true
-
-    # places:
-    #     data: { source: mapzen}
-    #     draw:
-    #         text-blend-order:
-    #             buffer: 4px
-    #             font:
-    #                 family: *text_font_family
-    #                 fill: black
-    #                 weight: 400
-    #                 size: 11px
-    #                 # stroke: { color: '#444', width: 4px}
-
-    # natural-overlay:
-    #     data: { source: mapzen, layer: earth }
-    #     filter: { kind: [cliff, arete, ridge, valley] }
-    #     draw:
-    #         lines:
-    #             color: black
-    #             width: 0.5px
-    #             order: 999
-    #             interactive: true
-    #     cliff:
-    #         filter: { kind: cliff }
-    #         draw:
-    #             lines:
-    #                 color: blue
-    #                 width: 0.2px
-    #                 order: 1001
-    #     arete:
-    #         filter: { kind: arete }
-    #         draw:
-    #             lines:
-    #                 color: red
-    #                 width: 0.2px
-    #                 order: 1000
-    #     ridge_valley:
-    #         filter: { kind: [ridge, valley] }
-    #         draw:
-    #             lines:
-    #                 visible: false
-    #             text-blend-order:
-    #                 priority: 50
-    #                 font:
-    #                     fill: black
-    #                     weight: 200
-    #                     size: 10px
-    #                     style: italic
-    #                     #stroke: { color: [0.976,0.541,0.490], width: 3 }
-    #         ridge:
-    #             filter: { kind: ridge }
-    #             draw:
-    #                 lines:
-    #                     visible: false
-    #                 text-blend-order:
-    #                     font:
-    #                         fill: black
-    #                         weight: 200
-    #                         size: 10px
-    #                         style: italic
-    #                         #stroke: { color: blue, width: 3 }
+        # scree:
+        #     data: { source: mapzen, layer: landuse }
+        #     filter: { kind: scree }
+        #     draw:
+        #         polygons:
+        #             order: 1000 #function() { return feature.sort_key; }
+        #             color: red
+        #             visible: true
+    
+    natural-overlay:
+        data: { source: mapzen, layer: earth }
+        filter: { kind: [cliff, arete, ridge, valley] }
+        draw:
+            lines:
+                order: 999
+                interactive: true
+        cliff:
+            filter: { kind: cliff }
+            draw:
+                lines:
+                    color: blue
+                    width: 0.2px
+                    order: 1001
+        arete:
+            filter: { kind: arete }
+            draw:
+                lines:
+                    color: red
+                    width: 0.2px
+                    order: 1000
+        ridge_valley:
+            filter: { kind: [ridge, valley] }
+            draw:
+                lines:
+                    visible: false
+                text-blend-order:
+                    priority: 50
+                    font:
+                        fill: black
+                        weight: 200
+                        size: 10px
+                        style: italic
+                        stroke: { color: [0.894,0.906,0.914], width: 3 }
+            ridge:
+                filter: { kind: ridge }
+                draw:
+                    lines:
+                        visible: false
+                    text-blend-order:
+                        font:
+                            fill: black
+                            weight: 200
+                            size: 10px
+                            style: italic
+                            stroke: { color: [0.894,0.906,0.914], width: 3 }
 
     path-overlay:
         data: { source: mapzen, layer: roads }
@@ -6171,35 +6165,3 @@ layers:
                         fill: '#8b7a1f'
                         size: 12px
                         stroke: { color: *text_stroke, width: 4 }
-
-    # scree:
-    #     data: { source: mapzen, layer: landuse }
-    #     filter: { kind: scree }
-    #     draw:
-    #         polygons:
-    #             order: 1000 #function() { return feature.sort_key; }
-    #             color: red
-    #             visible: true
-    # outdoor-pois:
-    #     data: { source: mapzen, layer: pois }
-    #     filter: { kind: [peak]}
-    #     draw:
-    #         icons:
-    #             size: [[13, 12px], [16, 16px], [18, 19px]]
-    #             visible: false
-    #             priority: 65
-    #         text-blend-order:
-    #             move_into_tile: false # preserves text alignment w/icons in JS
-    #             anchor: bottom
-    #             offset: [[13, [0, 6px]], [16, [0, 8px]], [18, [0, 10px]]] # offset tracks alongside icon size (half icon height)
-    #             interactive: true
-    #             priority: 66
-    #             font:
-    #                 family: *text_font_family
-    #                 weight: 400
-    #                 fill: [0.20,0.20,0.20]
-    #                 size: 12px
-    #                 stroke: { color: *text_stroke, width: 1 }
-    #     mountain:
-    #         filter: { kind: [mountain, peak] }
-    #         draw:   { icons: { sprite: mountain } }
