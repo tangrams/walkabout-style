@@ -709,9 +709,9 @@ styles:
             blocks:
                 color: |                    
                     // Brightness
-                    float brightness = dot(normal, vec3(-0.838,-1.010,0.805));
+                    float brightness2 = dot(normal, vec3(-0.838,-1.010,0.805));
 
-                    brightness = 1.-brightness;
+                    brightness2 = 1.-brightness2;
 
                     // Scale
                     float scale = map(floor(u_map_position.z), 8., 22., 0.0000001, .1, true);
@@ -722,7 +722,7 @@ styles:
                     float pct = 0.0;
 
                     // Stripes
-                    // pct = step(brightness*4.556,cos((st.x+st.y)));
+                    // pct = step(brightness2*4.556,cos((st.x+st.y)));
 
 
                     // Cell patterns
@@ -731,13 +731,13 @@ styles:
                     f_st -= .5;
 
                     // Dots
-                     pct = step(brightness*2.056,1.-dot(f_st,f_st)*10.400);
+                     pct = step(brightness2*2.056,1.-dot(f_st,f_st)*10.400);
 
                     // Lines
-                    // pct = rect(f_st+0.5,vec2(0.704,brightness*0.472));
+                    // pct = rect(f_st+0.5,vec2(0.704,brightness2*0.472));
 
                     // Cross
-                    //pct = cross(f_st+0.5,brightness*6.128,brightness*2.604);
+                    //pct = cross(f_st+0.5,brightness2*6.128,brightness2*2.604);
 
                     // Use this if you tint
                     // if (pct < .5) {
@@ -1953,8 +1953,7 @@ layers:
                     $zoom: { max: 17 }
                 draw:
                     lines:
-                        order:
-                            order: 351
+                        order: 351
                         outline:
                             order: 350
             pedestrian:
@@ -4202,10 +4201,10 @@ layers:
                     icons:
                         priority: 43
                         sprite: generic
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                     text-blend-order:
                         priority: 44
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
         has-name:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
@@ -4223,7 +4222,7 @@ layers:
                    icons:
                        priority: 47
                        sprite_default: generic
-                       visible: false #function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                       visible: false #function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                        #visible: *icon_visible_poi_landuse
 
             # add generic icon at high zoom
@@ -4233,7 +4232,7 @@ layers:
                    text-blend-order:
                        priority: 48
                        visible: false #*text_visible_poi_landuse
-                       #visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                       #visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             landuse-labels-green-areas-national-park:
                 filter:
                     all:
@@ -4875,16 +4874,16 @@ layers:
                     icons:
                         order: 41
                         sprite: generic
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                     text-blend-order:
                         order: 42
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             outdoor-has-icons:
                 filter: { kind: [outdoor] }
                 draw: 
                     icons:
                         order: 41
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
@@ -4892,10 +4891,10 @@ layers:
                 draw: 
                     icons:
                         order: 45
-                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } } }
+                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
                     text-blend-order:
                         order: 46
-                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } } }
+                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
 
 
             icons:
