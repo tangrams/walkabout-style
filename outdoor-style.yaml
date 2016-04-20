@@ -5,41 +5,41 @@ labels-global:
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
-    - &text_visible_neighbourhoods    true
-    - &text_visible_neighbourhoods_e  true
-    - &text_visible_building          true
-    - &text_visible_address           true
-    - &text_visible_water_labels      true
-    - &label_visible_landuse_green    true
-    - &icon_visible_landuse_green     true
-    - &text_visible_landuse_green     true
-    - &label_visible_poi_landuse      true
-    - &icon_visible_poi_landuse       true
-    - &text_visible_poi_landuse       true
-    - &label_visible_poi_landuse_e    true
-    - &icon_visible_poi_landuse_e     true
-    - &text_visible_poi_landuse_e     true
-    - &label_visible_station          true
-    - &icon_visible_station           true
-    - &text_visible_station           true
-    - &text_visible_highway           true
-    - &text_visible_highway_e         true
-    - &text_visible_trunk_primary     true
-    - &text_visible_trunk_primary_e2  true
-    - &text_visible_trunk_primary_e   true
-    - &text_visible_secondary         true
-    - &text_visible_secondary_e       true
-    - &text_visible_tertiary          true
-    - &text_visible_tertiary_e        true
-    - &text_visible_minor_road        true
-    - &text_visible_minor_road_e      true
-    - &text_visible_service_road      true
+    - &text_visible_neighbourhoods    false
+    - &text_visible_neighbourhoods_e  false
+    - &text_visible_building          false
+    - &text_visible_address           false
+    - &text_visible_water_labels      false
+    - &label_visible_landuse_green    false
+    - &icon_visible_landuse_green     false
+    - &text_visible_landuse_green     false
+    - &label_visible_poi_landuse      false
+    - &icon_visible_poi_landuse       false
+    - &text_visible_poi_landuse       false
+    - &label_visible_poi_landuse_e    false
+    - &icon_visible_poi_landuse_e     false
+    - &text_visible_poi_landuse_e     false
+    - &label_visible_station          false
+    - &icon_visible_station           false
+    - &text_visible_station           false
+    - &text_visible_highway           false
+    - &text_visible_highway_e         false
+    - &text_visible_trunk_primary     false
+    - &text_visible_trunk_primary_e2  false
+    - &text_visible_trunk_primary_e   false
+    - &text_visible_secondary         false
+    - &text_visible_secondary_e       false
+    - &text_visible_tertiary          false
+    - &text_visible_tertiary_e        false
+    - &text_visible_minor_road        false
+    - &text_visible_minor_road_e      false
+    - &text_visible_service_road      false
     - &text_visible_path              true
-    - &text_visible_piste             true
-    - &text_visible_steps             true
-    - &text_visible_aerialway         true
-    - &text_visible_shields           true
-    - &text_visible_exits             true
+    - &text_visible_piste             false
+    - &text_visible_steps             false
+    - &text_visible_aerialway         false
+    - &text_visible_shields           false
+    - &text_visible_exits             false
     - &text_visible_exits_e           false
 
 settings:
@@ -1693,7 +1693,7 @@ layers:
             filter: { kind: minor_road, not: { highway: service, aeroway: [runway, taxiway] } }
             draw:
                 lines:
-                    color: [[11, [0.885,0.885,0.885]], [12, [0.780,0.780,0.780]], [13, [0.720,0.720,0.720]], [14, [0.720,0.720,0.720]], [15, [0.5,0.5,0.5]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                    color: [[11, [0.885,0.885,0.885]], [12, [0.820,0.820,0.820]], [13, [0.780,0.780,0.780]], [14, [0.720,0.720,0.720]], [15, [0.5,0.5,0.5]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                     width: [[11, 0.35px], [13, 0.55px], [14, 1px], [15, 1px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                     outline:
                         color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
@@ -5892,12 +5892,12 @@ layers:
                 - man_made: [pier]
         draw:
             lines:
-                color: green # [0.416,0.750,0.746]
+                color: [0.292,0.650,0.644]
             dashedline:
-                color: green # [0.416,0.750,0.746]
+                color: [0.292,0.650,0.644]
             dots-lines:
-                #color: [0.333,0.741,0.734]
-                color: green #[0.416,0.750,0.746]
+                color: [0.292,0.650,0.644]
+                # color: [0.416,0.750,0.746]
         # bigger path, sometimes paved (walk with friends side-by-side), also tracks that are no vehicles
         paths:
             filter:
@@ -5908,9 +5908,9 @@ layers:
                         - motor_vehicle: no
             draw:
                 lines:
-                    width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                    width: [[13, 1px], [14, 1.65px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
                     order: 1003
-                    #color: red
+                    # color: red
                     outline:
                         color: white
                         width: [[11,1px], [12,0px]]
@@ -5940,7 +5940,7 @@ layers:
                             visible: *text_visible_path
                             font:
                                 # need a fill color?
-                                fill: green
+                                fill: [0.256,0.570,0.565]
                                 size: 12px
                                 stroke: { color: *text_stroke, width: 4 }
         # single hiking path
@@ -5950,12 +5950,12 @@ layers:
                 dots-lines:
                     order: 1002
                     interactive: true
-                    width: [[13, 0.75px], [14, 1.25px], [15, 1.75px], [16, 6px], [17, 6px], [18, 7px], [19, 10px]]
+                    width: [[13, 0.75px], [14, 1px], [15, 1.25px], [16, 6px], [17, 6px], [18, 7px], [19, 10px]]
                     visible: true
                     #color: purple
                 lines:
                     order: 1000
-                    width: [[13, 0.75px], [14, 1.25px], [15, 1.75px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
+                    width: [[13, 0.75px], [14, 1px], [15, 1.25px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
                     visible: false
                     #color: purple
             early-show-as-lines:
@@ -5993,16 +5993,16 @@ layers:
                     filter: { name: true }
                     draw:
                         lines:
-                            color: '#76b876'
+                            color: [0.619,0.898,0.884]
                             width: [[16, 3px], [17, 4px], [18, 5px], [19, 8px]]
                 no_name-late:
                     filter: { name: false }
                     draw:
                         dots-lines:
-                            color: grey
+                            color: [0.468,0.678,0.674]
                             width: [[16, 4px], [17, 4px], [18, 5px], [19, 8px]]
                         lines:
-                            color: '#a6d4a6'
+                            color: [0.707,0.884,0.872]
                             width: [[16, 2px], [17, 3px], [18, 4px], [19, 7px]]
             no_name:
                 filter: { name: false, not: { highway: steps } }
@@ -6052,25 +6052,25 @@ layers:
                         visible: *text_visible_path
                         font:
                             # need a fill color?
-                            fill: green
+                            fill: [0.256,0.570,0.565]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
         cycleway:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: green #[0.431,0.729,0.839]
+                    color: [0.333,0.741,0.734]
                     width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
                     order: 1004
             late:
                 filter: { $zoom: { min: 16 } }
                 draw:
                     lines:
-                        color: '#76b876'
+                        color: white
                         join: round
                         cap: round
                         outline:
-                            color: green
+                            color: [0.333,0.741,0.734]
                             join: round
                             cap: round
                             width: [[16, 2px], [17, 1px], [18, 2px], [19, 2px]]
@@ -6083,7 +6083,7 @@ layers:
                         visible: *text_visible_path
                         font:
                             # need a fill color?
-                            fill: green
+                            fill: [0.256,0.570,0.565]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
