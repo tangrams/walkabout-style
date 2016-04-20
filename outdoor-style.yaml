@@ -5,39 +5,39 @@ labels-global:
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
-    - &text_visible_neighbourhoods    true
-    - &text_visible_neighbourhoods_e  true
-    - &text_visible_building          true
-    - &text_visible_address           true
-    - &text_visible_water_labels      true
-    - &label_visible_landuse_green    true
-    - &icon_visible_landuse_green     true
-    - &text_visible_landuse_green     true
-    - &label_visible_poi_landuse      true
-    - &icon_visible_poi_landuse       true
-    - &text_visible_poi_landuse       true
-    - &label_visible_poi_landuse_e    true
-    - &icon_visible_poi_landuse_e     true
-    - &text_visible_poi_landuse_e     true
-    - &label_visible_station          true
-    - &icon_visible_station           true
-    - &text_visible_station           true
-    - &text_visible_highway           true
-    - &text_visible_highway_e         true
-    - &text_visible_trunk_primary     true
-    - &text_visible_trunk_primary_e2  true
-    - &text_visible_trunk_primary_e   true
-    - &text_visible_secondary         true
-    - &text_visible_secondary_e       true
-    - &text_visible_tertiary          true
-    - &text_visible_tertiary_e        true
-    - &text_visible_minor_road        true
-    - &text_visible_minor_road_e      true
-    - &text_visible_service_road      true
-    - &text_visible_path              true
-    - &text_visible_piste             true
-    - &text_visible_steps             true
-    - &text_visible_aerialway         true
+    - &text_visible_neighbourhoods    false
+    - &text_visible_neighbourhoods_e  false
+    - &text_visible_building          false
+    - &text_visible_address           false
+    - &text_visible_water_labels      false
+    - &label_visible_landuse_green    false
+    - &icon_visible_landuse_green     false
+    - &text_visible_landuse_green     false
+    - &label_visible_poi_landuse      false
+    - &icon_visible_poi_landuse       false
+    - &text_visible_poi_landuse       false
+    - &label_visible_poi_landuse_e    false
+    - &icon_visible_poi_landuse_e     false
+    - &text_visible_poi_landuse_e     false
+    - &label_visible_station          false
+    - &icon_visible_station           false
+    - &text_visible_station           false
+    - &text_visible_highway           false
+    - &text_visible_highway_e         false
+    - &text_visible_trunk_primary     false
+    - &text_visible_trunk_primary_e2  false
+    - &text_visible_trunk_primary_e   false
+    - &text_visible_secondary         false
+    - &text_visible_secondary_e       false
+    - &text_visible_tertiary          false
+    - &text_visible_tertiary_e        false
+    - &text_visible_minor_road        false
+    - &text_visible_minor_road_e      false
+    - &text_visible_service_road      false
+    - &text_visible_path              false
+    - &text_visible_piste             false
+    - &text_visible_steps             false
+    - &text_visible_aerialway         false
     - &text_visible_shields           false
     - &text_visible_exits             true
     - &text_visible_exits_e           false
@@ -369,9 +369,9 @@ sources:
     normals: # normals
         type: Raster
         # prod is doesn't have low zoom detail, use dev
-        url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
+        #url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
         # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
-        # url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
+        url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
         max_zoom: 15
 
@@ -565,6 +565,65 @@ styles:
                         return  rect(st, vec2(_size.x*0.5,_size.y*0.125)) +
                                 rect(st, vec2(_size.y*0.125,_size.x*0.5));
                     }
+    # terrain:
+    #     base: polygons
+    #     # mix: [grid]
+    #     raster: normal
+    #     shaders:
+    #         uniforms:
+    #             # u_envmap: images/relief-shading-environment-map.jpg
+    #             u_envmap: images/draw-test8.jpg
+    #             u_scale: 4.5 # higher values are more exaggerated
+    #             # z0 = 0.0001
+    #             # z1 = 0.0001
+    #             # z2 = 3.5
+    #             # z3 = 4.5
+    #             # z4 = 4.5
+    #             # z5 = 4.
+    #             # z6 = 3.5
+    #             # z7 = 2.5
+    #             # z8 = 2.5
+    #             # z9 = 2.
+    #             # z10 = 1.7
+    #             # z11 = 1.5
+    #             # z12 = 1.5
+    #             # z13 = 1.3
+    #             # z14 = 1.2
+    #             # z15 = 1.
+    #             # z16 = 0.8
+    #             # z17 = 0.4
+    #             # z17.8 = 0.1
+    #             # z18+ = 0.001
+    #             u_scale_end: 0.001
+    #             u_scale_fade_start: 3.
+    #             u_scale_fade_duration: 15.
+    #             u_color: [.9, .9, .9]
+    #             u_color_fade_start: 20.
+    #             u_color_fade_duration: 1.
+    #         blocks:
+    #             global: |
+    #                 // Simplified view-independent environment map
+    #                 vec4 terrainEnvmap (in sampler2D _tex, in vec3 _normal) {
+    #                     const vec3 eye = vec3(0.,0.,-1.);
+    #                     vec3 r = reflect(eye, _normal);
+    #                     r.z += 1.0;
+    #                     float m = 2. * length(r);
+    #                     vec2 uv = r.xy / m + .5;
+    #                     return texture2D(_tex, uv);
+    #                 }
+    #             color: |                    
+    #                 normal.z /= u_scale; // turn terrain exaggeration up/down
+    #                 // fade out spheremap normals
+    #                 float m = clamp((u_scale_fade_start + u_scale_fade_duration - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
+    #                 normal.z /= m;
+
+    #                 normal = normalize(normal);
+    #                 color = terrainEnvmap(u_envmap, normal);
+    #                 color *= v_color; // apply layer color
+    #                 // fade from spheremap to a solid color
+    #                 float c = clamp((u_map_position.z - u_color_fade_start) * 1./u_color_fade_duration, 0., 1.);
+    #                 color.rgb = mix(color.rgb, u_color, c);
+
     terrain:
         base: polygons
         # mix: [grid]
@@ -574,55 +633,43 @@ styles:
                 # u_envmap: images/relief-shading-environment-map.jpg
                 u_envmap: images/draw-test8.jpg
                 u_scale: 4.5 # higher values are more exaggerated
-                # z0 = 0.0001
-                # z1 = 0.0001
-                # z2 = 3.5
-                # z3 = 4.5
-                # z4 = 4.5
-                # z5 = 4.
-                # z6 = 3.5
-                # z7 = 2.5
-                # z8 = 2.5
-                # z9 = 2.
-                # z10 = 1.7
-                # z11 = 1.5
-                # z12 = 1.5
-                # z13 = 1.3
-                # z14 = 1.2
-                # z15 = 1.
-                # z16 = 0.8
-                # z17 = 0.4
-                # z17.8 = 0.1
-                # z18+ = 0.001
                 u_scale_end: 0.001
                 u_scale_fade_start: 3.
                 u_scale_fade_duration: 15.
-                u_color: [.9, .9, .9]
-                u_color_fade_start: 20.
-                u_color_fade_duration: 1.
             blocks:
                 global: |
                     // Simplified view-independent environment map
                     vec4 terrainEnvmap (in sampler2D _tex, in vec3 _normal) {
                         const vec3 eye = vec3(0.,0.,-1.);
                         vec3 r = reflect(eye, _normal);
-                        r.z += 1.0;
+                        r.z += 1.;
                         float m = 2. * length(r);
                         vec2 uv = r.xy / m + .5;
                         return texture2D(_tex, uv);
                     }
-                color: |                    
+                    const float e = 2.71828;
+                color: |
                     normal.z /= u_scale; // turn terrain exaggeration up/down
-                    // fade out spheremap normals
-                    float m = clamp((u_scale_fade_start + u_scale_fade_duration - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
-                    normal.z /= m;
-
-                    normal = normalize(normal);
+                    // fade out spheremap normals with a function
+                    // https://www.desmos.com/calculator/ptgkzcnfyc
+                    float m = 4.5 * (u_map_position.z - 1.) * pow(e, u_map_position.z * -.29);
+                    // https://www.desmos.com/calculator/sanlujpfmc
+                    //float a = -0.0013719
+                    //float b = 0.057575
+                    //float c = -0.82002
+                    //float d = 4.2489
+                    //float f = -2.8336
+                    //float m = (a * pow(u_map_position.z, 4) + (b * pow(u_map_position.z, 3)) + (c * pow(u_map_position.z, 2)) + ( d * u_map_position.z) + f
+                    m = clamp(m, 0., 1.5);
+                    // normal = normalize(normal);
                     color = terrainEnvmap(u_envmap, normal);
                     color *= v_color; // apply layer color
-                    // fade from spheremap to a solid color
-                    float c = clamp((u_map_position.z - u_color_fade_start) * 1./u_color_fade_duration, 0., 1.);
-                    color.rgb = mix(color.rgb, u_color, c);
+                    // Apply contrast
+                    float contrast = m;
+                    color.rgb = ((color.rgb - 0.5) * max(contrast, 0.)) + 0.5;
+                    // Apply brightness
+                    float brightness = .5 - m * .5;
+                    color.rgb += brightness;
 
     water-grid:
         mix: grid
@@ -1646,7 +1693,7 @@ layers:
             filter: { kind: minor_road, not: { highway: service, aeroway: [runway, taxiway] } }
             draw:
                 lines:
-                    color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.600,0.600,0.600]], [15, [0.5,0.5,0.5]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                    color: [[11, [0.885,0.885,0.885]], [12, [0.780,0.780,0.780]], [13, [0.720,0.720,0.720]], [14, [0.720,0.720,0.720]], [15, [0.5,0.5,0.5]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                     width: [[11, 0.35px], [13, 0.55px], [14, 1px], [15, 1px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                     outline:
                         color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
@@ -1671,7 +1718,7 @@ layers:
                 filter: { landuse_kind: [park,protected_area,nature_reserve,conservation,golf_course,garden,wood,farmland,farm] }
                 draw:
                     lines:
-                        color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.75,0.75,0.75]], [14, [0.70,0.70,0.70]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                        color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.600,0.600,0.600]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                         outline:
                             color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
                             width: [[11, 0x], [16, 0px], [17, 1.5px]]
@@ -1681,18 +1728,16 @@ layers:
             #             lines:
             #                 outline:
             #                     color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.30,0.30,0.30]], [18, [0.00,0.00,0.00]]]
-            #     nature_reserve:
-            #         filter: { landuse_kind: nature_reserve }
-            #         draw:
-            #             lines:
-            #                 outline:
-            #                     color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.30,0.30,0.30]], [18, [0.00,0.00,0.00]]]
-            #     conservation:
-            #         filter: { landuse_kind: conservation }
-            #         draw:
-            #             lines:
-            #                 outline:
-            #                     color: [[11, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.30,0.30,0.30]], [18, [0.00,0.00,0.00]]]
+                nature_reserve:
+                    filter: { landuse_kind: nature_reserve }
+                    draw:
+                        lines:
+                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.600,0.600,0.600]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                conservation:
+                    filter: { landuse_kind: conservation }
+                    draw:
+                        lines:
+                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.600,0.600,0.600]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
             #     zoo:
             #         filter: { landuse_kind: zoo }
             #         draw:
