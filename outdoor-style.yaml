@@ -5941,7 +5941,8 @@ layers:
                             visible: *text_visible_path
                             font:
                                 # need a fill color?
-                                fill: [0.256,0.570,0.565]
+                                fill: [0.276,0.594,0.677]
+                                # fill: [0.256,0.570,0.565]
                                 size: 12px
                                 stroke: { color: *text_stroke, width: 4 }
         # single hiking path
@@ -5994,7 +5995,7 @@ layers:
                     filter: { name: true }
                     draw:
                         lines:
-                            color: [0.619,0.898,0.884]
+                            color: [0.783,0.861,0.880]
                             width: [[16, 3px], [17, 4px], [18, 5px], [19, 8px]]
                 no_name-late:
                     filter: { name: false }
@@ -6053,7 +6054,7 @@ layers:
                         visible: *text_visible_path
                         font:
                             # need a fill color?
-                            fill: [0.256,0.570,0.565]
+                            fill: [0.276,0.594,0.677]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
         cycleway:
@@ -6084,7 +6085,7 @@ layers:
                         visible: *text_visible_path
                         font:
                             # need a fill color?
-                            fill: [0.256,0.570,0.565]
+                            fill: [0.276,0.594,0.677]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
@@ -6098,22 +6099,22 @@ layers:
                 - motor_vehicle: false
         draw:
             lines:
-                color: '#8b7a1f'    #[0.475,0.733,0.831]
-                width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                color: [0.670,0.555,0.523]
+                width: [[13, 0.6px], [14, 1.5px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
         late:
             filter: { $zoom: { min: 16 } }
             draw:
                 lines:
-                    color: '#b89d76'
+                    color: white
                     join: round
                     cap: round
                     outline:
-                        color: '#8b7a1f'
+                        color: [0.670,0.555,0.523]
                         join: round
                         cap: round
-                        width: [[16, 1px], [17, 1px], [18, 2px], [19, 2px]]
+                        width: [[16, 2px], [17, 3px], [18, 2px], [19, 2px]]
                         order: 999
         labels-track:
             #filter: { $zoom: { min: 17 } }
@@ -6135,22 +6136,22 @@ layers:
                 - motor_vehicle: no
         draw:
             lines:
-                color: '#8b7a1f'    #[0.475,0.733,0.831]
-                width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                color: [0.670,0.555,0.523]
+                width: [[13, 1px], [14, 2px], [15, 2.25px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
         late:
             filter: { $zoom: { min: 16 } }
             draw:
                 lines:
-                    color: '#b89d76'
+                    color: [0.900,0.900,0.900]
                     join: round
                     cap: round
                     outline:
-                        color: '#8b7a1f'
+                        color: [0.670,0.555,0.523]
                         join: round
                         cap: round
-                        width: [[16, 1px], [17, 1px], [18, 2px], [19, 2px]]
+                        width: [[16, 2px], [17, 3px], [18, 2px], [19, 2px]]
                         order: 999
         labels-track:
             #filter: { $zoom: { min: 17 } }
