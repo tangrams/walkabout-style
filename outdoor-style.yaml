@@ -632,7 +632,7 @@ styles:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
                 u_envmap: images/draw-test8.jpg
-                u_scale: 4. # higher values are more exaggerated
+                u_scale: 3. # higher values are more exaggerated
                 u_scale_end: 0.001
                 u_scale_fade_start: 3.
                 u_scale_fade_duration: 15.
@@ -652,7 +652,7 @@ styles:
                     normal.z /= u_scale; // turn terrain exaggeration up/down
                     // fade out spheremap normals with a function
                     // https://www.desmos.com/calculator/ptgkzcnfyc
-                    float m = 4. * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
+                    float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     // https://www.desmos.com/calculator/sanlujpfmc
                     //float a = -0.0013719
                     //float b = 0.057575
@@ -4121,57 +4121,69 @@ layers:
         poi_labels-z20-up:
             filter: { $zoom: { min: 20 } }
             draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
-#        no-name:
-#            filter: { name: false }
-#            sports-pitch:
-#                filter: { kind: [grass, pitch], $geometry: point, area: true, $zoom: { min: 17 } }
-#                draw:
-#                    icons:
-#                        sprite: function() { return feature.sport }
-#                        visible: *icon_visible_poi_landuse_e
-#                        priority: 49
-#                baseball:
-#                    filter: { sport: baseball }
-#                    draw: { icons: { sprite: baseball-field } }
-#                basketball:
-#                    filter: { sport: basketball }
-#                    draw: { icons: { sprite: basketball-court } }
-#                football:
-#                    filter: { sport: football }
-#                    draw: { icons: { sprite: football-stadium } }
-#                hockey:
-#                    filter: { sport: hockey-field }
-#                    draw: { icons: { sprite: hockey-field } }
-#                soccer:
-#                    filter: { sport: soccer }
-#                    draw: { icons: { sprite: soccer-field } }
-#                tennis:
-#                    filter: { sport: tennis }
-#                    draw: { icons: { sprite: tennis } }
-#            toilets:
-#                filter: { kind: toilets, $zoom: { min: 18 }  }
-#                draw: { icons: { sprite: toilets, visible: *icon_visible_poi_landuse_e } }
-#            playground:
-#                filter: { kind: playground, $zoom: { min: 18 }  }
-#                draw: { icons: { sprite: playground, visible: *icon_visible_poi_landuse_e } }
-#            picnic_site:
-#                filter: { kind: picnic_site, $zoom: { min: 18 }  }
-#                draw: { icons: { sprite: picnic-spot, visible: *icon_visible_poi_landuse_e } }
-#            information:
-#                filter: { kind: information, $zoom: { min: 18 }  }
-#                draw: { icons: { sprite: information, visible: *icon_visible_poi_landuse_e } }
-#            drinking-water:
-#                filter: { kind: drinking_water, $zoom: { min: 18 }  }
-#                draw: { icons: { sprite: drinking-water, visible: *icon_visible_poi_landuse_e } }
-#            traffic-signal:
-#                filter: { kind: traffic_signals, $zoom: { min: 18 } }
-#                draw:   { icons: { sprite: traffic-signal, visible: *icon_visible_poi_landuse_e } }
-#            bicycle-parking:
-#                filter: { kind: [bicycle_parking], $zoom: { min: 19 } }
-#                draw:   { icons: { sprite: bicycle-parking, visible: *icon_visible_poi_landuse_e } }
-#            car-parking:
-#                filter: { kind: [parking], $zoom: { min: 17 } }
-#                draw:   { icons: { sprite: parking, visible: *icon_visible_poi_landuse_e } }
+        no-name:
+            filter: { name: false }
+            sports-pitch:
+                filter: { kind: [grass, pitch], $geometry: point, area: true, $zoom: { min: 17 } }
+                draw:
+                    icons:
+                        sprite: function() { return feature.sport }
+                        visible: *icon_visible_poi_landuse_e
+                        priority: 49
+                baseball:
+                    filter: { sport: baseball }
+                    draw: { icons: { sprite: baseball-field } }
+                basketball:
+                    filter: { sport: basketball }
+                    draw: { icons: { sprite: basketball-court } }
+                football:
+                    filter: { sport: football }
+                    draw: { icons: { sprite: football-stadium } }
+                hockey:
+                    filter: { sport: hockey-field }
+                    draw: { icons: { sprite: hockey-field } }
+                soccer:
+                    filter: { sport: soccer }
+                    draw: { icons: { sprite: soccer-field } }
+                tennis:
+                    filter: { sport: tennis }
+                    draw: { icons: { sprite: tennis } }
+            toilets:
+                filter: { kind: toilets, $zoom: { min: 18 }  }
+                draw: { icons: { sprite: toilets, visible: *icon_visible_poi_landuse_e } }
+            playground:
+                filter: { kind: playground, $zoom: { min: 18 }  }
+                draw: { icons: { sprite: playground, visible: *icon_visible_poi_landuse_e } }
+            picnic_site:
+                filter: { kind: picnic_site, $zoom: { min: 18 }  }
+                draw: { icons: { sprite: picnic-spot, visible: *icon_visible_poi_landuse_e } }
+            information:
+                filter: { kind: information, $zoom: { min: 18 }  }
+                draw: { icons: { sprite: information, visible: *icon_visible_poi_landuse_e } }
+            drinking-water:
+                filter: { kind: drinking_water, $zoom: { min: 18 }  }
+                draw: { icons: { sprite: drinking-water, visible: *icon_visible_poi_landuse_e } }
+            traffic-signal:
+                filter: { kind: traffic_signals, $zoom: { min: 18 } }
+                draw:   { icons: { sprite: traffic-signal, visible: *icon_visible_poi_landuse_e } }
+            bicycle-parking:
+                filter: { kind: [bicycle_parking], $zoom: { min: 19 } }
+                draw:   { icons: { sprite: bicycle-parking, visible: *icon_visible_poi_landuse_e } }
+            car-parking:
+                filter: { kind: [parking], $zoom: { min: 17 } }
+                draw:   { icons: { sprite: parking, visible: *icon_visible_poi_landuse_e } }
+            trailhead:
+                filter: { kind: [trailhead], $zoom: { min: 15 } }
+                draw:   { icons: { sprite: generic, visible: *icon_visible_poi_landuse_e } }
+            outdoor-needing-icons:
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
+                draw: 
+                    icons:
+                        priority: 43
+                        sprite: generic
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                    text-blend-order:
+                        priority: 44
         has-name:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
@@ -4182,24 +4194,24 @@ layers:
                        # sprite_source: kind
                        sprite: function() { return feature.kind; }
                        visible: *icon_visible_poi_landuse
-
             # add generic icon at high zoom, if direct match fails
             generic-icons:
                filter: { $zoom: { min: 18 }, area: false }
                draw:
                    icons:
-                       sprite_default: generic
-                       visible: *icon_visible_poi_landuse
                        priority: 47
+                       sprite_default: generic
+                       visible: false #function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                       #visible: *icon_visible_poi_landuse
 
             # add generic icon at high zoom
             default-label-names:
                filter: { $zoom: { min: 13 }, area: false }
                draw:
                    text-blend-order:
-                       visible: *text_visible_poi_landuse
                        priority: 48
-
+                       visible: false #*text_visible_poi_landuse
+                       #visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
             landuse-labels-green-areas-national-park:
                 filter:
                     all:
@@ -4461,10 +4473,10 @@ layers:
                         - not: { $layer: buildings }
                     any:
                         # show labels for smaller landuse areas at higher zooms
-                        - { $zoom: [13], area: { min: 100000 } }
-                        - { $zoom: [14], area: { min: 50000 } }
+                        #- { $zoom: [13], area: { min: 100000 } }
+                        #- { $zoom: [14], area: { min: 50000 } }
                         # show labels for smaller landuse areas at higher zooms
-                        - { $zoom: [15], area: { min: 10000 } }
+                        #- { $zoom: [15], area: { min: 10000 } }
                         - { $zoom: [16], area: { min: 5000 } }
                         - { $zoom: [17], area: { min: 2000 } }
                         - { $zoom: { min: 18 } }
@@ -4644,6 +4656,11 @@ layers:
                 draw:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
+            school-early:
+                filter: { kind: [school, kindergarten], $zoom: { max: 16 } }
+                draw:
+                    text-blend-order:  { visible: false }
+                    icons: { visible: false }
             atm-early:
                 filter: { kind: [atm], $zoom: { max: 18 } }
                 draw:
@@ -4814,23 +4831,61 @@ layers:
 #                            size: [[13, 8px], [19, 18px]]
 #                        text-blend-order:
 #                            visible: false
-#            minor-z17-early:
-#                filter:
-#                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, slipway, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
-#                    area: false
-#                    $zoom: { max: 17 }
-#                draw:
-#                    text-blend-order:  { visible: false }
-#                    icons: { visible: false }
-#            minor-z18-early:
-#                filter:
-#                    kind: [bench, waste_basket]
-#                    area: false
-#                    $zoom: { max: 18 }
-#                draw:
-#                    text-blend-order:  { visible: false }
-#                    icons: { visible: false }
-#
+            minor-z17-early:
+                filter:
+                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, slipway, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
+                    area: false
+                    $zoom: { max: 17 }
+                draw:
+                    text-blend-order:  { visible: false }
+                    icons: { visible: false }
+            minor-z18-early:
+                filter:
+                    kind: [bench, waste_basket]
+                    area: false
+                    $zoom: { max: 18 }
+                draw:
+                    text-blend-order:  { visible: false }
+                    icons: { visible: false }
+
+
+            outdoor-needing-icons:
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
+                draw: 
+                    icons:
+                        order: 41
+                        sprite: generic
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                    text-blend-order:
+                        order: 42
+            outdoor-has-icons:
+                filter: { kind: [outdoor] }
+                draw: 
+                    icons:
+                        order: 41
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                    text-blend-order:
+                        order: 42
+            outdoor-needing-icons:
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
+                draw: 
+                    icons:
+                        order: 41
+                        sprite: generic
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
+                    text-blend-order:
+                        order: 42
+            not-outdoor-not-landuse:
+                filter: { area: false, not: { kind: [park, national_park, outdoor, pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] } }
+                draw: 
+                    icons:
+                        order: 45
+                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } } }
+                    text-blend-order:
+                        order: 46
+                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } } }
+
+
             icons:
                 adult-boutique:
                     filter: { kind: [erotic, adult_boutique] }
@@ -5232,6 +5287,14 @@ layers:
                 winter_sport:
                     filter: { kind: [ski, ski_rental, ski_school, ski_jumping, skiing] }
                     draw:   { icons: { sprite: ski-area } }
+        poi_min_zoom_filter:
+            #filter: function() { if(feature.min_zoom >= $zoom) { return true; } else { return false; } }
+            #filter: { $zoom: [16], min_zoom: [17,18,19,20] }
+            #filter: { $zoom: { min: 16, max: 17 } }
+            filter: { $zoom: [16], kind: [restaurant], min_zoom: 17 }
+            draw:
+                text-blend-order:  { visible: false }
+                icons: { visible: false }
 
     water-area-labels:
         data: { source: mapzen, layer: [water] }
