@@ -4176,7 +4176,7 @@ layers:
                 filter: { kind: [trailhead], $zoom: { min: 15 } }
                 draw:   { icons: { sprite: generic, visible: *icon_visible_poi_landuse_e } }
             outdoor-needing-icons:
-                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone] }
                 draw: 
                     icons:
                         priority: 43
@@ -4184,6 +4184,7 @@ layers:
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
                     text-blend-order:
                         priority: 44
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
         has-name:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
@@ -4847,10 +4848,8 @@ layers:
                 draw:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
-
-
             outdoor-needing-icons:
-                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone] }
                 draw: 
                     icons:
                         order: 41
@@ -4858,20 +4857,12 @@ layers:
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
                     text-blend-order:
                         order: 42
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
             outdoor-has-icons:
                 filter: { kind: [outdoor] }
                 draw: 
                     icons:
                         order: 41
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
-                    text-blend-order:
-                        order: 42
-            outdoor-needing-icons:
-                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] }
-                draw: 
-                    icons:
-                        order: 41
-                        sprite: generic
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { retrun false; } }
                     text-blend-order:
                         order: 42
@@ -5836,14 +5827,14 @@ layers:
         #             dots:
         #                 color: [0.765,0.765,0.765]
         #                 visible: true
-        # scree:
-        #     data: { source: mapzen, layer: landuse }
-        #     filter: { kind: scree }
-        #     draw:
-        #         polygons:
-        #             order: 1000 #function() { return feature.sort_key; }
-        #             color: red
-        #             visible: true
+        #scree:
+        #    data: { source: mapzen, layer: landuse }
+        #    filter: { kind: scree }
+        #    draw:
+        #        polygons:
+        #            order: 1000 #function() { return feature.sort_key; }
+        #            color: grey
+        #            visible: true
     
     natural-overlay:
         data: { source: mapzen, layer: earth }
@@ -5920,11 +5911,17 @@ layers:
                     width: [[13, 1px], [14, 2px], [15, 3px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
                     order: 1003
                     #color: red
+                    outline:
+                        color: white
+                        width: [[11,1px], [12,0px]]
             no_name_early_not_designated:
                 filter: { name: false, $zoom: { max: 14 } }
                 draw:
                     lines:
                         width: [[0,1px]]
+                    outline:
+                        color: white
+                        width: [[11,1px], [12,0px]]
             in_zoo_golf_course:
                 filter: { landuse_kind: [zoo, golf_course, garden, university] }
                 draw:
