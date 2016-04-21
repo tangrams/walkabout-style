@@ -4310,7 +4310,7 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: green #[0.350,0.350,0.350]
+                                fill: [0.093,0.473,0.408]
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 4 }
                     natl-park-labels-z4-z5:
@@ -4367,7 +4367,7 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: green #[0.350,0.350,0.350]
+                                fill: [0.093,0.473,0.408]
                                 size: 10px
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 3 }
@@ -4618,7 +4618,7 @@ layers:
                         visible: *text_visible_poi_landuse
                         priority: 44
                         font:
-                            fill: green #*text_fill
+                            fill: [0.093,0.473,0.408]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 early-sizing:
