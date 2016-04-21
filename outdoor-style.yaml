@@ -9,7 +9,7 @@ labels-global:
     - &text_visible_neighbourhoods_e  true
     - &text_visible_building          false
     - &text_visible_address           false
-    - &text_visible_water_labels      false
+    - &text_visible_water_labels      true
     - &label_visible_landuse_green    false
     - &icon_visible_landuse_green     false
     - &text_visible_landuse_green     false
@@ -188,7 +188,7 @@ settings:
         - &text_fill_exits    [0.40,0.40,0.40]      # motorway junctions, highway_casing1
         - &text_fill_building '#000'                # tan
         - &text_fill_address  [0.60,0.60,0.60]      # HUH
-        - &text_fill_water   '#000'                 # blue
+        - &text_fill_water   [0.354,0.531,0.620]    # blue
         - &text_fill_park    [0.175,0.175,0.175]    # green
         - &text_fill_beach   [0.35,0.35,0.35]      # black
         - &text_fill_piste   [0.894,0.906,0.914]    # dark gray
