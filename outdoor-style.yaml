@@ -4173,7 +4173,7 @@ layers:
                     family: *text_font_family
                     weight: 600
                     fill: [0.00,0.00,0.00]
-                    size: 8px
+                    size: 11px
                     stroke: { color: *text_stroke, width: 3 }
         poi_labels-z14:
             filter: { $zoom: [14] }
@@ -4369,7 +4369,7 @@ layers:
                         - { $zoom: [16],   area: { min: 1000 } }
                         - { $zoom: { min: 17 } }
                 not-national-park:
-                    filter: function() { return !( feature.name.indexOf("National Park") > -1 ); }
+                    filter: function() { return feature.name && !((feature.name.indexOf("National Park") > -1) || feature.name.indexOf("National Monument") > -1); }
                     draw:
                         icons:
                             visible: *icon_visible_landuse_green
@@ -4380,7 +4380,7 @@ layers:
                             priority: 42
                             font:
                                 fill: [0.093,0.473,0.408]
-                                size: 10px
+                                #size: 12px
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 3 }
                     green-areas-z6:
@@ -4399,7 +4399,7 @@ layers:
                         draw:
                             text-blend-order:
                                 font:
-                                    size: 11px
+                                    #size: 11px
                                     stroke: { color: [1.0,1.0,1.0], width: 4 }
 
                     wilderness-areas-early:
@@ -4413,7 +4413,7 @@ layers:
                             text-blend-order: { visible: false }
                             icons: { visible: false }
                     not-national-park:
-                        filter: function() { return feature.name && ((feature.name.indexOf("National Park") > -1) || feature.name.indexOf("National Monument") > -1); }
+                        filter: function() { return feature.name && !((feature.name.indexOf("National Park") > -1) || feature.name.indexOf("National Monument") > -1); }
                         # draw:
                         #     icons:
                         #         sprite: park
@@ -4494,7 +4494,7 @@ layers:
                         priority: 41
                         text_source: function() { if(feature.iata) { return feature.name + ' (' + feature.iata + ')'; } else { return feature.name; } }
                         font:
-                            fill: purple #*text_fill
+                            fill: [0.148,0.137,0.304]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4534,7 +4534,7 @@ layers:
                         visible: *text_visible_landuse_green
                         priority: 42
                         font:
-                            fill: brown #[0.350,0.350,0.350]
+                            fill: [0.356,0.266,0.224]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4567,7 +4567,7 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: brown #*text_fill
+                            fill: [0.356,0.266,0.224]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
