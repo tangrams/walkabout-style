@@ -13,12 +13,12 @@ labels-global:
     - &label_visible_landuse_green    false
     - &icon_visible_landuse_green     false
     - &text_visible_landuse_green     false
-    - &label_visible_poi_landuse      false
-    - &icon_visible_poi_landuse       false
-    - &text_visible_poi_landuse       false
-    - &label_visible_poi_landuse_e    false
-    - &icon_visible_poi_landuse_e     false
-    - &text_visible_poi_landuse_e     false
+    - &label_visible_poi_landuse      true
+    - &icon_visible_poi_landuse       true
+    - &text_visible_poi_landuse       true
+    - &label_visible_poi_landuse_e    true
+    - &icon_visible_poi_landuse_e     true
+    - &text_visible_poi_landuse_e     true
     - &label_visible_station          false
     - &icon_visible_station           false
     - &text_visible_station           false
@@ -4171,8 +4171,8 @@ layers:
                 priority: 46
                 font:
                     family: *text_font_family
-                    weight: 400
-                    fill: [0.350,0.350,0.350]
+                    weight: 600
+                    fill: [0.00,0.00,0.00]
                     size: 8px
                     stroke: { color: *text_stroke, width: 3 }
         poi_labels-z14:
