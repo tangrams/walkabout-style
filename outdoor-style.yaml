@@ -1173,7 +1173,7 @@ layers:
                     filter: { ref: true }
                     draw:
                         lines:
-                            color: [[8, [0.50,0.50,0.50]], [11, [0.50,0.50,0.50]], [12, [0.450,0.450,0.450]], [13, [0.50,0.50,0.50]], [14, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
+                            color: [[8, [0.50,0.50,0.50]], [11, [0.50,0.50,0.50]], [12, [0.450,0.450,0.450]], [13, [0.40,0.40,0.40]], [14, [0.350,0.350,0.350]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
                             width: [[9, 0.5px], [10, 0.65px], [11, 0.65px], [12, 0.75px], [13, 0.65px], [14, 1.25px], [15, 1.25px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
                             outline:
                                 color: [[8,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16, [0.550,0.550,0.550]], [17,[0.650,0.650,0.650]]]
@@ -1262,6 +1262,46 @@ layers:
                                     weight: 600
                                     size: 16px
                                     stroke: { color: *text_stroke, width: 6 }
+                in_park:
+                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
+                    draw:
+                        lines:
+                            color: [[8, [0.15,0.15,0.15]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
+                            width: [[8, 0.5px], [11, 0.65px], [12, 0.75px], [13, 0.75px], [14, 1px], [15, 1.25px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
+                            outline:
+                                color: [[8,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16, [0.350,0.350,0.350]]]
+                                width: [[8,0px], [11,0px], [13,0px], [14,0px], [16,1.5px], [17, 3px], [18, 4px]]
+                    # golf_course:
+                    #     filter: { landuse_kind: golf_course }
+                    #     draw:
+                    #         lines:
+                    #             outline:
+                    #                 color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    nature_reserve:
+                        filter: { landuse_kind: nature_reserve }
+                        draw:
+                            lines:
+                                color: [[10, [0.15,0.15,0.15]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
+                                # outline:
+                                #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    conservation:
+                        filter: { landuse_kind: conservation }
+                        draw:
+                            lines:
+                                color: [[10, [0.15,0.15,0.15]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
+                                # outline:
+                                #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
+                    primary-in-green:
+                        filter: { landuse_kind: [wood,national_park] }
+                        draw:
+                            lines:
+                                color: [[10, [0.15,0.15,0.15]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
+                    # zoo:
+                    #     filter: { landuse_kind: zoo }
+                    #     draw:
+                    #         lines:
+                    #             outline:
+                    #                 color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
                 labels-trunk_primary-z11:
                     filter:
                         $zoom: [11]
@@ -1410,7 +1450,7 @@ layers:
                         filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
                         draw:
                             lines:
-                                color: red
+                                color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
                     tunnel:
                         filter: {is_tunnel: yes, $zoom: {min: 13} }
                         draw:
@@ -1466,14 +1506,14 @@ layers:
                                     size: 12px
                                     stroke: { color: *text_stroke, width: 4 }
                 in_park:
-                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden] }
+                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
                     draw:
                         lines:
-                            color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
-                            width: [[10, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
+                            color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                            width: [[10, 0.5px], [12, 0.5px], [13, 0.65px], [14, 1.1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                             outline:
                                 color: [[10, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
-                                width: [[12, 0px], [13, 0.5px], [14, 1.0px], [16,0px], [17, 2px], [18, 2px]]
+                                width: [[12, 0px], [13, 0px], [14, 2px], [16,2px], [17, 2px], [18, 2px]]
                     # golf_course:
                     #     filter: { landuse_kind: golf_course }
                     #     draw:
@@ -1484,21 +1524,21 @@ layers:
                         filter: { landuse_kind: nature_reserve }
                         draw:
                             lines:
-                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                                color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
                                 # outline:
                                 #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
                     conservation:
                         filter: { landuse_kind: conservation }
                         draw:
                             lines:
-                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                                color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
                                 # outline:
                                 #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
-                    wood:
-                        filter: { landuse_kind: wood }
+                    secondary-in-green:
+                        filter: { landuse_kind: [wood,national_park] }
                         draw:
                             lines:
-                                color: [[10, [0.75,0.75,0.75]], [11, [0.75,0.75,0.75]], [12, [0.45,0.45,0.45]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
+                                color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
                     # zoo:
                     #     filter: { landuse_kind: zoo }
                     #     draw:
@@ -5913,12 +5953,14 @@ layers:
                 - man_made: [pier]
         draw:
             lines:
-                color: [0.302,0.649,0.740]
+                color: [[11,[0.252,0.509,0.60]],[12,[0.120,0.600,0.520]]]
             dashedline:
-                color: [0.302,0.649,0.740]
+                color: [0.120,0.600,0.520]
             dots-lines:
-                color: [0.302,0.649,0.740]
-                # color: [0.292,0.650,0.644]
+                color: [0.120,0.600,0.520]
+                # color: [0.257,0.520,0.802] ## added red
+                # color: [0.302,0.649,0.740] ## more blue
+                # color: [0.292,0.650,0.644] ## more green
                 # color: [0.416,0.750,0.746]
         # bigger path, sometimes paved (walk with friends side-by-side), also tracks that are no vehicles
         paths:
@@ -5930,42 +5972,34 @@ layers:
                         - motor_vehicle: no
             draw:
                 lines:
-                    width: [[13, 1px], [14, 1.65px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                    width: [[13, 1.2px], [14, 1.65px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
                     order: 1003
-                    # color: red
-                    outline:
-                        color: white
-                        width: [[11,1px], [12,0px]]
             no_name_early_not_designated:
                 filter: { name: false, $zoom: { max: 14 } }
                 draw:
                     lines:
                         width: [[0,1px]]
-                    outline:
-                        color: white
-                        width: [[11,1px], [12,0px]]
             in_zoo_golf_course:
                 filter: { landuse_kind: [zoo, golf_course, garden, university] }
                 draw:
                     lines:
-                        width: [[13, 1px], [14, 2px], [15, 1.5px], [16, 2px], [17, 3px], [18, 4px], [19, 5px]]
+                        width: [[13, 1.2px], [14, 2px], [15, 1.5px], [16, 2px], [17, 3px], [18, 4px], [19, 5px]]
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
                         lines:
                             visible: false
             labels-path:
-                    #filter: { $zoom: { min: 17 } }
-                    draw:
-                        text-blend-order:
-                            priority: 58
-                            visible: *text_visible_path
-                            font:
-                                # need a fill color?
-                                fill: [0.276,0.594,0.677]
-                                # fill: [0.256,0.570,0.565]
-                                size: 12px
-                                stroke: { color: *text_stroke, width: 4 }
+                #filter: { $zoom: { min: 17 } }
+                draw:
+                    text-blend-order:
+                        priority: 58
+                        visible: *text_visible_path
+                        font:
+                            fill: [0.107,0.534,0.462]
+                            # fill: [0.256,0.570,0.565]
+                            size: 12px
+                            stroke: { color: *text_stroke, width: 4 }
         # single hiking path
         foots_steps:
             filter: { highway: [footway, steps], not: { footway: [sidewalk, crossing]} }
@@ -6019,16 +6053,16 @@ layers:
                     filter: { name: true }
                     draw:
                         lines:
-                            color: [0.783,0.861,0.880]
+                            color: [0.623,0.820,0.797]
                             width: [[16, 3px], [17, 4px], [18, 5px], [19, 8px]]
                 no_name-late:
                     filter: { name: false }
                     draw:
                         dots-lines:
-                            color: [0.468,0.678,0.674]
+                            color: [0.120,0.600,0.520]
                             width: [[16, 4px], [17, 4px], [18, 5px], [19, 8px]]
                         lines:
-                            color: [0.707,0.884,0.872]
+                            color: [0.672,0.840,0.820]
                             width: [[16, 2px], [17, 3px], [18, 4px], [19, 7px]]
             no_name:
                 filter: { name: false, not: { highway: steps } }
@@ -6071,35 +6105,34 @@ layers:
                             lines:
                                 width: [[0,1px]]
             labels-footpaths:
-                #filter: { $zoom: { min: 17 } }
+                filter: { $zoom: { min: 15 } }
                 draw:
                     text-blend-order:
                         priority: 58
                         visible: *text_visible_path
                         font:
-                            # need a fill color?
-                            fill: [0.276,0.594,0.677]
+                            fill: [0.107,0.534,0.462]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
         cycleway:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: [0.302,0.649,0.740]
-                    width: [[13, 1px], [14, 2px], [15, 3px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
+                    color: [0.120,0.600,0.520]
+                    width: [[13, 1px], [14, 1.25px], [15, 1px], [16, 1.75px], [17, 2.5px], [18, 5px], [19, 6px]]
                     order: 1004
             late:
-                filter: { $zoom: { min: 16 } }
+                filter: { $zoom: { min: 15 } }
                 draw:
                     lines:
                         color: white
                         join: round
                         cap: round
                         outline:
-                            color: [0.302,0.649,0.740]
+                            color: [0.120,0.600,0.520]
                             join: round
                             cap: round
-                            width: [[16, 2px], [17, 3px], [18, 2px], [19, 2px]]
+                            width: [[15, 1px], [16, 2px], [17, 3px], [18, 2px], [19, 2px]]
                             order: 999
             labels-cycleway:
                 #filter: { $zoom: { min: 17 } }
@@ -6108,8 +6141,7 @@ layers:
                         priority: 58
                         visible: *text_visible_path
                         font:
-                            # need a fill color?
-                            fill: [0.276,0.594,0.677]
+                            fill: [0.107,0.534,0.462]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
