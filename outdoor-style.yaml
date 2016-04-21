@@ -10,9 +10,9 @@ labels-global:
     - &text_visible_building          false
     - &text_visible_address           false
     - &text_visible_water_labels      true
-    - &label_visible_landuse_green    false
-    - &icon_visible_landuse_green     false
-    - &text_visible_landuse_green     false
+    - &label_visible_landuse_green    true
+    - &icon_visible_landuse_green     true
+    - &text_visible_landuse_green     true
     - &label_visible_poi_landuse      true
     - &icon_visible_poi_landuse       true
     - &text_visible_poi_landuse       true
@@ -4158,7 +4158,7 @@ layers:
                       - kind: true
         draw:
             icons:
-                size: [[13, 12px], [16, 16px], [18, 19px]]
+                size: [[13, 12px], [16, 18px], [18, 22px]]
                 interactive: true
                 visible: false
                 priority: 45
@@ -4166,7 +4166,7 @@ layers:
                 visible: false    # labels are enabled by each layer below
                 move_into_tile: false # preserves text alignment w/icons in JS
                 anchor: bottom
-                offset: [[13, [0, 6px]], [16, [0, 8px]], [18, [0, 10px]]] # offset tracks alongside icon size (half icon height)
+                offset: [[13, [0, 6px]], [16, [0, 10px]], [18, [0, 12px]]] # offset tracks alongside icon size (half icon height)
                 interactive: true
                 priority: 46
                 font:
@@ -4180,13 +4180,13 @@ layers:
             draw: { text-blend-order: { font: { size: 11px } } }
         poi_labels-z15:
             filter: { $zoom: [15,16,17] }
-            draw: { text-blend-order: { font: { size: 12px, stroke: { width: 2 } } } }
+            draw: { text-blend-order: { font: { size: 13px, stroke: { width: 2 } } } }
         poi_labels-z18:
             filter: { $zoom: [18,19] }
-            draw: { text-blend-order: { font: { size: 12px, weight: 600, stroke: { width: 3 } } } }
+            draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 } } } }
         poi_labels-z20-up:
             filter: { $zoom: { min: 20 } }
-            draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
+            draw: { text-blend-order: { font: { size: 15px, weight: 600, stroke: { width: 3 }  } } }
         no-name:
             filter: { name: false }
             sports-pitch:
@@ -4299,7 +4299,7 @@ layers:
                         - { $zoom: { min: 15 } }
                 national-park:
                     # yosemite national park, joshua tree national park
-                    filter: function() { return feature.name && feature.name.indexOf("National Park") > -1; }
+                    filter: function() { return feature.name && ((feature.name.indexOf("National Park") > -1) || feature.name.indexOf("National Monument") > -1); }
                     visible: *label_visible_landuse_green
                     draw:
                         icons:
@@ -4335,6 +4335,18 @@ layers:
                         filter: { $zoom: {min: 10, max: 14 } }
                         draw:
                             text-blend-order: { font: { size: 12px } }
+                    poi_labels-z14:
+                        filter: { $zoom: [14] }
+                        draw: { text-blend-order: { font: { size: 11px } } }
+                    poi_labels-z15:
+                        filter: { $zoom: [15,16,17] }
+                        draw: { text-blend-order: { font: { size: 14px } } }
+                    poi_labels-z18:
+                        filter: { $zoom: [18,19] }
+                        draw: { text-blend-order: { font: { size: 15px } } }
+                    poi_labels-z20-up:
+                        filter: { $zoom: { min: 20 } }
+                        draw: { text-blend-order: { font: { size: 16px } } }
 
             landuse-labels-green-areas-not-national-park:
                 filter:
@@ -4401,7 +4413,7 @@ layers:
                             text-blend-order: { visible: false }
                             icons: { visible: false }
                     not-national-park:
-                        filter: function() { return feature.name && feature.name.indexOf("Park") > -1 }
+                        filter: function() { return feature.name && ((feature.name.indexOf("National Park") > -1) || feature.name.indexOf("National Monument") > -1); }
                         # draw:
                         #     icons:
                         #         sprite: park
@@ -4450,7 +4462,7 @@ layers:
                         visible: *text_visible_landuse_green
                         interactive: true
                         font:
-                            fill: orange #*text_fill_beach
+                            fill: [0.00,0.00,0.00]
                             stroke:
                                 color: *text_stroke_park
             airport:
