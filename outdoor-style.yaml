@@ -35,9 +35,9 @@ labels-global:
     - &text_visible_minor_road_e      true
     - &text_visible_service_road      true
     - &text_visible_path              true
-    - &text_visible_piste             false
+    - &text_visible_piste             true
     - &text_visible_steps             false
-    - &text_visible_aerialway         false
+    - &text_visible_aerialway         true
     - &text_visible_shields           false
     - &text_visible_exits             false
     - &text_visible_exits_e           false
@@ -191,8 +191,8 @@ settings:
         - &text_fill_water   [0.354,0.531,0.620]    # blue
         - &text_fill_park    [0.175,0.175,0.175]    # green
         - &text_fill_beach   [0.35,0.35,0.35]      # black
-        - &text_fill_piste   [0.894,0.906,0.914]    # dark gray
-        - &text_fill_piste_e [0.894,0.906,0.914]    # dark gray early
+        - &text_fill_piste   [0.350,0.350,0.350]    # dark gray
+        - &text_fill_piste_e [0.350,0.350,0.350]    # dark gray early
         - &text_stroke       [0.913,0.925,0.933]    # land color
         - &text_stroke_park  [0.913,0.925,0.933]     # land color
         - &text_stroke_water [0.913,0.925,0.933]
@@ -362,7 +362,7 @@ textures:
 sources:
     mapzen: 
         type: TopoJSON
-        #url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        # url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
         url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
         #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
@@ -810,8 +810,8 @@ layers:
                     - { $zoom: { min: 15 } }
             draw:
                 polygons:
-                    # color: [0.608,0.925,0.965]
-                    color: [0.528,0.902,0.960]
+                    # color: [0.608,0.925,0.965] ## original color
+                    color: [0.528,0.902,0.960] ## more saturated
         playas:
             filter: { kind: playa, $zoom: {min: 6} }
             draw:
@@ -2185,15 +2185,15 @@ layers:
                     order: 388   # We override the server value here because Eraser Map is also a special Ski Map
                     cap: round
                     join: round
-                    color: [0.975,0.975,0.975]
-                    width: [[13,0px],[14,1px],[15, 5px], [16, 6px], [18, 3m]]
+                    color: '#909090'
+                    width: [[13,0px],[14,1.5px],[15, 1.75px], [16, 2px], [18, 3m]]
                 text-blend-order:
                     priority: 18
                     visible: *text_visible_piste
                     font:
                         fill: *text_fill_piste
                         size: 12px
-                        # stroke: { color: *grey8, width: 4 }
+                        stroke: { color: [0.913,0.925,0.933], width: 4 }
             early: 
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -2210,24 +2210,24 @@ layers:
                 filter: { piste_difficulty: easy }
                 draw:
                     lines:
-                        color: [0.975,0.975,0.975]
+                        color: [0.367,0.750,0.622]
             intermediate:
                 filter: { piste_difficulty: intermediate }
                 draw:
                     lines:
-                        color: [0.975,0.975,0.975]
+                        color: [0.420,0.678,0.863]
             advanced:
                 filter: { piste_difficulty: advanced }
                 draw: 
                     lines:
-                        color: [0.975,0.975,0.975]
+                        color: [0.450,0.450,0.450]
                     text-blend-order:
                         text_source: function() { if( feature.name ){ return '◆ ' + feature.name; } else { return '◆'; } }
             expert:
                 filter: { piste_difficulty: expert }
                 draw: 
                     lines:
-                        color: [0.975,0.975,0.975]
+                        color: [0.450,0.450,0.450]
                     text-blend-order:
                         text_source: function() { if( feature.name ){ return '◆◆ ' + feature.name; } else { return '◆◆'; } }
         pier:
@@ -2299,8 +2299,8 @@ layers:
                 filter: { aerialway: [gondola, cable_car] }
                 draw:
                     lines:
-                        color: [0.5,0.5,0.5]
-                        width: [[12, 0.5px], [13, 0.5px], [14, 0.6px], [15, 1px], [16, 2px]]
+                        color: [0.45,0.45,0.45]
+                        width: [[12, 0.5px], [13, 0.5px], [14, 1.75px], [15, 2.5px], [16, 2.5px], [18, 3m]]
 #                    lines_transparent:
 #                        color: [0.5,0.5,0.5]
 #                        width: [[12, 0px], [13, 5px], [14, 8px], [15, 10px], [16, 12px]]
@@ -2308,8 +2308,8 @@ layers:
                 filter: { aerialway: chair_lift }
                 draw:
                     lines:
-                        color: [0.5,0.5,0.5]
-                        width: [[12, 0.5px], [13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [16, 2px], [18, 3m]]
+                        color: [0.45,0.45,0.45]
+                        width: [[12, 0.5px], [13, 0.5px], [14, 1.75px], [15, 2.5px], [16, 2.5px], [18, 3m]]
 #                    lines_transparent:
 #                        color: [0.5,0.5,0.5]
 #                        width: [[12, 0px], [13, 5px], [14, 8px], [15, 10px], [16, 12px], [18, 20px]]
@@ -4596,8 +4596,8 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: blue #*text_fill
-                            size: 10px
+                            fill: *text_fill
+                            size: 11px
                             stroke: { color: *text_stroke, width: 4 }
                     icons:
                         sprite: ski-area
