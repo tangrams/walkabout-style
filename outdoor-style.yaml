@@ -362,8 +362,8 @@ textures:
 sources:
     mapzen: 
         type: TopoJSON
-        # url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
-        url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        # url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
         #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
     normals: # normals
