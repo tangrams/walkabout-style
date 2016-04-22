@@ -56,7 +56,7 @@ settings:
         - &highway_tunnel1            [0.930,0.930,0.930]
         - &highway_tunnel_casing1     [0.894,0.906,0.914]
         - &highway_link_tunnel_casing1 [0.350,0.350,0.350]
-        - &ferry1                     [0.600,0.839,0.855]
+        - &ferry1                     [0.410,0.750,0.833]
         - &rail1                      '#999'
         - &rail1_e                    '#bbb'
         - &rail2                      '#777'             # less important rail (service, sidings)
@@ -810,7 +810,8 @@ layers:
                     - { $zoom: { min: 15 } }
             draw:
                 polygons:
-                    color: [0.608,0.925,0.965]
+                    # color: [0.608,0.925,0.965]
+                    color: [0.528,0.902,0.960]
         playas:
             filter: { kind: playa, $zoom: {min: 6} }
             draw:
@@ -824,12 +825,12 @@ layers:
             filter: { not: { kind: [ocean, lake, water, reservoir, playa] }, $zoom: { min: 11 }, area: { min: 100 } }
             draw:
                 polygons:
-                    color: [0.608,0.925,0.965]
+                    color: [0.528,0.902,0.960]
         swimming_pool:
             filter: { kind: swimming_pool }
             draw:
                 polygons:
-                    color: [0.608,0.925,0.965]
+                    color: [0.528,0.902,0.960]
         water-boundary-ocean-early:
             filter: { boundary: yes, kind: ocean, $zoom: {min: 1, max: 17} }
             draw:
@@ -2285,7 +2286,7 @@ layers:
             filter: { kind: ferry }
             draw:
                 lines:
-                    color: [[12, *ferry1], [13, [0.80,0.80,0.80]]]
+                    color: [[12, *ferry1], [13, [0.410,0.750,0.833]]]
                     width: [[12, 0.5px], [13, 0.75px], [15, 1.0px]]
         aerialway:
             filter: { kind: aerialway }
