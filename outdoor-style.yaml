@@ -362,8 +362,8 @@ textures:
 sources:
     mapzen: 
         type: TopoJSON
-        url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
-        # url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        # url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
         #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
     normals: # normals
@@ -2341,6 +2341,207 @@ layers:
                         text-blend-order:
                             font:
                                 weight: 600
+    buildings:
+        data: { source: mapzen, layer: buildings }
+        filter:
+            not: { location: underground }
+        # set default footprint and extrusion draw properties, but don't draw by default (rules below will turn visibility on)
+        draw:
+            polygons:
+                visible: false
+                order: 329
+                color: [[14,[0.855,0.901,0.950]],[15,[0.912,0.940,0.970]],[16,[0.95,0.95,0.95]]]
+            lines:
+                style: lines
+                order: 330
+                visible: false
+                color: [[14,[0.650,0.650,0.650]],[17,[0.85, 0.85, 0.85]]]
+                width: [[14, 0.65px], [15, 0.65px], [16,0.75px], [17,1px], [18, 1.25px]]
+
+        # turn interactive feature selection on for buildings with names
+        interactive:
+            filter: { name: true }
+            draw: { polygons: { interactive: true } }
+
+        # building footprints, pre-extrusion
+        footprints:
+            filter: 
+                any:
+                    # limit show smaller landuse areas to higher zooms
+                    - { $zoom: [13], area: { min: 100000 }, name: true }
+                    - { $zoom: [13], area: { min: 100000 }, kind: true }
+                    - { $zoom: [13], height: { min: 250 } }
+                    - { $zoom: [13], volume: { min: 250000 } }
+                    - { $zoom: [14], area: { min: 20000 }, name: true }
+                    - { $zoom: [14], area: { min: 20000 }, kind: true }
+                    - { $zoom: [14], area: { min: 5000 }, landuse_kind: true }
+                    - { $zoom: [14], height: { min: 150 } }
+                    - { $zoom: [14], volume: { min: 150000 } }
+                    - { $zoom: [15], area: { min: 5000 }, name: true }
+                    - { $zoom: [15], area: { min: 5000 }, kind: true }
+                    - { $zoom: [15], area: { min: 3000 }, landuse_kind: true }
+                    - { $zoom: [15], height: { min: 100 } }
+                    - { $zoom: [15], volume: { min: 100000 } }
+                    - { $zoom: [16], area: { min: 1000 }, name: true }
+                    - { $zoom: [16], area: { min: 1000 }, kind: true }
+                    - { $zoom: [16], area: { min: 2000 }, landuse_kind: true }
+                    - { $zoom: [16], volume: { min: 50000 } }
+                    #- { $zoom: [16], height: { min: 50 } }
+                    - { $zoom: { min: 17 } }
+                all:
+                    - not: { location: underground }
+            # filter:
+            #     $zoom: { min: 15 }
+            #     any:
+            #         # show footprints for buildings at least one zoom level before they will be extruded
+            #         - { $zoom: [13], area: { min: 50000 } }
+            #         - { $zoom: [13], height: { min: 250 } }
+            #         - { $zoom: [13], volume: { min: 200000 } }
+            #         - { $zoom: [14], area: { min: 5000 } }
+            #         - { $zoom: [14], height: { min: 190 } }
+            #         - { $zoom: [14], volume: { min: 150000 } }
+            #         - { $zoom: [15], height: { min: 100 } }
+            #         - { $zoom: [15], area: { min: 500 } }
+            #         - { $zoom: [15], volume: { min: 100000 } }
+            #         - { $zoom: [16], area: { min: 100 } }
+            #         - { $zoom: [16], volume: { min: 50000 } }
+            #         - { $zoom: { min: 17 } }
+            draw:
+                polygons:
+                    visible: true
+                lines:
+                    visible: true
+
+        # landuse-specific rules
+        # in_park:
+        #     filter: { landuse_kind: [park,forest,nature_reserve,conservation,golf_course,garden] }
+        #     draw:
+        #         polygons:
+        #             color: [0.864,0.910,0.905]
+
+        #     # golf_course:
+        #     #     filter: { landuse_kind: golf_course }
+        #     #     draw:
+        #     #         polygons:
+        #     #             color: *building2
+        #     # nature_reserve:
+        #     #     filter: { landuse_kind: nature_reserve }
+        #     #     draw:
+        #     #         polygons:
+        #     #             color: *building2
+        #     # conservation:
+        #     #     filter: { landuse_kind: conservation }
+        #     #     draw:
+        #     #         polygons:
+        #     #             color: *building2
+        #     # zoo:
+        #     #     filter: { landuse_kind: zoo }
+        #     #     draw:
+        #     #         polygons:
+        #     #             color: *building2
+        # in_university:
+        #     filter: { landuse_kind: [university,school] }
+        #     draw:
+        #         polygons:
+        #             color: [0.950,0.917,0.883]
+        #         lines:
+        #             color: *brown1_bo
+        # in_hospital:
+        #     filter: { landuse_kind: hospital }
+        #     draw:
+        #         polygons:
+        #             color: [0.976,0.908,0.913]
+        # in_airport:
+        #     filter: { landuse_kind: [aerodrome, runway, taxiway] }
+        #     draw:
+        #         polygons:
+        #             color: *purple_b
+        #         lines:
+        #             color: *purple_bo
+        #             width: [[14,0.5px],[15,0.5px],[17,0.5px],[18,0.75px],[19,0.25m]]
+        # in_retail:
+        #    filter: { landuse_kind: retail }
+        #    draw:
+        #         polygons:
+        #             color: [0.945, 0.898, 0.878]
+
+#     buildings-labels:
+#         data: { source: osm, layer: buildings }
+#         filter:
+#             all:
+#                 - { $zoom: { min: 17 } }
+#                 - $geometry: point
+#                 - not: { location: underground, kind: address }
+#                 - name: true
+# #                - kind: [false, building, university, college, school, kindergarten]
+#             any:
+#                 - { $zoom: [16], area: { min: 5000 } }
+#                 - { $zoom: [16], area: { min: 5000 } }
+#                 - { $zoom: [16], area: { min: 10000 }, landuse_kind: true }
+#                 - { $zoom: [16], area: { min: 7000 }, kind: [university, college, school, kindergarten] }
+#                 - { $zoom: [16], volume: { min: 50000 }, name: true }
+#                 - { $zoom: [17], area: { min: 3000 } }
+#                 - { $zoom: [17], area: { min: 2000 }, kind: [university, college, school, kindergarten] }
+#                 - { $zoom: [18], area: { min: 1000 } }
+#                 - { $zoom: [18], kind: [university, college, school, kindergarten] }
+#                 - { $zoom: [19], area: { min: 200 } }
+#                 - { $zoom: { min: 19 }, kind: [university, college, school, kindergarten] }
+#                 - { $zoom: { min: 20 }, area: true }
+#         draw:
+#             text-blend-order:
+#                 interactive: true
+#                 move_into_tile: true
+#                 priority: 70
+#                 order: 7
+#                 font:
+#                     fill: '#666'
+#                     family: *text_font_family
+#                     style: italic
+#                     size: 11px
+#                     stroke: { color: *text_stroke_address, width: 1 }
+#         building_labels-z15-z16-z17:
+#             filter: { $zoom: [15,16,17] }
+#             draw: { text-blend-order: { font: { size: 12px, stroke: { width: 2 } } } }
+#         building_labels-z18:
+#             filter: { $zoom: [18,19] }
+#             draw: { text-blend-order: { font: { size: 12px, weight: 600, stroke: { width: 3 } } } }
+#         building_labels-z20-up:
+#             filter: { $zoom: { min: 20 } }
+#             draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 }  } } }
+#         building-labels-z16:
+#             filter: function() { if( $zoom == 16 && feature.name.length > 20 ) { return true; } else { return false; } }
+#             draw:
+#                 text-blend-order:
+#                     visible: false
+#         building-labels-z17:
+#             filter: function() { if( $zoom == 17 && feature.name.length > 30 ) { return true; } else { return false; } }
+#             draw:
+#                 text-blend-order:
+#                     visible: false
+#         building-labels-z20+:
+#             filter: { $zoom: { min: 20 } }
+#             draw:
+#                 text-blend-order:
+#                     text_source: function() { if( feature.addr_housenumber ) { return feature.name + '\n' + feature.addr_housenumber; } else { return feature.name; } }
+#     address-labels:
+#         data: { source: osm, layer: buildings }
+#         filter:
+#             $zoom: { min: 20 }
+#             any:
+#                 - kind: address
+#                 - { label_position: yes, addr_housenumber: true, name: false }
+#         draw:
+#             text-blend-order:
+#                 interactive: true
+#                 order: 7
+#                 visible: *text_visible_address
+#                 text_source: addr_housenumber
+#                 font:
+#                     fill: *text_fill_address
+#                     family: *text_font_family
+#                     style: italic
+#                     size: 10px
+#                     stroke: { color: *text_stroke_address, width: 4 }
 
     places:
         data: { source: mapzen, layer: places }
