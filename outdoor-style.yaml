@@ -1181,8 +1181,8 @@ layers:
                     filter: { ref: true }
                     draw:
                         lines:
-                            color: [[8, [0.50,0.50,0.50]], [11, [0.50,0.50,0.50]], [12, [0.430,0.430,0.430]], [13, [0.470,0.470,0.470]], [14, [0.400,0.400,0.400]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
-                            width: [[9, 0.5px], [10, 0.65px], [11, 0.65px], [12, 0.75px], [13, 2px], [14, 2.5px], [15, 3.5px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
+                            color: [[8, [0.50,0.50,0.50]], [11, [0.50,0.50,0.50]], [12, [0.470,0.470,0.470]], [13, [0.470,0.470,0.470]], [14, [0.400,0.400,0.400]], [15, [0.350,0.350,0.350]], [16, [1.0,1.0,1.0]]]
+                            width: [[9, 1px], [12, 1.25px], [13, 2px], [14, 2.5px], [15, 3.5px], [16, 2px], [17, 4px], [18, 4px], [19, 8px]]
                             outline:
                                 color: [[8,[0.894,0.906,0.914]], [15,[0.894,0.906,0.914]], [16, [0.550,0.550,0.550]], [17,[0.650,0.650,0.650]]]
                                 width: [[8,0px], [15,0px], [16,3px], [17, 3px], [18, 4px]]
@@ -1194,10 +1194,10 @@ layers:
                                 outline:
                                     order: 353
                     primary-route-in-green:
-                        filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
+                        filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park,protected_area] }
                         draw:
                             lines:
-                                color: [[8, [0.50,0.50,0.50]], [11, [0.50,0.50,0.50]], [12, [0.430,0.430,0.430]], [13, [0.470,0.470,0.470]], [14, [0.400,0.400,0.400]], [15, [0.250,0.250,0.250]], [16, [1.0,1.0,1.0]]]
+                                color: [[8, [0.250,0.250,0.250]], [10, [0.350,0.350,0.350]], [11, [0.40,0.40,0.40]], [12, [0.430,0.430,0.430]], [13, [0.470,0.470,0.470]], [14, [0.400,0.400,0.400]], [15, [0.250,0.250,0.250]], [16, [1.0,1.0,1.0]]]
                                 outline:
                                     color: [[15,[0.350,0.350,0.350]],[16,[0.250,0.250,0.250]]]
                     # national-routes:
@@ -1278,7 +1278,7 @@ layers:
                                     size: 16px
                                     stroke: { color: *text_stroke, width: 6 }
                 in_park:
-                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
+                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park,protected_area] }
                     draw:
                         lines:
                             color: [[8, [0.15,0.15,0.15]], [13, [0.25,0.25,0.25]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
@@ -1307,7 +1307,7 @@ layers:
                                 # outline:
                                 #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
                     primary-in-green:
-                        filter: { landuse_kind: [wood,national_park] }
+                        filter: { landuse_kind: [wood,national_park,protected_area] }
                         draw:
                             lines:
                                 color: [[10, [0.15,0.15,0.15]], [13, [0.25,0.25,0.25]], [15, [0.15,0.15,0.15]], [16, [1.0,1.0,1.0]]]
@@ -1462,7 +1462,7 @@ layers:
                                 outline:
                                     order: 353
                     secondary-route-in-green:
-                        filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
+                        filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park,protected_area] }
                         draw:
                             lines:
                                 color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
@@ -1521,7 +1521,7 @@ layers:
                                     size: 12px
                                     stroke: { color: *text_stroke, width: 4 }
                 in_park:
-                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park] }
+                    filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park,protected_area] }
                     draw:
                         lines:
                             color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.35,0.35,0.35]], [14, [0.25,0.25,0.25]], [16, [0.25,0.25,0.25]], [17, [1.0,1.0,1.0]]]
@@ -1550,7 +1550,7 @@ layers:
                                 # outline:
                                 #     color: [[10, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]], [17, [0.00,0.00,0.00]]]
                     secondary-in-green:
-                        filter: { landuse_kind: [wood,national_park] }
+                        filter: { landuse_kind: [wood,national_park,protected_area] }
                         draw:
                             lines:
                                 color: [[11, [0.15,0.15,0.15]], [12, [0.35,0.35,0.35]], [13, [0.25,0.25,0.25]], [14, [0.20,0.20,0.20]], [16, [0.15,0.15,0.15]], [17, [1.0,1.0,1.0]]]
@@ -1770,7 +1770,7 @@ layers:
             filter: { kind: minor_road, not: { highway: service, aeroway: [runway, taxiway] } }
             draw:
                 lines:
-                    color: [[11, [0.885,0.885,0.885]], [12, [0.850,0.850,0.850]], [13, [0.810,0.810,0.810]], [14, [0.750,0.750,0.750]], [15, [0.750,0.750,0.750]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                    color: [[11, [0.885,0.885,0.885]], [12, [0.750,0.750,0.750]], [13, [0.650,0.650,0.650]], [14, [0.570,0.570,0.570]], [15, [0.750,0.750,0.750]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                     width: [[11, 0.35px], [12, 0.25px], [13, 0.55px], [14, 1px], [15, 1.25px], [16, 2px], [17, 3px], [18, 3px], [19, 8px]]
                     outline:
                         color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
@@ -1792,10 +1792,10 @@ layers:
                         join: round
 
             in_park:
-                filter: { landuse_kind: [park,protected_area,nature_reserve,conservation,golf_course,garden,wood,farmland,farm,national_park] }
+                filter: { landuse_kind: [park,protected_area,nature_reserve,conservation,golf_course,garden,wood,farmland,farm,national_park,protected_area] }
                 draw:
                     lines:
-                        color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.660,0.660,0.660]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                        color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.570,0.570,0.570]], [14, [0.550,0.550,0.550]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                         outline:
                             color: [[11, [0.894,0.906,0.914]], [16, [0.894,0.906,0.914]], [17,[0.650,0.650,0.650]]]
                             width: [[11, 0x], [16, 0px], [17, 1.5px]]
@@ -1809,17 +1809,17 @@ layers:
                     filter: { landuse_kind: nature_reserve }
                     draw:
                         lines:
-                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.660,0.660,0.660]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.570,0.570,0.570]], [14, [0.550,0.550,0.550]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                 conservation:
                     filter: { landuse_kind: conservation }
                     draw:
                         lines:
-                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.600,0.600,0.600]], [14, [0.660,0.660,0.660]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                            color: [[11, [0.885,0.885,0.885]], [12, [0.720,0.720,0.720]], [13, [0.570,0.570,0.570]], [14, [0.550,0.550,0.550]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
                 minor-in-green:
-                    filter: { landuse_kind: [wood,national_park] }
+                    filter: { landuse_kind: [wood,national_park,protected_area] }
                     draw:
                         lines:
-                            color: [[11, [0.885,0.885,0.885]], [12, [0.600,0.600,0.600]], [13, [0.600,0.600,0.600]], [14, [0.660,0.660,0.660]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
+                            color: [[11, [0.885,0.885,0.885]], [12, [0.600,0.600,0.600]], [13, [0.570,0.570,0.570]], [14, [0.550,0.550,0.550]], [15, [0.6,0.6,0.6]], [16, [0.550,0.550,0.550]], [17, [1.0,1.0,1.0]]]
             #     zoo:
             #         filter: { landuse_kind: zoo }
             #         draw:
