@@ -19,9 +19,9 @@ labels-global:
     - &label_visible_poi_landuse_e    true
     - &icon_visible_poi_landuse_e     true
     - &text_visible_poi_landuse_e     true
-    - &label_visible_station          true
-    - &icon_visible_station           true
-    - &text_visible_station           true
+    - &label_visible_station          false
+    - &icon_visible_station           false
+    - &text_visible_station           false
     - &text_visible_highway           true
     - &text_visible_highway_e         true
     - &text_visible_trunk_primary     true
