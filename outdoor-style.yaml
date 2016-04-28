@@ -5,37 +5,37 @@ labels-global:
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
-    - &text_visible_neighbourhoods    false
-    - &text_visible_neighbourhoods_e  false
+    - &text_visible_neighbourhoods    true
+    - &text_visible_neighbourhoods_e  true
     - &text_visible_building          false
     - &text_visible_address           false
     - &text_visible_water_labels      true
-    - &label_visible_landuse_green    false
-    - &icon_visible_landuse_green     false
-    - &text_visible_landuse_green     false
-    - &label_visible_poi_landuse      false
-    - &icon_visible_poi_landuse       false
-    - &text_visible_poi_landuse       false
-    - &label_visible_poi_landuse_e    false
-    - &icon_visible_poi_landuse_e     false
-    - &text_visible_poi_landuse_e     false
-    - &label_visible_station          false
-    - &icon_visible_station           false
-    - &text_visible_station           false
-    - &text_visible_highway           false
-    - &text_visible_highway_e         false
-    - &text_visible_trunk_primary     false
-    - &text_visible_trunk_primary_e2  false
-    - &text_visible_trunk_primary_e   false
-    - &text_visible_secondary         false
-    - &text_visible_secondary_e       false
-    - &text_visible_tertiary          false
-    - &text_visible_tertiary_e        false
-    - &text_visible_minor_road        false
-    - &text_visible_minor_road_e      false
-    - &text_visible_service_road      false
-    - &text_visible_path              false
-    - &text_visible_piste             false
+    - &label_visible_landuse_green    true
+    - &icon_visible_landuse_green     true
+    - &text_visible_landuse_green     true
+    - &label_visible_poi_landuse      true
+    - &icon_visible_poi_landuse       true
+    - &text_visible_poi_landuse       true
+    - &label_visible_poi_landuse_e    true
+    - &icon_visible_poi_landuse_e     true
+    - &text_visible_poi_landuse_e     true
+    - &label_visible_station          true
+    - &icon_visible_station           true
+    - &text_visible_station           true
+    - &text_visible_highway           true
+    - &text_visible_highway_e         true
+    - &text_visible_trunk_primary     true
+    - &text_visible_trunk_primary_e2  true
+    - &text_visible_trunk_primary_e   true
+    - &text_visible_secondary         true
+    - &text_visible_secondary_e       true
+    - &text_visible_tertiary          true
+    - &text_visible_tertiary_e        true
+    - &text_visible_minor_road        true
+    - &text_visible_minor_road_e      true
+    - &text_visible_service_road      true
+    - &text_visible_path              true
+    - &text_visible_piste             true
     - &text_visible_steps             false
     - &text_visible_aerialway         true
     - &text_visible_shields           false
@@ -2354,76 +2354,76 @@ layers:
                         text-blend-order:
                             font:
                                 weight: 600
-    # buildings:
-    #     data: { source: mapzen, layer: buildings }
-    #     filter:
-    #         not: { location: underground }
-    #     # set default footprint and extrusion draw properties, but don't draw by default (rules below will turn visibility on)
-    #     draw:
-    #         polygons:
-    #             visible: false
-    #             order: 329
-    #             color: [[14,[0.855,0.901,0.950]],[15,[0.912,0.940,0.970]],[16,[0.95,0.95,0.95]]]
-    #         lines:
-    #             style: lines
-    #             order: 330
-    #             visible: false
-    #             color: [[14,[0.650,0.650,0.650]],[17,[0.85, 0.85, 0.85]]]
-    #             width: [[14, 0.65px], [15, 0.65px], [16,0.75px], [17,1px], [18, 1.25px]]
+    buildings:
+        data: { source: mapzen, layer: buildings }
+        filter:
+            not: { location: underground }
+        # set default footprint and extrusion draw properties, but don't draw by default (rules below will turn visibility on)
+        draw:
+            polygons:
+                visible: false
+                order: 329
+                color: [[14,[0.855,0.901,0.950]],[15,[0.912,0.940,0.970]],[16,[0.95,0.95,0.95]]]
+            lines:
+                style: lines
+                order: 330
+                visible: false
+                color: [[14,[0.650,0.650,0.650]],[17,[0.85, 0.85, 0.85]]]
+                width: [[14, 0.65px], [15, 0.65px], [16,0.75px], [17,1px], [18, 1.25px]]
 
-    #     # turn interactive feature selection on for buildings with names
-    #     interactive:
-    #         filter: { name: true }
-    #         draw: { polygons: { interactive: true } }
+        # turn interactive feature selection on for buildings with names
+        interactive:
+            filter: { name: true }
+            draw: { polygons: { interactive: true } }
 
-    #     # building footprints, pre-extrusion
-    #     footprints:
-    #         filter: 
-    #             any:
-    #                 # limit show smaller landuse areas to higher zooms
-    #                 - { $zoom: [13], area: { min: 100000 }, name: true }
-    #                 - { $zoom: [13], area: { min: 100000 }, kind: true }
-    #                 - { $zoom: [13], height: { min: 250 } }
-    #                 - { $zoom: [13], volume: { min: 250000 } }
-    #                 - { $zoom: [14], area: { min: 20000 }, name: true }
-    #                 - { $zoom: [14], area: { min: 20000 }, kind: true }
-    #                 - { $zoom: [14], area: { min: 5000 }, landuse_kind: true }
-    #                 - { $zoom: [14], height: { min: 150 } }
-    #                 - { $zoom: [14], volume: { min: 150000 } }
-    #                 - { $zoom: [15], area: { min: 5000 }, name: true }
-    #                 - { $zoom: [15], area: { min: 5000 }, kind: true }
-    #                 - { $zoom: [15], area: { min: 3000 }, landuse_kind: true }
-    #                 - { $zoom: [15], height: { min: 100 } }
-    #                 - { $zoom: [15], volume: { min: 100000 } }
-    #                 - { $zoom: [16], area: { min: 1000 }, name: true }
-    #                 - { $zoom: [16], area: { min: 1000 }, kind: true }
-    #                 - { $zoom: [16], area: { min: 2000 }, landuse_kind: true }
-    #                 - { $zoom: [16], volume: { min: 50000 } }
-    #                 #- { $zoom: [16], height: { min: 50 } }
-    #                 - { $zoom: { min: 17 } }
-    #             all:
-    #                 - not: { location: underground }
-    #         # filter:
-    #         #     $zoom: { min: 15 }
-    #         #     any:
-    #         #         # show footprints for buildings at least one zoom level before they will be extruded
-    #         #         - { $zoom: [13], area: { min: 50000 } }
-    #         #         - { $zoom: [13], height: { min: 250 } }
-    #         #         - { $zoom: [13], volume: { min: 200000 } }
-    #         #         - { $zoom: [14], area: { min: 5000 } }
-    #         #         - { $zoom: [14], height: { min: 190 } }
-    #         #         - { $zoom: [14], volume: { min: 150000 } }
-    #         #         - { $zoom: [15], height: { min: 100 } }
-    #         #         - { $zoom: [15], area: { min: 500 } }
-    #         #         - { $zoom: [15], volume: { min: 100000 } }
-    #         #         - { $zoom: [16], area: { min: 100 } }
-    #         #         - { $zoom: [16], volume: { min: 50000 } }
-    #         #         - { $zoom: { min: 17 } }
-    #         draw:
-    #             polygons:
-    #                 visible: true
-    #             lines:
-    #                 visible: true
+        # building footprints, pre-extrusion
+        footprints:
+            filter: 
+                any:
+                    # limit show smaller landuse areas to higher zooms
+                    - { $zoom: [13], area: { min: 100000 }, name: true }
+                    - { $zoom: [13], area: { min: 100000 }, kind: true }
+                    - { $zoom: [13], height: { min: 250 } }
+                    - { $zoom: [13], volume: { min: 250000 } }
+                    - { $zoom: [14], area: { min: 20000 }, name: true }
+                    - { $zoom: [14], area: { min: 20000 }, kind: true }
+                    - { $zoom: [14], area: { min: 5000 }, landuse_kind: true }
+                    - { $zoom: [14], height: { min: 150 } }
+                    - { $zoom: [14], volume: { min: 150000 } }
+                    - { $zoom: [15], area: { min: 5000 }, name: true }
+                    - { $zoom: [15], area: { min: 5000 }, kind: true }
+                    - { $zoom: [15], area: { min: 3000 }, landuse_kind: true }
+                    - { $zoom: [15], height: { min: 100 } }
+                    - { $zoom: [15], volume: { min: 100000 } }
+                    - { $zoom: [16], area: { min: 1000 }, name: true }
+                    - { $zoom: [16], area: { min: 1000 }, kind: true }
+                    - { $zoom: [16], area: { min: 2000 }, landuse_kind: true }
+                    - { $zoom: [16], volume: { min: 50000 } }
+                    #- { $zoom: [16], height: { min: 50 } }
+                    - { $zoom: { min: 17 } }
+                all:
+                    - not: { location: underground }
+            # filter:
+            #     $zoom: { min: 15 }
+            #     any:
+            #         # show footprints for buildings at least one zoom level before they will be extruded
+            #         - { $zoom: [13], area: { min: 50000 } }
+            #         - { $zoom: [13], height: { min: 250 } }
+            #         - { $zoom: [13], volume: { min: 200000 } }
+            #         - { $zoom: [14], area: { min: 5000 } }
+            #         - { $zoom: [14], height: { min: 190 } }
+            #         - { $zoom: [14], volume: { min: 150000 } }
+            #         - { $zoom: [15], height: { min: 100 } }
+            #         - { $zoom: [15], area: { min: 500 } }
+            #         - { $zoom: [15], volume: { min: 100000 } }
+            #         - { $zoom: [16], area: { min: 100 } }
+            #         - { $zoom: [16], volume: { min: 50000 } }
+            #         - { $zoom: { min: 17 } }
+            draw:
+                polygons:
+                    visible: true
+                lines:
+                    visible: true
 
         # landuse-specific rules
         # in_park:
