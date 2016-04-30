@@ -2,6 +2,7 @@
 
 labels-global:
     - &text_visible_continent         true
+    - &text_visible_island            true
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
@@ -370,6 +371,8 @@ sources:
         type: Raster
         # prod is doesn't have low zoom detail, use dev
         url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
+        # global prod 
+        #url: https://s3.amazonaws.com/elevation-tiles-prod/normal/{z}/{x}/{y}.png
         # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
@@ -889,7 +892,19 @@ layers:
                     outline:
                         #color: [[11,[0.671,0.788,0.812]],[13,[0.710,0.800,0.824]],[14,[0.635,0.812,0.843]]]
                         width: [[9,0px],[11,0px],[12,0px],[13,0.5px],[14,0.75px],[15,0.75px],[16,0.75px],[17,1px]]
-
+            intermittent:
+                filter:
+                    any:
+                        - intermittent: yes
+                        - kind: drain
+                draw:
+                    lines:
+                        visible: false
+                    dots-lines:
+                        order: function() { return feature.sort_key; }
+                        interactive: true
+                        color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
+                        width: [[10,0px],[11,0.25px],[12,0.5px],[13,1.25px],[14,2.25px],[15,3px],[16,4px],[17,5m]]
 
     roads:
         data: { source: mapzen, layer: roads }
@@ -1929,9 +1944,9 @@ layers:
         path:
             filter: 
                 all:
-                    - kind: path
+                    - kind: [path, portage_way]
                 not: 
-                    - highway: [steps, track]
+                    - highway: [footway, steps, track, cycleway]
                     - man_made: [pier]
             draw:
                 dashedline:
@@ -1951,6 +1966,11 @@ layers:
                         order: 351
                         outline:
                             order: 350
+            portage_way:
+                filter: { kind: portage_way }
+                draw:
+                    lines:
+                        color: [0.350,0.350,0.350]
             pedestrian:
                 filter: { highway: pedestrian }
                 draw:
@@ -2170,14 +2190,14 @@ layers:
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
-                        text_source: function() { if( feature.name ){ return '◆ ' + feature.name; } else { return '◆'; } }
+                        text_source: function() { if( feature.name ){ return '◆ ' + feature.name; } else { return ''; } }
             expert:
                 filter: { piste_difficulty: expert }
                 draw: 
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
-                        text_source: function() { if( feature.name ){ return '◆◆ ' + feature.name; } else { return '◆◆'; } }
+                        text_source: function() { if( feature.name ){ return '◆◆ ' + feature.name; } else { return ''; } }
         pier:
             filter: { kind: path, man_made: pier }
             draw:
@@ -2491,6 +2511,79 @@ layers:
 #                     size: 10px
 #                     stroke: { color: *text_stroke_address, width: 4 }
 
+    boundaries:
+        data: { source: osm, layer: boundaries }
+        # country subdivisions (states, provinces)
+        draw:
+            lines:
+                interactive: true
+                order: function() { return (feature.sort_key + 100); }
+#                color: red
+#                width: [[9, 1px], [14, 2px], [16, 3px], [17, 8m]]
+        country:
+            filter:
+                any:
+                    - type: country
+                    - kind: nation
+                    - admin_level: 2
+            draw:
+                lines:
+                    interactive: true
+                    color: *country_boundary
+                    width: [[1, 0.5px], [2, 1.0px], [4, 1.5px], [9, 2.5px], [14, 3.5px], [16, 4.5px], [17, 14m]]
+            water:
+                filter: { maritime_boundary: yes }
+                draw:
+                    lines:
+                        order: function() { return (feature.sort_key - 2); }
+                        color: blue
+        region:
+            filter:
+                any:
+                    - type: state
+                    # territorial here is probably a hack
+                    - kind: [state, department, region, provincial, territorial]
+                    - admin_level: 4
+            draw:
+                lines:
+                    interactive: true
+                    color: *region_boundary
+                    width: [[0, 0.5px], [2, 1.0px], [5, 1.25px], [6, 1.5px], [7, 1.75px], [9, 3.5px], [14, 5.5px], [16, 6.5px], [17, 16m]]
+            water:
+                filter: { maritime_boundary: yes }
+                draw:
+                    lines:
+                        visible: false
+#            early:
+#                filter: { scalerank: [0,3,4,5,6,7,8,9,10], $zoom: { max: 8 } }
+#                draw:
+#                    lines:
+#                        visible: false
+        city_walls:
+            filter: { kind: city_wall }
+            draw:
+                lines:
+                    color: *city_wall
+                    width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
+        retaining_wall:
+            filter: { kind: retaining_wall }
+            draw:
+                lines:
+                    color: *retaining_wall
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
+        snow_fence:
+            filter: { kind: snow_fence }
+            draw:
+                lines:
+                    color: *snow_fence
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        fence:
+            filter: { kind: fence }
+            draw:
+                lines:
+                    color: *fence
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+                    
     places:
         data: { source: mapzen, layer: places }
         filter: { not: { kind: [ocean, sea] } }
@@ -2501,27 +2594,6 @@ layers:
                     family: *text_font_family
                     # weight: 500
                     fill: *text_fill
-
-        continent:
-            filter: { name: true, kind: [continent], $zoom: {max: 5} }
-            draw:
-                text-blend-order:
-                    visible: *text_visible_continent
-                    font:
-                        size: 14px
-                        style: italic
-                        fill: *text_fill
-                        weight: 600
-                        # stroke: { color: *text_stroke, width: 4 }
-                        transform: uppercase
-        continent-spacer:
-            filter: { kind: continent }
-            continent-spacer-z1-z5:
-                filter: { $zoom: { min: 1, max: 5 } }
-                draw:
-                    text-blend-order:
-                        text_source: function() { return feature.name.split('').join(' ') }
-                        text_wrap: false
 
         country-z2:
             filter:
@@ -4298,13 +4370,17 @@ layers:
         visible: *label_visible_poi_landuse
         filter: 
             not: { kind: [building,farm,tree,gate,address,apron,residential] }
+            $geometry: point
             any:
                 - area: false
                   all:
                       - $zoom: { min: 12 }
+                - area: false
+                  elevation: true
+                  all:
+                      - $zoom: { min: 11 }
                 - area: true
                   all:
-                      - $geometry: point
                       - kind: true
         draw:
             icons:
@@ -4387,12 +4463,28 @@ layers:
                 draw:   { icons: { sprite: bicycle-parking, visible: *icon_visible_poi_landuse_e } }
             car-parking:
                 filter: { kind: [parking], $zoom: { min: 17 } }
-                draw:   { icons: { sprite: parking, visible: *icon_visible_poi_landuse_e } }
+                draw:
+                    icons:
+                        sprite: parking
+                        visible: function() { if( feature.min_zoom <= $zoom ) { return *icon_visible_poi_landuse_e; } else { return false; } }
+            power_tower:
+                filter: { kind: [power_tower], $zoom: { max: 16 } }
+                draw:   { icons: { visible: false } }
+            power_pole:
+                filter: { kind: [power_pole], $zoom: { max: 17 } }
+                draw:   { icons: { visible: false } }
             trailhead:
                 filter: { kind: [trailhead], $zoom: { min: 15 } }
                 draw:   { icons: { sprite: generic, visible: *icon_visible_poi_landuse_e } }
+            walking-or-bicycle_junction:
+                filter: { kind: [bicycle_junction, walking_junction] }
+                draw:
+                    icons: { sprite: generic, visible: *icon_visible_poi_landuse_e }
+                    text-blend-order:
+                        visible: true
+                        text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone] }
+                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
                 draw: 
                     icons:
                         priority: 43
@@ -4410,7 +4502,7 @@ layers:
                    icons:
                        # sprite_source: kind
                        sprite: function() { return feature.kind; }
-                       visible: *icon_visible_poi_landuse
+                       visible: function() { if( feature.min_zoom <= $zoom ) { return *icon_visible_poi_landuse; } else { return false; } }
             # add generic icon at high zoom, if direct match fails
             generic-icons:
                filter: { $zoom: { min: 18 }, area: false }
@@ -4905,11 +4997,46 @@ layers:
                 draw:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
-            # peak-early:
-            #     filter: { kind: [peak], $zoom: { max: 16 } }
-            #     draw:
-            #         text-blend-order:  { visible: false }
-            #         icons: { visible: false }
+            peak-early:
+                filter: { kind: [peak], $zoom: { max: 14 } }
+                draw:
+                    text-blend-order:  { visible: true }
+                    icons: { visible: true }
+                low-priority-early-z11:
+                    filter: { kind_tile_rank: { min: 3 }, $zoom: [11,12] }
+                    draw:
+                        icons: { visible: false }
+                        text-blend-order: { visible: false }
+                low-priority-early-z13:
+                    filter: { kind_tile_rank: { min: 4 }, $zoom: [13] }
+                    draw:
+                        icons: { visible: false }
+                        text-blend-order: { visible: false }
+            peak-labels:
+                filter: { kind: [peak], $zoom: { min: 14 } }
+                draw:
+                    text-blend-order:
+                        text_source: function() { if( feature.name && feature.elevation ) { return feature.name + "\n" + feature.elevation; } else { if( feature.name ) { return feature.name; } else { return feature.elevation; } } }
+            waterfall-early:
+                filter: { kind: [waterfall], $zoom: { max: 14 } }
+                draw:
+                    text-blend-order:  { visible: true }
+                    icons: { visible: true }
+                low-priority-early-z11:
+                    filter: { kind_tile_rank: { min: 3 }, $zoom: [11,12] }
+                    draw:
+                        icons: { visible: false }
+                        text-blend-order: { visible: false }
+                low-priority-early-z13:
+                    filter: { kind_tile_rank: { min: 4 }, $zoom: [13] }
+                    draw:
+                        icons: { visible: false }
+                        text-blend-order: { visible: false }
+            waterfall-labels:
+                filter: { kind: [waterfall], $zoom: { min: 14 } }
+                draw:
+                    text-blend-order:
+                        text_source: function() { if( feature.name && feature.height ) { return feature.name + "\n" + feature.height; } else { if( feature.name ) { return feature.name; } else { return feature.height; } } }
             drinking-water-early:
                 filter: { kind: [drinking_water], $zoom: { max: 18 } }
                 draw:
@@ -4964,6 +5091,23 @@ layers:
                             visible: false
                 text-labels-early:
                     filter: { $zoom: { max: 19 } }
+                    draw:
+                        text-blend-order:
+                            visible: false
+            bicycle_rental_station-early:
+                filter: { kind: bicycle_rental_station }
+                icons-early:
+                    filter: { $zoom: { max: 17 } }
+                    draw:
+                        icons:
+                            size: [[16, 14px], [17, 16px], [18, 20px]]
+                text-labels-early:
+                    filter: { $zoom: { max: 19 } }
+                    draw:
+                        text-blend-order:
+                            offset: [[16, [0, 7px]], [17, [0, 8px]], [18, [0, 10px]]]
+                early-names:
+                    filter: { $zoom: { max: 17 } }
                     draw:
                         text-blend-order:
                             visible: false
@@ -5062,7 +5206,7 @@ layers:
 #                            visible: false
             minor-z17-early:
                 filter:
-                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, slipway, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
+                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental_station, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, slipway, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
                     area: false
                     $zoom: { max: 17 }
                 draw:
@@ -5077,7 +5221,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone] }
+                filter: { kind: [pylon, bbq, bicycle_repair_station, cycle_barrier, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
                 draw: 
                     icons:
                         order: 41
@@ -5095,7 +5239,7 @@ layers:
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, waterfall, fishing_spot, slipway, shower] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, pylon, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] } }
                 draw: 
                     icons:
                         order: 45
@@ -5103,8 +5247,6 @@ layers:
                     text-blend-order:
                         order: 46
                         visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
-
-
             icons:
                 adult-boutique:
                     filter: { kind: [erotic, adult_boutique] }
@@ -5140,7 +5282,7 @@ layers:
                     filter: { kind: [biergarten, beer-garden, brewery] }
                     draw:   { icons: { sprite: beer-garden } }
                 bike-shop:
-                    filter: { kind: [bicycle, bicycle_rental, bike, bike_shop] }
+                    filter: { kind: [bicycle, bicycle_rental, bike, bike_shop, bicycle_rental_station] }
                     draw:   { icons: { sprite: bike-shop } }
                 bicycle-parking:
                     filter: { kind: [bicycle_parking] }
@@ -5252,7 +5394,7 @@ layers:
                     filter: { kind: [fish, fish-market, seafood, fishmonger] }
                     draw:   { icons: { sprite: fish-market } }
                 fishing-spot:
-                    filter: { kind: [fishing_spot, fishing-spot, fishing] }
+                    filter: { kind: [fishing_area, fishing-spot, fishing] }
                     draw:   { icons: { sprite: fishing-spot } }
                 fitness:
                     filter: { kind: [gym, fitness, fitness_center] }
@@ -5638,6 +5780,42 @@ layers:
                     filter: { $zoom: { min: 8} }
                     draw:
                         text-blend-order: { font: { size: 14px } }
+
+    earth-labels:
+        data: { source: mapzen, layer: earth }
+        filter: { name: true }
+        continent:
+            filter: { name: true, kind: [continent], $zoom: {max: 5} }
+            draw:
+                text-blend-order:
+                    visible: *text_visible_continent
+                    font:
+                        size: 14px
+                        style: italic
+                        fill: *text_fill
+                        weight: 600
+                        # stroke: { color: *text_stroke, width: 4 }
+                        transform: uppercase
+        continent-spacer:
+            filter: { kind: continent }
+            continent-spacer-z1-z5:
+                filter: { $zoom: { min: 1, max: 5 } }
+                draw:
+                    text-blend-order:
+                        text_source: function() { return feature.name.split('').join(' ') }
+                        text_wrap: false
+        island:
+            filter: { name: true, kind: [archipelago, island, islet] }
+            draw:
+                text-blend-order:
+                    visible: *text_visible_island
+                    font:
+                        size: 12px
+                        style: italic
+                        fill: brown #*text_fill
+                        weight: 400
+                        # stroke: { color: *text_stroke, width: 4 }
+                        #transform: uppercase
 
     landuse:
         data: { source: mapzen }
@@ -6065,6 +6243,26 @@ layers:
         #            order: 1000 #function() { return feature.sort_key; }
         #            color: grey
         #            visible: true
+        
+        tree_row:
+            filter:
+                kind: tree_row
+            draw:
+                lines:
+                    order: 501 # function() { return feature.sort_key; }
+                    color: green
+                    width: [[16,1px],[17,2px],[19,1.5m]]
+                    visible: true
+        hedge:
+            filter:
+                kind: hedge
+            draw:
+                lines:
+                    order: 500 # function() { return feature.sort_key; }
+                    color: green
+                    width: [[16,0.5px],[17,1px],[19,1m]]
+                    visible: true
+        
 
     natural-overlay:
         data: { source: mapzen, layer: earth }
@@ -6171,9 +6369,16 @@ layers:
                             # fill: [0.256,0.570,0.565]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
+                in_zoo_golf_course:
+                    filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                    draw:
+                        text-blend-order:
+                            visible: false
+
+
         # single hiking path
         foots_steps:
-            filter: { highway: [footway, steps], not: { footway: [sidewalk, crossing]} }
+            filter: { highway: [footway, steps] }
             draw:
                 dots-lines:
                     order: 1002
@@ -6275,6 +6480,40 @@ layers:
                         draw:
                             lines:
                                 width: [[0,1px]]
+            in_zoo_golf_course:
+                filter: { landuse_kind: [zoo, golf_course, garden, university] }
+                draw:
+                    lines:
+                        width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                early:
+                    filter: { $zoom: { max: 15 } }
+                    draw:
+                        lines:
+                            visible: false
+            sidewalk-crossing:
+                filter: { footway: [sidewalk, crossing] }
+                draw:
+                    lines:
+                        width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
+                        order: 350 # function() { return feature.sort_key; }
+                    dots-lines:
+                        width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
+                        order: 351 # function() { return (feature.sort_key + 1); }
+                    dashedline:
+                        visible: false
+                early-z17:
+                    filter: { $zoom: { max: 18 } }
+                    draw:
+                        lines:
+                            visible: false
+                        dots-lines:
+                            visible: false
+                early-z17-lines:
+                    filter: { $zoom: [17] }
+                    draw:
+                        lines:
+                            visible: true
+                            width: 1.5px
             labels-footpaths:
                 filter: { $zoom: { min: 15 } }
                 draw:
@@ -6285,6 +6524,12 @@ layers:
                             fill: [0.107,0.534,0.462]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
+                in_zoo_golf_course:
+                    filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                    draw:
+                        text-blend-order:
+                            visible: false
+
         cycleway:
             filter: { highway: cycleway }
             draw:
@@ -6316,6 +6561,27 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
+    bicycle-roads:
+        data: { source: mapzen, layer: roads }
+        filter: 
+            any:
+                - bicycle_network: true
+                - cycleway: true
+                  not: { cycleway: no }
+                - cycleway_left: true
+                  not: { cycleway_left: no }
+                - cycleway_right: true
+                  not: { cycleway_right: no }
+                - cycleway_both: true
+                  not: { cycleway_both: no }
+        draw:
+            lines:
+                interactive: false
+                color: [[13,[0,0,1,0.5]],[15,blue]]
+                width: [[11,0.5px],[12,0.8px],[16,1.25px],[18,1m]]
+                # let roads sort themselves past zoom 14
+                order: 488
+
     # dirt or gravel "road", sometimes used by hikers – but if it's no motorvehicle, then it's included in paths above
     track-overlay:
         data: { source: mapzen, layer: roads }
@@ -6345,6 +6611,16 @@ layers:
                         cap: round
                         width: [[16, 1.5px], [17, 2px], [18, 2px], [19, 2px]]
                         order: 999
+        in_zoo_golf_course:
+            filter: { landuse_kind: [zoo, golf_course, garden, university] }
+            draw:
+                lines:
+                    width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+            early:
+                filter: { $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        visible: false
         labels-track:
             #filter: { $zoom: { min: 17 } }
             draw:
@@ -6355,6 +6631,11 @@ layers:
                         fill: [0.475,0.349,0.329]
                         size: 12px
                         stroke: { color: *text_stroke, width: 4 }
+            in_zoo_golf_course:
+                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                draw:
+                    text-blend-order:
+                        visible: false
 
     other-roads-no-motorvehicle-overlay:
         data: { source: mapzen, layer: roads }
