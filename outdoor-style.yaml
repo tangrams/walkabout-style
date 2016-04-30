@@ -392,6 +392,8 @@ sources:
 #         url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/terrarium/{z}/{x}/{y}.png
 
 styles:
+    highlight:
+        base: lines
     dots-lines:
         base: lines
         lighting: false
@@ -6582,11 +6584,42 @@ layers:
                   not: { cycleway_both: no }
         draw:
             lines:
-                interactive: false
+                interactive: true
                 color: [[13,[0,0,1,0.5]],[15,blue]]
                 width: [[11,0.5px],[12,0.8px],[16,1.25px],[18,1m]]
                 # let roads sort themselves past zoom 14
                 order: 488
+        bike_lanes:
+            filter: 
+                all:
+                    - $zoom: { min: 15 }
+                any:
+                    - cycleway: true
+                      not: { cycleway: no }
+                    - cycleway_left: true
+                      not: { cycleway_left: no }
+                    - cycleway_right: true
+                      not: { cycleway_right: no }
+                    - cycleway_both: true
+                      not: { cycleway_both: no }
+            draw:
+                lines:
+                    width: [[15,2px],[16,3px],[18,2m]]
+            later:
+                filter: 
+                    all:
+                        - $zoom: { min: 18 }
+                draw:
+                    highlight:
+                        color: yellow
+                        width: [[15,4px],[16,6px],[18,7m]]
+                        # let roads sort themselves past zoom 14
+                        order: 487
+                shared_lane:
+                    filter: { cycleway: shared_lane }
+                    draw:
+                        highlight:
+                            color: '#87CEFA'
 
     # dirt or gravel "road", sometimes used by hikers – but if it's no motorvehicle, then it's included in paths above
     track-overlay:
