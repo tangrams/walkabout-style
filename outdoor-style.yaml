@@ -110,6 +110,7 @@ settings:
         - &retaining_wall             [0.827,0.808,0.780]
         - &snow_fence                 [0.827,0.808,0.780]
         - &fence                      [0.827,0.808,0.780]
+        - &dam                        [0.827,0.808,0.780]
 
     areas:
         - &scene1      white                    # map background
@@ -2583,7 +2584,13 @@ layers:
                 lines:
                     color: *fence
                     width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-
+        dam:
+            filter: { kind: dam }
+            draw:
+                lines:
+                    color: red #*dam
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+                    
     places:
         data: { source: mapzen, layer: places }
         filter: { not: { kind: [ocean, sea] } }
@@ -5815,6 +5822,7 @@ layers:
             draw:
                 text-blend-order:
                     visible: *text_visible_island
+                    text_wrap: 10
                     font:
                         size: 12px
                         style: italic
@@ -6324,6 +6332,7 @@ layers:
                 - kind: path
             not: 
                 - man_made: [pier]
+                - highway: cycleway
         draw:
             lines:
                 color: [[11,[0.252,0.509,0.60]],[12,[0.120,0.600,0.520]]]
@@ -6339,7 +6348,7 @@ layers:
         paths:
             filter:
                 any:
-                    - highway: path     
+                    - highway: path
                     - all:
                         - highway: track
                         - motor_vehicle: no
@@ -6576,6 +6585,7 @@ layers:
         filter: 
             any:
                 - bicycle_network: true
+                - highway: cycleway
                 - cycleway: true
                   not: { cycleway: no }
                 - cycleway_left: true
