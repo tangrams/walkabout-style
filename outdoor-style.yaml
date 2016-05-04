@@ -2,7 +2,7 @@
 
 labels-global:
     - &text_visible_continent         true
-    - &text_visible_island            false
+    - &text_visible_island            true
     - &text_visible_admin             true
     - &text_visible_populated_places  true
     - &icon_visible_populated_places  true
