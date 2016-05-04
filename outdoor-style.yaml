@@ -20,9 +20,9 @@ labels-global:
     - &label_visible_poi_landuse_e    true
     - &icon_visible_poi_landuse_e     true
     - &text_visible_poi_landuse_e     true
-    - &label_visible_station          false
-    - &icon_visible_station           false
-    - &text_visible_station           false
+    - &label_visible_station          true
+    - &icon_visible_station           true
+    - &text_visible_station           true
     - &text_visible_highway           true
     - &text_visible_highway_e         true
     - &text_visible_trunk_primary     true
@@ -5922,39 +5922,39 @@ layers:
             #         polygons:
             #             color: [1.00,1.00,1.00]
             #             visible: *green4_v
-            # forest:
-            #     filter: { kind: [forest,wood], $zoom: { min: 6 } }
-            #     national-forest:
-            #         filter:
-            #             operator: [ "United States Forest Service", "US Forest Service", "U.S. Forest Service", "USDA Forest Service" ]
-            #         draw:
-            #             terrain-grid:
-            #                 color: [0.856,0.951,0.902]
-            #                 visible: true
+            forest:
+                filter: { kind: [forest,wood], $zoom: { min: 6 } }
+                national-forest:
+                    filter:
+                        operator: [ "United States Forest Service", "US Forest Service", "U.S. Forest Service", "USDA Forest Service" ]
+                    draw:
+                        terrain:
+                            color: [0.936,0.981,0.946]
+                            visible: true
 
-            #     landuse-forest:
-            #         filter:
-            #             not: { operator: [ "United States Forest Service", "US Forest Service", "U.S. Forest Service", "USDA Forest Service" ] }
-            #             $zoom: { min: 6 }
-            #         draw:
-            #             terrain-grid: 
-            #                 color: [0.856,0.951,0.902]
-            #                 visible: true
+                landuse-forest:
+                    filter:
+                        not: { operator: [ "United States Forest Service", "US Forest Service", "U.S. Forest Service", "USDA Forest Service" ] }
+                        $zoom: { min: 6 }
+                    draw:
+                        terrain: 
+                            color: [0.936,0.981,0.946]
+                            visible: true
 
-            # nature_reserve:
-            #     filter: { kind: nature_reserve, $zoom: { min: 7 } }
-            #     draw:
-            #         terrain-grid:
-            #             order: function() { return feature.sort_key; }
-            #     wilderness-areas:
-            #         filter: function() { return feature.name && feature.name.indexOf("Wilderness") > -1 }
-            #         draw:
-            #             terrain-grid:
-            #                 color: [0.890,0.973,0.886]
-            #             outline:
-            #                 style: lines
-            #                 color: [0.529,0.729,0.624]
-            #                 width: [[9,0px],[10,2px],[12,4px]]
+            nature_reserve:
+                filter: { kind: nature_reserve, $zoom: { min: 7 } }
+                draw:
+                    terrain-grid:
+                        order: function() { return feature.sort_key; }
+                wilderness-areas:
+                    filter: function() { return feature.name && feature.name.indexOf("Wilderness") > -1 }
+                    draw:
+                        terrain:
+                            color: [0.890,0.973,0.886]
+                        # outline:
+                        #     style: lines
+                        #     color: red
+                        #     width: [[9,1px],[10,2px],[12,4px]]
 
             parks-and-national-forests-not-national-park:
                 filter: { $zoom: { min: 4 }, kind: [park, national_park, "park or protected land"], not: { operator: [ "United States National Park Service", "US National Park Service" ] } }
@@ -6023,7 +6023,7 @@ layers:
                     kind: cemetery
                 draw:
                     terrain:
-                        color: [0.986,0.990,0.920]
+                        color: [0.986,1.000,0.940]
                         visible: true
         #     # commercial:
         #     #     filter:
@@ -6032,13 +6032,13 @@ layers:
         #     #         dots:
         #     #             color: [0.855,0.748,0.667]
         #     #             visible: *grey1_v
-        #     golf_course:
-        #         filter:
-        #             kind: golf_course
-        #         draw:
-        #             medium-dots:
-        #                 color: [0.830,0.830,0.830]
-        #                 visible: true
+            golf_course:
+                filter:
+                    kind: golf_course
+                draw:
+                    terrain:
+                        color: [0.840,1.000,0.907]
+                        visible: true
             hospital:
                 filter:
                     kind: hospital
@@ -6597,12 +6597,13 @@ layers:
         draw:
             lines:
                 interactive: true
-                color: [[11,[0.360,0.573,1.000]],[14,[0.360,0.573,1.000]],[15,[1.00,1.00,1.00]]]
+                color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
                 width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
                 # let roads sort themselves past zoom 14
                 order: 488
                 outline: 
-                    color: [0.360,0.573,1.000]
+                    # color: [0.360,0.573,1.000]
+                    color: [0.182,0.593,0.730]
                     width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
         bike_lanes:
             filter: 
@@ -6623,7 +6624,7 @@ layers:
                     width: [[15,0px],[16,1px],[17,4px],[18,6m]]
                     outline:
                         width: [[15, 0.5px],[16, 1px],[17, 1.5px],[18, 2.5px]]
-                        color: [[15,[0.360,0.573,1.000]],[16,[0.360,0.573,1.000]],[17,[0.460,0.640,1.000]]]
+                        color: [[15,[0.182,0.593,0.730]],[16,[0.182,0.593,0.730]],[17,[0.460,0.640,1.000]]]
             later:
                 filter: 
                     all:
