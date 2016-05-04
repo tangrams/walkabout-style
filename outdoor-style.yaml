@@ -20,9 +20,9 @@ labels-global:
     - &label_visible_poi_landuse_e    true
     - &icon_visible_poi_landuse_e     true
     - &text_visible_poi_landuse_e     true
-    - &label_visible_station          true
-    - &icon_visible_station           true
-    - &text_visible_station           true
+    - &label_visible_station          false
+    - &icon_visible_station           false
+    - &text_visible_station           false
     - &text_visible_highway           true
     - &text_visible_highway_e         true
     - &text_visible_trunk_primary     true
@@ -4235,7 +4235,7 @@ layers:
                         font:
                             size: 9px
                             weight: 400
-                            fill: [0.600,0.600,0.600]
+                            fill: [0.445,0.469,0.503]
                             transform: uppercase
                             stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z12:
@@ -4260,7 +4260,7 @@ layers:
                         font:
                             size: 10px
                             weight: 400
-                            fill: [0.400,0.400,0.400]
+                            fill: [0.445,0.469,0.503]
                             transform: uppercase
                             stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z13:
@@ -4285,7 +4285,7 @@ layers:
                         font:
                             size: 12px
                             weight: 300
-                            fill: [0.420,0.420,0.420]
+                            fill: [0.445,0.469,0.503]
                             transform: uppercase
                             stroke: { color: [0.904,0.916,0.924], width: 4 }
             neighborhood-z14:
@@ -4310,7 +4310,7 @@ layers:
                         font:
                             size: 14px
                             weight: 200
-                            fill: [0.400,0.400,0.400]
+                            fill: [0.397,0.418,0.449]
                             transform: uppercase
                             stroke: { color: [0.914,0.926,0.934], width: 5 }
             neighborhood-z15:
@@ -4335,7 +4335,7 @@ layers:
                         font:
                             size: 18px
                             weight: 200
-                            fill: [0.500,0.500,0.500]
+                            fill: [0.427,0.450,0.483]
                             transform: uppercase
                             stroke: { color: [0.914,0.926,0.934], width: 6 }
                 z15-new:
@@ -4368,7 +4368,7 @@ layers:
                         font:
                             size: 20px
                             weight: 300
-                            fill: [0.00,0.00,0.00,0.50]
+                            fill: [0.448,0.473,0.507]
                             transform: uppercase
                             stroke: { color: [0.914,0.926,0.934], width: 6 }
 
