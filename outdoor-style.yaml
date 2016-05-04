@@ -5826,7 +5826,7 @@ layers:
                     font:
                         size: 12px
                         style: italic
-                        fill: brown #*text_fill
+                        fill: *text_fill
                         weight: 400
                         # stroke: { color: *text_stroke, width: 4 }
                         #transform: uppercase
