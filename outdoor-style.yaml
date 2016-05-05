@@ -4494,7 +4494,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
+                filter: { kind: [bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
                 draw: 
                     icons:
                         priority: 43
@@ -5234,7 +5234,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bbq, bicycle_repair_station, cycle_barrier, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
+                filter: { kind: [bbq, bicycle_repair_station, cycle_barrier, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
                 draw: 
                     icons:
                         order: 41
@@ -5252,7 +5252,7 @@ layers:
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, monument, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] } }
                 draw: 
                     icons:
                         order: 45
