@@ -8,8 +8,8 @@ labels-global:
     - &icon_visible_populated_places  true
     - &text_visible_neighbourhoods    true
     - &text_visible_neighbourhoods_e  true
-    - &text_visible_building          true
-    - &text_visible_address           true
+    - &text_visible_building          false
+    - &text_visible_address           false
     - &text_visible_water_labels      true
     - &label_visible_landuse_green    true
     - &icon_visible_landuse_green     true
@@ -103,9 +103,9 @@ settings:
         - &piste_expert               [0.450,0.450,0.450]
 
     boundaries:
-        - &country_boundary           '#ccc'
-        - &region_boundary            '#ccc'
-        - &subregion_boundary         '#ccc'
+        - &country_boundary           [1.00,1.00,1.00]
+        - &region_boundary            [1.00,1.00,1.00]
+        - &subregion_boundary         [1.00,1.00,1.00]
         - &city_wall                  [0.682,0.682,0.682]
         - &retaining_wall             [0.827,0.808,0.780]
         - &snow_fence                 [0.827,0.808,0.780]
@@ -2319,13 +2319,13 @@ layers:
             polygons:
                 visible: false
                 order: 329
-                color: [[14,[0.855,0.901,0.950]],[15,[0.912,0.940,0.970]],[16,[0.95,0.95,0.95]]]
+                color: [[14,[0.940,0.950,0.950]],[15,[0.920,0.930,0.930]],[16,[0.930,0.940,0.940]]]
             lines:
                 style: lines
                 order: 330
                 visible: false
-                color: [[14,[0.650,0.650,0.650]],[17,[0.85, 0.85, 0.85]]]
-                width: [[14, 0.65px], [15, 0.65px], [16,0.75px], [17,1px], [18, 1.25px]]
+                color: [[14,[0.750,0.750,0.750]],[17,[0.85, 0.85, 0.85]]]
+                width: [[14, 0.65px], [15, 0.75px], [16,1px], [17,1px], [18, 1.25px]]
 
         # turn interactive feature selection on for buildings with names
         interactive:
@@ -2513,7 +2513,7 @@ layers:
                     stroke: { color: *text_stroke_address, width: 4 }
 
     boundaries:
-        data: { source: osm, layer: boundaries }
+        data: { source: mapzen, layer: boundaries }
         # country subdivisions (states, provinces)
         draw:
             lines:
@@ -2537,7 +2537,7 @@ layers:
                 draw:
                     lines:
                         order: function() { return (feature.sort_key - 2); }
-                        color: blue
+                        color: [0.568,0.942,1.000]
         region:
             filter:
                 any:
@@ -2560,36 +2560,36 @@ layers:
 #                draw:
 #                    lines:
 #                        visible: false
-        city_walls:
-            filter: { kind: city_wall }
-            draw:
-                lines:
-                    color: *city_wall
-                    width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
-        retaining_wall:
-            filter: { kind: retaining_wall }
-            draw:
-                lines:
-                    color: *retaining_wall
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
-        snow_fence:
-            filter: { kind: snow_fence }
-            draw:
-                lines:
-                    color: *snow_fence
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-        fence:
-            filter: { kind: fence }
-            draw:
-                lines:
-                    color: *fence
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-        dam:
-            filter: { kind: dam }
-            draw:
-                lines:
-                    color: *dam
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        # city_walls:
+        #     filter: { kind: city_wall }
+        #     draw:
+        #         lines:
+        #             color: *city_wall
+        #             width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
+        # retaining_wall:
+        #     filter: { kind: retaining_wall }
+        #     draw:
+        #         lines:
+        #             color: *retaining_wall
+        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
+        # snow_fence:
+        #     filter: { kind: snow_fence }
+        #     draw:
+        #         lines:
+        #             color: *snow_fence
+        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        # fence:
+        #     filter: { kind: fence }
+        #     draw:
+        #         lines:
+        #             color: *fence
+        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        # dam:
+        #     filter: { kind: dam }
+        #     draw:
+        #         lines:
+        #             color: *dam
+        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
 
     places:
         data: { source: mapzen, layer: places }
@@ -6369,7 +6369,10 @@ layers:
                 filter: { walking_network: true }
                 draw:
                     lines:
-                        width: [[13, 1.7px], [14, 1.8px], [15, 2.5px], [16, 2.5px], [17, 3px], [18, 3px], [19, 4px]]
+                        width: [[13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                        outline:
+                            color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                            width: [[12, 1.25px], [13, 1.5px], [14, 2px]]
             no_name_early_not_designated:
                 filter: { name: false, $zoom: { max: 14 } }
                 draw:
@@ -6588,66 +6591,66 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
-    bicycle-roads:
-        data: { source: mapzen, layer: roads }
-        filter: 
-            any:
-                - bicycle_network: true
-                - highway: cycleway
-                - cycleway: true
-                  not: { cycleway: no }
-                - cycleway_left: true
-                  not: { cycleway_left: no }
-                - cycleway_right: true
-                  not: { cycleway_right: no }
-                - cycleway_both: true
-                  not: { cycleway_both: no }
-        draw:
-            lines:
-                interactive: true
-                color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
-                width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
-                # let roads sort themselves past zoom 14
-                order: 488
-                outline: 
-                    # color: [0.360,0.573,1.000]
-                    color: [0.182,0.593,0.730]
-                    width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
-        bike_lanes:
-            filter: 
-                all:
-                    - $zoom: { min: 15 }
-                any:
-                    - cycleway: true
-                      not: { cycleway: no }
-                    - cycleway_left: true
-                      not: { cycleway_left: no }
-                    - cycleway_right: true
-                      not: { cycleway_right: no }
-                    - cycleway_both: true
-                      not: { cycleway_both: no }
-            draw:
-                lines:
-                    color: [1.00,1.00,1.00]
-                    width: [[15,0px],[16,1px],[17,4px],[18,6m]]
-                    outline:
-                        width: [[15, 0.5px],[16, 1px],[17, 1.5px],[18, 2.5px]]
-                        color: [[15,[0.182,0.593,0.730]],[16,[0.182,0.593,0.730]],[17,[0.460,0.640,1.000]]]
-            later:
-                filter: 
-                    all:
-                        - $zoom: { min: 18 }
-                draw:
-                    highlight:
-                        color: [0.930,0.953,1.000]
-                        width: [[15,4px],[16,6px],[18,7m]]
-                        # let roads sort themselves past zoom 14
-                        order: 487
-                shared_lane:
-                    filter: { cycleway: shared_lane }
-                    draw:
-                        highlight:
-                            color: [0.750,0.833,1.000]
+    # bicycle-roads:
+    #     data: { source: mapzen, layer: roads }
+    #     filter: 
+    #         any:
+    #             - bicycle_network: true
+    #             - highway: cycleway
+    #             - cycleway: true
+    #               not: { cycleway: no }
+    #             - cycleway_left: true
+    #               not: { cycleway_left: no }
+    #             - cycleway_right: true
+    #               not: { cycleway_right: no }
+    #             - cycleway_both: true
+    #               not: { cycleway_both: no }
+    #     draw:
+    #         lines:
+    #             interactive: true
+    #             color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
+    #             width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
+    #             # let roads sort themselves past zoom 14
+    #             order: 488
+    #             outline: 
+    #                 # color: [0.360,0.573,1.000]
+    #                 color: [0.182,0.593,0.730]
+    #                 width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
+    #     bike_lanes:
+    #         filter: 
+    #             all:
+    #                 - $zoom: { min: 15 }
+    #             any:
+    #                 - cycleway: true
+    #                   not: { cycleway: no }
+    #                 - cycleway_left: true
+    #                   not: { cycleway_left: no }
+    #                 - cycleway_right: true
+    #                   not: { cycleway_right: no }
+    #                 - cycleway_both: true
+    #                   not: { cycleway_both: no }
+    #         draw:
+    #             lines:
+    #                 color: [1.00,1.00,1.00]
+    #                 width: [[15,0px],[16,1px],[17,4px],[18,6m]]
+    #                 outline:
+    #                     width: [[15, 0.5px],[16, 1px],[17, 1.5px],[18, 2.5px]]
+    #                     color: [[15,[0.182,0.593,0.730]],[16,[0.182,0.593,0.730]],[17,[0.460,0.640,1.000]]]
+    #         later:
+    #             filter: 
+    #                 all:
+    #                     - $zoom: { min: 18 }
+    #             draw:
+    #                 highlight:
+    #                     color: [0.930,0.953,1.000]
+    #                     width: [[15,4px],[16,6px],[18,7m]]
+    #                     # let roads sort themselves past zoom 14
+    #                     order: 487
+    #             shared_lane:
+    #                 filter: { cycleway: shared_lane }
+    #                 draw:
+    #                     highlight:
+    #                         color: [0.750,0.833,1.000]
 
     # dirt or gravel "road", sometimes used by hikers – but if it's no motorvehicle, then it's included in paths above
     track-overlay:
