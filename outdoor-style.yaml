@@ -6372,7 +6372,9 @@ layers:
                 draw:
                     lines:
                         width: [[13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
-                        outline:
+                        highlight-network:
+                            style: lines
+                            order: 980
                             color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
                             width: [[12, 1.25px], [13, 1.5px], [14, 2px]]
             no_name_early_not_designated:
