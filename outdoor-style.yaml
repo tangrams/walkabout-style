@@ -906,10 +906,10 @@ layers:
                     lines:
                         visible: false
                     dots-lines:
-                        order: function() { return feature.sort_key; }
                         interactive: true
+                        order: function() { return feature.sort_key; }
                         color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
-                        width: [[10,0px],[11,0.25px],[12,0.5px],[13,1.25px],[14,2.25px],[15,3px],[16,4px],[17,5m]]
+                        width: [[10,0px],[11,0.5px],[12,1px],[13,2px],[14,3px],[15,4px],[16,5px]]
 
     roads:
         data: { source: mapzen, layer: roads }
@@ -5011,7 +5011,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             peak-early:
-                filter: { kind: [peak], $zoom: { max: 14 } }
+                filter: { kind: [peak, volcano], $zoom: { max: 14 } }
                 draw:
                     text-blend-order:  { visible: true }
                     icons: { visible: true }
@@ -5026,7 +5026,7 @@ layers:
                         icons: { visible: false }
                         text-blend-order: { visible: false }
             peak-labels:
-                filter: { kind: [peak], $zoom: { min: 14 } }
+                filter: { kind: [peak, volcano], $zoom: { min: 14 } }
                 draw:
                     text-blend-order:
                         text_source: function() { if( feature.name && feature.elevation ) { return feature.name + "\n" + feature.elevation; } else { if( feature.name ) { return feature.name; } else { return feature.elevation; } } }
@@ -5260,6 +5260,8 @@ layers:
                     text-blend-order:
                         order: 46
                         visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
+            no-icon:
+                
             icons:
                 adult-boutique:
                     filter: { kind: [erotic, adult_boutique] }
@@ -6379,7 +6381,7 @@ layers:
                     lines:
                         width: [[0,1px]]
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university] }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
                 draw:
                     lines:
                         width: [[13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
@@ -6400,7 +6402,7 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 in_zoo_golf_course:
-                    filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
                     draw:
                         text-blend-order:
                             visible: false
@@ -6511,10 +6513,10 @@ layers:
                             lines:
                                 width: [[0,1px]]
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university] }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
                 draw:
                     lines:
-                        width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                        width: [[15, 0.5px], [16, 1px], [17, 2.25px], [18, 5px], [19, 6px]]
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
@@ -6555,7 +6557,7 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 in_zoo_golf_course:
-                    filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
                     draw:
                         text-blend-order:
                             visible: false
@@ -6667,6 +6669,11 @@ layers:
                 width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
+        networked:
+            filter: { walking_network: true }
+            draw:
+                lines:
+                    width: [[13, 1.7px], [14, 1.8px], [15, 2.5px], [16, 2.5px], [17, 3px], [18, 3px], [19, 4px]]
         late:
             filter: { $zoom: { min: 16 } }
             draw:
@@ -6682,7 +6689,7 @@ layers:
                         width: [[16, 1.5px], [17, 2px], [18, 2px], [19, 2px]]
                         order: 999
         in_zoo_golf_course:
-            filter: { landuse_kind: [zoo, golf_course, garden, university] }
+            filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
             draw:
                 lines:
                     width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
@@ -6702,7 +6709,7 @@ layers:
                         size: 12px
                         stroke: { color: *text_stroke, width: 4 }
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university], $zoom: { max: 15 } }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
                 draw:
                     text-blend-order:
                         visible: false
