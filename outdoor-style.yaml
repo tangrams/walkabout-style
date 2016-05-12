@@ -20,9 +20,9 @@ labels-global:
     - &label_visible_poi_landuse_e    true
     - &icon_visible_poi_landuse_e     true
     - &text_visible_poi_landuse_e     true
-    - &label_visible_station          false
-    - &icon_visible_station           false
-    - &text_visible_station           false
+    - &label_visible_station          true
+    - &icon_visible_station           true
+    - &text_visible_station           true
     - &text_visible_highway           true
     - &text_visible_highway_e         true
     - &text_visible_trunk_primary     true
@@ -364,10 +364,13 @@ textures:
 sources:
     mapzen: 
         type: TopoJSON
-        # url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
-        url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        #url: //vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        #url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        #url:  //localhost:8081/osm/all/{z}/{x}/{y}.topojson
         #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
+        max_zoom: 16
     normals: # normals
         type: Raster
         # prod is doesn't have low zoom detail, use dev
@@ -4494,7 +4497,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
+                filter: { kind: [bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage, windmill] }
                 draw: 
                     icons:
                         priority: 43
@@ -5197,26 +5200,43 @@ layers:
                         size: [[16, 12px], [17, 18px]]
                     text-blend-order:
                         offset: [[13, [0, 6px]], [16, [0, 9px]]]
+            glacier:
+                filter: { kind: glacier }
+                draw:
+                    text-blend-order:
+                        font:
+                            color: *text_fill_water
             bus-stop-bus-station-labels:
                 filter:
                     kind: [bus_stop, bus_station]
                     $zoom: { min: 18 }
                 draw:
+                    icons:
+                        size: [[17, 8px], [19, 18px]]
                     text-blend-order:
                         visible: *text_visible_poi_landuse
                         font:
                             fill: *text_fill
                             size: 11px
                             stroke: { color: *text_stroke, width: 4 }
-#                bus_stop:
-#                    filter:
-#                        kind: [bus_stop]
-#                        $zoom: { max: 19 }
-#                    draw:
-#                        icons:
-#                            size: [[13, 8px], [19, 18px]]
-#                        text-blend-order:
-#                            visible: false
+            bus_stop-early:
+                filter:
+                    kind: [bus_stop]
+                    $zoom: { max: 17 }
+                draw:
+                    icons:
+                        visible: false
+                    text-blend-order:
+                        visible: false
+            bus_stop-early-z17:
+                filter:
+                    kind: [bus_stop]
+                    $zoom: [17,18]
+                draw:
+                    icons:
+                        size: [[17, 16px], [19, 18px]]
+                    text-blend-order:
+                        visible: false
             minor-z17-early:
                 filter:
                     kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental_station, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, slipway, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
@@ -5234,7 +5254,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bbq, bicycle_repair_station, cycle_barrier, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] }
+                filter: { kind: [bbq, bicycle_repair_station, cycle_barrier, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, trailhead, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage, windmill] }
                 draw: 
                     icons:
                         order: 41
@@ -5252,7 +5272,7 @@ layers:
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, bbq, bicycle_repair_station, dive_centre, life_ring, picnic_table, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, ranger_station, caravan_site, picnic_table, picnic_site, bbq, dog_park, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, waterfall, summer_camp, dam, battlefield, boat_storage, windmill] } }
                 draw: 
                     icons:
                         order: 45
@@ -5261,7 +5281,19 @@ layers:
                         order: 46
                         visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
             no-icon:
-                
+                filter: { kind: [scrub, wetland, glacier, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
+                draw: 
+                    icons:
+                        visible: false
+                    text-blend-order:
+                        text_wrap: 10
+                        font:
+                            style: italic
+#                early:
+#                    fitler: { $zoom: { max: 14 }, not: { kind: [glacier, farmland] } }
+#                    draw:
+#                        text-blend-order:
+#                            visible: false
             icons:
                 adult-boutique:
                     filter: { kind: [erotic, adult_boutique] }
