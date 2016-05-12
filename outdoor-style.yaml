@@ -364,36 +364,28 @@ textures:
 sources:
     mapzen: 
         type: TopoJSON
+        # prod
         url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        # earlier prod version
         #url: //vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        # dev
         #url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
+        # staging (proxy)
         #url:  //localhost:8081/osm/all/{z}/{x}/{y}.topojson
+        # local tiles
         #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
         rasters: [normals]
         max_zoom: 16
     normals: # normals
         type: Raster
-        # prod is doesn't have low zoom detail, use dev
+        # prod
         url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
-        # global prod 
+        # staging
         #url: https://s3.amazonaws.com/elevation-tiles-prod/normal/{z}/{x}/{y}.png
-        # dev has better 10 meter detail in areas otherwise SRTM 30 meter fuzzy (and has low zoom tiles)
+        # dev
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
         max_zoom: 14
-
-# sources:
-#     osm:
-#         type: TopoJSON
-#         url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-HqUVidw
-#         rasters: [normals]
-#     normals:
-#         type: Raster
-#         url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
-#         max_zoom: 15
-#     elevation:
-#         type: Raster
-#         url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/terrarium/{z}/{x}/{y}.png
 
 styles:
     highlight:
