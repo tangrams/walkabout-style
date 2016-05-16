@@ -633,10 +633,8 @@ styles:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
                 u_envmap: images/draw-test8.jpg
-                u_scale: 3. # higher values are more exaggerated
-                u_scale_end: 0.001
-                u_scale_fade_start: 3.
-                u_scale_fade_duration: 15.
+                u_contrast: 1.
+                u_brightness: 1.
             blocks:
                 global: |
                     // Simplified view-independent environment map
@@ -650,19 +648,15 @@ styles:
                     }
                     const float e = 2.71828;
                 color: |
-                    normal.z /= u_scale; // turn terrain exaggeration up/down
+                    // scale up normals with a function
+                    // https://www.desmos.com/calculator/bv4mzh8erz
+                    //float scale = 10./(u_map_position.z-.7) + 1.8;
+                    float scale = 20./(u_map_position.z) + 1.5;
+                    normal.z /= scale; // turn terrain exaggeration up/down
                     // fade out spheremap normals with a function
                     // https://www.desmos.com/calculator/ptgkzcnfyc
                     float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
-                    // https://www.desmos.com/calculator/sanlujpfmc
-                    //float a = -0.0013719
-                    //float b = 0.057575
-                    //float c = -0.82002
-                    //float d = 4.2489
-                    //float f = -2.8336
-                    //float m = (a * pow(u_map_position.z, 4) + (b * pow(u_map_position.z, 3)) + (c * pow(u_map_position.z, 2)) + ( d * u_map_position.z) + f
                     m = clamp(m, 0., 1.5);
-                    // normal = normalize(normal);
                     color = terrainEnvmap(u_envmap, normal);
                     
                     // Apply contrast
