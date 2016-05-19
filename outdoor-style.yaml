@@ -224,7 +224,7 @@ textures:
             bar: [230, 168, 38, 38]
             baseball-field: [506, 84, 38, 38]
             basketball-court: [460, 84, 38, 38]
-            bbq: [506, 210, 38, 38]
+            bbq: [690, 210, 38, 38]
             beach: [644, 84, 38, 38]
             beer-garden: [276, 210, 38, 38]
             bench: [548, 0, 38, 38]
@@ -241,12 +241,13 @@ textures:
             butcher: [920, 42, 38, 38]
             campground: [828, 84, 38, 38]
             candy-store: [0, 210, 38, 38]
-            capital-l: [790, 212, 16, 16]
-            capital-m: [770, 212, 12, 12]
-            capital-s: [750, 212, 10, 10]
-            capital-xl: [814, 212, 20, 20]
-            capital-xs: [736, 212, 8, 8]
+            capital-l: [974, 210, 16, 16]
+            capital-m: [954, 210, 12, 12]
+            capital-s: [934, 210, 10, 10]
+            capital-xl: [0, 252, 20, 20]
+            capital-xs: [920, 210, 8, 8]
             car-dealership: [780, 126, 38, 38]
+            caravan-site: [414, 210, 38, 38]
             castle: [414, 42, 38, 38]
             cemetery: [736, 84, 38, 38]
             church: [230, 126, 38, 38]
@@ -255,21 +256,23 @@ textures:
             college-university: [870, 168, 38, 38]
             convenience-store: [46, 84, 38, 38]
             courthouse: [364, 0, 38, 38]
-            current-location: [158, 342, 88, 88]
+            current-location: [532, 252, 88, 88]
             department-store: [734, 126, 38, 38]
-            dog-park: [414, 210, 38, 38]
+            dog-park: [598, 210, 38, 38]
             drinking-water: [230, 210, 38, 38]
             dry-cleaning: [0, 84, 38, 38]
             electronics-store: [598, 126, 38, 38]
             factory: [368, 168, 38, 38]
             fire-station: [318, 0, 38, 38]
+            firepit: [552, 210, 38, 38]
+            fishing-area: [460, 210, 38, 38]
             fitness: [874, 42, 38, 38]
             flower-shop: [184, 126, 38, 38]
             forest: [46, 210, 38, 38]
             fountain: [322, 126, 38, 38]
             garden: [690, 84, 38, 38]
             gas-station: [960, 168, 38, 38]
-            generic: [690, 210, 38, 38]
+            generic: [874, 210, 38, 38]
             gift-shop: [138, 126, 38, 38]
             golf-course: [414, 84, 38, 38]
             government-building: [138, 168, 38, 38]
@@ -288,8 +291,8 @@ textures:
             light-rail: [686, 0, 38, 38]
             lighthouse: [276, 84, 38, 38]
             liquor-store: [506, 126, 38, 38]
-            locate-off: [492, 342, 72, 72]
-            locate-on: [412, 342, 72, 72]
+            locate-off: [866, 252, 72, 72]
+            locate-on: [786, 252, 72, 72]
             mall: [644, 42, 38, 38]
             market: [598, 42, 38, 38]
             mine: [782, 42, 40, 38]
@@ -308,25 +311,25 @@ textures:
             pet-store: [230, 42, 38, 38]
             pharmacy: [966, 42, 38, 38]
             photography-lab: [184, 42, 38, 38]
-            picnic-spot: [598, 210, 38, 38]
+            picnic-spot: [782, 210, 38, 38]
             pier: [640, 0, 38, 38]
             playground: [460, 42, 38, 38]
             police: [226, 0, 38, 38]
             pool: [184, 84, 38, 38]
             post-office: [322, 168, 38, 38]
-            ranger-station: [552, 210, 38, 38]
+            ranger-station: [736, 210, 38, 38]
             real-estate: [138, 42, 38, 38]
             recycling-facility: [92, 42, 38, 38]
             rental-car: [594, 0, 38, 38]
             restaurant: [92, 210, 38, 38]
-            route-arrow: [822, 210, 128, 128]
-            route-start: [78, 342, 72, 92]
-            route-stop: [0, 342, 72, 92]
+            route-arrow: [238, 252, 128, 128]
+            route-start: [452, 252, 72, 92]
+            route-stop: [374, 252, 72, 92]
             ruin: [502, 0, 38, 38]
             salon-barber: [46, 42, 38, 38]
             school: [552, 84, 38, 38]
-            search-active: [252, 342, 72, 108]
-            search-inactive: [332, 342, 72, 108]
+            search-active: [626, 252, 72, 108]
+            search-inactive: [706, 252, 72, 108]
             shoe-store: [552, 42, 38, 38]
             ski-area: [368, 126, 38, 38]
             soccer-field: [368, 84, 38, 38]
@@ -335,30 +338,31 @@ textures:
             spring: [322, 84, 38, 38]
             stadium: [460, 126, 38, 38]
             subway-entrance: [456, 0, 38, 38]
+            swimming-area: [506, 210, 38, 38]
             synagogue: [46, 0, 38, 38]
             tailor-shop: [962, 0, 38, 38]
             tennis: [414, 126, 38, 38]
             theme-park: [0, 126, 38, 38]
             toilets: [874, 84, 38, 38]
-            townspot-l: [1000, 210, 16, 16]
-            townspot-l-rev: [894, 210, 16, 16]
-            townspot-m: [980, 210, 12, 12]
-            townspot-m-rev: [874, 210, 12, 12]
-            townspot-s: [962, 210, 10, 10]
-            townspot-s-rev: [856, 210, 10, 10]
-            townspot-xl: [0, 252, 20, 20]
-            townspot-xl-rev: [918, 210, 20, 20]
-            townspot-xs: [946, 210, 8, 8]
-            townspot-xs-rev: [842, 210, 6, 6]
+            townspot-l: [186, 252, 16, 16]
+            townspot-l-rev: [78, 252, 16, 16]
+            townspot-m: [166, 252, 12, 12]
+            townspot-m-rev: [60, 252, 12, 12]
+            townspot-s: [148, 252, 10, 10]
+            townspot-s-rev: [42, 252, 10, 10]
+            townspot-xl: [210, 252, 20, 20]
+            townspot-xl-rev: [104, 252, 20, 20]
+            townspot-xs: [132, 252, 8, 8]
+            townspot-xs-rev: [28, 252, 6, 6]
             toy-game-store: [916, 0, 38, 38]
             traffic-signal: [916, 168, 36, 34]
-            trailhead: [644, 210, 38, 38]
+            trailhead: [828, 210, 38, 38]
             train-station: [410, 0, 38, 38]
             veterinarian: [138, 0, 38, 38]
             view-point: [686, 168, 40, 38]
             vineyard: [46, 168, 40, 38]
             volcano: [92, 84, 38, 38]
-            waterfall: [460, 210, 38, 38]
+            waterfall: [644, 210, 38, 38]
             wine-bar: [184, 210, 38, 38]
             winery: [456, 168, 38, 38]
             zoo: [966, 84, 38, 38]
@@ -4386,7 +4390,7 @@ layers:
                       - kind: true
         draw:
             icons:
-                size: [[13, 12px], [16, 18px], [18, 22px]]
+                size: [[13, 18px], [16, 18px], [18, 22px]]
                 interactive: true
                 visible: false
                 priority: 45
@@ -4491,6 +4495,15 @@ layers:
             trailhead:
                 filter: { kind: [trailhead], $zoom: { min: 15 } }
                 draw:   { icons: { sprite: trailhead, visible: *icon_visible_poi_landuse_e } }
+            firepit:
+                filter: { kind: [firepit], $zoom: { min: 15 } }
+                draw:   { icons: { sprite: firepit, visible: *icon_visible_poi_landuse_e } }
+            swimming-area:
+                filter: { kind: [swimming_area], $zoom: { min: 15 } }
+                draw:   { icons: { sprite: swimming-area, visible: *icon_visible_poi_landuse_e } }
+            hot-spring:
+                filter: { kind: [hot_spring], $zoom: { min: 15 } }
+                draw:   { icons: { sprite: spring, visible: *icon_visible_poi_landuse_e } }
             walking-or-bicycle_junction:
                 filter: { kind: [bicycle_junction, walking_junction] }
                 draw:
@@ -4499,7 +4512,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, caravan_site, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
+                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, slipway, shower, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
                 draw: 
                     icons:
                         priority: 43
@@ -5256,7 +5269,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, caravan_site, firepit , swimming_area, fishing_area, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, hot_spring, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
+                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, slipway, shower, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
                 draw: 
                     icons:
                         order: 41
@@ -5274,7 +5287,7 @@ layers:
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, caravan_site, firepit , swimming_area, fishing_area, slipway, shower, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, dive_centre, life_ring, shower, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, slipway, shower, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] } }
                 draw: 
                     icons:
                         order: 45
@@ -5380,11 +5393,14 @@ layers:
                     filter: { kind: [camera, camera-store, photo] }
                     draw:   { icons: { sprite: camera-store } }
                 campground:
-                    filter: { kind: [campground, camp_site, caravan_site] }
+                    filter: { kind: [campground, camp_site] }
                     draw:   { icons: { sprite: campground } }
                 candy-store:
                     filter: { kind: [candy, candy-store, confectionery] }
                     draw:   { icons: { sprite: candy-store } }
+                caravan-site:
+                    filter: { kind: [caravan_site] }
+                    draw:   { icons: { sprite: caravan-site } }
                 car-dealership:
                     filter: { kind: [car, car-dealership] }
                     draw:   { icons: { sprite: car-dealership } }
@@ -5445,9 +5461,9 @@ layers:
                 fish-market:
                     filter: { kind: [fish, fish-market, seafood, fishmonger] }
                     draw:   { icons: { sprite: fish-market } }
-                fishing-spot:
+                fishing-area:
                     filter: { kind: [fishing_area, fishing-spot, fishing] }
-                    draw:   { icons: { sprite: fishing-spot } }
+                    draw:   { icons: { sprite: fishing-area } }
                 fitness:
                     filter: { kind: [gym, fitness, fitness_center] }
                     draw:   { icons: { sprite: fitness } }
