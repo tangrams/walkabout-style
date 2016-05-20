@@ -6396,7 +6396,6 @@ layers:
                 - kind: path
             not: 
                 - man_made: [pier]
-                - highway: cycleway
         draw:
             lines:
                 color: [[11,[0.252,0.509,0.60]],[12,[0.120,0.600,0.520]]]
@@ -6637,95 +6636,52 @@ layers:
             filter: { highway: cycleway }
             draw:
                 lines:
-                    color: [0.120,0.600,0.520]
-                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
+#                    color: blue #[0.120,0.600,0.520]
+#                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
+#                    order: 1004
+
+                    color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
+                    #width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
+                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
+                    # let roads sort themselves past zoom 14
                     order: 1004
+                    outline: 
+                        color: [0.182,0.593,0.730]
+                        width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
+            networked:
+                filter: { walking_network: true }
+                draw:
+                    lines:
+                        width: [[13, 1.7px], [14, 1.8px], [15, 2.5px], [16, 2.5px], [17, 3px], [18, 3px], [19, 4px]]
+                    highlight:
+                        order: 980
+                        color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                        width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
+                        join: round
             late:
                 filter: { $zoom: { min: 15 } }
                 draw:
                     lines:
-                        color: white
+                        color: [[17,'#c8ecf7'],[18,'#a9d9e8']] #white
                         join: round
                         cap: round
                         outline:
-                            color: [0.120,0.600,0.520]
+                            #color: [0.120,0.600,0.520]
                             join: round
                             cap: round
-                            width: [[15, 1.2px], [16, 1.5px], [17, 2px], [18, 2px], [19, 2px]]
+                            width: [[15, 0.9px], [16, 1.5px], [17, 1.6px], [18, 2px], [19, 2px]]
                             order: 999
             labels-cycleway:
-                #filter: { $zoom: { min: 17 } }
+                filter: { $zoom: { min: 14 } }
                 draw:
                     text-blend-order:
                         priority: 58
                         visible: *text_visible_path
                         font:
-                            fill: [0.143,0.544,0.481]
+                            fill: [0.182,0.593,0.730]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
-    # bicycle-roads:
-    #     data: { source: mapzen, layer: roads }
-    #     filter: 
-    #         any:
-    #             - bicycle_network: true
-    #             - highway: cycleway
-    #             - cycleway: true
-    #               not: { cycleway: no }
-    #             - cycleway_left: true
-    #               not: { cycleway_left: no }
-    #             - cycleway_right: true
-    #               not: { cycleway_right: no }
-    #             - cycleway_both: true
-    #               not: { cycleway_both: no }
-    #     draw:
-    #         lines:
-    #             interactive: true
-    #             color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
-    #             width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
-    #             # let roads sort themselves past zoom 14
-    #             order: 488
-    #             outline: 
-    #                 # color: [0.360,0.573,1.000]
-    #                 color: [0.182,0.593,0.730]
-    #                 width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
-    #     bike_lanes:
-    #         filter: 
-    #             all:
-    #                 - $zoom: { min: 15 }
-    #             any:
-    #                 - cycleway: true
-    #                   not: { cycleway: no }
-    #                 - cycleway_left: true
-    #                   not: { cycleway_left: no }
-    #                 - cycleway_right: true
-    #                   not: { cycleway_right: no }
-    #                 - cycleway_both: true
-    #                   not: { cycleway_both: no }
-    #         draw:
-    #             lines:
-    #                 color: [1.00,1.00,1.00]
-    #                 width: [[15,0px],[16,1px],[17,4px],[18,6m]]
-    #                 outline:
-    #                     width: [[15, 0.5px],[16, 1px],[17, 1.5px],[18, 2.5px]]
-    #                     color: [[15,[0.182,0.593,0.730]],[16,[0.182,0.593,0.730]],[17,[0.460,0.640,1.000]]]
-    #         later:
-    #             filter: 
-    #                 all:
-    #                     - $zoom: { min: 18 }
-    #             draw:
-    #                 highlight:
-    #                     color: [0.930,0.953,1.000]
-    #                     width: [[15,4px],[16,6px],[18,7m]]
-    #                     # let roads sort themselves past zoom 14
-    #                     order: 487
-    #             shared_lane:
-    #                 filter: { cycleway: shared_lane }
-    #                 draw:
-    #                     highlight:
-    #                         color: [0.750,0.833,1.000]
-    #
-    # dirt or gravel "road", sometimes used by hikers – but if it's no motorvehicle, then it's included in paths above
     track-overlay:
         data: { source: mapzen, layer: roads }
         filter: 
