@@ -4518,7 +4518,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, telescope, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, mine] }
+                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, telescope, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, mine, fishing_area] }
                 draw: 
                     icons:
                         priority: 43
@@ -5275,7 +5275,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, fishing, hunting, outdoor, scuba_diving, gas, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, mine] }
+                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, fishing, hunting, outdoor, scuba_diving, gas, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, mine, fishing_area] }
                 draw: 
                     icons:
                         order: 41
