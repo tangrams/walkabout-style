@@ -6299,8 +6299,14 @@ layers:
                     color: [0.945,0.995,0.945]
                     # color: [0.975,0.975,0.828]
                     visible: true
-            farmland:
-                filter: { kind: farmland }
+            farmland_friends:
+                filter: { kind: [farmland] }
+                draw:
+                    terrain:
+                        color: [0.965,0.996,0.965]
+                        #visible: false
+            meadow_friends:
+                filter: { kind: [meadow, grass] }
                 draw:
                     terrain:
                         color: [0.965,0.996,0.965]
