@@ -4518,7 +4518,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
+                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, telescope, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, fishing_area] }
                 draw: 
                     icons:
                         priority: 43
@@ -5275,7 +5275,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] }
+                filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, fishing, hunting, outdoor, scuba_diving, gas, gas_canister, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area, fishing_area] }
                 draw: 
                     icons:
                         order: 41
@@ -5285,7 +5285,7 @@ layers:
                         order: 42
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             outdoor-has-icons:
-                filter: { kind: [outdoor] }
+                filter: { kind: [outdoor, lighthouse, peak, saddle, picnic_area, camp_site, ski, mine, zoo, museum, gas, gas_canister] }
                 draw: 
                     icons:
                         order: 41
@@ -5672,7 +5672,7 @@ layers:
                     filter: { kind: [sporting_goods, sporting-goods-shop, sports, outdoor] }
                     draw:   { icons: { sprite: sporting-goods-shop } }
                 stable:
-                    filter: { kind: [stable, horse_riding] }
+                    filter: { kind: [stable, horse_riding, horse] }
                     draw:   { icons: { sprite: stable } }
                 storage-facility:
                     filter: { kind: [storage, storage-facility] }
@@ -5984,14 +5984,15 @@ layers:
                             visible: true
 
             # gotta be a protected area to draw green, not just a landcover type
-            # farm:
-            #     filter:
-            #         kind: [farm, farmland]
-            #         $zoom: { min: 10}
-            #     draw:
-            #         polygons:
-            #             color: [1.00,1.00,1.00]
-            #             visible: *green4_v
+            farm:
+                filter:
+                    kind: [farm, farmland]
+                    $zoom: { min: 10}
+                draw:
+                    polygons:
+                        color: [1.00,1.00,1.00]
+                        visible: *green4_v
+                        
             forest:
                 filter: { kind: [forest,wood], $zoom: { min: 6 } }
                 national-forest:
@@ -6267,19 +6268,96 @@ layers:
         #                 horizontal-bars-rev:
         #                     color: [0.950,0.950,0.950]
         #                     visible: true
-        #     pedestrian:
-        #         filter:
-        #             kind: [pedestrian,common]
-        #         draw:
-        #             park-dots1:
-        #                 color: [0.950,0.950,0.950]
-        #                 visible: *grey1_v
-        #         green-stuff:
-        #             filter:
-        #                 surface: [grass]
-        #             draw:
-        #                 dots:
-        #                     color: [0.8,0.8,0.8]
+        pedestrian:
+            filter:
+                kind: [pedestrian,common]
+            draw:
+                terrain:
+                    color: [0.945,0.995,0.945]
+                    visible: *grey1_v
+            green-stuff:
+                filter:
+                    surface: [grass]
+                draw:
+                    terrain:
+                        color: [0.99,0.96,0.905]
+
+        glacier:
+            filter:
+                kind: glacier
+            draw:
+                terrain:
+                    color: [1.000,0.953,0.900]
+                    # color: [0.975,0.975,0.828]
+                    visible: true
+
+        minor_green_stuff:
+            filter:
+                kind: [pitch, meadow, village_green, grass, farmland]
+            draw:
+                terrain:
+                    color: [0.945,0.995,0.945]
+                    # color: [0.975,0.975,0.828]
+                    visible: true
+            farmland_friends:
+                filter: { kind: [farmland] }
+                draw:
+                    terrain:
+                        color: [0.965,0.996,0.965]
+                        #visible: false
+            meadow_friends:
+                filter: { kind: [meadow, grass] }
+                draw:
+                    terrain:
+                        color: [0.965,0.996,0.965]
+            pitch_later:
+                filter: { kind: pitch, $zoom: { min: 17 } }
+                draw:
+                    lines:
+                        color: green
+                        order: 500
+                        width: 0.5m
+
+        wetland:
+            filter:
+                kind: [wetland]
+            draw:
+                terrain:
+                    color: [0.930,0.973,0.980]
+                    # color: [0.975,0.975,0.828]
+                    visible: true
+        
+        scrub:
+            filter:
+                kind: [scrub]
+            draw:
+                terrain:
+                    color: [1.000,0.973,0.930]
+                    # color: [0.975,0.975,0.828]
+                    visible: true
+            later:
+                filter: { $zoom: { min: 15 } }
+                draw:
+                    lines:
+                        color: blue
+                        width: 0.5px
+
+        minor_other_stuff:
+            filter:
+                kind: [scree, farmyard]
+            draw:
+                terrain:
+                    color: [1.000,0.953,0.900]
+                    # color: [0.975,0.975,0.828]
+                    visible: true
+            later:
+                filter: { $zoom: { min: 15 } }
+                draw:
+                    lines:
+                        color: red
+                        width: 0.5px
+
+
         #     pitch:
         #         filter: { kind: pitch }
         #         draw:
@@ -6349,7 +6427,7 @@ layers:
                     color: green
                     width: [[16,0.5px],[17,1px],[19,1m]]
                     visible: true
-
+                    
 
     natural-overlay:
         data: { source: mapzen, layer: earth }
