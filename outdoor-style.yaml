@@ -5053,7 +5053,7 @@ layers:
                 filter: { kind: [peak, volcano], $zoom: { min: 14 } }
                 draw:
                     text-blend-order:
-                        text_source: function() { if( feature.name && feature.elevation ) { return feature.name + "\n" + feature.elevation; } else { if( feature.name ) { return feature.name; } else { return feature.elevation; } } }
+                        text_source: function() { if( feature.name && feature.elevation ) { return feature.name + "\n" + feature.elevation + "m"; } else { if( feature.name ) { return feature.name; } else { return feature.elevation; } } }
             waterfall-early:
                 filter: { kind: [waterfall], $zoom: { max: 14 } }
                 draw:
