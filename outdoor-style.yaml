@@ -44,7 +44,7 @@ labels-global:
     - &text_visible_exits_e           false
 
 settings:
-    cameras:             
+    cameras:
         - &camera_settings            { type: isometric, axis: [0, .1], vanishing_point: [0, -500] }
 
     lights:
@@ -375,7 +375,7 @@ textures:
         filtering: mipmap
 
 sources:
-    mapzen: 
+    mapzen:
         type: TopoJSON
         # prod
         url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
@@ -423,12 +423,12 @@ styles:
             defines:
                 background: vec3(0.867, 0.867, 0.867)
             blocks:
-                color: | 
+                color: |
                     // blend line 50/50 between two colors
                     float t = fract(v_texcoord.y*.5);
                     float e = 0.1; // edge feather
                     vec3 v = vec3(
-                        smoothstep(.0, e, t) * 
+                        smoothstep(.0, e, t) *
                         (1. - smoothstep(.5, .5 + e, t))
                     );
                     color.rgb = mix(color.rgb, background, v);
@@ -444,7 +444,7 @@ styles:
                             return outputMin;
                         } else {
                             float outVal = ((value - inputMin) / (inputMax - inputMin) * (outputMax - outputMin) + outputMin);
-                        
+
                             if( clamp ){
                                 if(outputMax < outputMin){
                                     if( outVal < outputMax ) outVal = outputMax;
@@ -457,9 +457,9 @@ styles:
                             return outVal;
                         }
                     }
-                    
+
                     float map (in float value, in float inputMin, in float inputMax, in float outputMin, in float outputMax) {
-                        return map(value, inputMin, inputMax, outputMin, outputMax, true); 
+                        return map(value, inputMin, inputMax, outputMin, outputMax, true);
                     }
     space-tile:
         shaders:
@@ -476,7 +476,7 @@ styles:
                 position: |
                     // Normalize the attribute position of a vertex
                     v_pos = modelPosition().xyz;
-                    
+
     grids-grid:
         shaders:
             blocks:
@@ -491,7 +491,7 @@ styles:
                     bool grid(vec2 st, float res){
                         return grid(st, res, 1.0);
                     }
-                    
+
     grids-tile:
         mix: [space-tile,grids-grid]
         shaders:
@@ -506,10 +506,10 @@ styles:
                         return pct;
                     }
                     // Draw two grid that smoothly interpolates acording to zooms
-                    float tileGrid(){ 
-                        return mix(tileGrid(1.),tileGrid(2.),fract(u_map_position.z)); 
+                    float tileGrid(){
+                        return mix(tileGrid(1.),tileGrid(2.),fract(u_map_position.z));
                     }
-                    
+
     grid:
         base: polygons
         mix: [grids-tile]
@@ -519,7 +519,7 @@ styles:
                     color = v_color*tileGrid();
                     // color = vec4(v_color.r, v_color.g, v_color.b, 1.0);
                     // color.rgba
-                    
+
     shapes-rect:
         shaders:
             blocks:
@@ -538,18 +538,18 @@ styles:
                         //st.x *= aspect;
                         return length(max(abs(st)-size,.0));
                     }
-                    
+
                     // Draw a round corners rectangle in the center
                     // ================================
                     float rect(vec2 st, vec2 size, float radio) {
                         radio = max(.000001, radio);
                         return 1.0-step(radio, rectDF(st, size-radio));
                     }
-                    
+
                     float rect(vec2 st, float size, float radio) {
                         return rect(st,vec2(size),radio);
                     }
-                    
+
                     // Draw a rectangle in the center
                     // ================================
                     float rect(vec2 st, vec2 size){
@@ -557,7 +557,7 @@ styles:
                         vec2 uv = step(size,st*(1.0-st));
                         return (uv.x*uv.y);
                     }
-                    
+
                     float rect(vec2 st, float size){
                         return rect(st,vec2(size));
                     }
@@ -625,7 +625,7 @@ styles:
     #                     vec2 uv = r.xy / m + .5;
     #                     return texture2D(_tex, uv);
     #                 }
-    #             color: |                    
+    #             color: |
     #                 normal.z /= u_scale; // turn terrain exaggeration up/down
     #                 // fade out spheremap normals
     #                 float m = clamp((u_scale_fade_start + u_scale_fade_duration - u_map_position.z) * 1./u_scale_fade_duration, u_scale_end, u_scale);
@@ -671,7 +671,7 @@ styles:
                     float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
                     color = terrainEnvmap(u_envmap, normal);
-                    
+
                     // Apply contrast
                     float contrast = m;
                     color.rgb = ((color.rgb - 0.5) * max(contrast, 0.)) + 0.5;
@@ -713,11 +713,11 @@ styles:
                     color -= v_color*tileGrid();
                     vec4 linecolor = vec4(0.489,0.776,0.820,1.0);
                     color += linecolor * tileGrid();
-    dots-terrain: 
+    dots-terrain:
         mix: [space-tile, functions-map, terrain, shapes-cross]
         shaders:
             blocks:
-                color: |                    
+                color: |
                     // Brightness
                     float brightness2 = dot(normal, vec3(-0.838,-1.010,0.805));
 
@@ -797,7 +797,7 @@ layers:
                     #color: [0.608,0.925,0.965]
 
         lakes:
-            filter: 
+            filter:
                 all:
                     - kind: [ocean, lake, water, riverbank, reservoir, swimming_pool]
                 any:
@@ -1946,10 +1946,10 @@ layers:
                             size: 13px
                             stroke: { color: [0.969,0.973,0.973], width: 4 }
         path:
-            filter: 
+            filter:
                 all:
                     - kind: [path, portage_way]
-                not: 
+                not:
                     - highway: [footway, steps, track, cycleway]
                     - man_made: [pier]
             draw:
@@ -2105,7 +2105,7 @@ layers:
                             color: [0.790,0.790,0.790]
                             width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
         steps:
-            filter: 
+            filter:
                 all:
                     - kind: path
                     - highway: steps
@@ -2165,12 +2165,12 @@ layers:
                         fill: *text_fill_piste
                         size: 12px
                         stroke: { color: [0.913,0.925,0.933], width: 4 }
-            early: 
+            early:
                 filter: { $zoom: { max: 15 } }
                 draw:
                     text-blend-order:
                         visible: false
-            early-z15: 
+            early-z15:
                 filter: { $zoom: [15] }
                 draw:
                     text-blend-order:
@@ -2189,14 +2189,14 @@ layers:
                         color: [0.420,0.678,0.863]
             advanced:
                 filter: { piste_difficulty: advanced }
-                draw: 
+                draw:
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
                         text_source: function() { if( feature.name ){ return '◆ ' + feature.name; } else { return ''; } }
             expert:
                 filter: { piste_difficulty: expert }
-                draw: 
+                draw:
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
@@ -2336,7 +2336,7 @@ layers:
 
         # building footprints, pre-extrusion
         footprints:
-            filter: 
+            filter:
                 any:
                     # limit show smaller landuse areas to higher zooms
                     - { $zoom: [13], area: { min: 100000 }, name: true }
@@ -3041,7 +3041,7 @@ layers:
                     draw:
                         text-blend-order:
                             visible: *text_visible_populated_places
-                            offset: [0, 3px] # half icon 
+                            offset: [0, 3px] # half icon
                             priority: 16
                             font:
                                 size: 11px
@@ -3300,7 +3300,7 @@ layers:
                                 size: 5px
                                 sprite: capital-s
                                 priority: 17
-                                    
+
             populated-places-natural-earth-z8-backfill:
                 filter: { name: true, source: naturalearthdata.com, $zoom: [8], population: { max: 50000 } }
                 draw: { text-blend-order: { font: { fill: *text_fill } } }
@@ -3409,7 +3409,7 @@ layers:
                                 size: 14px
                                 fill: *text_fill
                                 stroke: { color: *text_stroke, width: 4 }
-                                    
+
                 z9places-2b:
                     filter:
                         any:
@@ -4342,7 +4342,7 @@ layers:
                             transform: uppercase
                             stroke: { color: [0.949,0.953,0.953], width: 6 }
                 z15-new:
-                    filter: 
+                    filter:
                         all:
                             - min_zoom: 15
                     draw:
@@ -4378,7 +4378,7 @@ layers:
     pois_and_landuse_labels:
         data: { source: mapzen, layer: [pois,landuse] }
         visible: *label_visible_poi_landuse
-        filter: 
+        filter:
             not: { kind: [building,farm,tree,gate,address,apron,residential] }
             $geometry: point
             any:
@@ -4488,7 +4488,7 @@ layers:
                 draw:   { icons: { visible: false }}
             bbq:
                 filter: { kind: [bbq], $zoom: { min: 17 } }
-                draw: 
+                draw:
                     icons:
                         sprite: bbq
                         visible: *icon_visible_poi_landuse_e
@@ -4525,8 +4525,8 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, telescope, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area] }
-                draw: 
+                filter: { kind: [bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, silo, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, telescope, beach_resort, horse, fire_lookout, fee_station, rest_area, fishing_area, recreation_track] }
+                draw:
                     icons:
                         priority: 43
                         sprite: generic
@@ -4534,6 +4534,16 @@ layers:
                     text-blend-order:
                         priority: 44
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
+                hide-early:
+                    filter: { kind: [recreation_track, dam] }
+                    draw:
+                        icons:
+                            priority: 50
+                    early:
+                        filter: { $zoom: { max: 15 } }
+                        draw:
+                            icons:
+                                visible: false
         has-name:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
@@ -4975,7 +4985,7 @@ layers:
                 residential-relations-paris-wtf:
                     filter: { kind: [residential], osm_relation: true, $zoom: { min: 13 } }
                     draw:
-                        text-blend-order: 
+                        text-blend-order:
                             visible: true
                             text_source: short_name
                         icons:
@@ -5194,7 +5204,7 @@ layers:
                         icons:
                             visible: false
                             #size: [[12, 10px], [14, 10px], [15, 16px]]
-                        text-blend-order: { visible: false } 
+                        text-blend-order: { visible: false }
                 low-priority-early-z14:
                     filter: { kind_tile_rank: { min: 7 }, $zoom: [14] }
                     draw:
@@ -5283,7 +5293,7 @@ layers:
                     icons: { visible: false }
             outdoor-needing-icons:
                 filter: { kind: [bicycle_repair_station, cycle_barrier, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, observatory, water_tower, boat_rental, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, geyser, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, fishing, hunting, outdoor, scuba_diving, gas, gas_canister, beach_resort, recreation_track, horse, fire_lookout, fee_station, rest_area] }
-                draw: 
+                draw:
                     icons:
                         order: 41
                         sprite: generic
@@ -5293,7 +5303,7 @@ layers:
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             outdoor-has-icons:
                 filter: { kind: [outdoor, lighthouse, peak, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway] }
-                draw: 
+                draw:
                     icons:
                         order: 41
                         visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
@@ -5301,7 +5311,7 @@ layers:
                         order: 42
             not-outdoor-not-landuse:
                 filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, dive_centre, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] } }
-                draw: 
+                draw:
                     icons:
                         order: 45
                         visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
@@ -5310,7 +5320,7 @@ layers:
                         visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
             suppress-the-icon-text-label-only:
                 filter: { kind: [scrub, wetland, glacier, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
-                draw: 
+                draw:
                     icons:
                         visible: false
                     text-blend-order:
@@ -6014,7 +6024,7 @@ layers:
                         not: { operator: [ "United States Forest Service", "US Forest Service", "U.S. Forest Service", "USDA Forest Service" ] }
                         $zoom: { min: 6 }
                     draw:
-                        terrain: 
+                        terrain:
                             color: [0.936,0.981,0.946]
                             visible: true
 
@@ -6470,10 +6480,10 @@ layers:
 
     path-overlay:
         data: { source: mapzen, layer: roads }
-        filter: 
+        filter:
             all:
                 - kind: path
-            not: 
+            not:
                 - man_made: [pier]
         draw:
             lines:
@@ -6625,7 +6635,7 @@ layers:
                 filter: { name: false, not: { highway: steps } }
                 in_zoo_golf_course:
                     filter:
-                        all: 
+                        all:
                             - landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian, attraction, residential, stadium, playground]
                             - $zoom: { max: 16 }
                     draw:
@@ -6724,7 +6734,7 @@ layers:
                     width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
                     # let roads sort themselves past zoom 14
                     order: 1004
-                    outline: 
+                    outline:
                         color: [0.182,0.593,0.730]
                         width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
             networked:
@@ -6763,7 +6773,7 @@ layers:
 
     track-overlay:
         data: { source: mapzen, layer: roads }
-        filter: 
+        filter:
             all:
                 - kind: path
                 - highway: [track]
@@ -6827,7 +6837,7 @@ layers:
 
     other-roads-no-motorvehicle-overlay:
         data: { source: mapzen, layer: roads }
-        filter: 
+        filter:
             all:
                 - not: { kind: [path,ferry] }
                 - motor_vehicle: no
@@ -6864,7 +6874,7 @@ layers:
 
     other-roads-walking-network-only:
         data: { source: mapzen, layer: roads }
-        filter: 
+        filter:
             all:
                 - walking_network: true
                 - not:
