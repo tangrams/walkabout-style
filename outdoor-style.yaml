@@ -4451,7 +4451,7 @@ layers:
                     filter: { sport: tennis }
                     draw: { icons: { sprite: tennis } }
             toilets:
-                filter: { kind: toilets, $zoom: { min: 18 }  }
+                filter: { kind: toilets, $zoom: { min: 16 }  }
                 draw: { icons: { sprite: toilets, visible: *icon_visible_poi_landuse_e } }
             playground:
                 filter: { kind: playground, $zoom: { min: 18 }  }
@@ -6071,6 +6071,7 @@ layers:
                     terrain:
                         color: [1.0,1.0,1.0]
                         visible: *purple_v
+        # GO GREY
         #     military:
         #         filter:
         #             kind: military
@@ -6104,13 +6105,6 @@ layers:
                     terrain:
                         color: [0.982,1.000,0.960]
                         visible: true
-        #     # commercial:
-        #     #     filter:
-        #     #         kind: commercial
-        #     #     draw:
-        #     #         dots:
-        #     #             color: [0.855,0.748,0.667]
-        #     #             visible: *grey1_v
             golf_course:
                 filter:
                     kind: golf_course
@@ -6126,6 +6120,7 @@ layers:
                     terrain:
                         color: [0.988,0.938,0.953]
                         visible: true
+        # GO GREY
         #     industrial:
         #         filter:
         #             kind: industrial
@@ -6133,12 +6128,14 @@ layers:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
+        # GO GREY
         #     power:
         #         filter: { kind: [plant, generator, substation] }
         #         draw:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
+            # GO GREY
             # railway:
             #     filter:
             #         kind: railway
@@ -6146,6 +6143,7 @@ layers:
             #         terrain:
             #             color: [0.930,0.950,0.950]
             #             visible: true
+        # IGNORE THIS FOR NOW
         #     sports_centre:
         #         filter:
         #             kind: sports_centre
@@ -6159,13 +6157,7 @@ layers:
                     terrain:
                         color: [0.945,0.995,0.945]
                         visible: true
-            # retail:
-            #     filter:
-            #         kind: retail
-            #     draw:
-            #         terrain:
-            #             color: [0.930,0.950,0.950]
-            #             visible: *grey1_v
+        # GO GREY
         #     stadium:
         #         filter:
         #             kind: stadium
@@ -6187,12 +6179,14 @@ layers:
                     terrain:
                         color: [1.0,1.0,1.0]
                         visible: *grey8_v
+        # GO GREY
         #     man-made:
         #         filter: { kind: [pier,wastewater_plant,works,bridge,tower,breakwater,water_works,groyne,dike,cutline] }
         #         draw:
         #             horizontal-bars:
         #                 color: [0.90,0.90,0.90]
         #                 visible: true
+        # GO EARTHY COLOR
         #         pier:
         #             filter: { kind: [pier,bridge,breakwater,groyne,dike,cutline] }
         #             draw:
@@ -6219,6 +6213,7 @@ layers:
                         - winery
                         - maze
                         - beach
+            # GO GREY
             # tourism-related:
             #     filter:
             #         kind:
@@ -6249,6 +6244,7 @@ layers:
         #             - { $zoom: { min: 15 }, area: { min: 20000 } }
         #             - { $zoom: { min: 15 }, area: { min: 2000 } }
         #             - { $zoom: { min: 16 } }
+        # GO GREEN
         #     garden:
         #         filter:
         #             kind: garden
@@ -6256,6 +6252,7 @@ layers:
         #             tiny-dots:
         #                 color: [0.760,0.760,0.760]
         #                 visible: true
+        # GO GREY
         #     parking:
         #         filter:
         #             all:
@@ -6288,6 +6285,7 @@ layers:
                     terrain:
                         color: [0.99,0.96,0.905]
 
+        # GO BLUE/WHITE
         glacier:
             filter:
                 kind: glacier
@@ -6363,16 +6361,7 @@ layers:
                         width: 0.5px
 
 
-            # pitch:
-            #     filter: { kind: pitch }
-            #     draw:
-            #         terrain:
-            #             color: red
-            #             visible: true
-            #         outline:
-            #             style: lines
-            #             color: *green6
-            #             width: [[14,0px],[15,1px],[16,1m]]
+        # GO GREY
         #     place_of_worship:
         #         filter:
         #             kind: place_of_worship
@@ -6380,6 +6369,7 @@ layers:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: *grey1_v
+        # GO GREEN
         #     playground:
         #         filter:
         #             kind: playground
@@ -6387,6 +6377,7 @@ layers:
         #             dots-rev:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
+        # GO GREY
         #     school:
         #         filter:
         #             kind: school
@@ -6394,6 +6385,7 @@ layers:
         #             dots-rev:
         #                 color: [0.945,0.945,0.945]
         #                 visible: true
+        # GO GREEN?
         #     minor-landuse:
         #         filter:
         #             kind:
@@ -6405,15 +6397,9 @@ layers:
         #             dots:
         #                 color: [0.765,0.765,0.765]
         #                 visible: true
-        #scree:
-        #    data: { source: mapzen, layer: landuse }
-        #    filter: { kind: scree }
-        #    draw:
-        #        polygons:
-        #            order: 1000 #function() { return feature.sort_key; }
-        #            color: grey
-        #            visible: true
 
+        # GO MELLOW
+        # 18/41.19776/-8.68722
         tree_row:
             filter:
                 kind: tree_row
@@ -6423,6 +6409,8 @@ layers:
                     color: green
                     width: [[16,1px],[17,2px],[19,1.5m]]
                     visible: true
+        # GO MELLOW
+        # 20/37.76779/-122.40096
         hedge:
             filter:
                 kind: hedge
