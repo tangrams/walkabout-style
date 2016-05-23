@@ -6043,27 +6043,27 @@ layers:
             #         polygons:
             #             color: [1.00,1.00,1.00]
             #             visible: *earth2_v
-        # tier3:
-        #     filter:
-        #         any:
-        #             # limit show smaller landuse areas to higher zooms
-        #             - { $zoom: { min: 8 },  area: { min: 10000000 } }
-        #             - { $zoom: { min: 9 },  area: { min: 5000000 } }
-        #             - { $zoom: { min: 10 }, area: { min: 1000000 } }
-        #             - { $zoom: { min: 11 }, area: { min: 500000 } }
-        #             - { $zoom: { min: 12 }, area: { min: 500000 } }
-        #             - { $zoom: { min: 13 }, area: { min: 100000 } }
-        #             - { $zoom: { min: 14 }, area: { min: 50000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 20000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 2000 } }
-        #             - { $zoom: { min: 16 } }
-        #     airport:
-        #         filter:
-        #             kind: aerodrome
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: *purple_v
+        tier3:
+            filter:
+                any:
+                    # limit show smaller landuse areas to higher zooms
+                    - { $zoom: { min: 8 },  area: { min: 10000000 } }
+                    - { $zoom: { min: 9 },  area: { min: 5000000 } }
+                    - { $zoom: { min: 10 }, area: { min: 1000000 } }
+                    - { $zoom: { min: 11 }, area: { min: 500000 } }
+                    - { $zoom: { min: 12 }, area: { min: 500000 } }
+                    - { $zoom: { min: 13 }, area: { min: 100000 } }
+                    - { $zoom: { min: 14 }, area: { min: 50000 } }
+                    - { $zoom: { min: 15 }, area: { min: 20000 } }
+                    - { $zoom: { min: 15 }, area: { min: 2000 } }
+                    - { $zoom: { min: 16 } }
+            airport:
+                filter:
+                    kind: aerodrome
+                draw:
+                    terrain:
+                        color: [1.0,1.0,1.0]
+                        visible: *purple_v
         #     military:
         #         filter:
         #             kind: military
@@ -6071,13 +6071,13 @@ layers:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
-        #     university:
-        #         filter:
-        #             kind: [university, college]
-        #         draw:
-        #             dots-rev:
-        #                 color: [0.945,0.945,0.945]
-        #                 visible: true
+            university:
+                filter:
+                    kind: [university, college]
+                draw:
+                    terrain:
+                        color: [0.985,1.000,0.970]
+                        visible: true
         tier4:
             filter:
                 any:
