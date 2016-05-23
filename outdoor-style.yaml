@@ -5992,7 +5992,6 @@ layers:
                     polygons:
                         color: [1.00,1.00,1.00]
                         visible: *green4_v
-                        
             forest:
                 filter: { kind: [forest,wood], $zoom: { min: 6 } }
                 national-forest:
@@ -6077,7 +6076,7 @@ layers:
                     kind: [university, college]
                 draw:
                     terrain:
-                        color: [0.985,1.000,0.970]
+                        color: [0.930,0.950,0.950]
                         visible: true
         tier4:
             filter:
@@ -6133,33 +6132,33 @@ layers:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
-        #     railway:
-        #         filter:
-        #             kind: railway
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
+            # railway:
+            #     filter:
+            #         kind: railway
+            #     draw:
+            #         terrain:
+            #             color: [0.930,0.950,0.950]
+            #             visible: true
         #     sports_centre:
         #         filter:
         #             kind: sports_centre
         #         draw:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
-        #     recreation_ground:
-        #         filter:
-        #             kind: recreation_ground
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
-        #     retail:
-        #         filter:
-        #             kind: retail
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: *grey1_v
+            recreation_ground:
+                filter:
+                    kind: recreation_ground
+                draw:
+                    terrain:
+                        color: [0.945,0.995,0.945]
+                        visible: true
+            # retail:
+            #     filter:
+            #         kind: retail
+            #     draw:
+            #         terrain:
+            #             color: [0.930,0.950,0.950]
+            #             visible: *grey1_v
         #     stadium:
         #         filter:
         #             kind: stadium
@@ -6167,20 +6166,20 @@ layers:
         #             polygons:
         #                 color: [1.0,1.0,1.0]
         #                 visible: true
-        #     zoo:
-        #         filter:
-        #             kind: [zoo, wildlife_park]
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
-        #     winter_sports:
-        #         filter:
-        #             kind: winter_sports
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: *grey8_v
+            zoo:
+                filter:
+                    kind: [zoo, wildlife_park]
+                draw:
+                    terrain:
+                        color: [0.830,1.000,0.972]
+                        visible: true
+            winter_sports:
+                filter:
+                    kind: winter_sports
+                draw:
+                    terrain:
+                        color: [1.0,1.0,1.0]
+                        visible: *grey8_v
         #     man-made:
         #         filter: { kind: [pier,wastewater_plant,works,bridge,tower,breakwater,water_works,groyne,dike,cutline] }
         #         draw:
@@ -6314,7 +6313,7 @@ layers:
                 filter: { kind: pitch, $zoom: { min: 17 } }
                 draw:
                     lines:
-                        color: green
+                        color: [0.526,0.809,0.752]
                         order: 500
                         width: 0.5m
 
@@ -6326,7 +6325,6 @@ layers:
                     color: [0.930,0.973,0.980]
                     # color: [0.975,0.975,0.828]
                     visible: true
-        
         scrub:
             filter:
                 kind: [scrub]
@@ -6358,16 +6356,16 @@ layers:
                         width: 0.5px
 
 
-        #     pitch:
-        #         filter: { kind: pitch }
-        #         draw:
-        #             tiny-dots:
-        #                 color: [0.90,0.90,0.90]
-        #                 visible: true
-        #             outline:
-        #                 style: lines
-        #                 color: *green6
-        #                 width: [[14,0px],[15,1px],[16,1m]]
+            # pitch:
+            #     filter: { kind: pitch }
+            #     draw:
+            #         terrain:
+            #             color: red
+            #             visible: true
+            #         outline:
+            #             style: lines
+            #             color: *green6
+            #             width: [[14,0px],[15,1px],[16,1m]]
         #     place_of_worship:
         #         filter:
         #             kind: place_of_worship
@@ -6427,7 +6425,6 @@ layers:
                     color: green
                     width: [[16,0.5px],[17,1px],[19,1m]]
                     visible: true
-                    
 
     natural-overlay:
         data: { source: mapzen, layer: earth }
