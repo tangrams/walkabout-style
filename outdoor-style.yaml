@@ -152,6 +152,7 @@ settings:
         - &red1_r      '#bbbbbb'                # hospital roads
         - &red1_b      [.65, .65, .65]          # hospital buildings
         - &red1_bo     [.8, .8, .8]             # hospital building outlines
+        - &gray-all    [0.935,0.960,0.970]      # default gray for landuse outdoor style
         - &grey1       '#cccccc'                # pedestrian, retail, airport apron, parking, church
         - &grey1_e     '#dad6d4'                # pedestrian, retail, airport apron, parking, church early zoom 14
         - &grey1_v     true                     # pedestrian, retail, airport apron, parking, church
@@ -1234,7 +1235,7 @@ layers:
                         filter: {is_tunnel: yes, $zoom: {min: 13} }
                         draw:
                             lines:
-                                color: [[13,[0.688,0.706,0.732]], [14,[0.688,0.706,0.732]], [15,[0.744,0.764,0.792]], [16,[0.950,0.950,0.950]]]
+                                color: [[13,[0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15,[0.744,0.764,0.792]], [16,[0.950,0.950,0.950]]]
                                 outline:
                                     color: [[13, [0.894,0.906,0.914]], [15, [0.894,0.906,0.914]], [16, [0.85,0.85,0.85]]]
                     labels-trunk_primary-route-z14:
@@ -1431,7 +1432,7 @@ layers:
                 filter: {is_tunnel: yes, $zoom: {min: 13} }
                 draw:
                     lines:
-                        color: [[13,[0.688,0.706,0.732]], [14,[0.688,0.706,0.732]], [15,[0.744,0.764,0.792]], [16,[0.950,0.950,0.950]]]
+                        color: [[13,[0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15,[0.744,0.764,0.792]], [16,[0.950,0.950,0.950]]]
                         outline:
                             color: [[13, [0.894,0.906,0.914]], [15, [0.894,0.906,0.914]], [16, [0.85,0.85,0.85]]]
                             width: [[8,0px], [11,0px], [14,0px], [16,1.5px], [17, 3px], [18, 3px]]
@@ -1476,7 +1477,7 @@ layers:
                         filter: {is_tunnel: yes, $zoom: {min: 13} }
                         draw:
                             lines:
-                                color: [[13,[0.688,0.706,0.732]], [14,[0.688,0.706,0.732]], [15,[0.8,0.8,0.8]], [16,[0.85,0.85,0.85]], [17,[0.950,0.950,0.950]]]
+                                color: [[13,[0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15,[0.8,0.8,0.8]], [16,[0.85,0.85,0.85]], [17,[0.950,0.950,0.950]]]
                                 outline:
                                     color: [[13, [0.350,0.350,0.350]], [16, [0.350,0.350,0.350]], [17, [0.85,0.85,0.85]]]
                                     width: [[10,0px], [17, 2px], [18, 2px]]
@@ -1608,10 +1609,10 @@ layers:
                 filter: { highway: [tertiary, tertiary_link] }
                 draw:
                     lines:
-                        color: [[11, [0.885,0.885,0.885]], [13, [0.719,0.738,0.765]], [14,[0.688,0.706,0.732]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
+                        color: [[11, [0.885,0.885,0.885]], [13, [0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                         width: [[11, 0.5px], [12, 0.65px], [13, 0.65px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
                         outline:
-                            color: [[11, [0.894,0.906,0.914]], [14,[0.688,0.706,0.732]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
+                            color: [[11, [0.894,0.906,0.914]], [14,[0.779,0.802,0.828]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
                             width: [[11, 0px], [14, 0px], [15, 0.75px], [16, 1.5px], [17, 2px], [18, 3px]]
                 early:
                     filter: { $zoom: { max: 15 } }
@@ -1624,10 +1625,10 @@ layers:
                     filter: { ref: true, $zoom: { min: 12} }
                     draw:
                         lines:
-                            color: [[11, [0.885,0.885,0.885]], [13, [0.719,0.738,0.765]], [14,[0.688,0.706,0.732]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
+                            color: [[11, [0.885,0.885,0.885]], [13, [0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                             width: [[11, 0.5px], [12, 0.75px], [13, 1px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
                             outline:
-                                color: [[11, [0.894,0.906,0.914]], [14,[0.688,0.706,0.732]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
+                                color: [[11, [0.894,0.906,0.914]], [14,[0.779,0.802,0.828]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
                                 width: [[11, 0px], [14, 0px], [15, 0.75px], [16, 1.5px], [17, 2px], [18, 3px]]
                     early:
                         filter: { $zoom: { max: 15 } }
@@ -1656,9 +1657,9 @@ layers:
                     filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden,wood,national_park,protected_area] }
                     draw:
                         lines:
-                            color: [[11, [0.885,0.885,0.885]], [13, [0.719,0.738,0.765]], [14,[0.688,0.706,0.732]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
+                            color: [[11, [0.885,0.885,0.885]], [13, [0.719,0.738,0.765]], [14,[0.779,0.802,0.828]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                             outline:
-                                color: [[11, [0.894,0.906,0.914]], [14,[0.688,0.706,0.732]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
+                                color: [[11, [0.894,0.906,0.914]], [14,[0.779,0.802,0.828]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
                     # golf_course:
                     #     filter: { landuse_kind: golf_course }
                     #     draw:
@@ -1741,10 +1742,10 @@ layers:
             filter: { kind: minor_road, not: { highway: service, aeroway: [runway, taxiway] } }
             draw:
                 lines:
-                    color: [[11, [0.885,0.885,0.885]], [12, [0.714,0.733,0.760]], [13, [0.719,0.738,0.765]], [14, [0.688,0.706,0.732]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
+                    color: [[11, [0.885,0.885,0.885]], [12, [0.714,0.733,0.760]], [13, [0.779,0.802,0.828]], [14, [0.779,0.802,0.828]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                     width: [[11, 0.25px], [12, 0.35px], [13, 0.55px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
                     outline:
-                        color: [[11, [0.894,0.906,0.914]], [14, [0.688,0.706,0.732]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
+                        color: [[11, [0.894,0.906,0.914]], [14, [0.779,0.802,0.828]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
                         width: [[11, 0px], [14, 0px], [15, 0.75px], [16, 1.5px], [17, 2px], [18, 3px]]
             early:
                 filter: { $zoom: { max: 16 } }
@@ -1869,7 +1870,7 @@ layers:
                 filter: { landuse_kind: [park,protected_area,nature_reserve,conservation,golf_course,garden,wood,farmland,farm,national_park] }
                 draw:
                     lines:
-                        color: [[14, [0.688,0.706,0.732]], [15, [0.688,0.706,0.732]], [16, [1.0,1.0,1.0]], [17, [1.0,1.0,1.0]]]
+                        color: [[14, [0.779,0.802,0.828]], [15, [0.779,0.802,0.828]], [16, [1.0,1.0,1.0]], [17, [1.0,1.0,1.0]]]
                         outline:
                             color: [[14,[0.894,0.906,0.914]], [15,[0.714,0.733,0.760]], [17,[0.714,0.733,0.760]]]
             #     golf_course:
@@ -1904,7 +1905,7 @@ layers:
                 filter: { landuse_kind: [cemetery,garden] }
                 draw:
                     lines:
-                        color: [[14, [0.688,0.706,0.732]], [15, [0.688,0.706,0.732]], [16, [1.0,1.0,1.0]], [17, [1.0,1.0,1.0]]]
+                        color: [[14, [0.779,0.802,0.828]], [15, [0.779,0.802,0.828]], [16, [1.0,1.0,1.0]], [17, [1.0,1.0,1.0]]]
                         width: [[14, 0.4px], [15, 0.5px], [16, 0px], [17, 2px], [18, 6px], [19, 6px]]
                         outline:
                             color: [[14,[0.894,0.906,0.914]], [15,[0.714,0.733,0.760]], [17,[0.714,0.733,0.760]]]
@@ -6079,22 +6080,21 @@ layers:
                     kind: aerodrome
                 draw:
                     terrain:
-                        color: [1.0,1.0,1.0]
+                        color: *gray-all
                         visible: *purple_v
-        # GO GREY
-        #     military:
-        #         filter:
-        #             kind: military
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
+            military:
+                filter:
+                    kind: military
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
             university:
                 filter:
                     kind: [university, college]
                 draw:
                     terrain:
-                        color: [0.930,0.950,0.950]
+                        color: *gray-all
                         visible: true
         tier4:
             filter:
@@ -6130,29 +6130,26 @@ layers:
                     terrain:
                         color: [0.988,0.938,0.953]
                         visible: true
-        # GO GREY
-        #     industrial:
-        #         filter:
-        #             kind: industrial
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
-        # GO GREY
-        #     power:
-        #         filter: { kind: [plant, generator, substation] }
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
-            # GO GREY
-            # railway:
-            #     filter:
-            #         kind: railway
-            #     draw:
-            #         terrain:
-            #             color: [0.930,0.950,0.950]
-            #             visible: true
+            industrial:
+                filter:
+                    kind: industrial
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
+            power:
+                filter: { kind: [plant, generator, substation] }
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
+            railway:
+                filter:
+                    kind: railway
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
         # IGNORE THIS FOR NOW
         #     sports_centre:
         #         filter:
@@ -6167,14 +6164,13 @@ layers:
                     terrain:
                         color: [0.945,0.995,0.945]
                         visible: true
-        # GO GREY
-        #     stadium:
-        #         filter:
-        #             kind: stadium
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
+            stadium:
+                filter:
+                    kind: stadium
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
             zoo:
                 filter:
                     kind: [zoo, wildlife_park]
@@ -6189,20 +6185,18 @@ layers:
                     terrain:
                         color: [1.0,1.0,1.0]
                         visible: *grey8_v
-        # GO GREY
-        #     man-made:
-        #         filter: { kind: [pier,wastewater_plant,works,bridge,tower,breakwater,water_works,groyne,dike,cutline] }
-        #         draw:
-        #             horizontal-bars:
-        #                 color: [0.90,0.90,0.90]
-        #                 visible: true
-        # GO EARTHY COLOR
-        #         pier:
-        #             filter: { kind: [pier,bridge,breakwater,groyne,dike,cutline] }
-        #             draw:
-        #                 polygons:
-        #                     color: [0.970,0.970,0.970]
-        #                     visible: true
+            man-made:
+                filter: { kind: [pier,wastewater_plant,works,bridge,tower,breakwater,water_works,groyne,dike,cutline] }
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
+                pier:
+                    filter: { kind: [pier,bridge,breakwater,groyne,dike,cutline] }
+                    draw:
+                        terrain:
+                            color: [1.000,0.973,0.930]
+                            visible: true
         tier5:
             filter:
                 any:
@@ -6223,19 +6217,18 @@ layers:
                         - winery
                         - maze
                         - beach
-            # GO GREY
-            # tourism-related:
-            #     filter:
-            #         kind:
-            #             - theme_park
-            #             - resort
-            #             - aquarium
-            #             - winery
-            #             - maze
-            #     draw:
-            #         polygons:
-            #             color: *grey10
-            #             visible: true
+            tourism-related:
+                filter:
+                    kind:
+                        - theme_park
+                        - resort
+                        - aquarium
+                        - winery
+                        - maze
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
             beach:
                 filter:
                     kind: beach
@@ -6244,43 +6237,41 @@ layers:
                         color: [1.000,0.953,0.900]
                         # color: [0.975,0.975,0.828]
                         visible: true
-        # tier6:
-        #     filter:
-        #         any:
-        #             # limit show smaller landuse areas to higher zooms
-        #             - { $zoom: { min: 12 }, area: { min: 500000 } }
-        #             - { $zoom: { min: 13 }, area: { min: 100000 } }
-        #             - { $zoom: { min: 14 }, area: { min: 50000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 20000 } }
-        #             - { $zoom: { min: 15 }, area: { min: 2000 } }
-        #             - { $zoom: { min: 16 } }
-        # GO GREEN
-        #     garden:
-        #         filter:
-        #             kind: garden
-        #         draw:
-        #             tiny-dots:
-        #                 color: [0.760,0.760,0.760]
-        #                 visible: true
-        # GO GREY
-        #     parking:
-        #         filter:
-        #             all:
-        #                 - kind: parking
-        #                 - $zoom: { min: 14 }
-        #             any:
-        #                 - { $zoom: { min: 14 }, area: { min: 10000 } }
-        #                 - { $zoom: { min: 15 }, area: { min: 5000 } }
-        #         draw:
-        #             horizontal-bars-rev:
-        #                 color: [0.950,0.950,0.950]
-        #                 visible: *grey1_v
-        #         early:
-        #             filter: { $zoom: { max: 15 } }
-        #             draw:
-        #                 horizontal-bars-rev:
-        #                     color: [0.950,0.950,0.950]
-        #                     visible: true
+        tier6:
+            filter:
+                any:
+                    # limit show smaller landuse areas to higher zooms
+                    - { $zoom: { min: 12 }, area: { min: 500000 } }
+                    - { $zoom: { min: 13 }, area: { min: 100000 } }
+                    - { $zoom: { min: 14 }, area: { min: 50000 } }
+                    - { $zoom: { min: 15 }, area: { min: 20000 } }
+                    - { $zoom: { min: 15 }, area: { min: 2000 } }
+                    - { $zoom: { min: 16 } }
+            garden:
+                filter:
+                    kind: garden
+                draw:
+                    terrain:
+                        color: [0.790,0.973,0.896]
+                        visible: true
+            parking:
+                filter:
+                    all:
+                        - kind: parking
+                        - $zoom: { min: 14 }
+                    any:
+                        - { $zoom: { min: 14 }, area: { min: 10000 } }
+                        - { $zoom: { min: 15 }, area: { min: 5000 } }
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: *grey1_v
+                early:
+                    filter: { $zoom: { max: 15 } }
+                    draw:
+                        horizontal-bars-rev:
+                            color: [0.950,0.950,0.950]
+                            visible: true
         pedestrian:
             filter:
                 kind: [pedestrian,common]
@@ -6295,13 +6286,12 @@ layers:
                     terrain:
                         color: [0.99,0.96,0.905]
 
-        # GO BLUE/WHITE
         glacier:
             filter:
                 kind: glacier
             draw:
                 terrain:
-                    color: [1.000,0.953,0.900]
+                    color: [0.890,0.970,1.000]
                     # color: [0.975,0.975,0.828]
                     visible: true
 
@@ -6310,7 +6300,7 @@ layers:
                 kind: [pitch, meadow, village_green, grass, farmland]
             draw:
                 terrain:
-                    color: [0.945,0.995,0.945]
+                    color: [0.795,1.000,0.955]
                     # color: [0.975,0.975,0.828]
                     visible: true
             farmland_friends:
@@ -6323,7 +6313,7 @@ layers:
                 filter: { kind: [meadow, grass] }
                 draw:
                     terrain:
-                        color: [0.965,0.996,0.965]
+                        color: [0.825,0.976,0.895]
             pitch_later:
                 filter: { kind: pitch, $zoom: { min: 17 } }
                 draw:
@@ -6370,43 +6360,39 @@ layers:
                         color: red
                         width: 0.5px
 
+            place_of_worship:
+                filter:
+                    kind: place_of_worship
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: *grey1_v
+            playground:
+                filter:
+                    kind: playground
+                draw:
+                    terrain:
+                        color: [0.795,1.000,0.955]
+                        visible: true
+            school:
+                filter:
+                    kind: school
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
 
-        # GO GREY
-        #     place_of_worship:
-        #         filter:
-        #             kind: place_of_worship
-        #         draw:
-        #             polygons:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: *grey1_v
-        # GO GREEN
-        #     playground:
-        #         filter:
-        #             kind: playground
-        #         draw:
-        #             dots-rev:
-        #                 color: [1.0,1.0,1.0]
-        #                 visible: true
-        # GO GREY
-        #     school:
-        #         filter:
-        #             kind: school
-        #         draw:
-        #             dots-rev:
-        #                 color: [0.945,0.945,0.945]
-        #                 visible: true
-        # GO GREEN?
-        #     minor-landuse:
-        #         filter:
-        #             kind:
-        #                 - attraction
-        #                 - artwork
-        #                 - wilderness_hut
-        #                 - hanami
-        #         draw:
-        #             dots:
-        #                 color: [0.765,0.765,0.765]
-        #                 visible: true
+            minor-landuse:
+                filter:
+                    kind:
+                        - attraction
+                        - artwork
+                        - wilderness_hut
+                        - hanami
+                draw:
+                    terrain:
+                        color: [0.795,1.000,0.955]
+                        visible: true
 
         # GO MELLOW
         # 18/41.19776/-8.68722
@@ -6729,18 +6715,19 @@ layers:
 #                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
 #                    order: 1004
 
-                    color: [[11,[0.182,0.593,0.730]],[14,[0.182,0.593,0.730]],[15,[1.00,1.00,1.00]]]
+                    color: [[11,[0.120,0.600,0.520]],[14,[0.120,0.600,0.520]],[15,[1.00,1.00,1.00]]]
                     #width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
                     width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
                     # let roads sort themselves past zoom 14
                     order: 1004
                     outline:
-                        color: [0.182,0.593,0.730]
+                        color: [0.120,0.600,0.520]
                         width: [[11, 0px],[14, 0px],[15, 0.5px],[16, 1px]]
             networked:
                 filter: { walking_network: true }
                 draw:
                     lines:
+                        color: [0.120,0.600,0.520]
                         width: [[13, 1.7px], [14, 1.8px], [15, 2.5px], [16, 2.5px], [17, 3px], [18, 3px], [19, 4px]]
                     highlight:
                         order: 980
@@ -6767,7 +6754,7 @@ layers:
                         priority: 58
                         visible: *text_visible_path
                         font:
-                            fill: [0.182,0.593,0.730]
+                            fill: [0.120,0.600,0.520]
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
 
@@ -6884,7 +6871,7 @@ layers:
                         - highway: [track]
         draw:
             lines:
-                color: purple #[0.710,0.553,0.522]
+                color: [0.120,0.600,0.520]
                 width: [[11, 0.25px], [12, 0.35px], [13, 0.55px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
                 order: 990
                 interactive: true
@@ -6895,13 +6882,13 @@ layers:
                     color: [1.000,1.000,0.870]
                     width: [[15,0px],[16,1px],[17,4px],[18,6m]]
                     outline:
-                        color: purple #[0.460,0.640,1.000]
+                        color: [0.120,0.600,0.520]
                         width: [[15, 0.5px],[16, 1.5px],[17, 1.5px],[18, 2.5px],[19, 1m]]
                 casing_left:
                     visible: false
                     interactive: true
                     order: 486
-                    color: purple #[0.460,0.640,1.000]
+                    color: [0.120,0.600,0.520]
                     width: [[15, 0.5px],[16, 5.5px],[17, 10px],[18, 9m],[19, 8m]]
                 casing_right:
                     visible: false
