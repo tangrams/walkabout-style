@@ -6402,7 +6402,7 @@ layers:
             draw:
                 lines:
                     order: 501 # function() { return feature.sort_key; }
-                    color: green
+                    color: [0.602,0.860,0.722]
                     width: [[16,1px],[17,2px],[19,1.5m]]
                     visible: true
         # GO MELLOW
@@ -6413,7 +6413,7 @@ layers:
             draw:
                 lines:
                     order: 500 # function() { return feature.sort_key; }
-                    color: green
+                    color: [0.602,0.860,0.722]
                     width: [[16,0.5px],[17,1px],[19,1m]]
                     visible: true
 
