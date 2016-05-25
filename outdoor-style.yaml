@@ -646,7 +646,7 @@ styles:
         shaders:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
-                u_envmap: images/draw-test8.jpg
+                u_envmap: images/draw-test9.jpg
                 u_contrast: 1.
                 u_brightness: 1.
             blocks:
@@ -822,7 +822,8 @@ layers:
             draw:
                 polygons:
                     # color: [0.608,0.925,0.965] ## original color
-                    color: [0.528,0.902,0.960] ## more saturated
+                    # color: [0.528,0.902,0.960] ## more saturated
+                    color: [0.432,0.890,0.960] ## even more saturated
         playas:
             filter: { kind: playa, $zoom: {min: 6} }
             draw:
@@ -836,12 +837,12 @@ layers:
             filter: { not: { kind: [ocean, lake, water, reservoir, playa] }, $zoom: { min: 11 }, area: { min: 100 } }
             draw:
                 polygons:
-                    color: [0.528,0.902,0.960]
+                    color: [0.432,0.890,0.960]
         swimming_pool:
             filter: { kind: swimming_pool }
             draw:
                 polygons:
-                    color: [0.528,0.902,0.960]
+                    color: [0.432,0.890,0.960]
         water-boundary-ocean-early:
             filter: { boundary: yes, kind: ocean, $zoom: {min: 1, max: 17} }
             draw:
@@ -2391,13 +2392,13 @@ layers:
             polygons:
                 visible: false
                 order: 329
-                color: [[14,[0.940,0.950,0.950]],[15,[0.920,0.930,0.930]],[16,[0.930,0.940,0.940]]]
+                color: [[14,[0.930,0.940,0.940]],[15,[0.920,0.930,0.930]],[16,[0.930,0.940,0.940]]]
             lines:
                 style: lines
                 order: 330
                 visible: false
                 color: [[14,[0.750,0.750,0.750]],[17,[0.85, 0.85, 0.85]]]
-                width: [[14, 0.65px], [15, 0.75px], [16,1px], [17,1px], [18, 1.25px]]
+                width: [[14, 0px], [15, 0.5px], [16,0.5px], [17,1px], [18, 1.25px]]
 
         # turn interactive feature selection on for buildings with names
         interactive:
@@ -6576,7 +6577,7 @@ layers:
                         width: [[12, 1.5px], [13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                     highlight:
                         order: 980
-                        color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                        color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
                         width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             no_name_early_not_designated:
@@ -6643,8 +6644,8 @@ layers:
                         width: [[12, 1.5px], [13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                     highlight:
                         order: 980
-                        color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
-                        width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
+                        color: [[12,[0.890,1.000,0.850]],[14,[0.890,1.000,0.850]],[15,[1.000,1.000,0.870]]]
+                        width: [[12, 2px], [13, 5px], [14, 6px], [15, 7px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             steps_early:
                 filter: { highway: steps, $zoom: { max: 16 } }
@@ -6800,7 +6801,7 @@ layers:
                         width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
                     highlight:
                         order: 980
-                        color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                        color: [[12,[0.890,1.000,0.850]],[14,[0.890,1.000,0.850]],[15,[1.000,1.000,0.880]]]
                         width: [[12, 0px], [13, 4px], [14, 5px], [15, 7px], [16, 10px], [17, 12px], [18, 14px], [19, 16px]]
                         join: round
             late:
@@ -6848,7 +6849,7 @@ layers:
                     width: [[13, 1.7px], [14, 1.8px], [15, 2.5px], [16, 2.5px], [17, 3px], [18, 3px], [19, 4px]]
                 highlight:
                     order: 980
-                    color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                    color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
                     width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
                     join: round
         late:
@@ -6971,6 +6972,6 @@ layers:
                     width: [[13, 0.9px], [14, 1.2px], [15, 2.0px], [16, 1px], [17, 2px], [18, 6m]]
                 highlight:
                     order: 980
-                    color: [[12,[1.000,1.000,0.780]],[15,[1.000,1.000,0.870]]]
+                    color: [[12,[0.890,1.000,0.850]],[14,[0.890,1.000,0.850]],[15,[1.000,1.000,0.870]]]
                     width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 10px], [17, 12px], [18, 14px], [19, 16px]]
                     join: round
