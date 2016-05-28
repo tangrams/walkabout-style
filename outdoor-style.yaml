@@ -235,7 +235,7 @@ textures:
             bike-shop: [872, 126, 38, 38]
             boat-ferry: [822, 0, 38, 38]
             boat-ramp: [138, 84, 40, 38]
-            boat-rental: [138, 252, 38, 38]
+            boat-rental: [276, 252, 38, 38]
             bookstore: [826, 126, 38, 38]
             bridge: [920, 84, 38, 38]
             buddhism: [782, 84, 38, 38]
@@ -245,11 +245,11 @@ textures:
             butcher: [920, 42, 38, 38]
             campground: [828, 84, 38, 38]
             candy-store: [0, 210, 38, 38]
-            capital-l: [560, 252, 16, 16]
-            capital-m: [540, 252, 12, 12]
-            capital-s: [520, 252, 10, 10]
-            capital-xl: [584, 252, 20, 20]
-            capital-xs: [506, 252, 8, 8]
+            capital-l: [698, 252, 16, 16]
+            capital-m: [678, 252, 12, 12]
+            capital-s: [658, 252, 10, 10]
+            capital-xl: [722, 252, 20, 20]
+            capital-xs: [644, 252, 8, 8]
             car-dealership: [780, 126, 38, 38]
             caravan-site: [736, 210, 38, 38]
             castle: [414, 42, 38, 38]
@@ -260,7 +260,7 @@ textures:
             college-university: [870, 168, 38, 38]
             convenience-store: [46, 84, 38, 38]
             courthouse: [362, 0, 38, 38]
-            current-location: [158, 384, 88, 86]
+            current-location: [294, 294, 88, 86]
             department-store: [734, 126, 38, 38]
             dog-park: [920, 210, 38, 38]
             drinking-water: [230, 210, 38, 38]
@@ -275,9 +275,9 @@ textures:
             forest: [46, 210, 38, 38]
             fountain: [322, 126, 38, 38]
             garden: [690, 84, 38, 38]
-            gas: [276, 252, 38, 38]
+            gas: [414, 252, 38, 38]
             gas-station: [960, 168, 38, 38]
-            generic: [460, 252, 38, 38]
+            generic: [598, 252, 38, 38]
             geyser: [506, 210, 38, 38]
             gift-shop: [138, 126, 38, 38]
             golf-course: [414, 84, 38, 38]
@@ -298,22 +298,23 @@ textures:
             light-rail: [684, 0, 38, 38]
             lighthouse: [276, 84, 38, 38]
             liquor-store: [506, 126, 38, 38]
-            locate-off: [492, 384, 72, 70]
-            locate-on: [412, 384, 72, 70]
+            locate-off: [628, 294, 72, 70]
+            locate-on: [548, 294, 72, 70]
             mall: [644, 42, 38, 38]
             market: [598, 42, 38, 38]
             mine: [782, 42, 40, 38]
             mobile-phone-shop: [506, 42, 38, 38]
             mosque: [90, 0, 38, 38]
+            motorcycle: [138, 252, 38, 38]
             mountain: [230, 84, 38, 38]
             movie-theatre: [778, 168, 38, 38]
             museum: [46, 126, 38, 38]
             music-store: [368, 42, 38, 38]
             newsstand: [322, 42, 38, 38]
-            observatory: [230, 252, 38, 38]
+            observatory: [368, 252, 38, 38]
             office: [598, 84, 38, 38]
             optical-shop: [276, 42, 38, 38]
-            outdoor: [368, 252, 38, 38]
+            outdoor: [506, 252, 38, 38]
             park: [276, 126, 38, 38]
             parking: [690, 126, 38, 36]
             performing-arts: [594, 168, 38, 38]
@@ -329,18 +330,19 @@ textures:
             post-office: [322, 168, 38, 38]
             ranger-station: [46, 252, 38, 38]
             real-estate: [138, 42, 38, 38]
+            recreation-track: [184, 252, 38, 38]
             recycling-facility: [92, 42, 38, 38]
             rental-car: [592, 0, 38, 38]
             restaurant: [92, 210, 38, 38]
-            route-arrow: [822, 252, 128, 128]
-            route-start: [78, 384, 72, 92]
-            route-stop: [0, 384, 72, 92]
+            route-arrow: [0, 294, 128, 128]
+            route-start: [214, 294, 72, 92]
+            route-stop: [136, 294, 72, 92]
             ruin: [500, 0, 38, 38]
             salon-barber: [46, 42, 38, 38]
             school: [552, 84, 38, 38]
-            scuba-diving: [322, 252, 38, 38]
-            search-active: [252, 384, 72, 108]
-            search-inactive: [332, 384, 72, 108]
+            scuba-diving: [460, 252, 38, 38]
+            search-active: [388, 294, 72, 108]
+            search-inactive: [468, 294, 72, 108]
             shoe-store: [552, 42, 38, 38]
             shower: [690, 210, 38, 38]
             ski-area: [368, 126, 38, 38]
@@ -351,26 +353,27 @@ textures:
             spring: [322, 84, 38, 38]
             stadium: [460, 126, 38, 38]
             subway-entrance: [454, 0, 38, 38]
+            summer-camp: [230, 252, 38, 38]
             swimming-area: [828, 210, 38, 38]
             synagogue: [44, 0, 38, 38]
             tailor-shop: [960, 0, 38, 38]
-            telescope: [184, 252, 38, 38]
+            telescope: [322, 252, 38, 38]
             tennis: [414, 126, 38, 38]
             theme-park: [0, 126, 38, 38]
             toilets: [874, 84, 38, 38]
-            townspot-l: [770, 252, 16, 16]
-            townspot-l-rev: [664, 252, 16, 16]
-            townspot-m: [750, 252, 12, 12]
-            townspot-m-rev: [644, 252, 12, 12]
-            townspot-s: [732, 252, 10, 10]
-            townspot-s-rev: [626, 252, 10, 10]
-            townspot-xl: [794, 252, 20, 20]
-            townspot-xl-rev: [688, 252, 20, 20]
-            townspot-xs: [716, 252, 8, 8]
-            townspot-xs-rev: [612, 252, 6, 6]
+            townspot-l: [908, 252, 16, 16]
+            townspot-l-rev: [802, 252, 16, 16]
+            townspot-m: [888, 252, 12, 12]
+            townspot-m-rev: [782, 252, 12, 12]
+            townspot-s: [870, 252, 10, 10]
+            townspot-s-rev: [764, 252, 10, 10]
+            townspot-xl: [932, 252, 20, 20]
+            townspot-xl-rev: [826, 252, 20, 20]
+            townspot-xs: [854, 252, 8, 8]
+            townspot-xs-rev: [750, 252, 6, 6]
             toy-game-store: [914, 0, 38, 38]
             traffic-signal: [916, 168, 36, 34]
-            trailhead: [414, 252, 38, 38]
+            trailhead: [552, 252, 38, 38]
             train-station: [408, 0, 38, 38]
             veterinarian: [136, 0, 38, 38]
             view-point: [686, 168, 40, 38]
@@ -4443,7 +4446,7 @@ layers:
                         font:
                             size: 18px
                             weight: 200
-                            fill: [0.427,0.450,0.483]
+                            fill: [0.082,0.588,1.000]
                             transform: uppercase
                             stroke: { color: [0.949,0.953,0.953], width: 6 }
                 z15-new:
@@ -4476,7 +4479,7 @@ layers:
                         font:
                             size: 20px
                             weight: 300
-                            fill: [0.448,0.473,0.507]
+                            fill: [0.082,0.780,1.000]
                             transform: uppercase
                             stroke: { color: [0.949,0.953,0.953], width: 6 }
 
@@ -4513,21 +4516,21 @@ layers:
                 font:
                     family: *text_font_family
                     weight: 600
-                    fill: [0.00,0.00,0.00]
-                    size: 11px
+                    fill: [0.10,0.10,0.10]
+                    size: 10px
                     stroke: { color: *text_stroke, width: 3 }
         poi_labels-z14:
             filter: { $zoom: [14] }
-            draw: { text-blend-order: { font: { size: 11px } } }
+            draw: { text-blend-order: { font: { size: 10px } } }
         poi_labels-z15:
             filter: { $zoom: [15,16,17] }
-            draw: { text-blend-order: { font: { size: 13px, stroke: { width: 2 } } } }
+            draw: { text-blend-order: { font: { size: 10px, stroke: { width: 2 } } } }
         poi_labels-z18:
             filter: { $zoom: [18,19] }
-            draw: { text-blend-order: { font: { size: 14px, weight: 600, stroke: { width: 3 } } } }
+            draw: { text-blend-order: { font: { size: 11px, weight: 600, stroke: { width: 3 } } } }
         poi_labels-z20-up:
             filter: { $zoom: { min: 20 } }
-            draw: { text-blend-order: { font: { size: 15px, weight: 600, stroke: { width: 3 }  } } }
+            draw: { text-blend-order: { font: { size: 11px, weight: 600, stroke: { width: 3 }  } } }
         no-name:
             filter: { name: false }
             sports-pitch:
@@ -4639,7 +4642,7 @@ layers:
                         visible: true
                         text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, water_tower, silo, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, horse, fire_lookout, fee_station, rest_area, recreation_track] }
+                filter: { kind: [bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, water_tower, silo, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, dam, battlefield, boat_storage, windmill, horse, fire_lookout, fee_station, rest_area, recreation_track] }
                 draw:
                     icons:
                         priority: 43
@@ -4717,7 +4720,8 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: [0.093,0.473,0.408]
+                                fill: [0.058,0.605,0.615]
+                                # fill: [0.093,0.473,0.408]
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 4 }
                     natl-park-labels-z4-z5:
@@ -4725,19 +4729,19 @@ layers:
                         draw:
                             icons:
                                 visible: false
-                            text-blend-order: { font: { size: 9px, stroke: { width: 2px }, fill: [0.60,0.60,0.60] } }
+                            text-blend-order: { font: { size: 9px, stroke: { width: 2px } } }
                     natl-park-labels-z6:
                         filter: { $zoom: [6] }
                         draw:
-                            text-blend-order: { font: { size: 9px, stroke: { width: 2px }, fill: [0.40,0.40,0.40] } }
+                            text-blend-order: { font: { size: 9px, stroke: { width: 2px } } }
                     natl-park-labels-z7:
                         filter: { $zoom: [7] }
                         draw:
-                            text-blend-order: { font: { size: 10px, stroke: { width: 2px }, fill: [0.350,0.350,0.350] } }
+                            text-blend-order: { font: { size: 10px, stroke: { width: 2px } } }
                     natl-park-labels-z8:
                         filter: { $zoom: [8,9] }
                         draw:
-                            text-blend-order: { font: { size: 11px, stroke: { width: 2px }, fill: [0.350,0.350,0.350] } }
+                            text-blend-order: { font: { size: 11px, stroke: { width: 2px } } }
                     natl-park-labels-z10:
                         filter: { $zoom: {min: 10, max: 14 } }
                         draw:
@@ -4747,13 +4751,13 @@ layers:
                         draw: { text-blend-order: { font: { size: 11px } } }
                     poi_labels-z15:
                         filter: { $zoom: [15,16,17] }
-                        draw: { text-blend-order: { font: { size: 14px } } }
+                        draw: { text-blend-order: { font: { size: 11px } } }
                     poi_labels-z18:
                         filter: { $zoom: [18,19] }
-                        draw: { text-blend-order: { font: { size: 15px } } }
+                        draw: { text-blend-order: { font: { size: 11px } } }
                     poi_labels-z20-up:
                         filter: { $zoom: { min: 20 } }
-                        draw: { text-blend-order: { font: { size: 16px } } }
+                        draw: { text-blend-order: { font: { size: 11px } } }
 
             landuse-labels-green-areas-not-national-park:
                 filter:
@@ -4786,8 +4790,9 @@ layers:
                             visible: *text_visible_landuse_green
                             priority: 42
                             font:
-                                fill: [0.093,0.473,0.408]
-                                #size: 12px
+                                fill: [0.032,0.522,0.530]
+                                # fill: [0.093,0.473,0.408]
+                                size: 11px
                                 style: italic
                                 stroke: { color: *text_stroke_park, width: 3 }
                     green-areas-z6:
@@ -4795,19 +4800,19 @@ layers:
                         filter: { $zoom: [6] }
                         draw:
                             icons: { visible: false }
-                            text-blend-order: { font: { size: 10px, stroke: { width: 2px }, fill: [0.40,0.40,0.40] } }
+                            text-blend-order: { font: { size: 10px, stroke: { width: 2px } } }
                     green-areas-z7:
                         filter: { $zoom: [7] }
                         draw:
                             icons: { visible: false }
-                            text-blend-order: { font: { size: 10px, stroke: { width: 2px }, fill: [0.350,0.350,0.350] } }
+                            text-blend-order: { font: { size: 10px, stroke: { width: 2px } } }
                     green-areas-z17-up:
                         filter: { $zoom: { min: 17 } }
                         draw:
                             text-blend-order:
                                 font:
-                                    #size: 11px
-                                    stroke: { color: [1.0,1.0,1.0], width: 4 }
+                                    size: 11px
+                                    stroke: { color: *text_stroke, width: 4 }
 
                     wilderness-areas-early:
                        filter: function() { return $zoom < 10 && feature.name && (feature.name.indexOf("Wilderness") > -1 || feature.name.indexOf("BLM") > -1) }
@@ -4869,7 +4874,7 @@ layers:
                         visible: *text_visible_landuse_green
                         interactive: true
                         font:
-                            fill: [0.00,0.00,0.00]
+                            fill: [0.10,0.10,0.10]
                             stroke:
                                 color: *text_stroke_park
             airport:
@@ -4901,7 +4906,7 @@ layers:
                         priority: 41
                         text_source: function() { if(feature.iata) { return feature.name + ' (' + feature.iata + ')'; } else { return feature.name; } }
                         font:
-                            fill: [0.148,0.137,0.304]
+                            fill: [0.10,0.10,0.10]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4941,7 +4946,7 @@ layers:
                         visible: *text_visible_landuse_green
                         priority: 42
                         font:
-                            fill: [0.356,0.266,0.224]
+                            fill: [0.10,0.10,0.10]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -4949,7 +4954,7 @@ layers:
                     draw: { text-blend-order: { visible: false } }
                 early2:
                     filter: { $zoom: { min: 12, max: 14 } }
-                    draw: { text-blend-order: { size: 11px } }
+                    draw: { text-blend-order: { size: 10px } }
             school:
                 filter:
                     all:
@@ -4974,7 +4979,7 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: [0.356,0.266,0.224]
+                            fill: [0.10,0.10,0.10]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early:
@@ -5002,8 +5007,8 @@ layers:
                     text-blend-order:
                         visible: *text_visible_landuse_green
                         font:
-                            fill: *text_fill
-                            size: 11px
+                            fill: [0.10,0.10,0.10]
+                            size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                     icons:
                         sprite: ski-area
@@ -5037,8 +5042,8 @@ layers:
                         visible: *text_visible_poi_landuse
                         priority: 44
                         font:
-                            fill: [0.093,0.473,0.408]
-                            size: 12px
+                            fill: [0.10,0.10,0.10]
+                            size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 early-sizing:
                     filter: { $zoom: { max: 14 } }
@@ -5074,18 +5079,18 @@ layers:
                         visible: *text_visible_poi_landuse
                         priority: 44
                         font:
-                            fill: [0.15,0.15,0.15] #[0.50,0.50,0.50]
+                            fill: [0.10,0.10,0.10]
                             weight: 600
                             size: 10px
-                            stroke: { color: [1.0,1.0,1.0,0.85], width: 3 }
-                landuse-z17:
-                    filter: { $zoom: { min: 17 } }
+                            stroke: { color: *text_stroke, width: 3 }
+                landuse-z18:
+                    filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
                             font:
                                 size: 11px
-                                fill: [0.50,0.50,0.50]
-                                stroke: { color: [1.0,1.0,1.0], width: 4 }
+                                fill: [0.10,0.10,0.10]
+                                stroke: { color: *text_stroke, width: 4 }
                 # building-like:
                 #     filter: { kind: [commercial,residential,warehouse,public,dormitory], osm_relation: false }
                 #     draw:
@@ -5242,7 +5247,7 @@ layers:
                     text-blend-order:
                         visible: *text_visible_poi_landuse
                         font:
-                            fill: *text_fill
+                            fill: [0.10,0.10,0.10]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
             landuse-funky:
@@ -5302,7 +5307,7 @@ layers:
                         priority: 42
                         font:
                             weight: 600
-                            fill: [0.20,0.20,0.20]
+                            fill: [0.10,0.10,0.10]
                             size: 10px
                             stroke: { color: *text_stroke, width: 4 }
                 low-priority-early:
@@ -5327,12 +5332,12 @@ layers:
                             #visible: false
                         text-blend-order: { visible: false }
                 stations-later:
-                    filter: { $zoom: { min: 17 } }
+                    filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
                             font:
-                                size: 12px
-                                fill: [0.0,0.0,0.0]
+                                size: 11px
+                                fill: [0.10,0.10,0.10]
             tram-stop-early:
                 filter: { kind: tram_stop, $zoom: { max: 15 } }
                 draw:
@@ -5357,7 +5362,7 @@ layers:
                 draw:
                     text-blend-order:
                         font:
-                            color: *text_fill_water
+                            fill: [0.10,0.10,0.10]
             bus-stop-bus-station-labels:
                 filter:
                     kind: [bus_stop, bus_station]
@@ -5368,8 +5373,8 @@ layers:
                     text-blend-order:
                         visible: *text_visible_poi_landuse
                         font:
-                            fill: *text_fill
-                            size: 11px
+                            fill: [0.10,0.10,0.10]
+                            size: 10px
                             stroke: { color: *text_stroke, width: 4 }
             bus_stop-early:
                 filter:
@@ -5391,7 +5396,7 @@ layers:
                         visible: false
             minor-z17-early:
                 filter:
-                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental_station, books, bus_stop, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
+                    kind: [accountant, administrative, advertising_agency, architect, association, atm, bakery, bed_and_breakfast, bicycle, bicycle_parking, bicycle_rental_station, books, bus_stop, butcher, car, car_repair, chalet, clothes, company, computer, consulting, convenience, doityourself, drinking_water, dry_cleaning, educational_institution, emergency_phone, employment_agency, estate_agent, fashion, financial, florist, foundation, gate, gift, government, greengrocer, guest_house, hairdresser, hostel, hotel, insurance, it, jewelry, lawyer, mast, memorial, mobile_phone, motel, newspaper, ngo, notary, optician, parking, pet, physician, playground, political_party, post_box, religion, research, subway_entrance, tax_advisor, telecommunication, telephone, theatre, therapist, toilets, traffic_signals, travel_agent, water_tower, yes]
                     area: false
                     $zoom: { max: 17 }
                 draw:
@@ -5406,7 +5411,7 @@ layers:
                     text-blend-order:  { visible: false }
                     icons: { visible: false }
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, cycle_barrier, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, water_tower, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill, fishing, recreation_track, horse, fire_lookout, fee_station, rest_area] }
+                filter: { kind: [bicycle_repair_station, cycle_barrier, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, water_tower, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, dam, battlefield, boat_storage, windmill, fishing, recreation_track, horse, fire_lookout, fee_station, rest_area] }
                 draw:
                     icons:
                         order: 41
@@ -5424,7 +5429,7 @@ layers:
                     text-blend-order:
                         order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, bicycle_junction, walking_junction, summer_camp, dam, battlefield, boat_storage, windmill] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, bicycle_junction, walking_junction, dam, battlefield, boat_storage, windmill] } }
                 draw:
                     icons:
                         order: 45
@@ -5695,8 +5700,11 @@ layers:
                     filter: { kind: [mobile_phone] }
                     draw:   { icons: { sprite: mobile-phone-shop } }
                 motorcycle-shop:
-                    filter: { kind: [motorcycle, motorcycle_shop, motorcycle_repair] }
+                    filter: { kind: [motorcycle_shop, motorcycle_repair] }
                     draw:   { icons: { sprite: motorcycle-shop } }
+                motorcycle:
+                    filter: { kind: [motorcycle] }
+                    draw:   { icons: { sprite: motorcycle } }
                 mountain:
                     filter: { kind: [mountain, peak] }
                     draw:   { icons: { sprite: mountain } }
@@ -5760,6 +5768,9 @@ layers:
                 real-estate:
                     filter: { kind: [estate_agent, real_estate] }
                     draw:   { icons: { sprite: real-estate } }
+                recreation-track:
+                    filter: { kind: [recreation_track] }
+                    draw:   { icons: { sprite: recreation-track } }
                 recycling-facility:
                     filter: { kind: [recycling, recycling-facility] }
                     draw:   { icons: { sprite: recycling-facility } }
@@ -5823,6 +5834,9 @@ layers:
                 subway-entrance:
                     filter: { kind: [subway_entrance] }
                     draw:   { icons: { sprite: subway-entrance } }
+                summer-camp:
+                    filter: { kind: [summer_camp] }
+                    draw:   { icons: { sprite: summer-camp } }
                 tailor-shop:
                     filter: { kind: [tailor, tailor-shop] }
                     draw:   { icons: { sprite: tailor-shop } }
