@@ -879,7 +879,7 @@ layers:
                 all:
                     - boundary: yes
                     - not: { kind: [ocean,playa] }
-                    - $zoom: { min: 8} 
+                    - $zoom: { min: 8}
                 any:
                     # limit show smaller landuse areas to higher zooms
                     - { $zoom: { min: 1 },  area: { min: 40000000000 } }
@@ -6394,7 +6394,7 @@ layers:
                     - { $zoom: { min: 16 } }
             garden:
                 filter:
-                    kind: garden
+                    kind: [garden, allotments]
                 draw:
                     terrain:
                         color: [0.790,0.973,0.896]
@@ -6661,7 +6661,7 @@ layers:
                     lines:
                         width: [[0,1px]]
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments] }
                 draw:
                     lines:
                         width: [[13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
@@ -6682,7 +6682,7 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 in_zoo_golf_course:
-                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
                     draw:
                         text-blend-order:
                             visible: false
@@ -6767,7 +6767,7 @@ layers:
                 in_zoo_golf_course:
                     filter:
                         all:
-                            - landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian, attraction, residential, stadium, playground]
+                            - landuse_kind: [zoo, petting_zoo, golf_course, garden, university, parking, pedestrian, attraction, residential, stadium, playground, allotments]
                             - $zoom: { max: 16 }
                     draw:
                         dots-lines:
@@ -6803,7 +6803,7 @@ layers:
                             lines:
                                 width: [[0,1px]]
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments] }
                 draw:
                     lines:
                         width: [[15, 0.5px], [16, 1px], [17, 2.25px], [18, 5px], [19, 6px]]
@@ -6847,7 +6847,7 @@ layers:
                             size: 12px
                             stroke: { color: *text_stroke, width: 4 }
                 in_zoo_golf_course:
-                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
                     draw:
                         text-blend-order:
                             visible: false
@@ -6942,7 +6942,7 @@ layers:
                         width: [[16, 1.5px], [17, 2px], [18, 2px], [19, 2px]]
                         order: 999
         in_zoo_golf_course:
-            filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery] }
+            filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments] }
             draw:
                 lines:
                     width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
@@ -6962,7 +6962,7 @@ layers:
                         size: 12px
                         stroke: { color: *text_stroke, width: 4 }
             in_zoo_golf_course:
-                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery], $zoom: { max: 15 } }
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
                 draw:
                     text-blend-order:
                         visible: false
