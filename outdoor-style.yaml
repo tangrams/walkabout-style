@@ -2325,7 +2325,7 @@ layers:
                     interactive: true
                     cap: round
                     join: round
-                    color: [0.0,0.0,0.0]
+                    color: [0.400,0.666,0.690]
                     width: [[13,0.5px],[14,1px],[15, 1px], [16, 1.5px], [18, 3px], [19, 5px]]
         airport-lines:
             filter: { kind: minor_road, aeroway: [runway,taxiway] }
@@ -4396,7 +4396,7 @@ layers:
                         font:
                             size: 12px
                             weight: 400
-                            fill: [0.422,0.445,0.472]
+                            fill: [0.085,0.658,0.710]
                             transform: uppercase
                             stroke: { color: [0.904,0.916,0.924], width: 4 }
             neighborhood-z14:
@@ -4421,7 +4421,7 @@ layers:
                         font:
                             size: 15px
                             weight: 300
-                            fill: [0.397,0.418,0.449]
+                            fill: [0.085,0.658,0.710]
                             transform: uppercase
                             stroke: { color: [0.914,0.926,0.934], width: 5 }
             neighborhood-z15:
@@ -4446,7 +4446,7 @@ layers:
                         font:
                             size: 18px
                             weight: 200
-                            fill: [0.082,0.588,1.000]
+                            fill: [0.085,0.658,0.710]
                             transform: uppercase
                             stroke: { color: [0.949,0.953,0.953], width: 6 }
                 z15-new:
