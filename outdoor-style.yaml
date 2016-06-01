@@ -5660,6 +5660,9 @@ layers:
                 hotel:
                     filter: { kind: [hotel, motel, hostel] }
                     draw:   { icons: { sprite: hotel } }
+                hot_spring:
+                    filter: { kind: [hot_spring] }
+                    draw:   { icons: { sprite: spring } }
                 hunting:
                     filter: { kind: [hunting] }
                     draw:   { icons: { sprite: hunting } }
