@@ -6569,20 +6569,20 @@ layers:
             lines:
                 order: 999
                 interactive: true
-        cliff:
-            filter: { kind: cliff }
-            draw:
-                lines:
-                    color: blue
-                    width: 0.2px
-                    order: 1001
-        arete:
-            filter: { kind: arete }
-            draw:
-                lines:
-                    color: red
-                    width: 0.2px
-                    order: 1000
+        #cliff:
+#            filter: { kind: cliff }
+#            draw:
+#                lines:
+#                    color: blue
+#                    width: 0.2px
+#                    order: 1001
+        #arete:
+#            filter: { kind: arete }
+#            draw:
+#                lines:
+#                    color: red
+#                    width: 0.2px
+#                    order: 1000
         ridge_valley:
             filter: { kind: [ridge, valley] }
             draw:
