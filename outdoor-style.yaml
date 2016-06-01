@@ -820,6 +820,7 @@ layers:
             filter:
                 all:
                     - kind: [ocean, lake, water, riverbank, reservoir, swimming_pool]
+                # WARNING: any area filters here must match the area filters in the water_boundaries-not-ocean layer
                 any:
                     # limit show smaller landuse areas to higher zooms
                     - { $zoom: { min: 1 },  area: { min: 40000000000 } }
@@ -885,6 +886,7 @@ layers:
                     - boundary: yes
                     - not: { kind: [ocean,playa] }
                     - $zoom: { min: 8}
+                # WARNING: any area filters here must match the area filters in the lakes layer
                 any:
                     # limit show smaller landuse areas to higher zooms
                     - { $zoom: { min: 1 },  area: { min: 40000000000 } }
