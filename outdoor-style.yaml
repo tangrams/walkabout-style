@@ -6442,7 +6442,7 @@ layers:
 
         minor_green_stuff:
             filter:
-                kind: [pitch, meadow, village_green, grass, farmland]
+                kind: [pitch, meadow, village_green, grass, farmland, playground]
             draw:
                 terrain:
                     color: [0.795,1.000,0.955]
