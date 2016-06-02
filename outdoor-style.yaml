@@ -6903,7 +6903,7 @@ layers:
                 filter: { $zoom: { min: 15 } }
                 draw:
                     lines:
-                        color: [[17,'#c8ecf7'],[18,'#a9d9e8']] #white
+                        color: [0.145,0.745,0.643] #[[17,'#c8ecf7'],[18,'#a9d9e8']] #white
                         join: round
                         cap: round
                         outline:
