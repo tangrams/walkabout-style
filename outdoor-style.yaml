@@ -6660,20 +6660,20 @@ layers:
                     join: round
                     cap: round
                     color: [[13, [0.298,0.686,0.627]], [14,[0.298,0.686,0.627]], [15, [0.298,0.686,0.627]], [16, [0.860,1.000,0.977]], [17, [0.860,1.000,0.977]]]
-                    width: [[13, 1px], [14, 1.1px], [15, 1.25px], [16, 0px], [17, 1px], [18, 1.75px], [19, 2.25px]]
+                    width: [[13, 1px], [14, 1.1px], [15, 1.5px], [16, 0px], [17, 1px], [18, 1.75px], [19, 2.25px]]
                     order: 1003
                     outline:
                         color: [0.120,0.600,0.520]
-                        width: [[15, 0px], [16, 0.6px], [17, 1.25px], [18, 2.5px]]
+                        width: [[15, 0px], [16, 0.5px], [17, 1.25px], [18, 2.5px]]
             networked:
                 filter: { walking_network: true }
                 draw:
                     lines:
-                        width: [[12, 1px], [13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                        width: [[12, 1px], [13, 1px], [14, 1.1px], [15, 1.5px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                     highlight:
                         order: 980
                         color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
-                        width: [[12, 0px], [13, 3px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
+                        width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             no_name_early_not_designated:
                 filter: { name: false, $zoom: { max: 14 } }
@@ -6684,7 +6684,7 @@ layers:
                 filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments] }
                 draw:
                     lines:
-                        width: [[13, 1px], [14, 1.1px], [15, 1.25px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                        width: [[13, 0.5px], [15, 0.65px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
@@ -6715,7 +6715,7 @@ layers:
                 dots-lines:
                     order: 1002
                     interactive: true
-                    width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
+                    width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 3px], [17, 6px], [18, 7px], [19, 10px]]
                     visible: true
                     #color: purple
                 lines:
@@ -6736,11 +6736,11 @@ layers:
                 filter: { walking_network: true }
                 draw:
                     lines:
-                        width: [[12, 0.75px], [13, 1px], [14, 1.25px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                        width: [[12, 0.75px], [13, 1px], [14, 1px], [15, 1.25px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                     highlight:
                         order: 980
                         color: [[12,[0.900,1.000,0.850]],[14,[0.930,1.000,0.850]],[15,[1.000,1.000,0.870]]]
-                        width: [[12, 3px], [13, 4px], [14, 5px], [15, 7px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
+                        width: [[12, 3px], [13, 4px], [14, 5px], [15, 6px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             steps_early:
                 filter: { highway: steps, $zoom: { max: 16 } }
@@ -6772,16 +6772,16 @@ layers:
                     draw:
                         lines:
                             color: [[15,[0.120,0.600,0.520]],[16,[0.623,0.820,0.797]]]
-                            width: [[15, 1.75px],[16, 2.75px], [17, 4px], [18, 5px], [19, 8px]]
+                            width: [[15, 10.75px],[16, 2.75px], [17, 4px], [18, 5px], [19, 8px]]
                 no_name-late:
                     filter: { name: false }
                     draw:
                         dots-lines:
                             color: [0.120,0.600,0.520]
-                            width: [[16, 4px], [17, 4px], [18, 5px], [19, 8px]]
+                            width: [[16, 3px], [17, 4px], [18, 5px], [19, 8px]]
                         lines:
-                            color: [0.672,0.840,0.820]
-                            width: [[16, 2px], [17, 3px], [18, 4px], [19, 7px]]
+                            color: [0.671,0.839,0.820]
+                            width: [[16, 20px], [17, 3px], [18, 4px], [19, 7px]]
             no_name:
                 filter: { name: false, not: { highway: steps } }
                 in_zoo_golf_course:
