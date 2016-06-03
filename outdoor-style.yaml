@@ -6736,11 +6736,11 @@ layers:
                 filter: { walking_network: true }
                 draw:
                     lines:
-                        width: [[12, 0.75px], [13, 1px], [14, 1.45px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                        width: [[12, 0.75px], [13, 1px], [14, 1.25px], [15, 1.75px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
                     highlight:
                         order: 980
                         color: [[12,[0.900,1.000,0.850]],[14,[0.930,1.000,0.850]],[15,[1.000,1.000,0.870]]]
-                        width: [[12, 3px], [13, 4px], [14, 6px], [15, 7px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
+                        width: [[12, 3px], [13, 4px], [14, 5px], [15, 7px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             steps_early:
                 filter: { highway: steps, $zoom: { max: 16 } }
