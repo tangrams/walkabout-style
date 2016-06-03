@@ -6659,12 +6659,12 @@ layers:
                 lines:
                     join: round
                     cap: round
-                    color: [[13, [0.298,0.686,0.627]], [14,[0.298,0.686,0.627]], [15, [0.298,0.686,0.627]], [16, [0.147,0.749,0.647]], [17, [0.147,0.749,0.647]]]
-                    width: [[13, 1px], [14, 1.1px], [15, 1.25px], [16, 0px], [17, 1.5px], [18, 1.75px], [19, 2.25px]]
+                    color: [[13, [0.298,0.686,0.627]], [14,[0.298,0.686,0.627]], [15, [0.298,0.686,0.627]], [16, [0.860,1.000,0.977]], [17, [0.860,1.000,0.977]]]
+                    width: [[13, 1px], [14, 1.1px], [15, 1.25px], [16, 0px], [17, 1px], [18, 1.75px], [19, 2.25px]]
                     order: 1003
                     outline:
                         color: [0.120,0.600,0.520]
-                        width: [[15, 0px], [16, 1px], [17, 1.5px], [18, 2.5px]]
+                        width: [[15, 0px], [16, 0.6px], [17, 1.25px], [18, 2.5px]]
             networked:
                 filter: { walking_network: true }
                 draw:
@@ -6965,7 +6965,7 @@ layers:
             filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments] }
             draw:
                 lines:
-                    width: [[13, 1px], [14, 1.45px], [15, 2.25px], [16, 3px], [17, 4px], [18, 5px], [19, 6px]]
+                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
