@@ -2270,7 +2270,7 @@ layers:
                     cap: round
                     join: round
                     color: '#909090'
-                    width: [[13,0px],[14,1.5px],[15, 1.75px], [16, 2px], [18, 3m]]
+                    width: [[13,0px],[14,1px],[15, 1.25px], [16, 2px], [18, 3m]]
                 text-blend-order:
                     priority: 18
                     visible: *text_visible_piste
@@ -6772,7 +6772,7 @@ layers:
                     draw:
                         lines:
                             color: [[15,[0.120,0.600,0.520]],[16,[0.623,0.820,0.797]]]
-                            width: [[15, 10.75px],[16, 2.75px], [17, 4px], [18, 5px], [19, 8px]]
+                            width: [[15, 1.75px],[16, 2.75px], [17, 4px], [18, 5px], [19, 8px]]
                 no_name-late:
                     filter: { name: false }
                     draw:
@@ -6781,7 +6781,7 @@ layers:
                             width: [[16, 3px], [17, 4px], [18, 5px], [19, 8px]]
                         lines:
                             color: [0.671,0.839,0.820]
-                            width: [[16, 20px], [17, 3px], [18, 4px], [19, 7px]]
+                            width: [[16, 2px], [17, 3px], [18, 4px], [19, 7px]]
             no_name:
                 filter: { name: false, not: { highway: steps } }
                 in_zoo_golf_course:
