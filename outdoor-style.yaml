@@ -4648,7 +4648,7 @@ layers:
                     filter: { kind: [water_tower], $zoom: { min: 15 } }
                     draw:   { icons: { sprite: water-tower, visible: *icon_visible_poi_landuse_e } }
             battlefield:
-                    filter: { kind: [battlefield], $zoom: { min: 15 } }
+                    filter: { kind: [battlefield] }
                     draw:   { icons: { sprite: battlefield, visible: *icon_visible_poi_landuse_e } }
             walking-or-bicycle_junction:
                 filter: { kind: [bicycle_junction, walking_junction] }
@@ -4774,13 +4774,12 @@ layers:
                     poi_labels-z20-up:
                         filter: { $zoom: { min: 20 } }
                         draw: { text-blend-order: { font: { size: 11px } } }
-
             landuse-labels-green-areas-not-national-park:
                 filter:
                     all:
                         - area: true
                         - $geometry: point
-                        - kind: [park, national_park, "park or protected land",conservation, protected_area, nature_reserve, forest, grass, battlefield]
+                        - kind: [park, national_park, "park or protected land",conservation, protected_area, nature_reserve, forest, grass]
                     any:
                         # show labels for smaller landuse areas at higher zooms
                         - { $zoom: [5],    area: { min: 10000000000 } }
@@ -4836,7 +4835,7 @@ layers:
                            text-blend-order: { visible: false }
                            icons: { visible: false }
                     early-not-national-park:
-                        filter: { not: { kind: [national_park, battlefield] }, $zoom: { max: 6 } }
+                        filter: { not: { kind: [national_park] }, $zoom: { max: 6 } }
                         draw:
                             text-blend-order: { visible: false }
                             icons: { visible: false }
@@ -4865,6 +4864,37 @@ layers:
                         draw:
                             text-blend-order: { font: { style: italic } }
                             icons: { visible: false }
+            battlefield:
+                filter:
+                    all:
+                        - area: true
+                        - $geometry: point
+                        - kind: [battlefield]
+                    any:
+                        # show labels for smaller landuse areas at higher zooms
+                        - { $zoom: [4],  area: { min: 3000000000 } }
+                        - { $zoom: [5],  area: { min: 3000000000 } }
+                        - { $zoom: [6],  area: { min: 500000000 } }
+                        - { $zoom: [7,8,9],  area: { min: 10000000 } }
+                        - { $zoom: [10], area: { min: 5000000 } }
+                        - { $zoom: [11], area: { min: 5000000 } }
+                        - { $zoom: [12], area: { min: 5000000 } }
+                        - { $zoom: [13], area: { min: 200000 } }
+                        - { $zoom: [14], area: { min: 50000 } }
+                        - { $zoom: { min: 15 } }
+                draw:
+                    icons:
+                        visible: *icon_visible_landuse_green
+                        sprite: battlefield
+                        priority: 41
+                    text-blend-order:
+                        visible: *text_visible_landuse_green
+                        priority: 42
+                        font:
+                            fill: [0.058,0.605,0.615]
+                            # fill: [0.093,0.473,0.408]
+                            style: italic
+                            stroke: { color: *text_stroke_park, width: 4 }
             beach:
                 filter:
                     all:
