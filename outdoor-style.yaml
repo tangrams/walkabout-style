@@ -418,7 +418,7 @@ sources:
         # dev
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
         #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
-        max_zoom: 14
+        max_zoom: 15
 
 styles:
     highlight:
@@ -6394,6 +6394,13 @@ layers:
                         terrain:
                             color: [1.000,0.973,0.930]
                             visible: true
+            camp_site:
+                filter: { kind: camp_site }
+                draw:
+                    terrain:
+                        color: *gray-all
+                        visible: true
+
         tier5:
             filter:
                 any:
