@@ -6488,7 +6488,7 @@ layers:
                     surface: [grass]
                 draw:
                     terrain:
-                        color: [0.99,0.96,0.905]
+                        color: [0.791,0.953,0.883]
 
         glacier:
             filter:
@@ -6504,7 +6504,7 @@ layers:
                 kind: [pitch, meadow, village_green, grass, farmland, playground]
             draw:
                 terrain:
-                    color: [0.795,1.000,0.955]
+                    color: [0.702,0.949,0.932]
                     # color: [0.975,0.975,0.828]
                     visible: true
             farmland_friends:
