@@ -4850,10 +4850,15 @@ layers:
                                 text-blend-order: { visible: false }
                                 icons: { visible: false }
                     forest:
-                        filter: function() { return $zoom < 8 && ((feature.name && feature.name.indexOf("Forest") > -1) || feature.protect_class >=6) }
+                        filter: function() { return ((feature.name && feature.name.indexOf("Forest") > -1) || feature.protect_class >=6) }
                         draw:
-                            text-blend-order: { visible: false }
-                            icons: { visible: false }
+                            icons:
+                                sprite: forest
+                        early:
+                            filter: { $zoom: { max: 8 } }
+                            draw:
+                                text-blend-order: { visible: false }
+                                icons: { visible: false }
                     hide-till-later:
                         filter: { kind: [grass], $zoom: { max: 16 } }
                         draw:
