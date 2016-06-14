@@ -438,8 +438,8 @@ styles:
                     color.a = 1.- step(dotSize, dot(st,st)*2.);
     dashed:
         base: lines
-        dash: [1, 1]
-        dash_background_color: [0.496,0.680,0.649]
+        dash: [1.25, 1.25]
+        dash_background_color: [0.808,0.860,0.851]
     dashedline:
         base: lines
         texcoords: true
@@ -2290,20 +2290,20 @@ layers:
                     visible: false
                 dashed:
                     order: function() { return feature.sort_key; }
-                    color: [0.850,0.850,0.850]
+                    color: [0.501,0.650,0.650]
                     width: [[15, 0.6], [16, 1px], [17, 1px], [18, 4px], [19, 1.5m]]
             steps-late:
                 filter: { $zoom: { min: 17 } }
                 draw:
-                    lines:
-                        color: [0.707,0.884,0.872]
-                        visible: true
-                        outline:
-                            width: [[17, 0px], [18, 1px], [19, 2px]]
-                            color: [0.850,0.850,0.850]
+                    # lines:
+                    #     color: [0.707,0.884,0.872]
+                    #     visible: true
+                    #     outline:
+                    #         width: [[17, 0px], [18, 1px], [19, 2px]]
+                    #         color: [0.850,0.850,0.850]
                     dashed:
                         width: [[17, 2px], [18, 3px], [19, 3.5px]]
-                        color: [0.850,0.850,0.850]
+                        color: [0.501,0.650,0.650]
             in_park:
                 filter: { landuse_kind: [park,nature_reserve,conservation,golf_course,garden] }
                 draw:
