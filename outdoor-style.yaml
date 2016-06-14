@@ -6869,14 +6869,14 @@ layers:
                         text-blend-order:
                             visible: false
 
-        cycleway:
-            filter: { highway: cycleway }
+        cycleway_pedestrian:
+            filter: { highway: [cycleway, pedestrian] }
             draw:
                 lines:
 #                    color: blue #[0.120,0.600,0.520]
 #                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
 #                    order: 1004
-
+                    interactive: true
                     color: [[11,[0.120,0.600,0.520]],[14,[0.120,0.600,0.520]],[15,[1.00,1.00,1.00]]]
                     #width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
                     width: [[13, 0.75px], [14, 1.1px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
@@ -7032,8 +7032,8 @@ layers:
                 - walking_network: true
                 - not:
                     any:
-                        - kind: [path,ferry]
-                        - motor_vehicle: [no,false]
+                        - { kind: [path,ferry], not: { highway: pedestrian } }
+                        #- motor_vehicle: [no,false]
                         - highway: [track]
         draw:
             lines:
