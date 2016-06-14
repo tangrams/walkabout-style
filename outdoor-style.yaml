@@ -720,6 +720,70 @@ styles:
                     vec4 colorlines = linecolor * tileGrid();
                     color += colorlines;
 
+    # HSV/RGB functions
+    hsv:
+        shaders:
+            blocks:
+                global: |
+                    vec3 rgb2hsv(vec3 c)
+                    {
+                        vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+                        vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+                        vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+                        float d = q.x - min(q.w, q.y);
+                        float e = 1.0e-10;
+                        return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+                    }
+                    vec3 hsv2rgb(vec3 c)
+                    {
+                        vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+                        vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+                        return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+                    }
+
+    scale-buildings:
+        shaders:
+            blocks:
+                position: |
+                    // scale buildings based on zoom
+                    float zoom = u_map_position.z;
+                    float min = .1;       // minimum building scale
+                    float midpoint = 16.; // middle of zoom range
+                    float inspeed = .1;   // number of zooms to scale buildings up
+                    float outspeed = 2.;  // number of zooms to scale buildings back down
+                    float e = 0.;
+
+                    if (zoom >= midpoint) {
+                        e = (zoom - midpoint) / (outspeed * .2);
+                    } else {
+                        e = abs(zoom - midpoint) / inspeed;
+                    }
+                    position.z *= ((1. - min) / (1. + (exp(e)))) + min;
+
+    building-grid:
+        base: polygons
+        lighting: false
+        mix: [hsv, scale-buildings]
+        texcoords: true
+        shaders:
+            uniforms:
+                u_tex_grid: building-grid
+            defines:
+                WALL_TINT: vec3(0.950, 0.950, 0.950)
+            blocks:
+                color: |
+                    if (dot(vec3(0., 0., 1.), worldNormal()) < 1.0 - TANGRAM_EPSILON) {
+                        // If it's a wall
+                        color.rgb = hsv2rgb(rgb2hsv(color.rgb) * WALL_TINT);
+                        color.rgb = mix(color.rgb, vec3(0.),
+                                        texture2D(u_tex_grid, v_texcoord).a);
+                    }
+
+    building-lines:
+        base: lines
+        mix: scale-buildings
+        texcoords: true
+
 
     terrain-muted:
         mix: grid-on-terrain
@@ -2591,6 +2655,26 @@ layers:
                     visible: true
                 lines:
                     visible: true
+
+        extrude:
+            filter:
+                any:   
+                    - { $zoom: [17], height: { min: 100 } }
+                    - { $zoom: [17], area: { min: 5000 } }
+                    - { $zoom: [17], volume: { min: 100000 } }
+                    - { $zoom: { min: 18 } }
+            draw:
+                polygons:
+                    visible: true
+                    order: 438
+                    style: building-grid
+                    extrude: function() { return feature.height || 20; }
+                    color: [0.930,0.940,0.940]
+                lines:
+                    visible: true
+                    order: 439
+                    style: building-lines
+                    extrude: function() { return feature.height || 20; }
 
         # landuse-specific rules
         # in_park:
