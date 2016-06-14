@@ -5057,7 +5057,7 @@ layers:
                     draw: { icons: { text: { visible: false } } }
                 early2:
                     filter: { $zoom: { min: 12, max: 14 } }
-                    draw: { icons: { text: { size: 10px } } }
+                    draw: { icons: { text: { font: { size: 10px } } } }
             school:
                 filter:
                     all:
@@ -5117,9 +5117,9 @@ layers:
                                 #fill: [0.10,0.10,0.10]
                                 size: 10px
                                 stroke: { color: *text_stroke, width: 4 }
-                early:
-                    filter: { $zoom: { max: 14 } }
-                    draw: { icons: { text: { font: { size: 10px } } } }
+#                early:
+#                    filter: { $zoom: { max: 14 } }
+#                    draw: { icons: { text: { font: { size: 10px } } } }
             tourism-related:
                 filter:
                     all:
@@ -5146,9 +5146,9 @@ layers:
                                 #fill: [0.10,0.10,0.10]
                                 size: 10px
                                 stroke: { color: *text_stroke, width: 4 }
-                early-sizing:
-                    filter: { $zoom: { max: 14 } }
-                    draw: { icons: { text: { size: 11px } } }
+                #early-sizing:
+#                    filter: { $zoom: { max: 14 } }
+#                    draw: { icons: { text: { font: { size: 10px } } } }
             playgrounds_allotments_attraction_landmark_supermarket:
                 filter:
                     all:
