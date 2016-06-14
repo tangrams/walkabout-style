@@ -4423,19 +4423,21 @@ layers:
         data: { source: mapzen, layer: [pois,landuse] }
         visible: *label_visible_poi_landuse
         filter:
-            not: { kind: [building,farm,tree,gate,address,apron,residential] }
-            $geometry: point
-            any:
-                - area: false
-                  all:
-                      - $zoom: { min: 12 }
-                - area: false
-                  elevation: true
-                  all:
-                      - $zoom: { min: 11 }
-                - area: true
-                  all:
-                      - kind: true
+            all:
+                - not: { kind: [building,farm,tree,gate,address,apron,residential] }
+                - $geometry: point
+                - function() { return feature.min_zoom <= $zoom }
+                - any:
+                    - area: false
+                      all:
+                          - $zoom: { min: 12 }
+                    - area: false
+                      elevation: true
+                      all:
+                          - $zoom: { min: 11 }
+                    - area: true
+                      all:
+                          - kind: true
         draw:
             icons:
                 size: [[13, 18px], [16, 18px], [18, 22px]]
@@ -4530,11 +4532,11 @@ layers:
                 filter: { kind: [bicycle_parking], $zoom: { min: 19 } }
                 draw:   { icons: { sprite: bicycle-parking, visible: *icon_visible_poi_landuse_e } }
             car-parking:
-                filter: { kind: [parking], $zoom: { min: 17 } }
+                filter: { kind: parking, $zoom: { min: 17 } }
                 draw:
                     icons:
                         sprite: parking
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return *icon_visible_poi_landuse_e; } else { return false; } }
+                        visible: *icon_visible_poi_landuse_e
             power_tower:
                 filter: { kind: [power_tower], $zoom: { max: 16 } }
                 draw:   { icons: { visible: false } }
@@ -4603,7 +4605,7 @@ layers:
                             visible: true
                             text_source: ref
             outdoor-needing-icons:
-                filter: { kind: [bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, silo, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, dam, boat_storage, windmill, horse, fire_lookout, fee_station, rest_area, recreation_track] }
+                filter: { kind: [bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, silo, putin, egress, hazard, put_in_egress, rapid, beacon, cross, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, dam, boat_storage, windmill, horse, fire_lookout, fee_station, rest_area] }
                 draw:
                     icons:
                         priority: 43
@@ -4625,12 +4627,14 @@ layers:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
             direct-match:
-               filter: { area: false }
-               draw:
-                   icons:
-                       # sprite_source: kind
-                       sprite: function() { return feature.kind; }
-                       visible: function() { if( feature.min_zoom <= $zoom ) { return *icon_visible_poi_landuse; } else { return false; } }
+                filter:
+                    all:
+                        - area: false
+                draw:
+                    icons:
+                        # sprite_source: kind
+                        sprite: function() { return feature.kind; }
+                        visible: *icon_visible_poi_landuse
             # add generic icon at high zoom, if direct match fails
             generic-icons:
                filter: { $zoom: { min: 18 }, area: false }
@@ -4638,8 +4642,7 @@ layers:
                    icons:
                        priority: 47
                        sprite_default: generic
-                       visible: false #function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
-                       #visible: *icon_visible_poi_landuse
+                       visible: *icon_visible_poi_landuse
 
             # add generic icon at high zoom
             default-label-names:
@@ -4647,8 +4650,7 @@ layers:
                draw:
                     icons:
                         text:
-                           visible: false #*text_visible_poi_landuse
-                           #visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
+                           visible: *text_visible_poi_landuse
             landuse-labels-green-areas-national-park:
                 filter:
                     all:
@@ -5440,7 +5442,7 @@ layers:
                             order: 42
                             visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             outdoor-has-icons:
-                filter: { kind: [outdoor, lighthouse, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway] }
+                filter: { kind: [outdoor, lighthouse, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway, mineshaft, adit, recreation_track] }
                 draw:
                     icons:
                         order: 41
