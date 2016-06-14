@@ -688,8 +688,8 @@ styles:
                     // scale up normals with a function
                     // https://www.desmos.com/calculator/bv4mzh8erz
                     //float scale = 10./(u_map_position.z-.7) + 1.8;
-                    float scale = 20./(u_map_position.z) + 1.5;
-                    normal.z /= scale; // turn terrain exaggeration up/down
+                    float scale1 = 20./(u_map_position.z) + 1.5;
+                    normal.z /= scale1; // turn terrain exaggeration up/down
                     // fade out spheremap normals with a function
                     // https://www.desmos.com/calculator/ptgkzcnfyc
                     float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
@@ -748,8 +748,8 @@ styles:
                     brightness2 = 1.-brightness2;
 
                     // Scale
-                    float scale = map(floor(u_map_position.z), 8., 22., 0.0000001, .1, true);
-                    vec2 st = worldPosition().xy*scale;
+                    float scale2 = map(floor(u_map_position.z), 8., 22., 0.0000001, .1, true);
+                    vec2 st = worldPosition().xy*scale2;
 
 
                     // PATERNS
