@@ -40,8 +40,8 @@ labels-global:
     - &text_visible_steps             false
     - &text_visible_aerialway         true
     - &text_visible_shields           false
-    - &text_visible_exits             false
-    - &text_visible_exits_e           false
+    - &text_visible_exits             true
+    - &text_visible_exits_e           true
 
 settings:
     cameras:
@@ -4418,6 +4418,48 @@ layers:
                             transform: uppercase
                             stroke: { color: [0.949,0.953,0.953], width: 6 }
 
+    highway-exit:
+        data: { source: mapzen, layer: [pois] }
+        filter: { kind: motorway_junction, $zoom: { min: 15 } }
+        draw:
+            icons:
+                visible: false
+            text-blend-order:
+                visible: *text_visible_exits
+                interactive: true
+                text_source: ref
+                priority: 52
+                font:
+                    fill: *text_fill_exits
+                    size: [[12,9px],[15,12px],[17,14px]]
+                    stroke: { color: *text_stroke, width: [[12,2px],[14,3px],[15,3px]] }
+        later:
+            filter: { $zoom: { min: 16 } }
+            draw:
+                text-blend-order:
+                    font:
+                        weight: 600
+    airport-gate:
+        data: { source: mapzen, layer: [pois] }
+        filter: { kind: gate, aeroway: gate, $zoom: { min: 16 } }
+        draw:
+            icons:
+                visible: false
+            text-blend-order:
+                visible: true
+                interactive: true
+                text_source: ref
+                font:
+                    fill: *text_fill_exits
+                    size: [[16,9px],[17,10px],[20,12px]]
+                    #stroke: { color: *highway1, width: [[12,2px],[14,3px],[15,3px]] }
+        later:
+            filter: { $zoom: { min: 19 } }
+            draw:
+                text-blend-order:
+                    font:
+                        weight: 600
+
     pois_and_landuse_labels:
         data: { source: mapzen, layer: [pois,landuse] }
         visible: *label_visible_poi_landuse
@@ -5061,7 +5103,7 @@ layers:
                         - { $zoom: [11],    area: { min: 25000000 } }
                         - { $zoom: [12],    area: { min: 5000000 } }
                         - { $zoom: [13],    area: { min: 1000000 } }
-                        - { $zoom: [14],    area: { min: 100000 } }
+                        - { $zoom: [14],    area: { min: 50000 } }
                         # show labels for smaller landuse areas at higher zooms
                         - { $zoom: [15],    area: { min: 5000 } }
                         - { $zoom: [16],    area: { min: 2000 } }
