@@ -971,20 +971,20 @@ layers:
             filter: { kind: [railway,train] }
             draw:
                 lines:
-                    color: [0.588,0.671,0.698]
+                    color: [[14,[0.653,0.758,0.786]], [17,[0.670,0.777,0.807]]]
                     width: [[14,0.4px],[15,0.75px],[16,1.1px],[18,2px],[19,1m]]
         subway:
             filter: { kind: subway }
             draw:
                 lines:
-                    color: [0.588,0.671,0.698]
+                    color: [[14,[0.653,0.758,0.786]], [17,[0.670,0.777,0.807]]]
                     width: [[14,0.4px],[15,0.75px],[16,1.3px],[17,1.5px],[18,2m]]
         light_rail:
             filter: { kind: [light_rail,tram], $zoom: { min: 15 } }
             draw:
                 lines:
                     order: 415
-                    color: [0.588,0.671,0.698]
+                    color: [[14,[0.653,0.758,0.786]], [17,[0.670,0.777,0.807]]]
                     width: [[14,0px],[15,0.6px],[16,0.75px],[17,1.5px],[19,1m]]
 
     railway-late:
@@ -1000,7 +1000,7 @@ layers:
             filter: { service: true }
             draw:
                 lines:
-                    color: [0.588,0.671,0.698]
+                    color: [[14,[0.653,0.758,0.786]], [17,[0.670,0.777,0.807]]]
                     width: [[14,0px],[15,0.3px],[16,0.5px],[18,0.75px],[19,0.5m]]
         z-order:
             #filter: { $zoom: {min: 12} }
