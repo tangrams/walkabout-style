@@ -440,6 +440,10 @@ styles:
         base: lines
         dash: [1.25, 1.25]
         dash_background_color: [0.808,0.860,0.851]
+    dashedTunnel:
+        base: lines
+        dash: [5, 3]
+        #dash_background_color: red
     dashedline:
         base: lines
         texcoords: true
@@ -1105,6 +1109,8 @@ layers:
                     outline:
                         color: [[8, [0.894,0.906,0.914]], [13, [0.408,0.430,0.461]], [14, [0.408,0.430,0.461]], [16, [0.408,0.430,0.461]]]
                         width: [[8,0px], [13,0px], [14,1px], [15,2px], [16, 3px], [17, 4px], [18, 5px]]
+                #dashedTunnel:
+                #    width: [[8, 1px], [12, 1.25px], [13, 1.5px], [14, 0px], [15, 1px], [16, 5px], [17, 10px], [18, 10m]]
             link:
                 filter: { is_link: yes } # on- and off-ramps, etc
                 draw:
@@ -1130,7 +1136,11 @@ layers:
             tunnel:
                 filter: {is_tunnel: yes, $zoom: {min: 13} }
                 draw:
+                    #dashedTunnel:
+                    #    color: blue
+                    #    order: function() { return (feature.sort_key - 1); }
                     lines:
+                        #visible: false
                         color: [[13,[0.710,0.710,0.710]], [14,[0.779,0.802,0.828]], [15,[0.950,0.950,0.950]], [16,[0.950,0.950,0.950]]]
                         outline:
                             color: [[13, [0.720,0.720,0.720]], [14, [0.770,0.770,0.770]], [15, [0.80,0.80,0.80]], [16, [0.825,0.825,0.825]]]
@@ -1307,6 +1317,11 @@ layers:
                 routes:
                     filter: { ref: true }
                     draw:
+                        #dashedTunnel:
+                        #    width: [[9, 0.5px], [10, 0.5px], [11, 0.75px], [12, 1.25px], [13, 1.25px], [14, 0px], [15, 1px], [16, 4px], [17, 8px], [18, 9m]]
+                        #    outline:
+                        #        color: green
+                        #        width: [[8,0px], [13,0px], [14,0.75px], [15,2px], [16, 3px], [17, 4px], [18, 4px]]
                         lines:
                             color: [[8, [0.529,0.556,0.592]], [11, [0.529,0.556,0.592]], [13, [0.529,0.556,0.592]], [14,[1.0,1.0,1.0]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                             width: [[9, 0.5px], [10, 0.5px], [11, 0.75px], [12, 1.25px], [13, 1.25px], [14, 0px], [15, 1px], [16, 4px], [17, 8px], [18, 9m]]
@@ -1340,9 +1355,11 @@ layers:
                     tunnel:
                         filter: {is_tunnel: yes, $zoom: {min: 13} }
                         draw:
-                            # dashed:
-                            #     color: red
+                            #dashedTunnel:
+                            #    color: blue
+                            #    order: function() { return (feature.sort_key - 1); }
                             lines:
+                                #visible: false
                                 color: [[13,[0.710,0.710,0.710]], [14,[0.779,0.802,0.828]], [15,[0.950,0.950,0.950]]] #[15,[0.744,0.764,0.792]]
                                 outline:
                                     color: [[13, [0.720,0.720,0.720]], [14, [0.770,0.770,0.770]], [15, [0.80,0.80,0.80]], [16, [0.825,0.825,0.825]]] #[15, [0.894,0.906,0.914]]
@@ -1902,6 +1919,11 @@ layers:
                         order: 350
                         outline:
                             order: 351
+            motor_vehicle_no:
+                filter: { highway: unclassified, motor_vehicle: no }
+                draw:
+                    lines:
+                        visible: false
 
             # Is this junk code?
             round:
