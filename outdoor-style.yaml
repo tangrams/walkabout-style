@@ -960,6 +960,66 @@ layers:
                         color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
                         width: [[10,0px],[11,0.5px],[12,1px],[13,2px],[14,3px],[15,4px],[16,5px]]
 
+    subway-light-rail:
+        data: { source: mapzen, layer: transit }
+        filter: { not: { kind: [platform] }, $zoom: { min: 14 } }
+        draw:
+            lines:
+                interactive: true
+                order: function() { return feature.sort_key || 275; }
+        railway:
+            filter: { kind: [railway,train] }
+            draw:
+                lines:
+                    color: [0.588,0.671,0.698]
+                    width: [[14,0.4px],[15,0.75px],[16,1.1px],[18,2px],[19,1m]]
+        subway:
+            filter: { kind: subway }
+            draw:
+                lines:
+                    color: [0.588,0.671,0.698]
+                    width: [[14,0.4px],[15,0.75px],[16,1.3px],[17,1.5px],[18,2m]]
+        light_rail:
+            filter: { kind: [light_rail,tram], $zoom: { min: 15 } }
+            draw:
+                lines:
+                    order: 415
+                    color: [0.588,0.671,0.698]
+                    width: [[14,0px],[15,0.6px],[16,0.75px],[17,1.5px],[19,1m]]
+
+    railway-late:
+        data: { source: mapzen, layer: roads }
+        filter: { kind: rail, not: { railway: [subway,light_rail,tram] } }
+        draw:
+            lines:
+                interactive: true
+                order: function() { return feature.sort_key; }
+                color: [0.588,0.671,0.698]
+                width: [[12,0px],[13,0.25px],[14,0.4px],[15,0.75px],[16,0.75px],[18,1m]]
+        service:
+            filter: { service: true }
+            draw:
+                lines:
+                    color: [0.588,0.671,0.698]
+                    width: [[14,0px],[15,0.3px],[16,0.5px],[18,0.75px],[19,0.5m]]
+        z-order:
+            #filter: { $zoom: {min: 12} }
+            draw:
+                lines:
+                    # let roads sort themselves past zoom 14
+                    order: function() { return feature.sort_key; }
+                    # but give them all the same outline
+                    outline:
+                        order: 354
+
+            bridges-tunnels:
+                filter: { any: [is_bridge: yes, is_tunnel: yes] }
+                draw:
+                    lines:
+                        outline:
+                            # except bridges and tunnels, their outlines should also self-sort
+                            order: function() { return feature.sort_key || 305; }
+
     roads:
         data: { source: mapzen, layer: roads }
         filter: { not: { kind: rail } }
@@ -2562,7 +2622,7 @@ layers:
         #             color: [0.945, 0.898, 0.878]
 
     buildings-labels:
-        data: { source: osm, layer: buildings }
+        data: { source: mapzen, layer: buildings }
         filter:
             all:
                 - { $zoom: { min: 17 } }
@@ -2620,7 +2680,7 @@ layers:
                 text-blend-order:
                     text_source: function() { if( feature.addr_housenumber ) { return feature.name + '\n' + feature.addr_housenumber; } else { return feature.name; } }
     address-labels:
-        data: { source: osm, layer: buildings }
+        data: { source: mapzen, layer: buildings }
         filter:
             $zoom: { min: 20 }
             any:
@@ -2688,36 +2748,36 @@ layers:
                 draw:
                     lines:
                         visible: false
-        # city_walls:
-        #     filter: { kind: city_wall }
-        #     draw:
-        #         lines:
-        #             color: *city_wall
-        #             width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
-        # retaining_wall:
-        #     filter: { kind: retaining_wall }
-        #     draw:
-        #         lines:
-        #             color: *retaining_wall
-        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
-        # snow_fence:
-        #     filter: { kind: snow_fence }
-        #     draw:
-        #         lines:
-        #             color: *snow_fence
-        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-        # fence:
-        #     filter: { kind: fence }
-        #     draw:
-        #         lines:
-        #             color: *fence
-        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-        # dam:
-        #     filter: { kind: dam }
-        #     draw:
-        #         lines:
-        #             color: *dam
-        #             width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        city_walls:
+            filter: { kind: city_wall }
+            draw:
+                lines:
+                    color: *city_wall
+                    width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
+        retaining_wall:
+            filter: { kind: retaining_wall }
+            draw:
+                lines:
+                    color: *retaining_wall
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
+        snow_fence:
+            filter: { kind: snow_fence }
+            draw:
+                lines:
+                    color: *snow_fence
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        fence:
+            filter: { kind: fence }
+            draw:
+                lines:
+                    color: *fence
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        dam:
+            filter: { kind: dam }
+            draw:
+                lines:
+                    color: *dam
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
 
     places:
         data: { source: mapzen, layer: places }
@@ -5022,7 +5082,7 @@ layers:
             tourism-related:
                 filter:
                     all:
-                        - kind: [zoo, theme_park, resort, aquarium, winery, maze, stadium]
+                        - kind: [zoo, theme_park, resort, aquarium, winery, maze, stadium, enclosure]
                         - area: true
                         - $geometry: point
                     any:
@@ -5054,7 +5114,7 @@ layers:
                         - $zoom: { min: 6 }
                         - area: true
                         - $geometry: point
-                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium] }
+                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium, enclosure] }
                     any:
                         # show labels for smaller landuse areas at higher zooms
                         - { $zoom: [5,6,7], area: { min: 5000000000 } }
