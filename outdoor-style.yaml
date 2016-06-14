@@ -398,9 +398,9 @@ sources:
     mapzen:
         type: TopoJSON
         # prod
-        url: //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
         # earlier prod version
-        #url: //vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        #url: https://vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
         # dev
         #url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
         # staging (proxy)
