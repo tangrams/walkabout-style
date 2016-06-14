@@ -4551,7 +4551,6 @@ layers:
                     icons:
                         sprite: bbq
                         visible: *icon_visible_poi_landuse_e
-                        #visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             ranger-station:
                 filter: { kind: [ranger_station], $zoom: { min: 15 } }
                 draw:   { icons: { sprite: ranger-station, visible: *icon_visible_poi_landuse_e } }
@@ -4609,9 +4608,6 @@ layers:
                     icons:
                         priority: 43
                         sprite: generic
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
-                        text:
-                            visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                 hide-early:
                     filter: { kind: [recreation_track, dam] }
                     draw:
@@ -5436,16 +5432,13 @@ layers:
                     icons:
                         order: 41
                         sprite: generic
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                         text:
                             order: 42
-                            visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
             outdoor-has-icons:
                 filter: { kind: [outdoor, lighthouse, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway, mineshaft, adit, recreation_track] }
                 draw:
                     icons:
                         order: 41
-                        visible: function() { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } }
                         text:
                             order: 42
             not-outdoor-not-landuse:
@@ -5453,10 +5446,8 @@ layers:
                 draw:
                     icons:
                         order: 45
-                        visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
                         text:
                             order: 46
-                            visible: function() { if( $zoom <= 16 ) { return false; } else { if( feature.min_zoom <= $zoom ) { return true; } else { return false; } } }
             suppress-the-icon-text-label-only:
                 filter: { kind: [scrub, wetland, glacier, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
                 draw:
@@ -5921,16 +5912,6 @@ layers:
                 winter_sport:
                     filter: { kind: [ski, ski_rental, ski_school, ski_jumping, skiing] }
                     draw:   { icons: { sprite: ski-area } }
-        poi_min_zoom_filter:
-            #filter: function() { if(feature.min_zoom >= $zoom) { return true; } else { return false; } }
-            #filter: { $zoom: [16], min_zoom: [17,18,19,20] }
-            #filter: { $zoom: { min: 16, max: 17 } }
-            filter: { $zoom: [16], kind: [restaurant], min_zoom: 17 }
-            draw:
-                icons:
-                    visible: false
-                    text:  { visible: false }
-
     water-area-labels:
         data: { source: mapzen, layer: [water] }
         visible: *text_visible_water_labels
@@ -6901,21 +6882,11 @@ layers:
                 - motor_vehicle: false
         draw:
             lines:
-                color: [[14,[0.773,0.705,0.605]],[15,[0.630,0.519,0.418]]]
+                color: [[13,[0.773,0.705,0.605]],[14,[0.630,0.519,0.418]]]
                 # color: [0.756,0.563,0.499]
                 width: [[13, 0.6px], [14, 1px], [15, 1.1px], [16, 1.25px], [17, 1.5px], [18, 5px], [19, 6px]]
                 order: 990
                 interactive: true
-        networked:
-            filter: { walking_network: true }
-            draw:
-                lines:
-                    width: [[13, 0.75px], [14, 1px], [15, 1.5px], [16, 1.25px], [17, 1.5px], [18, 3px], [19, 4px]]
-                highlight:
-                    order: 980
-                    color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
-                    width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
-                    join: round
         late:
             filter: { $zoom: { min: 16 } }
             draw:
@@ -6940,6 +6911,21 @@ layers:
                 draw:
                     lines:
                         visible: false
+        networked:
+            filter: { walking_network: true }
+            draw:
+                lines:
+                    width: [[13, 0.75px], [14, 1.2px], [15, 1.5px], [16, 1.25px], [17, 1.5px], [18, 3px], [19, 4px]]
+                highlight:
+                    order: 980
+                    color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
+                    width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
+                    join: round
+            early:
+                filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        visible: true
         labels-track:
             #filter: { $zoom: { min: 17 } }
             draw:
@@ -6955,7 +6941,6 @@ layers:
                 draw:
                     text-blend-order:
                         visible: false
-
     other-roads-no-motorvehicle-overlay:
         data: { source: mapzen, layer: roads }
         filter:
