@@ -5869,19 +5869,23 @@ layers:
                     filter: { kind: [spa, spa-massage, sauna, massage] }
                     draw:   { icons: { sprite: spa-massage } }
                 spiritual-center:
-                    filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel] }
+                    filter:
+                        all:
+                            - kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel]
+                            - not:
+                                - religion: [christian, jewish, buddhist, muslim]
                     draw:   { icons: { sprite: spiritual-center } }
                 church:
-                    filter: { kind: place_of_worship, religion: christian }
+                    filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel], religion: christian }
                     draw:   { icons: { sprite: church } }
                 synagogue:
-                    filter: { kind: place_of_worship, religion: jewish }
+                    filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel], religion: jewish }
                     draw:   { icons: { sprite: synagogue } }
                 buddhist:
-                    filter: { kind: place_of_worship, religion: buddhist }
+                    filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel], religion: buddhist }
                     draw:   { icons: { sprite: buddhism } }
                 mosque:
-                    filter: { kind: place_of_worship, religion: muslim }
+                    filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel], religion: muslim }
                     draw:   { icons: { sprite: mosque } }
                 sporting-goods-shop:
                     filter: { kind: [sporting_goods, sporting-goods-shop, sports] }
