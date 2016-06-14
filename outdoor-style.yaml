@@ -4528,7 +4528,8 @@ layers:
             all:
                 - not: { kind: [building,farm,tree,gate,address,apron,residential] }
                 - $geometry: point
-                - function() { return feature.min_zoom <= $zoom }
+                # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
+                - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'playground' || feature.kind == 'toilets' ) { return true } else { return feature.min_zoom <= $zoom } }
                 - any:
                     - area: false
                       all:
@@ -4588,7 +4589,7 @@ layers:
         no-name:
             filter: { name: false }
             sports-pitch:
-                filter: { kind: [grass, pitch], $geometry: point, area: true, $zoom: { min: 17 } }
+                filter: { kind: [grass, pitch], $geometry: point, area: true, $zoom: { min: 16 } }
                 draw:
                     icons:
                         sprite: function() { return feature.sport }
@@ -5148,13 +5149,43 @@ layers:
                 early-sizing:
                     filter: { $zoom: { max: 14 } }
                     draw: { icons: { text: { size: 11px } } }
+            playgrounds_allotments_attraction_landmark_supermarket:
+                filter:
+                    all:
+                        - kind: [playground, allotments, attraction, landmark, supermarket]
+                        - area: true
+                        - $geometry: point
+                    any:
+                        - { $zoom: [15], area: { min: 2000 } }
+                        - { $zoom: [16], area: { min: 1000 } }
+                        - { $zoom: { min: 17 } }
+                draw:
+                    icons:
+                        visible: *icon_visible_landuse_green
+                        priority: 41
+                        text:
+                            visible: *text_visible_landuse_green
+                            font:
+                                size: 10px
+                                stroke: { color: *text_stroke, width: 4 }
+                attraction:
+                    filter: { kind: [attraction] }
+                    draw:
+                        icons:
+                            sprite: attraction
+                landmark:
+                    filter: { kind: [landmark] }
+                    draw:
+                        icons:
+                            sprite: landmark
+
             landuse-labels-not-any-above:
                 filter:
                     all:
                         - $zoom: { min: 6 }
                         - area: true
                         - $geometry: point
-                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium, enclosure] }
+                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium, playground, allotments, attraction, landmark] }
                     any:
                         # show labels for smaller landuse areas at higher zooms
                         - { $zoom: [5,6,7], area: { min: 5000000000 } }
@@ -5928,12 +5959,11 @@ layers:
                 spa-massage:
                     filter: { kind: [spa, spa-massage, sauna, massage] }
                     draw:   { icons: { sprite: spa-massage } }
-                spiritual-center:
+                # prefix with "a-" here to allow Tangram to sort the generic style 1st, allowing more specific religion tags to win later
+                a-spiritual-center:
                     filter:
                         all:
                             - kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel]
-                            - not:
-                                - religion: [christian, jewish, buddhist, muslim]
                     draw:   { icons: { sprite: spiritual-center } }
                 church:
                     filter: { kind: [spiritual_center, spiritual-center, place_of_worship, wayside_chapel], religion: christian }
