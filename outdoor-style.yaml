@@ -8,8 +8,8 @@ labels-global:
     - &icon_visible_populated_places  true
     - &text_visible_neighbourhoods    true
     - &text_visible_neighbourhoods_e  true
-    - &text_visible_building          false
-    - &text_visible_address           false
+    - &text_visible_building          true
+    - &text_visible_address           true
     - &text_visible_water_labels      true
     - &label_visible_landuse_green    true
     - &icon_visible_landuse_green     true
@@ -2562,14 +2562,13 @@ layers:
         #             color: [0.945, 0.898, 0.878]
 
     buildings-labels:
-        data: { source: osm, layer: buildings }
+        data: { source: mapzen, layer: buildings }
         filter:
             all:
                 - { $zoom: { min: 17 } }
                 - $geometry: point
                 - not: { location: underground, kind: address }
                 - name: true
-#                - kind: [false, building, university, college, school, kindergarten]
             any:
                 - { $zoom: [16], area: { min: 5000 } }
                 - { $zoom: [16], area: { min: 5000 } }
@@ -2620,7 +2619,7 @@ layers:
                 text-blend-order:
                     text_source: function() { if( feature.addr_housenumber ) { return feature.name + '\n' + feature.addr_housenumber; } else { return feature.name; } }
     address-labels:
-        data: { source: osm, layer: buildings }
+        data: { source: mapzen, layer: buildings }
         filter:
             $zoom: { min: 20 }
             any:
@@ -6808,10 +6807,8 @@ layers:
                 filter: { footway: [sidewalk, crossing], not: { walking_network: true } }
                 draw:
                     lines:
-                        width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
                         order: 350 # function() { return feature.sort_key; }
                     dots-lines:
-                        width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 5px], [17, 6px], [18, 7px], [19, 10px]]
                         order: 351 # function() { return (feature.sort_key + 1); }
                     dashedline:
                         visible: false
