@@ -37,7 +37,7 @@ labels-global:
     - &text_visible_service_road      true
     - &text_visible_path              true
     - &text_visible_piste             true
-    - &text_visible_steps             false
+    - &text_visible_steps             true
     - &text_visible_aerialway         true
     - &text_visible_shields           false
     - &text_visible_exits             true
@@ -2587,6 +2587,7 @@ layers:
                 interactive: true
                 move_into_tile: true
                 priority: 70
+                visible: *text_visible_building
                 order: 7
                 font:
                     fill: '#666'
