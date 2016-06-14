@@ -4282,7 +4282,7 @@ layers:
                         font:
                             size: 9px
                             weight: 400
-                            fill: [0.445,0.469,0.503]
+                            fill: [0.085,0.658,0.710]
                             transform: uppercase
                             stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z12:
@@ -4307,7 +4307,7 @@ layers:
                         font:
                             size: 10px
                             weight: 400
-                            fill: [0.453,0.475,0.504]
+                            fill: [0.085,0.658,0.710]
                             transform: uppercase
                             stroke: { color: [0.894,0.906,0.914], width: 4 }
             neighborhood-z13:
