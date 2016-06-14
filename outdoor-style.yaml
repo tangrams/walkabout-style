@@ -4729,7 +4729,7 @@ layers:
                         - { $zoom: [8],    area: { min: 1000000000 } }
                         - { $zoom: [9],    area: { min: 100000000 } }
                         - { $zoom: [10],   area: { min: 50000000 } }
-                        - { $zoom: [11],   area: { min: 25000000 } }
+                        - { $zoom: [11],   area: { min: 10000000 } }
                         - { $zoom: [12],   area: { min: 5000000 } }
                         - { $zoom: [13],   area: { min: 200000 } }
                         - { $zoom: [14],   area: { min: 50000 } }
