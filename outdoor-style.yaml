@@ -214,7 +214,7 @@ textures:
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-                        airport: [868, 0, 38, 38]
+            airport: [868, 0, 38, 38]
             allotments: [460, 252, 38, 38]
             aquarium: [824, 168, 38, 38]
             art-gallery: [732, 168, 38, 38]
@@ -247,11 +247,11 @@ textures:
             butcher: [966, 42, 38, 38]
             campground: [920, 84, 38, 38]
             candy-store: [90, 210, 38, 38]
-            capital-l: [54, 296, 18, 14]
-            capital-m: [34, 296, 14, 10]
-            capital-s: [14, 296, 12, 8]
-            capital-xl: [78, 296, 22, 18]
-            capital-xs: [0, 296, 10, 6]
+            capital-l: [56, 294, 16, 16]
+            capital-m: [36, 294, 12, 12]
+            capital-s: [16, 294, 10, 10]
+            capital-xl: [80, 294, 20, 20]
+            capital-xs: [2, 294, 8, 8]
             car-dealership: [872, 126, 38, 38]
             caravan-site: [872, 210, 38, 38]
             castle: [414, 42, 38, 38]
@@ -265,6 +265,8 @@ textures:
             current-location: [610, 294, 88, 86]
             department-store: [826, 126, 38, 38]
             dog-park: [46, 252, 38, 38]
+            dot-black: [920, 252, 38, 38]
+            dot-white: [874, 252, 38, 38]
             drinking-water: [320, 210, 38, 38]
             dry-cleaning: [46, 84, 38, 38]
             electronics-store: [690, 126, 38, 38]
@@ -280,8 +282,6 @@ textures:
             gas: [644, 252, 38, 38]
             gas-station: [44, 210, 38, 38]
             generic: [966, 252, 38, 38]
-            generic-black: [918, 252, 40, 38]
-            generic-white: [872, 252, 40, 38]
             geyser: [596, 210, 38, 38]
             gift-shop: [230, 126, 38, 38]
             golf-course: [506, 84, 38, 38]
@@ -367,20 +367,20 @@ textures:
             theme-park: [92, 126, 38, 38]
             toilets: [966, 84, 38, 38]
             townspot-l: [264, 294, 16, 16]
-            townspot-l-rev: [158, 296, 16, 14]
+            townspot-l-rev: [160, 294, 16, 16]
             townspot-m: [244, 294, 12, 12]
-            townspot-m-rev: [138, 296, 12, 10]
+            townspot-m-rev: [140, 294, 12, 12]
             townspot-s: [226, 294, 10, 10]
-            townspot-s-rev: [120, 296, 12, 8]
+            townspot-s-rev: [122, 294, 10, 10]
             townspot-xl: [288, 294, 20, 20]
-            townspot-xl-rev: [182, 296, 22, 18]
+            townspot-xl-rev: [184, 294, 20, 20]
             townspot-xs: [210, 294, 8, 8]
-            townspot-xs-rev: [106, 296, 6, 4]
+            townspot-xs-rev: [108, 296, 6, 6]
             toy-game-store: [914, 0, 38, 38]
             traffic-signal: [0, 210, 36, 34]
             trailhead: [782, 252, 38, 38]
             train-station: [408, 0, 38, 38]
-            tree: [826, 252, 40, 38]
+            tree: [828, 252, 38, 38]
             veterinarian: [136, 0, 38, 38]
             view-point: [778, 168, 40, 38]
             vineyard: [138, 168, 40, 38]
@@ -4728,27 +4728,28 @@ layers:
                 draw:
                     icons:
                         # to circle white BIG
-                        sprite: generic
-                        color: green
+                        sprite: tree
+                        color: [0.145,0.745,0.643]
                         visible: *icon_visible_poi_landuse_e
                 z18:
                     filter: { $zoom: [18] }
                     draw:
                         icons:
                             # to circle white SMALL
-                            sprite: generic
+                            color: [0.459,0.765,0.722]
+                            sprite: dot-white
                 z19:
                     filter: { $zoom: [19] }
                     draw:
                         icons:
                             # to circle white SMALL
-                            sprite: generic
+                            sprite: tree
             gate:
                 filter: { kind: gate, $zoom: { min: 19 } }
                 draw:
                     icons:
                         # to circle black generic
-                        sprite: generic
+                        sprite: dot-black
                         visible: *icon_visible_poi_landuse_e
                         text:
                             text_source: function() { return 'gate'; }
@@ -5869,8 +5870,7 @@ layers:
                     draw:   { icons: { sprite: cosmetics-shop } }
                 dam:
                     filter: { kind: [dam] }
-                    # to circle generic
-                    draw:   { icons: { sprite: generic } }
+                    draw:   { icons: { sprite: dot-black } }
                 department-store:
                     filter: { kind: [department_store, department-store] }
                     draw:   { icons: { sprite: department-store } }
