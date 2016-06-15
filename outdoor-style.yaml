@@ -4636,7 +4636,7 @@ layers:
         visible: *label_visible_poi_landuse
         filter:
             all:
-                - not: { kind: [building,farm,tree,gate,address,apron,residential] }
+                - not: { kind: [building,address,apron,residential] }
                 - $geometry: point
                 # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
                 - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'playground' || feature.kind == 'toilets' ) { return true } else { return feature.min_zoom <= $zoom } }
@@ -4702,7 +4702,7 @@ layers:
                 filter: { kind: [grass, pitch], $geometry: point, area: true, $zoom: { min: 16 } }
                 draw:
                     icons:
-                        sprite: function() { return feature.sport }
+                        sprite: function() { return feature.sport; }
                         visible: *icon_visible_poi_landuse_e
                         priority: 49
                 baseball:
@@ -4723,6 +4723,38 @@ layers:
                 tennis:
                     filter: { sport: tennis }
                     draw: { icons: { sprite: tennis } }
+            tree:
+                filter: { kind: tree, $zoom: { min: 18 } }
+                draw:
+                    icons:
+                        # to circle white BIG
+                        sprite: generic
+                        color: green
+                        visible: *icon_visible_poi_landuse_e
+                z18:
+                    filter: { $zoom: [18] }
+                    draw:
+                        icons:
+                            # to circle white SMALL
+                            sprite: generic
+                z19:
+                    filter: { $zoom: [19] }
+                    draw:
+                        icons:
+                            # to circle white SMALL
+                            sprite: generic
+            gate:
+                filter: { kind: gate, $zoom: { min: 19 } }
+                draw:
+                    icons:
+                        # to circle black generic
+                        sprite: generic
+                        visible: *icon_visible_poi_landuse_e
+                        text:
+                            text_source: function() { return 'gate'; }
+            toilets:
+                filter: { kind: toilets, $zoom: { min: 16 }  }
+                draw: { icons: { sprite: toilets, visible: *icon_visible_poi_landuse_e } }
             toilets:
                 filter: { kind: toilets, $zoom: { min: 16 }  }
                 draw: { icons: { sprite: toilets, visible: *icon_visible_poi_landuse_e } }
@@ -5835,6 +5867,10 @@ layers:
                 cosmetics-shop:
                     filter: { kind: [cosmetics, cosmetics-shop, beauty] }
                     draw:   { icons: { sprite: cosmetics-shop } }
+                dam:
+                    filter: { kind: [dam] }
+                    # to circle generic
+                    draw:   { icons: { sprite: generic } }
                 department-store:
                     filter: { kind: [department_store, department-store] }
                     draw:   { icons: { sprite: department-store } }
