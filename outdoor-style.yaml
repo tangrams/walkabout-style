@@ -6749,7 +6749,8 @@ layers:
                 kind: [pitch, meadow, village_green, grass, farmland, playground]
             draw:
                 terrain:
-                    color: [0.702,0.949,0.932]
+                    color: [0.808,0.962,0.951]
+                    # color: [0.702,0.949,0.932]
                     # color: [0.975,0.975,0.828]
                     visible: true
             farmland_friends:
@@ -7051,7 +7052,7 @@ layers:
             in_zoo_golf_course:
                 filter:
                     all:
-                        - landuse_kind: [zoo, enclosure, petting_zoo, golf_course, garden, university, parking, pedestrian, attraction, residential, stadium, playground, allotments, cemetery]
+                        - landuse_kind: [zoo, enclosure, petting_zoo, golf_course, garden, university, parking, pedestrian, attraction, residential, stadium, playground, allotments]
                         - $zoom: { max: 17 }
                 draw:
                     lines:
@@ -7065,13 +7066,34 @@ layers:
                     filter: { $zoom: { max: 16 } }
                     draw:
                         lines:
-                            color: [[0,[0.120,0.600,0.520]]]
+                            color: [0.120,0.600,0.520]
                             width: [[14,0.4px],[15,0.5px]]
                 garden-early:
-                    filter: { kind: [garden,cemetery] }
+                    filter: { kind: [garden] }
                     draw:
                         lines:
                             width: [[14,0.1px],[15,0.3px]]
+            in_cemetery:
+                filter:
+                    all:
+                        - landuse_kind: [cemetery]
+                draw:
+                    lines:
+                        visible: true
+                        color: [0.863,0.941,0.867]
+                    dots-lines:
+                        color: [0.510,0.752,0.695]
+                early:
+                    filter: { $zoom: { max: 16 } }
+                    draw:
+                        dots-lines:
+                            visible: false
+                early-z15:
+                    filter: { $zoom: { max: 16 } }
+                    draw:
+                        lines:
+                            color: [0.510,0.752,0.695]
+                            width: [[14,0.25px],[15,0.5px]]
             sidewalk-crossing:
                 filter: { footway: [sidewalk, crossing], not: { walking_network: true } }
                 draw:
