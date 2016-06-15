@@ -2662,9 +2662,17 @@ layers:
 
         extrude:
             filter:
-                any:   
-                    # - { $zoom: [17], height: { min: 100 } }
-                    - { $zoom: [17], area: { min: 500 } }
+                any:
+                    # for the buildings that were visible at zoom 15, extrude those all up a bit at z17
+                    - { $zoom: [16], area: { min: 20000 }, name: true }
+                    - { $zoom: [16], area: { min: 20000 }, kind: true }
+                    - { $zoom: [16], area: { min: 5000 }, landuse_kind: true }
+                    - { $zoom: [16], height: { min: 150 } }
+                    - { $zoom: [16], volume: { min: 150000 } }
+                    - { $zoom: [17], area: { min: 5000 }, name: true }
+                    - { $zoom: [17], area: { min: 5000 }, kind: true }
+                    - { $zoom: [17], area: { min: 3000 }, landuse_kind: true }
+                    - { $zoom: [17], height: { min: 100 } }
                     - { $zoom: [17], volume: { min: 100000 } }
                     - { $zoom: { min: 18 } }
             draw:
@@ -2672,13 +2680,41 @@ layers:
                     visible: true
                     order: 438
                     style: building-grid
-                    extrude: function() { return feature.height || 20; }
+                    extrude: 100
                     color: [0.930,0.940,0.940]
                 lines:
                     visible: true
                     order: 439
                     style: building-lines
-                    extrude: function() { return feature.height || 20; }
+                    extrude: 100
+            z16-default:
+                filter: { $zoom: [16] }
+                draw:
+                    polygons:
+                        extrude: 20
+                    lines:
+                        extrude: 20
+            z18-default:
+                filter: { $zoom: { min: 18 } }
+                draw:
+                    polygons:
+                        extrude: 20
+                    lines:
+                        extrude: 20
+            z18-special:
+                filter:
+                    any:
+                        - { $zoom: { min: 18 }, area: { min: 5000 }, name: true }
+                        - { $zoom: { min: 18 }, area: { min: 5000 }, kind: true }
+                        - { $zoom: { min: 18 }, area: { min: 3000 }, landuse_kind: true }
+                        - { $zoom: { min: 18 }, height: { min: 100 } }
+                        - { $zoom: { min: 18 }, volume: { min: 100000 } }
+                draw:
+                    polygons:
+                        extrude: 100
+                    lines:
+                        extrude: 100
+
 
         # landuse-specific rules
         # in_park:
@@ -4729,7 +4765,8 @@ layers:
                 filter: { kind: tree, $zoom: { min: 18 } }
                 draw:
                     icons:
-                        # to circle white BIG
+                        # TODO: put tree icons behind the buildings
+                        # See SF State University #20/37.72314/-122.47772
                         sprite: tree
                         color: [0.145,0.745,0.643]
                         visible: *icon_visible_poi_landuse_e
