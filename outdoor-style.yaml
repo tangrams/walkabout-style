@@ -6995,7 +6995,7 @@ layers:
                     highlight:
                         order: 980
                         color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
-                        width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
+                        width: [[12, 3px], [13, 4px], [14, 5px], [15, 6px], [16, 7px], [17, 10px], [18, 14px], [19, 16px]]
                         join: round
             no_name_early_not_designated:
                 filter: { name: false, $zoom: { max: 14 } }
@@ -7170,7 +7170,10 @@ layers:
                             visible: false
 
         cycleway_pedestrian:
-            filter: { highway: [cycleway, pedestrian] }
+            filter:
+                all:
+                    - highway: [cycleway, pedestrian]
+                    - not: { highway: [pedestrian], walking_network: true }
             draw:
                 lines:
 #                    color: blue #[0.120,0.600,0.520]
@@ -7262,11 +7265,11 @@ layers:
             filter: { walking_network: true }
             draw:
                 lines:
-                    width: [[13, 0.75px], [14, 1.2px], [15, 1.5px], [16, 1.25px], [17, 1.5px], [18, 3px], [19, 4px]]
+                    width: [[13, 1px], [14, 1.2px], [15, 1.5px], [16, 1.25px], [17, 1.5px], [18, 3px], [19, 4px]]
                 highlight:
                     order: 980
                     color: [[12,[1.000,1.000,0.870]],[15,[1.000,1.000,0.870]]]
-                    width: [[12, 0px], [13, 4px], [14, 5px], [15, 6px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
+                    width: [[12, 2.5px], [13, 4px], [14, 5px], [15, 6px], [16, 8px], [17, 10px], [18, 14px], [19, 16px]]
                     join: round
             early:
                 filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -7283,7 +7286,7 @@ layers:
                         fill: [0.536,0.451,0.378]
                         size: 12px
                         stroke: { color: *text_stroke, width: 4 }
-            in_zoo_golf_course:
+            in_zoo_golf_course-early:
                 filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
                 draw:
                     text-blend-order:
