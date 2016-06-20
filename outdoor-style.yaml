@@ -1013,7 +1013,7 @@ layers:
                     # color: [0.592,0.929,0.961]
                     #color: [[11,[0.753,0.820,0.835]],[12,[0.710,0.800,0.824]],[13,[0.886,0.937,0.988]]]
                     #width: [[14,2.5px],[15,4.0px],[17,8.0px],[18,10.0px]]
-                    width: [[10,0px],[11,0.25px],[12,0.5px],[13,1.25px],[14,2.25px],[15,3px],[16,4px],[17,5m]]
+                    width: [[10,0px],[11,0.75px],[12,1.0px],[13,1.25px],[14,2.25px],[15,3px],[16,4px],[17,5m]]
                     cap: round
                     outline:
                         #color: [[11,[0.671,0.788,0.812]],[13,[0.710,0.800,0.824]],[14,[0.635,0.812,0.843]]]
@@ -1031,6 +1031,37 @@ layers:
                         order: function() { return feature.sort_key; }
                         color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
                         width: [[10,0px],[11,0.5px],[12,1px],[13,2px],[14,3px],[15,4px],[16,5px]]
+
+    water-line-labels:
+        data: { source: mapzen, layer: [water] }
+        filter:
+            all:
+                - name: true
+                - $geometry: line
+                - kind: [river,canal,stream,dam,ditch,drain]
+                - $zoom: { min: 11 }
+        draw:
+            text-blend-order:
+                font:
+                    fill: *text_fill_water
+                    family: *text_font_family
+                    style: italic
+                    weight: 400
+                    size: [[12,11px],[13,12px]]
+        water-line-labels-z17:
+            filter: { $zoom: [17] }
+            draw:
+                text-blend-order: { font: { size: 14px } }
+        not-river-not-stream:
+            filter: { kind: [canal,dam,ditch,drain], $zoom: { max: 14 } }
+            draw:
+                text-blend-order:
+                    visible: false
+        stream:
+            filter: { kind: [stream], $zoom: { max: 14 } }
+            draw:
+                text-blend-order:
+                    visible: false
 
     subway-light-rail:
         data: { source: mapzen, layer: transit }
@@ -1646,14 +1677,14 @@ layers:
                             outline:
                                 order: 353 #function() { return feature.sort_key + 2; }
                 routes:
-                    filter: { ref: true, $zoom: { min: 12} }
+                    filter: { ref: true, $zoom: { min: 10} }
                     draw:
                         lines:
                             color: [[11, [0.450,0.450,0.450]], [13, [0.460,0.460,0.460]], [14, [0.529,0.556,0.592]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
                             width: [[11, 0.5px], [12, 0.75px], [13, 0.75px], [14, 1px], [15, 0px], [16, 1.5px], [17, 6px], [18, 9m]]
                             outline:
                                 color: [[10, [0.894,0.906,0.914]], [14, [0.529,0.556,0.592]], [15, [0.529,0.556,0.592]], [16, [0.529,0.556,0.592]], [17,[0.578,0.608,0.650]], [18,[0.714,0.733,0.760]]]
-                                width: [[10,0px], [14,0px], [15,0.65px], [16,1.5px], [17, 2px], [18, 4px]]
+                                width: [[10,0.5px], [14,0.5px], [15,0.65px], [16,1.5px], [17, 2px], [18, 4px]]
                     early:
                         filter: { $zoom: { max: 15 } }
                         draw:
