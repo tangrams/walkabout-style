@@ -43,6 +43,9 @@ labels-global:
     - &text_visible_exits             true
     - &text_visible_exits_e           true
 
+cameras:
+    camera1: { type: isometric, axis: [-.2, .2] }
+
 settings:
     cameras:
         - &camera_settings            { type: isometric, axis: [0, .1], vanishing_point: [0, -500] }
