@@ -2969,6 +2969,9 @@ layers:
                     # territorial here is probably a hack
                     - kind: [state, department, region, provincial, territorial]
                     - admin_level: 4
+                not:
+                    # deal with bogus Hungary data
+                    - scalerank: 0
             draw:
                 lines:
                     interactive: true
@@ -4832,7 +4835,6 @@ layers:
                                 weight: 600
                                 stroke:
                                     color: *text_stroke_park
-
         no-name:
             filter: { name: false }
             sports-pitch:
@@ -5470,14 +5472,39 @@ layers:
                     draw:
                         icons:
                             sprite: landmark
-
+            glacier:
+                filter:
+                    all:
+                        - kind: glacier
+                        - area: true
+                        - $geometry: point
+                    any:
+                        # show labels for smaller landuse areas at higher zooms
+                        - { $zoom: [10],    area: { min: 20000000 } }
+                        - { $zoom: [11],    area: { min: 5000000 } }
+                        - { $zoom: [12],    area: { min: 2000000 } }
+                        - { $zoom: [13],    area: { min: 500000 } }
+                        # show labels for smaller landuse areas at higher zooms
+                        - { $zoom: { min: 14 } }
+                draw:
+                    icons:
+                        visible: false
+                    text:
+                        visible: true
+                        priority: 44
+                        interactive: true
+                        text_wrap: 10
+                        font:
+                            weight: 400
+                            style: italic
+                            fill: '#4ba3c5'
             landuse-labels-not-any-above:
                 filter:
                     all:
                         - $zoom: { min: 6 }
                         - area: true
                         - $geometry: point
-                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium, playground, allotments, attraction, landmark] }
+                        - not: { kind: [park, national_park, "park or protected land", battlefield, conservation, protected_area, nature_reserve, forest, grass, beach, airport, aerodrome, university, college, school, kindergarten, winter_sports, zoo, theme_park, resort, aquarium, winery, maze, stadium, playground, allotments, attraction, landmark, glacier] }
                     any:
                         # show labels for smaller landuse areas at higher zooms
                         - { $zoom: [5,6,7], area: { min: 5000000000 } }
@@ -5798,13 +5825,22 @@ layers:
                 draw:
                     icons:
                         size: [[16, 12px], [17, 18px]]
-            glacier:
-                filter: { kind: glacier }
+            glaciers-pois:
+                filter: { $zoom: { min: 14 }, kind: glacier, area: false }
                 draw:
                     icons:
+                        visible: false
                         text:
-                            font:
-                                #fill: [0.10,0.10,0.10]
+                            visible: false
+                    text:
+                        visible: false
+                        priority: 45
+                        interactive: true
+                        text_wrap: 10
+                        font:
+                            weight: 400
+                            style: italic
+                            fill: '#4ba3c5'
             bus-stop-bus-station-labels:
                 filter:
                     kind: [bus_stop, bus_station]
@@ -5891,7 +5927,7 @@ layers:
                             font:
                                 style: italic
             suppress-the-icon-text-label-only:
-                filter: { $zoom: { min: 15 }, kind: [scrub, wetland, glacier, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
+                filter: { $zoom: { min: 15 }, kind: [scrub, wetland, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
                 draw:
                     icons:
                         visible: false
@@ -5900,12 +5936,6 @@ layers:
                         text_wrap: 10
                         font:
                             style: italic
-#                early:
-#                    fitler: { $zoom: { max: 14 }, not: { kind: [glacier, farmland] } }
-#                    draw:
-#                        icons:
-#                            text:
-#                               visible: false
             icons:
                 adult-boutique:
                     filter: { kind: [erotic, adult_boutique] }
