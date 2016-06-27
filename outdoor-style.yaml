@@ -43,12 +43,9 @@ labels-global:
     - &text_visible_exits             true
     - &text_visible_exits_e           true
 
-cameras:
-    camera1: { type: isometric, axis: [-.2, .2] }
-
 settings:
     cameras:
-        - &camera_settings            { type: isometric, axis: [0, .1], vanishing_point: [0, -500] }
+        - &camera_settings            { type: isometric, axis: [-.2, .2] }
 
     lights:
         - &light_settings             { type: directional, direction: [1, 1, -.9], diffuse: 0.5, ambient: 0.85 }
@@ -205,6 +202,9 @@ settings:
         - &text_stroke_address   [0.913,0.925,0.933]      # address stroke color
         - &townspot_sprite   townspot-m-rev         # depends on land color and text settings
         - &text_font_family  'Open Sans'            # branding in asperational Unicode, yo (or Helvetica)
+
+cameras:
+    camera1: *camera_settings
 
 scene:
     background:
