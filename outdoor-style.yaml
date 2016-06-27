@@ -5420,7 +5420,7 @@ layers:
             tourism-related:
                 filter:
                     all:
-                        - kind: [zoo, theme_park, resort, aquarium, winery, maze, stadium, enclosure]
+                        - kind: [zoo, theme_park, resort, aquarium, winery, maze, stadium, enclosure, animal]
                         - area: true
                         - $geometry: point
                     any:
@@ -5444,7 +5444,7 @@ layers:
                                 size: 10px
                                 stroke: { color: *text_stroke, width: 4 }
                 enclosure:
-                    filter: { kind: enclosure }
+                    filter: { kind: [enclosure, animal] }
                     draw:
                         icons:
                             visible: false
@@ -5941,7 +5941,7 @@ layers:
                             font:
                                 style: italic
             suppress-the-icon-text-label-only:
-                filter: { $zoom: { min: 15 }, kind: [scrub, wetland, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
+                filter: { $zoom: { min: 15 }, kind: [scrub, wetland, scree, meadow, village_green, common, grass, farmyard, farmland, wood, enclosure, animal, pier, breakwater, groyne, dike, cutline, residential, retail, commercial, industrial] }
                 draw:
                     icons:
                         visible: false
