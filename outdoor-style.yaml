@@ -4929,6 +4929,17 @@ layers:
             power_pole:
                 filter: { kind: [power_pole], $zoom: { max: 17 } }
                 draw:   { icons: { visible: false } }
+            playgrounds:
+                filter:
+                    all:
+                        - kind: [playground, allotments, attraction, landmark]
+                    any:
+                        - { $zoom: [15], area: { min: 600 } }
+                        - { $zoom: [16], area: { min: 300 } }
+                        - { $zoom: { min: 17 } }
+                draw:
+                    icons:
+                        sprite: function() { return feature.kind; }
             pylon:
                 filter: { kind: [pylon], $zoom: { max: 17 } }
                 draw:   { icons: { visible: false }}
@@ -5450,8 +5461,8 @@ layers:
                         - area: true
                         - $geometry: point
                     any:
-                        - { $zoom: [15], area: { min: 2000 } }
-                        - { $zoom: [16], area: { min: 1000 } }
+                        - { $zoom: [15], area: { min: 600 } }
+                        - { $zoom: [16], area: { min: 300 } }
                         - { $zoom: { min: 17 } }
                 draw:
                     icons:
@@ -5898,14 +5909,14 @@ layers:
                         text:
                             order: 42
             outdoor-has-icons:
-                filter: { kind: [outdoor, lighthouse, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway, mineshaft, adit, recreation_track] }
+                filter: { kind: [outdoor, lighthouse, saddle, picnic_area, picnic_table, camp_site, ski, mine, zoo, museum, gas, gas_canister, slipway, mineshaft, adit, recreation_track, playground, allotments, attraction, landmark] }
                 draw:
                     icons:
                         order: 41
                         text:
                             order: 42
             not-outdoor-not-landuse:
-                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, bicycle_junction, walking_junction, dam, boat_storage, windmill] } }
+                filter: { area: false, not: { kind: [park, national_park, outdoor, bicycle_repair_station, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, bicycle_junction, walking_junction, dam, boat_storage, windmill, playground, allotments, attraction, landmark] } }
                 draw:
                     icons:
                         order: 45
