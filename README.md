@@ -1,4 +1,4 @@
-# outdoor-style
+# walkabout-style
 
 Work in progress!
 
