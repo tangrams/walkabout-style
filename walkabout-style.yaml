@@ -12,26 +12,26 @@ labels-global:
     - &text_visible_address           true
     - &text_visible_water_labels      true
     - &label_visible_landuse_green    true
-    - &icon_visible_landuse_green     true
+    - &icon_visible_landuse_green     false
     - &text_visible_landuse_green     true
     - &label_visible_poi_landuse      true
-    - &icon_visible_poi_landuse       true
-    - &text_visible_poi_landuse       true
+    - &icon_visible_poi_landuse       false
+    - &text_visible_poi_landuse       false
     - &label_visible_poi_landuse_e    true
-    - &icon_visible_poi_landuse_e     true
+    - &icon_visible_poi_landuse_e     false
     - &text_visible_poi_landuse_e     true
-    - &label_visible_station          true
-    - &icon_visible_station           true
-    - &text_visible_station           true
+    - &label_visible_station          false
+    - &icon_visible_station           false
+    - &text_visible_station           false
     - &text_visible_highway           true
-    - &text_visible_highway_e         true
+    - &text_visible_highway_e         false
     - &text_visible_trunk_primary     true
-    - &text_visible_trunk_primary_e2  true
-    - &text_visible_trunk_primary_e   true
+    - &text_visible_trunk_primary_e2  false
+    - &text_visible_trunk_primary_e   false
     - &text_visible_secondary         true
-    - &text_visible_secondary_e       true
+    - &text_visible_secondary_e       false
     - &text_visible_tertiary          true
-    - &text_visible_tertiary_e        true
+    - &text_visible_tertiary_e        false
     - &text_visible_minor_road        true
     - &text_visible_minor_road_e      true
     - &text_visible_service_road      true
@@ -41,7 +41,8 @@ labels-global:
     - &text_visible_aerialway         true
     - &text_visible_shields           false
     - &text_visible_exits             true
-    - &text_visible_exits_e           true
+    - &text_visible_exits_e           false
+    - &text_visible_airport_gate      true
 
 settings:
     cameras:
@@ -405,7 +406,7 @@ sources:
     mapzen:
         type: TopoJSON
         # prod
-        url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-VyYjZGS
         # earlier prod version
         #url: https://vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
         # dev
@@ -4749,7 +4750,7 @@ layers:
             icons:
                 visible: false
             text-blend-order:
-                visible: true
+                visible: *text_visible_airport_gate
                 interactive: true
                 text_source: ref
                 font:
@@ -5648,9 +5649,9 @@ layers:
                 filter: { kind: [peak, volcano] }
                 draw:
                     icons:
-                        visible: true
+                        visible: *icon_visible_landuse_green
                         priority: 43
-                        text:  { visible: true }
+                        text:  { visible: *text_visible_landuse_green }
                 low-priority-early-z11:
                     filter: { kind_tile_rank: { min: 3 }, $zoom: [11,12] }
                     draw:
@@ -5673,8 +5674,8 @@ layers:
                 filter: { kind: [waterfall], $zoom: { max: 14 } }
                 draw:
                     icons:
-                        visible: true
-                        text:  { visible: true }
+                        visible: *icon_visible_landuse_green
+                        text:  { visible: *text_visible_landuse_green }
                 low-priority-early-z11:
                     filter: { kind_tile_rank: { min: 3 }, $zoom: [11,12] }
                     draw:

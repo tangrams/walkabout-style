@@ -1,7 +1,5 @@
 # walkabout-style
 
-Work in progress!
-
 ### To run locally:
 
 Start a web server in the repo's directory:
