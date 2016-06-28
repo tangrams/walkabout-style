@@ -7,7 +7,7 @@ map = (function () {
 
     // defaults
     var map_start_location = [37.8090, -122.2220, 12]; // Oakland
-    var style_file = 'outdoor-style.yaml';
+    var style_file = 'walkabout-style.yaml';
 
     /*** URL parsing ***/
 
