@@ -178,7 +178,7 @@ settings:
         - &grey12      '#cfcfcf'                # generic minor amusements (roller coasters, rides, slide, carousel)
         - &grey12_o    '#c5c5c5'                # generic minor amusements
         - &purple      '#f0e1e1'                # airport
-        - &purple_v    false                    # airport
+        - &purple_v    true                     # airport
         - &mystry1     '#aaaaaa'                # recreation ground (type of park, sometimes around reservoirs)
         - &building1   white                    # building
         - &building2   white                    # building stroke
