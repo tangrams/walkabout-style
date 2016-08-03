@@ -25,7 +25,7 @@ map = (function () {
 
     // location
     var defaultpos = true; // use default position
-    
+
     // location is passed through url
     if (url_hash.length == 3) {
         var defaultpos = false;
@@ -41,12 +41,29 @@ map = (function () {
         }
     }
 
-    // normal case, eg: http://tangrams.github.io/nameless-maps/?roads#4/0/0
-    var url_search = window.location.search.slice(1).split('/')[0];
-    // console.log('url_search', url_search);
-    if (url_search.length > 0) {
-        style_file = url_search + ".yaml";
-        // console.log('style_file', style_file);
+    // enable setting language by URL argument
+    // eg: '?language=en&this=no'
+
+    var query = splitQueryParams();
+    // { language: 'en', this: 'no'}
+
+    function splitQueryParams () {
+       var str = window.location.search;
+
+       var kvArray = str.slice(1).split('&');
+       // ['language=en', 'this=no']
+
+       var obj = {};
+
+       for (var i = 0, j=kvArray.length; i<j; i++) {
+           var value = kvArray[i].split('=');
+           var k = window.decodeURIComponent(value[0]);
+           var v = window.decodeURIComponent(value[1]);
+
+           obj[k] = v;
+       }
+
+       return obj;
     }
 
     /*** Map ***/
@@ -105,7 +122,7 @@ map = (function () {
                     picking = false;
                     popup.style.visibility = 'hidden';
                     return;
-                }                
+                }
                 var properties = selection.feature.properties;
 
                 popup.style.width = 'auto';
@@ -122,7 +139,7 @@ map = (function () {
             });
         });
     }
-    
+
     function createEditLinkElement (url, type, label) {
         var el = document.createElement('div');
         var anchor = document.createElement('a');
@@ -155,7 +172,7 @@ map = (function () {
     }
 
     function long2tile(lon,zoom) { return (Math.floor((lon+180)/360*Math.pow(2,zoom))); }
-    function lat2tile(lat,zoom)  { return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom))); }    
+    function lat2tile(lat,zoom)  { return (Math.floor((1-Math.log(Math.tan(lat*Math.PI/180) + 1/Math.cos(lat*Math.PI/180))/Math.PI)/2 *Math.pow(2,zoom))); }
 
     function mapzenTileURL() {
         // find minimum max_zoom of all sources
@@ -175,25 +192,65 @@ map = (function () {
     }
 
     /***** Render loop *****/
-    
+
+    // Create dat GUI
+    var gui = new dat.GUI({ autoPlace: true });
+
     function addGUI() {
+        gui.domElement.parentNode.style.zIndex = 10000;
+        window.gui = gui;
+
+        // Language selector
+        var langs = {
+            '(default)': null,
+            'English': 'en',
+            'Russian': 'ru',
+            'Japanese': 'ja',
+            'Korean': 'ko',
+            'German': 'de',
+            'French': 'fr',
+            'Arabic': 'ar',
+            'Spanish': 'es'
+        };
+        // use query language, else default to English
+        gui.language = query.language || 'en';
+        gui.add(gui, 'language', langs).onChange(function(value) {
+            scene.config.global.language = value;
+            scene.updateConfig();
+            //window.location.search = 'language=' + value;
+        });
+
+        // Take a screenshot and save to file
+        gui.screenshot = function () {
+            return scene.screenshot().then(function(screenshot) {
+                // uses FileSaver.js: https://github.com/eligrey/FileSaver.js/
+                timestamp = new Date();
+                month = timestamp.getMonth()+1;
+                if( month < 10 ) { month = '0' + month; }
+                prettydate = timestamp.getFullYear() + month + timestamp.getDate() + timestamp.getHours() + timestamp.getMinutes();
+                map_location = map.getZoom() + '-' + map.getCenter().lat.toFixed(5) + '-' + map.getCenter().lng.toFixed(5);
+                saveAs(screenshot.blob, 'tangram-' + map_location + '-' + prettydate + '.png');
+            });
+        };
+        gui.add(gui, 'screenshot');
+
         // Link to edit in OSM - hold 'e' and click
         map.getContainer().addEventListener('dblclick', function (event) {
             //console.log( 'dblclick was had' );
             if( timer ) { clearTimeout( timer ); timer = null; }
             popup.style.visibility = 'hidden';
         });
-        
+
         var timer;
-        
+
         map.getContainer().addEventListener('click', function (event) {
             //console.log( 'click was had' );
             if( timer ) { clearTimeout( timer ); timer = null; }
-            timer = setTimeout( function(){ 
+            timer = setTimeout( function(){
                 picking = true;
                 latlng = map.mouseEventToLatLng(event);
                 var pixel = { x: event.clientX, y: event.clientY };
-            
+
                 if( key.cmd || key.alt ) {
                     window.open( mapzenTileURL(), '_blank' );
                 } else {
@@ -223,7 +280,7 @@ map = (function () {
                         if (latlng) {
                             url += '#map=' + osm_zoom + '/' + latlng.lat + '/' + latlng.lng;
                         }
-    
+
                         if( key.shift ) {
                             window.open(url, '_blank');
                         } else {
@@ -235,9 +292,9 @@ map = (function () {
                                 var val = properties[x]
                                 label += "<span class='labelLine' key="+x+" value="+val+"'>"+x+" : "+val+"</span><br>"
                             }
-                        
+
                             //var mz_layers = JSON.stringify(
-                            //   selection.feature.layers.reduce((set, val) => { let last=set; val.split(':').forEach(k => { last = last[k] = last[k] || {} }); return set }, {}), 
+                            //   selection.feature.layers.reduce((set, val) => { let last=set; val.split(':').forEach(k => { last = last[k] = last[k] || {} }); return set }, {}),
                             //   null, '\t')
                             //label += "<span class='labelLine'>layers : "+mz_layers+"</span><br>";
 
@@ -252,7 +309,7 @@ map = (function () {
                             // JOSM editor link
                             var position = '19' + '/' + latlng.lat + '/' + latlng.lng;
                             var josmUrl = 'http://www.openstreetmap.org/edit?editor=remote#map='+position;
-    
+
                             popup.appendChild(createEditLinkElement( url, 'iD', 'Edit with iD ➹') );
                             popup.appendChild(createEditLinkElement( mapzenTileURL(), 'rawTile', 'View tile data ➹') );
                             //popup.appendChild(createEditLinkElement( josmUrl, 'JOSM', 'Edit with JOSM ➹') );
@@ -272,7 +329,7 @@ map = (function () {
             return true;
         }
     }
-    
+
     // Add map
     window.addEventListener('load', function () {
         // Scene initialized
@@ -289,7 +346,15 @@ map = (function () {
             addGUI();
             initFeatureSelection();
         }
-        layer.addTo(map);
+
+        function addToMap () {
+            layer.addTo(map);
+        }
+
+        // Wait for Open Sans to load (or timeout). First argument is success callback, second is failure callback.
+        // In both cases we want to continue to render (is font fails to load, it will fallback on Helvetica).
+        // See https://github.com/bramstein/fontfaceobserver
+        (new FontFaceObserver('Open Sans')).load().then(addToMap, addToMap);
     });
 
     return map;
