@@ -3617,7 +3617,7 @@ layers:
                             - { population: { max: 50000 } }
                         any:
                             - { country_capital: true }
-                            - { state_capital: true }
+                            - { region_capital: true }
                     draw:
                         icons:
                             size: 5px
@@ -3828,7 +3828,7 @@ layers:
                             - { population: { max: 50000 } }
                         any:
                             - { country_capital: true }
-                            - { state_capital: true }
+                            - { region_capital: true }
                     draw:
                         icons:
                             size: 5px
@@ -4223,7 +4223,7 @@ layers:
                                     size: 14px
                                     stroke: { color: *text_stroke, width: 4 }
                     state_capital:
-                        filter: { state_capital: true }
+                        filter: { region_capital: true }
                         draw:
                             text-blend-order:
                                 priority: 12
