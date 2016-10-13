@@ -406,28 +406,14 @@ sources:
     mapzen:
         type: TopoJSON
         # prod
-        # url: https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-VyYjZGS
-        #url:  http://tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-VyYjZGS
-        url:  http://tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
-        # earlier prod version
-        #url: https://vector.mapzen.com/osm/v0.9/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-JUsa0Gc
+        url:  http://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-VyYjZGS
         # dev
-        #url:  http://vector.dev.mapzen.com/osm/all/{z}/{x}/{y}.topojson
-        # staging (proxy)
-        #url:  //localhost:8081/osm/all/{z}/{x}/{y}.topojson
-        # local tiles
-        #url:  //localhost:8080/all/{z}/{x}/{y}.topojson
+        #url:  http://tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
         rasters: [normals]
         max_zoom: 16
     normals: # normals
         type: Raster
-        # prod
-        url: https://terrain-preview.mapzen.com/normal/{z}/{x}/{y}.png
-        # staging
-        #url: https://s3.amazonaws.com/elevation-tiles-prod/normal/{z}/{x}/{y}.png
-        # dev
-        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.3/normal/{z}/{x}/{y}.png
-        #url: https://s3.amazonaws.com/mapzen-terrain-dev-us-east/v0.0.2/normal/{z}/{x}/{y}.png
+        url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
         max_zoom: 15
 
 styles:
