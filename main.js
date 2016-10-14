@@ -41,29 +41,12 @@ map = (function () {
         }
     }
 
-    // enable setting language by URL argument
-    // eg: '?language=en&this=no'
-
-    var query = splitQueryParams();
-    // { language: 'en', this: 'no'}
-
-    function splitQueryParams () {
-       var str = window.location.search;
-
-       var kvArray = str.slice(1).split('&');
-       // ['language=en', 'this=no']
-
-       var obj = {};
-
-       for (var i = 0, j=kvArray.length; i<j; i++) {
-           var value = kvArray[i].split('=');
-           var k = window.decodeURIComponent(value[0]);
-           var v = window.decodeURIComponent(value[1]);
-
-           obj[k] = v;
-       }
-
-       return obj;
+    // normal case, eg: http://tangrams.github.io/nameless-maps/?roads#4/0/0
+    var url_search = window.location.search.slice(1).split('/')[0];
+    // console.log('url_search', url_search);
+    if (url_search.length > 0) {
+        style_file = url_search + ".yaml";
+        // console.log('style_file', style_file);
     }
 
     /*** Map ***/
@@ -193,47 +176,7 @@ map = (function () {
 
     /***** Render loop *****/
 
-    // Create dat GUI
-    var gui = new dat.GUI({ autoPlace: true });
-
     function addGUI() {
-        gui.domElement.parentNode.style.zIndex = 10000;
-        window.gui = gui;
-
-        // Language selector
-        var langs = {
-            '(default)': null,
-            'English': 'en',
-            'Russian': 'ru',
-            'Japanese': 'ja',
-            'Korean': 'ko',
-            'German': 'de',
-            'French': 'fr',
-            'Arabic': 'ar',
-            'Spanish': 'es'
-        };
-        // use query language, else default to English
-        gui.language = query.language || 'en';
-        gui.add(gui, 'language', langs).onChange(function(value) {
-            scene.config.global.language = value;
-            scene.updateConfig();
-            //window.location.search = 'language=' + value;
-        });
-
-        // Take a screenshot and save to file
-        gui.screenshot = function () {
-            return scene.screenshot().then(function(screenshot) {
-                // uses FileSaver.js: https://github.com/eligrey/FileSaver.js/
-                timestamp = new Date();
-                month = timestamp.getMonth()+1;
-                if( month < 10 ) { month = '0' + month; }
-                prettydate = timestamp.getFullYear() + month + timestamp.getDate() + timestamp.getHours() + timestamp.getMinutes();
-                map_location = map.getZoom() + '-' + map.getCenter().lat.toFixed(5) + '-' + map.getCenter().lng.toFixed(5);
-                saveAs(screenshot.blob, 'tangram-' + map_location + '-' + prettydate + '.png');
-            });
-        };
-        gui.add(gui, 'screenshot');
-
         // Link to edit in OSM - hold 'e' and click
         map.getContainer().addEventListener('dblclick', function (event) {
             //console.log( 'dblclick was had' );
@@ -346,15 +289,7 @@ map = (function () {
             addGUI();
             initFeatureSelection();
         }
-
-        function addToMap () {
-            layer.addTo(map);
-        }
-
-        // Wait for Open Sans to load (or timeout). First argument is success callback, second is failure callback.
-        // In both cases we want to continue to render (is font fails to load, it will fallback on Helvetica).
-        // See https://github.com/bramstein/fontfaceobserver
-        (new FontFaceObserver('Open Sans')).load().then(addToMap, addToMap);
+        layer.addTo(map);
     });
 
     return map;
