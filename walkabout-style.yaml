@@ -228,7 +228,7 @@ textures:
             'US:CA_4char': [424, 418, 120, 72]
             'US:CA_5char': [288, 418, 128, 72]
             'US:I_1char': [458, 522, 92, 100]
-            'US:I_2char': [-2, 314, 102, 102]
+            'US:I_2char': [0, 314, 102, 102]
             'US:I_3char': [864, 210, 116, 100]
             'US:I_4char': [730, 210, 126, 100]
             'US:I_5char': [596, 210, 128, 100]
@@ -2480,7 +2480,7 @@ layers:
                         text:
                             offset: [0px, 0.5px]
                             font:
-                                fill: [0.308,0.308,0.308]
+                                fill: [0.291,0.463,0.501]
                                 size: [[7,7px],[13,9px],[15,10px]]
                 width_1char:
                     filter: function() { return (feature.shield_text.length === 1) }
@@ -2520,7 +2520,7 @@ layers:
                         cull_from_tile: true
                         text:
                             font:
-                                fill: [0.870,0.452,0.473]
+                                fill: [0.109,0.554,0.478]
                                 size: [[8,6.5px],[13,8.5px],[15,10px]]
                 early:
                     filter: { $zoom: [7] }
