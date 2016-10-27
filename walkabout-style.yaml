@@ -212,191 +212,406 @@ scene:
         color: [0.894,0.902,0.898]
     # animated: true
 
+fonts:
+    Montserrat:
+        url: https://fonts.gstatic.com/s/montserrat/v7/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff
+
 textures:
     pois:
         url: images/poi_icons_18@2x.png
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-            airport: [952, 0, 38, 38]
-            allotments: [552, 252, 38, 38]
-            aquarium: [916, 168, 38, 38]
-            art-gallery: [824, 168, 38, 38]
-            athletics-sports: [368, 168, 38, 38]
-            atm: [92, 168, 38, 38]
-            attraction: [550, 210, 38, 36]
-            automotive-shop: [184, 168, 38, 38]
-            bakery: [732, 168, 38, 38]
-            bank: [138, 168, 38, 36]
-            bar: [414, 168, 38, 38]
-            baseball-field: [690, 84, 38, 38]
-            basketball-court: [644, 84, 38, 38]
-            battlefield: [826, 210, 38, 38]
-            bbq: [230, 252, 38, 38]
-            beach: [828, 84, 38, 38]
-            beach-resort: [734, 210, 38, 38]
-            beer-garden: [458, 210, 38, 38]
-            bench: [630, 0, 38, 38]
-            bicycle-parking: [828, 126, 38, 38]
-            bike-shop: [46, 168, 38, 38]
-            boat-ferry: [906, 0, 38, 38]
-            boat-ramp: [276, 84, 40, 38]
-            boat-rental: [598, 252, 38, 38]
-            bookstore: [0, 168, 38, 38]
-            bridge: [92, 126, 38, 38]
-            buddhism: [966, 84, 38, 38]
-            building: [598, 168, 34, 34]
-            burger: [320, 210, 38, 38]
-            bus-station: [860, 0, 38, 38]
-            butcher: [46, 84, 38, 38]
-            campground: [0, 126, 38, 38]
-            candy-store: [182, 210, 38, 38]
-            capital-l: [146, 294, 16, 16]
-            capital-m: [126, 294, 12, 12]
-            capital-s: [106, 294, 10, 10]
-            capital-xl: [170, 294, 20, 20]
-            capital-xs: [92, 294, 8, 8]
-            car-dealership: [964, 126, 38, 38]
-            caravan-site: [964, 210, 38, 38]
-            castle: [506, 42, 38, 38]
-            cemetery: [920, 84, 38, 38]
-            church: [414, 126, 38, 38]
-            clothing-store: [0, 210, 38, 38]
-            coffee-shop: [686, 168, 38, 36]
-            college-university: [46, 210, 38, 38]
-            convenience-store: [184, 84, 38, 38]
-            courthouse: [446, 0, 38, 38]
-            current-location: [702, 294, 88, 86]
-            dentist: [266, 0, 34, 34]
-            department-store: [918, 126, 38, 38]
-            doctors: [224, 0, 34, 34]
-            dog-park: [138, 252, 38, 38]
-            dot-black: [0, 294, 38, 38]
-            dot-white: [966, 252, 38, 38]
-            drinking-water: [412, 210, 38, 38]
-            dry-cleaning: [138, 84, 38, 38]
-            electronics-store: [782, 126, 38, 38]
-            factory: [552, 168, 38, 38]
-            fire-station: [400, 0, 38, 38]
-            firepit: [92, 252, 38, 38]
-            fishing-area: [0, 252, 38, 38]
-            fitness: [0, 84, 38, 38]
-            flower-shop: [368, 126, 38, 38]
-            forest: [228, 210, 38, 38]
-            fountain: [506, 126, 38, 38]
-            garden: [874, 84, 38, 38]
-            gas: [736, 252, 38, 38]
-            gas-station: [136, 210, 38, 38]
-            generic: [46, 294, 38, 38]
-            geyser: [688, 210, 38, 38]
-            gift-shop: [322, 126, 38, 38]
-            golf-course: [598, 84, 38, 38]
-            government-building: [322, 168, 38, 38]
-            grocery-store: [736, 126, 38, 38]
-            harbor-marina: [276, 168, 40, 38]
-            hardware-store: [966, 42, 38, 38]
-            historic-site: [276, 126, 38, 38]
-            hospital: [182, 0, 34, 34]
-            hot-spring: [460, 84, 38, 38]
-            hotel: [814, 0, 38, 38]
-            hunting: [642, 210, 38, 38]
-            ice-cream-shop: [504, 210, 38, 38]
-            information: [596, 210, 38, 36]
-            jewelry-store: [828, 42, 38, 38]
-            landmark: [354, 0, 38, 38]
-            laundry: [782, 42, 38, 38]
-            library: [0, 0, 38, 38]
-            light-rail: [768, 0, 38, 38]
-            lighthouse: [414, 84, 38, 38]
-            liquor-store: [690, 126, 38, 38]
-            locate-off: [80, 426, 72, 70]
-            locate-on: [0, 426, 72, 70]
-            mall: [736, 42, 38, 38]
-            market: [690, 42, 38, 38]
-            mine: [874, 42, 38, 38]
-            mobile-phone-shop: [598, 42, 38, 38]
-            mosque: [90, 0, 38, 38]
-            motorcycle: [368, 252, 38, 38]
-            mountain: [368, 84, 38, 38]
-            movie-theatre: [962, 168, 38, 38]
-            museum: [230, 126, 38, 38]
-            music-store: [460, 42, 38, 38]
-            newsstand: [414, 42, 38, 38]
-            observatory: [690, 252, 38, 38]
-            office: [782, 84, 38, 38]
-            optical-shop: [368, 42, 38, 38]
-            outdoor: [828, 252, 38, 38]
-            park: [460, 126, 38, 38]
-            parking: [874, 126, 38, 36]
-            performing-arts: [778, 168, 38, 38]
-            pet-store: [322, 42, 38, 38]
-            pharmacy: [92, 84, 38, 38]
-            photography-lab: [276, 42, 38, 38]
-            picnic-spot: [322, 252, 38, 38]
-            pier: [722, 0, 38, 38]
-            playground: [552, 42, 38, 38]
-            police: [308, 0, 38, 38]
-            pool: [322, 84, 38, 38]
-            post-office: [506, 168, 38, 38]
-            quarry: [920, 42, 40, 38]
-            ranger-station: [276, 252, 38, 38]
-            real-estate: [230, 42, 38, 38]
-            recreation-track: [460, 252, 38, 38]
-            recycling-facility: [184, 42, 38, 38]
-            rental-car: [676, 0, 38, 38]
-            restaurant: [274, 210, 38, 38]
-            route-arrow: [408, 294, 128, 128]
-            route-start: [622, 294, 72, 92]
-            route-stop: [544, 294, 72, 92]
-            ruin: [584, 0, 38, 38]
-            salon-barber: [138, 42, 38, 38]
-            school: [736, 84, 38, 38]
-            scuba-diving: [782, 252, 38, 38]
-            search-active: [796, 294, 72, 108]
-            search-inactive: [876, 294, 72, 108]
-            shoe-store: [644, 42, 38, 38]
-            shower: [918, 210, 38, 38]
-            ski-area: [552, 126, 38, 38]
-            slipway: [872, 210, 38, 38]
-            soccer-field: [552, 84, 38, 38]
-            spiritual-center: [460, 168, 38, 38]
-            sporting-goods-shop: [92, 42, 38, 38]
-            spring: [506, 84, 38, 38]
-            stadium: [644, 126, 38, 38]
-            subway-entrance: [538, 0, 38, 38]
-            summer-camp: [506, 252, 38, 38]
-            swimming-area: [46, 252, 38, 38]
-            synagogue: [44, 0, 38, 38]
-            tailor-shop: [46, 42, 38, 38]
-            telescope: [644, 252, 38, 38]
-            tennis: [598, 126, 38, 38]
-            theme-park: [184, 126, 38, 38]
-            toilets: [46, 126, 38, 38]
-            townspot-l: [356, 294, 16, 16]
-            townspot-l-rev: [250, 294, 16, 16]
-            townspot-m: [336, 294, 12, 12]
-            townspot-m-rev: [230, 294, 12, 12]
-            townspot-s: [318, 294, 10, 10]
-            townspot-s-rev: [212, 294, 10, 10]
-            townspot-xl: [380, 294, 20, 20]
-            townspot-xl-rev: [274, 294, 20, 20]
-            townspot-xs: [302, 294, 8, 8]
-            townspot-xs-rev: [198, 294, 6, 6]
-            toy-game-store: [0, 42, 38, 38]
-            traffic-signal: [92, 210, 36, 34]
-            trailhead: [874, 252, 38, 38]
-            train-station: [492, 0, 38, 38]
-            tree: [920, 252, 38, 38]
-            veterinarian: [136, 0, 38, 38]
-            view-point: [870, 168, 40, 38]
-            vineyard: [230, 168, 40, 38]
-            volcano: [230, 84, 38, 38]
-            water-tower: [414, 252, 38, 38]
-            waterfall: [184, 252, 38, 38]
-            waterpark: [780, 210, 38, 38]
-            wine-bar: [366, 210, 38, 38]
-            winery: [640, 168, 38, 38]
-            zoo: [138, 126, 38, 38]
+            'US:CA_1char': [760, 418, 72, 72]
+            'US:CA_2char': [664, 418, 88, 72]
+            'US:CA_3char': [552, 418, 104, 72]
+            'US:CA_4char': [424, 418, 120, 72]
+            'US:CA_5char': [288, 418, 128, 72]
+            'US:I_1char': [458, 522, 92, 100]
+            'US:I_2char': [-2, 314, 102, 102]
+            'US:I_3char': [864, 210, 116, 100]
+            'US:I_4char': [730, 210, 126, 100]
+            'US:I_5char': [596, 210, 128, 100]
+            'US:US_1char': [364, 522, 88, 98]
+            'US:US_2char': [252, 522, 106, 98]
+            'US:US_3char': [132, 522, 114, 100]
+            'US:US_4char': [0, 522, 124, 100]
+            'US:US_5char': [840, 418, 128, 100]
+            airport: [952, 0, 36, 36]
+            aerodrome: [952, 0, 36, 36]
+            allotments: [506, 626, 36, 36]
+            aquarium: [916, 168, 36, 36]
+            art-gallery: [824, 168, 36, 36]
+            art_gallery: [824, 168, 36, 36]
+            art: [824, 168, 36, 36]
+            athletics-sports: [368, 168, 36, 36]
+            pitch: [368, 168, 36, 36]
+            athletic_sports: [368, 168, 36, 36]
+            recreation_ground: [368, 168, 36, 36]
+            atm: [92, 168, 36, 36]
+            attraction: [550, 210, 36, 36]
+            automotive-shop: [184, 168, 36, 36]
+            car_repair: [184, 168, 36, 36]
+            automotive: [184, 168, 36, 36]
+            tyres: [184, 168, 36, 36]
+            bakery: [732, 168, 36, 36]
+            pastry: [732, 168, 36, 36]
+            chocolate: [732, 168, 36, 36]
+            bank: [138, 168, 36, 36]
+            bar: [414, 168, 36, 36]
+            pub: [414, 168, 36, 36]
+            baseball-field: [690, 84, 36, 36]
+            basketball-court: [644, 84, 36, 36]
+            battlefield: [784, 522, 36, 36]
+            bbq: [184, 626, 36, 36]
+            beach: [828, 84, 36, 36]
+            beach-resort: [692, 522, 36, 36]
+            beach_resort: [692, 522, 36, 36]
+            beer-garden: [458, 210, 36, 36]
+            biergarten: [458, 210, 36, 36]
+            brewery: [458, 210, 36, 36]
+            bench: [630, 0, 36, 36]
+            bicycle-parking: [828, 126, 36, 36]
+            bike-shop: [46, 168, 36, 36]
+            bicycle: [46, 168, 36, 36]
+            bicycle_rental: [46, 168, 36, 36]
+            bike: [46, 168, 36, 36]
+            bike_shop: [46, 168, 36, 36]
+            boat-ferry: [906, 0, 36, 36]
+            ferry_terminal: [906, 0, 36, 36]
+            ferry-boat: [906, 0, 36, 36]
+            ferry: [906, 0, 36, 36]
+            boat-ramp: [276, 84, 38, 38]
+            slipway: [276, 84, 38, 38]
+            boat_ramp: [276, 84, 38, 38]
+            boat-rental: [552, 626, 36, 36]
+            boat_rental: [552, 626, 36, 36]
+            bookstore: [0, 168, 36, 36]
+            books: [0, 168, 36, 36]
+            bridge: [92, 126, 36, 36]
+            buddhism: [966, 84, 36, 36]
+            building: [598, 168, 36, 36]
+            auditorium: [598, 168, 36, 36]
+            terminal: [598, 168, 36, 36]
+            hangar: [598, 168, 36, 36]
+            retirement_home: [598, 168, 36, 36]
+            manor: [598, 168, 36, 36]
+            recreation_center: [598, 168, 36, 36]
+            apartments: [598, 168, 36, 36]
+            burger: [320, 210, 36, 36]
+            fast_food: [320, 210, 36, 36]
+            bus-station: [860, 0, 36, 36]
+            bus_stop: [860, 0, 36, 36]
+            bus_station: [860, 0, 36, 36]
+            butcher: [46, 84, 36, 36]
+            campground: [0, 126, 36, 36]
+            camp_site: [0, 126, 36, 36]
+            caravan_site: [0, 126, 36, 36]
+            candy-store: [182, 210, 36, 36]
+            candy: [182, 210, 36, 36]
+            confectionery: [182, 210, 36, 36]
+            capital-l: [100, 670, 16, 16]
+            capital-m: [80, 670, 12, 12]
+            capital-s: [60, 670, 10, 10]
+            capital-xl: [124, 670, 20, 20]
+            capital-xs: [46, 670, 8, 8]
+            car-dealership: [964, 126, 36, 36]
+            car: [964, 126, 36, 36]
+            caravan-site: [922, 522, 36, 36]
+            caravan_site: [922, 522, 36, 36]
+            castle: [506, 42, 36, 36]
+            fort: [506, 42, 36, 36]
+            cemetery: [920, 84, 36, 36]
+            grave_yard: [920, 84, 36, 36]
+            church: [414, 126, 36, 36]
+            clothing-store: [0, 210, 36, 36]
+            clothes: [0, 210, 36, 36]
+            fashion: [0, 210, 36, 36]
+            coffee-shop: [686, 168, 36, 36]
+            cafe: [686, 168, 36, 36]
+            college-university: [46, 210, 36, 36]
+            university: [46, 210, 36, 36]
+            college: [46, 210, 36, 36]
+            convenience-store: [184, 84, 36, 36]
+            convenience: [184, 84, 36, 36]
+            convenience_store: [184, 84, 36, 36]
+            beverages: [184, 84, 36, 36]
+            county_shield_1char: [208, 418, 72, 72]
+            county_shield_2char: [112, 418, 90, 72]
+            county_shield_3char: [0, 418, 104, 72]
+            county_shield_4char: [796, 314, 120, 72]
+            county_shield_5char: [660, 314, 128, 72]
+            courthouse: [446, 0, 36, 36]
+            current-location: [656, 668, 88, 88]
+            dentist: [266, 0, 36, 36]
+            department-store: [918, 126, 36, 36]
+            department_store: [918, 126, 36, 36]
+            doctors: [224, 0, 36, 36]
+            clinic: [224, 0, 36, 36]
+            dog-park: [92, 626, 36, 36]
+            dog_park: [92, 626, 36, 36]
+            dog_run: [92, 626, 36, 36]
+            dog-run: [92, 626, 36, 36]
+            dot-black: [966, 626, 36, 36]
+            dot-white: [920, 626, 36, 36]
+            drinking-water: [412, 210, 36, 36]
+            dry-cleaning: [138, 84, 36, 36]
+            dry_cleaning: [138, 84, 36, 36]
+            electronics-store: [782, 126, 36, 36]
+            electronics: [782, 126, 36, 36]
+            computer: [782, 126, 36, 36]
+            factory: [552, 168, 36, 36]
+            industrial: [552, 168, 36, 36]
+            chimney: [552, 168, 36, 36]
+            sub_station: [552, 168, 36, 36]
+            substation: [552, 168, 36, 36]
+            wastewater_plant: [552, 168, 36, 36]
+            works: [552, 168, 36, 36]
+            water_works: [552, 168, 36, 36]
+            plant: [552, 168, 36, 36]
+            generator: [552, 168, 36, 36]
+            fire-station: [400, 0, 36, 36]
+            fire_station: [400, 0, 36, 36]
+            firepit: [46, 626, 36, 36]
+            fishing-area: [968, 522, 36, 36]
+            fishing_area: [968, 522, 36, 36]
+            fitness: [0, 84, 36, 36]
+            gym: [0, 84, 36, 36]
+            fitness_center: [0, 84, 36, 36]
+            flower-shop: [368, 126, 36, 36]
+            florist: [368, 126, 36, 36]
+            forest: [228, 210, 36, 36]
+            conservation: [228, 210, 36, 36]
+            nature_reserve: [228, 210, 36, 36]
+            fountain: [506, 126, 36, 36]
+            garden: [874, 84, 36, 36]
+            gas: [690, 626, 36, 36]
+            gas_canister: [690, 626, 36, 36]
+            gas-station: [136, 210, 36, 36]
+            fuel: [136, 210, 36, 36]
+            generic: [0, 668, 36, 36]
+            subway_entrance: [0, 668, 36, 36]
+            generic_shield_1char: [580, 314, 72, 72]
+            generic_shield_2char: [484, 314, 88, 72]
+            generic_shield_3char: [372, 314, 104, 72]
+            generic_shield_4char: [244, 314, 120, 72]
+            generic_shield_5char: [108, 314, 128, 72]
+            geyser: [646, 522, 36, 36]
+            gift-shop: [322, 126, 36, 36]
+            gift: [322, 126, 36, 36]
+            golf-course: [598, 84, 36, 36]
+            golf_course: [598, 84, 36, 36]
+            government-building: [322, 168, 36, 36]
+            townhall: [322, 168, 36, 36]
+            public_building: [322, 168, 36, 36]
+            embassy: [322, 168, 36, 36]
+            grocery-store: [736, 126, 36, 36]
+            supermarket: [736, 126, 36, 36]
+            health_food: [736, 126, 36, 36]
+            greengrocer: [736, 126, 36, 36]
+            harbor-marina: [276, 168, 38, 38]
+            marina: [276, 168, 38, 38]
+            harbor: [276, 168, 38, 38]
+            harbor_marina: [276, 168, 38, 38]
+            dock: [276, 168, 38, 38]
+            mooring: [276, 168, 38, 38]
+            hardware-store: [966, 42, 36, 36]
+            hardware: [966, 42, 36, 36]
+            doityourself: [966, 42, 36, 36]
+            paint: [966, 42, 36, 36]
+            historic-site: [276, 126, 36, 36]
+            hospital: [182, 0, 36, 36]
+            hot-spring: [460, 84, 36, 36]
+            hot_spring: [460, 84, 36, 36]
+            hotel: [814, 0, 36, 36]
+            motel: [814, 0, 36, 36]
+            hostel: [814, 0, 36, 36]
+            hunting: [600, 522, 36, 36]
+            ice-cream-shop: [504, 210, 36, 36]
+            ice_cream: [504, 210, 36, 36]
+            information: [556, 522, 36, 36]
+            info: [556, 522, 36, 36]
+            jewelry-store: [828, 42, 36, 36]
+            jewelry: [828, 42, 36, 36]
+            jewelry_store: [828, 42, 36, 36]
+            landmark: [354, 0, 36, 36]
+            memorial: [354, 0, 36, 36]
+            monument: [354, 0, 36, 36]
+            wayside_shrine: [354, 0, 36, 36]
+            tower: [354, 0, 36, 36]
+            beacon: [354, 0, 36, 36]
+            laundry: [782, 42, 36, 36]
+            dry_cleaning: [782, 42, 36, 36]
+            library: [0, 0, 36, 36]
+            light-rail: [768, 0, 36, 36]
+            light_rail: [768, 0, 36, 36]
+            tram_stop: [768, 0, 36, 36]
+            lighthouse: [414, 84, 36, 36]
+            liquor-store: [690, 126, 36, 36]
+            alcohol: [690, 126, 36, 36]
+            liquor: [690, 126, 36, 36]
+            locate-off: [0, 800, 72, 72]
+            locate-on: [910, 668, 72, 72]
+            mall: [736, 42, 36, 36]
+            market: [690, 42, 36, 36]
+            variety_store: [690, 42, 36, 36]
+            boutique: [690, 42, 36, 36]
+            dairy: [690, 42, 36, 36]
+            retail: [690, 42, 36, 36]
+            mine: [874, 42, 36, 36]
+            mobile-phone-shop: [598, 42, 36, 36]
+            mobile_phone: [598, 42, 36, 36]
+            mosque: [90, 0, 36, 36]
+            motorcycle: [322, 626, 36, 36]
+            mountain: [368, 84, 36, 36]
+            peak: [368, 84, 36, 36]
+            movie-theatre: [962, 168, 36, 36]
+            cinema: [962, 168, 36, 36]
+            movie-theater: [962, 168, 36, 36]
+            museum: [230, 126, 36, 36]
+            observatory: [230, 126, 36, 36]
+            music-store: [460, 42, 36, 36]
+            music: [460, 42, 36, 36]
+            musical_instrument: [460, 42, 36, 36]
+            newsstand: [414, 42, 36, 36]
+            kiosk: [414, 42, 36, 36]
+            newsagent: [414, 42, 36, 36]
+            observatory: [644, 626, 36, 36]
+            office: [782, 84, 36, 36]
+            insurance: [782, 84, 36, 36]
+            company: [782, 84, 36, 36]
+            optical-shop: [368, 42, 36, 36]
+            optician: [368, 42, 36, 36]
+            optical_shop: [368, 42, 36, 36]
+            outdoor: [782, 626, 36, 36]
+            park: [460, 126, 36, 36]
+            parking: [874, 126, 36, 36]
+            performing-arts: [778, 168, 36, 36]
+            theater: [778, 168, 36, 36]
+            theatre: [778, 168, 36, 36]
+            pet-store: [322, 42, 36, 36]
+            pet: [322, 42, 36, 36]
+            pet-service: [322, 42, 36, 36]
+            pet_store: [322, 42, 36, 36]
+            pharmacy: [92, 84, 36, 36]
+            chemist: [92, 84, 36, 36]
+            photography-lab: [276, 42, 36, 36]
+            photo_studio: [276, 42, 36, 36]
+            photography_lab: [276, 42, 36, 36]
+            photographer: [276, 42, 36, 36]
+            picnic-spot: [276, 626, 36, 36]
+            picnic_site: [276, 626, 36, 36]
+            picnic_table: [276, 626, 36, 36]
+            pier: [722, 0, 36, 36]
+            playground: [552, 42, 36, 36]
+            police: [308, 0, 36, 36]
+            pool: [322, 84, 36, 36]
+            swimming_pool: [322, 84, 36, 36]
+            post-office: [506, 168, 36, 36]
+            post_office: [506, 168, 36, 36]
+            quarry: [920, 42, 38, 38]
+            mineshaft: [920, 42, 38, 38]
+            adit: [920, 42, 38, 38]
+            ranger-station: [230, 626, 36, 36]
+            ranger_station: [230, 626, 36, 36]
+            real-estate: [230, 42, 36, 36]
+            estate_agent: [230, 42, 36, 36]
+            real_estate: [230, 42, 36, 36]
+            recreation-track: [414, 626, 36, 36]
+            recreation_track: [414, 626, 36, 36]
+            recycling-facility: [184, 42, 36, 36]
+            recycling: [184, 42, 36, 36]
+            rental-car: [676, 0, 36, 36]
+            car_rental: [676, 0, 36, 36]
+            car_sharing: [676, 0, 36, 36]
+            restaurant: [274, 210, 36, 36]
+            deli: [274, 210, 36, 36]
+            route-arrow: [362, 668, 128, 128]
+            route-start: [576, 668, 72, 92]
+            route-stop: [498, 668, 72, 92]
+            ruin: [584, 0, 36, 36]
+            ruins: [584, 0, 36, 36]
+            archaeological_site: [584, 0, 36, 36]
+            salon-barber: [138, 42, 36, 36]
+            hairdresser: [138, 42, 36, 36]
+            salon: [138, 42, 36, 36]
+            beauty_salon: [138, 42, 36, 36]
+            school: [736, 84, 36, 36]
+            kindergarten: [736, 84, 36, 36]
+            scuba-diving: [736, 626, 36, 36]
+            scuba_diving: [736, 626, 36, 36]
+            dive_centre: [736, 626, 36, 36]
+            search-active: [750, 668, 72, 108]
+            search-inactive: [830, 668, 72, 108]
+            shoe-store: [644, 42, 36, 36]
+            shoes: [644, 42, 36, 36]
+            shoe_store: [644, 42, 36, 36]
+            shower: [876, 522, 36, 36]
+            ski-area: [552, 126, 36, 36]
+            slipway: [830, 522, 36, 36]
+            soccer-field: [552, 84, 36, 36]
+            spiritual-center: [460, 168, 36, 36]
+            spiritual_center: [460, 168, 36, 36]
+            place_of_worship: [460, 168, 36, 36]
+            wayside_chapel: [460, 168, 36, 36]
+            sporting-goods-shop: [92, 42, 36, 36]
+            sporting_goods: [92, 42, 36, 36]
+            sports: [92, 42, 36, 36]
+            outdoor: [92, 42, 36, 36]
+            spring: [506, 84, 36, 36]
+            stadium: [644, 126, 36, 36]
+            subway-entrance: [538, 0, 36, 36]
+            summer-camp: [460, 626, 36, 36]
+            summer_camp: [460, 626, 36, 36]
+            swimming-area: [0, 626, 36, 36]
+            swimming_area: [0, 626, 36, 36]
+            synagogue: [44, 0, 36, 36]
+            tailor-shop: [46, 42, 36, 36]
+            tailor: [46, 42, 36, 36]
+            telescope: [598, 626, 36, 36]
+            tennis: [598, 126, 36, 36]
+            theme-park: [184, 126, 36, 36]
+            theme_park: [184, 126, 36, 36]
+            miniature_golf: [184, 126, 36, 36]
+            toilets: [46, 126, 36, 36]
+            townspot-l: [310, 668, 16, 16]
+            townspot-l-rev: [204, 670, 16, 16]
+            townspot-m: [290, 668, 12, 12]
+            townspot-m-rev: [184, 670, 12, 12]
+            townspot-s: [272, 668, 10, 10]
+            townspot-s-rev: [166, 670, 10, 10]
+            townspot-xl: [334, 668, 20, 20]
+            townspot-xl-rev: [228, 670, 20, 20]
+            townspot-xs: [256, 668, 8, 8]
+            townspot-xs-rev: [152, 670, 6, 6]
+            toy-game-store: [0, 42, 36, 36]
+            toys: [0, 42, 36, 36]
+            baby_goods: [0, 42, 36, 36]
+            traffic-signal: [92, 210, 36, 36]
+            traffic_signals: [92, 210, 36, 36]
+            trailhead: [828, 626, 36, 36]
+            train-station: [492, 0, 36, 36]
+            station: [492, 0, 36, 36]
+            train-staion: [492, 0, 36, 36]
+            tree: [874, 626, 36, 36]
+            veterinarian: [136, 0, 36, 36]
+            pet_care: [136, 0, 36, 36]
+            veterinary: [136, 0, 36, 36]
+            view-point: [870, 168, 38, 38]
+            viewpoint: [870, 168, 38, 38]
+            view_point: [870, 168, 38, 38]
+            vista: [870, 168, 38, 38]
+            vineyard: [230, 168, 38, 38]
+            volcano: [230, 84, 36, 36]
+            water-tower: [368, 626, 36, 36]
+            water_tower: [368, 626, 36, 36]
+            waterfall: [138, 626, 36, 36]
+            waterpark: [738, 522, 36, 36]
+            water_park: [738, 522, 36, 36]
+            wine-bar: [366, 210, 36, 36]
+            winery: [640, 168, 36, 36]
+            wine: [640, 168, 36, 36]
+            zoo: [138, 126, 36, 36]
 
     building-grid:
         url: images/building-grid.gif
@@ -2197,6 +2412,253 @@ layers:
                             fill: [0.536,0.556,0.581]
                             size: 13px
                             stroke: { color: [0.969,0.973,0.973], width: 4 }
+
+        shields:
+            filter:
+                $zoom: { min: 6 }
+                shield_text: true    # some roads don't have shield text, deal with that later
+            # default
+            draw:
+                icons:
+                    # you need to match any custom shield to the vector tile `network` values
+                    sprite: function() { return 'generic_shield' }
+                    priority: 20
+                    size: [[11,16px],[15,20px]]
+                    cull_from_tile: true
+                    visible: global.text_visible_shields
+                    text:
+                        anchor: center
+                        text_source: shield_text
+                        font:
+                            family: Montserrat
+                            fill: [0.308,0.308,0.308]
+                            size: [[11,7px],[15,10px]]
+            not-special:
+                filter:
+                    not: { network: ['US:I','US:US'] }
+                    $zoom: { max: 9 }
+                draw:
+                    icons:
+                        visible: false
+            width_1char:
+                filter: function() { return (feature.shield_text.length === 1) }
+                draw:
+                    icons:
+                        size: [[6,[14px,14px]],[13,[16px,16px]],[15,[18px,18px]]]
+            width_2char:
+                filter: function() { return (feature.shield_text.length === 2) }
+                draw:
+                    icons:
+                        size: [[6,[16px,14px]],[13,[18px,16px]],[15,[22px,18px]]]
+            width_3char:
+                filter: function() { return (feature.shield_text.length === 3) }
+                draw:
+                    icons:
+                        size: [[6,[20px,14px]],[13,[21px,15px]],[15,[26px,18px]]]
+            width_4char:
+                filter: function() { return (feature.shield_text.length === 4) }
+                draw:
+                    icons:
+                        size: [[6,[22px,14px]],[13,[24px,15px]],[15,[30px,18px]]]
+            width_5char:
+                filter: function() { return (feature.shield_text.length === 5) }
+                draw:
+                    icons:
+                        size: [[6,[24px,14px]],[13,[26px,15px]],[15,[32px,18px]]]
+            #
+            # Now for the good stuff
+            #
+            # US Interstate roads
+            US-I:
+                filter:
+                    network: 'US:I'
+                draw:
+                    icons:
+                        # you need to match any custom shield to the vector tile `network` values
+                        sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
+                        priority: 16
+                        text:
+                            offset: [0px, 0.5px]
+                            font:
+                                fill: [0.308,0.308,0.308]
+                                size: [[7,7px],[13,9px],[15,10px]]
+                width_1char:
+                    filter: function() { return (feature.shield_text.length === 1) }
+                    draw:
+                        icons:
+                            size: [[6,[15px,18px]],[13,[17px,20px]],[15,[22px,25px]]]
+                width_2char:
+                    filter: function() { return (feature.shield_text.length === 2) }
+                    draw:
+                        icons:
+                            size: [[6,[18px,18px]],[13,[20px,20px]],[15,[25px,25px]]]
+                width_3char:
+                    filter: function() { return (feature.shield_text.length === 3) }
+                    draw:
+                        icons:
+                            size: [[6,[20px,18px]],[13,[23px,20px]],[15,[29px,25px]]]
+                width_4char:
+                    filter: function() { return (feature.shield_text.length === 4) }
+                    draw:
+                        icons:
+                            size: [[6,[22px,18px]],[13,[25px,20px]],[15,[31px,25px]]]
+                width_5char:
+                    filter: function() { return (feature.shield_text.length === 5) }
+                    draw:
+                        icons:
+                            size: [[6,[23px,18px]],[13,[26px,20px]],[15,[32px,25px]]]
+            # US Federal Routes
+            US-US:
+                filter:
+                    network: 'US:US'
+                draw:
+                    icons:
+                        # you need to match any custom shield to the vector tile `network` values
+                        sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
+                        priority: 17
+                        size: [[8,19px],[13,23px],[15,27px]]
+                        cull_from_tile: true
+                        text:
+                            font:
+                                fill: [0.870,0.452,0.473]
+                                size: [[8,6.5px],[13,8.5px],[15,10px]]
+                early:
+                    filter: { $zoom: [7] }
+                    icons:
+                        visible: false
+                width_1char:
+                    filter: function() { return (feature.shield_text.length === 1) }
+                    draw:
+                        icons:
+                            size: [[6,[15px,17px]],[13,[16px,20px]],[15,[22px,25px]]]
+                width_2char:
+                    filter: function() { return (feature.shield_text.length === 2) }
+                    draw:
+                        icons:
+                            size: [[6,[18px,17px]],[13,[20px,19px]],[15,[26px,25px]]]
+                width_3char:
+                    filter: function() { return (feature.shield_text.length === 3) }
+                    draw:
+                        icons:
+                            size: [[6,[19px,17px]],[13,[22px,19px]],[15,[28px,25px]]]
+                width_4char:
+                    filter: function() { return (feature.shield_text.length === 4) }
+                    draw:
+                        icons:
+                            size: [[6,[20px,17px]],[13,[23px,19px]],[15,[31px,25px]]]
+                width_5char:
+                    filter: function() { return (feature.shield_text.length === 5) }
+                    draw:
+                        icons:
+                            size: [[6,[21px,17px]],[13,[24px,19px]],[15,[32px,25px]]]
+            # US State Routes
+            US-states:
+                # Match state highways: `US:??`
+                filter: |
+                    function() {
+                        return feature.shield_text &&
+                            /^US:(?!US)\w\w$/.test(feature.network)
+                    }
+                draw:
+                    icons:
+                        # you need to match any custom shield to the vector tile `network` values
+                        sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
+                        sprite_default: generic_shield
+                        priority: 18
+                        cull_from_tile: true
+                        text:
+                            font:
+                                fill: [0.508,0.508,0.508]
+                                size: [[8,6.5px],[13,8.5px],[15,10px]]
+                early:
+                    filter: { $zoom: [7,8,9] }
+                    icons:
+                        visible: false
+                width_1char:
+                    filter: function() { return (feature.shield_text.length === 1) }
+                    draw:
+                        icons:
+                            size: [[6,[14px,14px]],[13,[16px,16px]],[15,[18px,18px]]]
+                width_2char:
+                    filter: function() { return (feature.shield_text.length === 2) }
+                    draw:
+                        icons:
+                            size: [[6,[16px,14px]],[13,[18px,16px]],[15,[22px,18px]]]
+                width_3char:
+                    filter: function() { return (feature.shield_text.length === 3) }
+                    draw:
+                        icons:
+                            size: [[6,[20px,14px]],[13,[21px,15px]],[15,[26px,18px]]]
+                width_4char:
+                    filter: function() { return (feature.shield_text.length === 4) }
+                    draw:
+                        icons:
+                            size: [[6,[22px,14px]],[13,[24px,15px]],[15,[30px,18px]]]
+                width_5char:
+                    filter: function() { return (feature.shield_text.length === 5) }
+                    draw:
+                        icons:
+                            size: [[6,[24px,14px]],[13,[26px,15px]],[15,[32px,18px]]]
+            # USA County Routes
+            US-counties:
+                # Match state highways: `US:??:*`
+                #
+                # this is very USA specific
+                #
+                # filter: |
+                #     function() {
+                #         return feature.shield_text &&
+                #             /^US:(?!US)\w\w:.*$/.test(feature.network)
+                #     }
+                #
+                # this generic for any country with 3rd level networks (like county routes in USA)
+                #
+                filter: |
+                    function() {
+                        return feature.shield_text &&
+                            /^\w+:\w+:.+$/.test(feature.network)
+                    }
+                draw:
+                    icons:
+                        # you need to match any custom shield to the vector tile `network` values
+                        sprite: function() { return ('county_shield_' + feature.shield_text.length + 'char'); }
+                        sprite_default: generic_shield
+                        priority: 19
+                        size: [[11,16px],[15,20px]]
+                        cull_from_tile: true
+                        text:
+                            font:
+                                fill: [0.508,0.508,0.508]
+                                #size: [[11,7px],[15,10px]]
+                early:
+                    filter: { $zoom: [7,8,9] }
+                    icons:
+                        visible: false
+                width_1char:
+                    filter: function() { return (feature.shield_text.length === 1) }
+                    draw:
+                        icons:
+                            size: [[6,[14px,14px]],[13,[16px,16px]],[15,[18px,18px]]]
+                width_2char:
+                    filter: function() { return (feature.shield_text.length === 2) }
+                    draw:
+                        icons:
+                            size: [[6,[16px,14px]],[13,[18px,16px]],[15,[22px,18px]]]
+                width_3char:
+                    filter: function() { return (feature.shield_text.length === 3) }
+                    draw:
+                        icons:
+                            size: [[6,[20px,14px]],[13,[21px,15px]],[15,[26px,18px]]]
+                width_4char:
+                    filter: function() { return (feature.shield_text.length === 4) }
+                    draw:
+                        icons:
+                            size: [[6,[22px,14px]],[13,[24px,15px]],[15,[30px,18px]]]
+                width_5char:
+                    filter: function() { return (feature.shield_text.length === 5) }
+                    draw:
+                        icons:
+                            size: [[6,[24px,14px]],[13,[26px,15px]],[15,[32px,18px]]]
         path:
             filter:
                 all:
