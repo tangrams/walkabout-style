@@ -222,11 +222,11 @@ textures:
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-            'US:CA_1char': [760, 418, 72, 72]
-            'US:CA_2char': [664, 418, 88, 72]
-            'US:CA_3char': [552, 418, 104, 72]
-            'US:CA_4char': [424, 418, 120, 72]
-            'US:CA_5char': [288, 418, 128, 72]
+            'US:CA_1char': [778, 418, 80, 92]
+            'US:CA_2char': [678, 418, 94, 94]
+            'US:CA_3char': [556, 418, 114, 92]
+            'US:CA_4char': [424, 418, 124, 92]
+            'US:CA_5char': [288, 418, 128, 92]
             'US:I_1char': [458, 522, 92, 100]
             'US:I_2char': [0, 314, 102, 102]
             'US:I_3char': [864, 210, 116, 100]
@@ -236,7 +236,7 @@ textures:
             'US:US_2char': [252, 522, 106, 98]
             'US:US_3char': [132, 522, 114, 100]
             'US:US_4char': [0, 522, 124, 100]
-            'US:US_5char': [840, 418, 128, 100]
+            'US:US_5char': [866, 418, 128, 100]
             airport: [952, 0, 36, 36]
             aerodrome: [952, 0, 36, 36]
             allotments: [506, 626, 36, 36]
@@ -336,11 +336,11 @@ textures:
             convenience: [184, 84, 36, 36]
             convenience_store: [184, 84, 36, 36]
             beverages: [184, 84, 36, 36]
-            county_shield_1char: [208, 418, 72, 72]
-            county_shield_2char: [112, 418, 90, 72]
-            county_shield_3char: [0, 418, 104, 72]
-            county_shield_4char: [796, 314, 120, 72]
-            county_shield_5char: [660, 314, 128, 72]
+            county_shield_1char: [580, 314, 72, 72]
+            county_shield_2char: [484, 314, 88, 72]
+            county_shield_3char: [372, 314, 104, 72]
+            county_shield_4char: [244, 314, 120, 72]
+            county_shield_5char: [108, 314, 128, 72]
             courthouse: [446, 0, 36, 36]
             current-location: [656, 668, 88, 88]
             dentist: [266, 0, 36, 36]
@@ -391,11 +391,11 @@ textures:
             fuel: [136, 210, 36, 36]
             generic: [0, 668, 36, 36]
             subway_entrance: [0, 668, 36, 36]
-            generic_shield_1char: [580, 314, 72, 72]
-            generic_shield_2char: [484, 314, 88, 72]
-            generic_shield_3char: [372, 314, 104, 72]
-            generic_shield_4char: [244, 314, 120, 72]
-            generic_shield_5char: [108, 314, 128, 72]
+            generic_shield_1char: [208, 418, 72, 72]
+            generic_shield_2char: [112, 418, 90, 72]
+            generic_shield_3char: [0, 418, 104, 72]
+            generic_shield_4char: [796, 314, 120, 72]
+            generic_shield_5char: [660, 314, 128, 72]
             geyser: [646, 522, 36, 36]
             gift-shop: [322, 126, 36, 36]
             gift: [322, 126, 36, 36]
@@ -2567,6 +2567,7 @@ layers:
                         priority: 18
                         cull_from_tile: true
                         text:
+                            offset: [0px, 1px]
                             font:
                                 fill: [0.508,0.508,0.508]
                                 size: [[8,6.5px],[13,8.5px],[15,10px]]
@@ -2599,6 +2600,44 @@ layers:
                     draw:
                         icons:
                             size: [[6,[24px,14px]],[13,[26px,15px]],[15,[32px,18px]]]
+                US-CA:
+                    # Match California state highways: `US:CA`
+                    filter: |
+                        function() {
+                            return feature.shield_text &&
+                                /^US:CA$/.test(feature.network)
+                        }
+                    draw:
+                        icons:
+                            text:
+                                font:
+                                    #fill: [0.109,0.554,0.478]
+                                    size: [[7,7px],[13,9px],[15,10px]]
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[15px,18px]],[13,[17px,20px]],[15,[20px,23px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[18px,18px]],[13,[20px,20px]],[15,[23px,23px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[21px,18px]],[13,[24px,20px]],[15,[28px,23px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[24px,18px]],[13,[26px,20px]],[15,[31px,23px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[25px,18px]],[13,[27px,20px]],[15,[32px,23px]]]
             # USA County Routes
             US-counties:
                 # Match state highways: `US:??:*`
