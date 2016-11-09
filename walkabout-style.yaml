@@ -268,25 +268,25 @@ textures:
             'US:CA_1char': [220, 606, 82, 92]
             'US:CA_2char': [120, 606, 94, 94]
             'US:CA_3char': [0, 606, 112, 92]
-            'US:CA_4char': [888, 510, 124, 92]
-            'US:CA_5char': [752, 510, 128, 92]
+            'US:CA_4char': [808, 510, 124, 92]
+            'US:CA_5char': [672, 510, 128, 92]
             'US:I_1char': [0, 710, 90, 100]
             'US:I_2char': [138, 314, 102, 102]
             'US:I_3char': [0, 314, 132, 100]
             'US:I_4char': [756, 210, 140, 100]
             'US:I_5char': [596, 210, 152, 100]
-            'US:NY_1char': [892, 418, 72, 88]
-            'US:NY_2char': [236, 418, 88, 88]
-            'US:NY_3char': [124, 418, 104, 86]
-            'US:NY_4char': [0, 418, 116, 86]
-            'US:NY_5char': [840, 314, 120, 86]
-            'US:PA_1char': [812, 418, 72, 88]
-            'US:PA_2char': [716, 418, 88, 88]
-            'US:PA_3char': [596, 418, 112, 88]
-            'US:PA_4char': [468, 418, 120, 88]
-            'US:PA_5char': [332, 418, 128, 88]
+            'US:NY_1char': [768, 418, 72, 88]
+            'US:NY_2char': [112, 418, 88, 88]
+            'US:NY_3char': [0, 418, 104, 86]
+            'US:NY_4char': [896, 314, 116, 86]
+            'US:NY_5char': [768, 314, 120, 86]
+            'US:PA_1char': [688, 418, 72, 88]
+            'US:PA_2char': [592, 418, 88, 88]
+            'US:PA_3char': [472, 418, 112, 88]
+            'US:PA_4char': [344, 418, 120, 88]
+            'US:PA_5char': [208, 418, 128, 88]
             'US:US_1char': [900, 606, 88, 94]
-            'US:US_2char': [788, 606, 106, 96]
+            'US:US_2char': [788, 608, 106, 94]
             'US:US_3char': [642, 606, 138, 100]
             'US:US_4char': [478, 606, 158, 100]
             'US:US_5char': [308, 606, 164, 100]
@@ -391,11 +391,11 @@ textures:
             convenience: [184, 84, 36, 36]
             convenience_store: [184, 84, 36, 36]
             beverages: [184, 84, 36, 36]
-            county_shield_1char: [0, 510, 72, 72]
-            county_shield_2char: [736, 314, 96, 72]
-            county_shield_3char: [596, 314, 132, 72]
-            county_shield_4char: [436, 314, 152, 72]
-            county_shield_5char: [248, 314, 180, 72]
+            county_shield_1char: [848, 418, 72, 72]
+            county_shield_2char: [672, 314, 88, 72]
+            county_shield_3char: [560, 314, 104, 72]
+            county_shield_4char: [416, 314, 136, 72]
+            county_shield_5char: [248, 314, 160, 72]
             courthouse: [446, 0, 36, 36]
             current-location: [294, 856, 88, 88]
             dentist: [266, 0, 36, 36]
@@ -446,11 +446,11 @@ textures:
             fuel: [136, 210, 36, 36]
             generic: [552, 814, 36, 36]
             subway_entrance: [552, 814, 36, 36]
-            generic_shield_1char: [672, 510, 72, 72]
-            generic_shield_2char: [568, 510, 98, 72]
-            generic_shield_3char: [428, 510, 132, 72]
-            generic_shield_4char: [268, 510, 152, 72]
-            generic_shield_5char: [80, 510, 180, 72]
+            generic_shield_1char: [592, 510, 72, 72]
+            generic_shield_2char: [488, 510, 98, 72]
+            generic_shield_3char: [348, 510, 132, 72]
+            generic_shield_4char: [188, 510, 152, 72]
+            generic_shield_5char: [0, 510, 180, 72]
             geyser: [186, 710, 36, 36]
             gift-shop: [322, 126, 36, 36]
             gift: [322, 126, 36, 36]
@@ -1460,54 +1460,54 @@ layers:
                         cap: round
                         outline:
                             cap: butt
-            labels-highway-early:
-                filter: { $zoom: [7,8,9] }
-                draw:
-                    text-blend-order:
-                        priority: 50
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 400
-                            size: 9px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z10:
-                filter:
-                    $zoom: 10
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 400
-                            size: 9px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z11:
-                filter:
-                    $zoom: 11
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 600
-                            size: 10px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z12:
-                filter:
-                    $zoom: 12
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 600
-                            size: 10px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-early:
+            #     filter: { $zoom: [7,8,9] }
+            #     draw:
+            #         text-blend-order:
+            #             priority: 50
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 400
+            #                 size: 9px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z10:
+            #     filter:
+            #         $zoom: 10
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 400
+            #                 size: 9px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z11:
+            #     filter:
+            #         $zoom: 11
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 600
+            #                 size: 10px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z12:
+            #     filter:
+            #         $zoom: 12
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 600
+            #                 size: 10px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
             labels-highway-z13:
                 filter:
                     $zoom: 13
@@ -1677,7 +1677,7 @@ layers:
                         filter: { $zoom: [14] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary_e2
                                 text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
@@ -1688,7 +1688,7 @@ layers:
                         filter: { $zoom: [15] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
                                 text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
@@ -1700,7 +1700,7 @@ layers:
                         filter: { $zoom: { min: 16 } }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
                                 text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
@@ -1712,7 +1712,7 @@ layers:
                         filter: { $zoom: [17,18] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
                                 text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
@@ -1724,7 +1724,7 @@ layers:
                         filter: { $zoom: { min: 19 } }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
                                 text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
@@ -1766,7 +1766,7 @@ layers:
                         $zoom: [11]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -1778,7 +1778,7 @@ layers:
                         $zoom: [12]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -1790,7 +1790,7 @@ layers:
                         $zoom: [13]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -1802,7 +1802,7 @@ layers:
                         $zoom: [14]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -1813,7 +1813,7 @@ layers:
                     filter: { $zoom: [15] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -1824,7 +1824,7 @@ layers:
                     filter: { $zoom: [16] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
@@ -1836,7 +1836,7 @@ layers:
                     filter: { $zoom: [17] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
@@ -1848,7 +1848,7 @@ layers:
                     filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
                             text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
@@ -1925,7 +1925,7 @@ layers:
                         filter: { $zoom: [13] }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -1936,7 +1936,7 @@ layers:
                         filter: { $zoom: [14] }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -1947,7 +1947,7 @@ layers:
                         filter: { $zoom: { min: 15 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -1959,7 +1959,7 @@ layers:
                         filter: { $zoom: { min: 16 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -1978,7 +1978,7 @@ layers:
                         filter: { $zoom: { min: 13 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -1988,7 +1988,7 @@ layers:
                         filter: { $zoom: { min: 17 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -2011,7 +2011,7 @@ layers:
                         $zoom: [13]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2023,7 +2023,7 @@ layers:
                         $zoom: [14]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2035,7 +2035,7 @@ layers:
                         $zoom: [15]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2046,7 +2046,7 @@ layers:
                     filter: { $zoom: { min: 16, max: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2057,7 +2057,7 @@ layers:
                     filter: { $zoom: { min: 17 } }
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
                             #text_source: ref
                             text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
@@ -2131,7 +2131,7 @@ layers:
                         filter: { $zoom: { min: 13 } }
                         draw:
                             text-blend-order:
-                                priority: 55
+                                priority: 57
                                 visible: *text_visible_tertiary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -2141,7 +2141,7 @@ layers:
                         filter: { $zoom: { min: 17 } }
                         draw:
                             text-blend-order:
-                                priority: 55
+                                priority: 57
                                 visible: *text_visible_tertiary_e
                                 text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
@@ -2163,7 +2163,7 @@ layers:
                     filter: { $zoom: [13] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2174,7 +2174,7 @@ layers:
                     filter: { $zoom: [14] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary_e
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2185,7 +2185,7 @@ layers:
                     filter: { $zoom: [15] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2196,7 +2196,7 @@ layers:
                     filter: { $zoom: [16] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2207,7 +2207,7 @@ layers:
                     filter: { $zoom: { min: 17, max: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2218,7 +2218,7 @@ layers:
                     filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
                             text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
@@ -2266,7 +2266,7 @@ layers:
                     filter: { $zoom: { min: 15 } }
                     draw:
                         text-blend-order:
-                            priority: 56
+                            priority: 59
                             visible: *text_visible_minor_road_e
                             text_source: name
                             font:
@@ -2276,7 +2276,7 @@ layers:
                     filter: { $zoom: { min: 17 } }
                     draw:
                         text-blend-order:
-                            priority: 56
+                            priority: 59
                             visible: *text_visible_minor_road_e
                             text_source: name
                             font:
@@ -2329,7 +2329,7 @@ layers:
                 filter: { $zoom: 15 }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2340,7 +2340,7 @@ layers:
                 filter: { $zoom: 16 }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2351,7 +2351,7 @@ layers:
                 filter: { $zoom: { min: 17, max: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2362,7 +2362,7 @@ layers:
                 filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road
                         text_source: name
                         font:
@@ -2388,7 +2388,7 @@ layers:
                 labels-service-in-green:
                     draw:
                         text-blend-order:
-                            priority: 57
+                            priority: 60
                             visible: *text_visible_service_road
                             text_source: name
                             font:
@@ -2448,7 +2448,7 @@ layers:
                 filter: { $zoom: 17 }
                 draw:
                     text-blend-order:
-                        priority: 57
+                        priority: 60
                         visible: *text_visible_service_road
                         text_source: name
                         font:
@@ -2460,7 +2460,7 @@ layers:
                 filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 57
+                        priority: 60
                         visible: *text_visible_service_road
                         text_source: name
                         font:
@@ -2486,7 +2486,7 @@ layers:
                     - all:
                         - shield_text: false    # some roads don't have shield text, deal with that later
                         - ref: true
-                        - kind: [highway, major_road, minor_road]
+                        - kind_detail: [motorway, trunk, primary, secondary, tertiary]
             # default
             draw:
                 icons:
@@ -2500,12 +2500,23 @@ layers:
                             }
                         }
                     sprite_default: generic_shield_5char
-                    priority: 20
-                    # the size needs to match the sprite_generic asset dimensions
-                    size: [[6,[34px,14px]],[13,[37px,15px]],[15,[45px,18px]]]
+                    priority: 58
+                    repeat_group: shields
+                    repeat_distance: 30px
+                    placement: midpoint
+                    placement_min_length_ratio:
+                        - [8, 0.1]
+                        - [9, 0.25]
+                        - [10, 0.25]
+                        - [11, 0.15]
+                        - [12, 1]
+                        - [13, 1.50]
+                        - [14, 2.0]
                     cull_from_tile: true
-                    visible: global.text_visible_shields
+                    visible: false
                     text:
+                        offset: [0px, -0.5px]
+                        repeat_distance: 200px
                         anchor: center
                         text_source: |
                             function() { 
@@ -2520,13 +2531,65 @@ layers:
                             #fill: [0.308,0.308,0.308]
                             fill: [0.320,0.320,0.320]
                             size: [[7,7px],[12,8px],[15,11px]]
-            not-special:
-                filter:
-                    not: { network: ['US:I','US:US'] }
-                    $zoom: { max: 9 }
+
+            default_priority_highway:
+                filter: 
+                    all:
+                        - kind_detail: motorway
+                        - $zoom: { min: 9 }
                 draw:
                     icons:
-                        visible: false
+                        priority: 47
+                        #color: yellow
+                        visible: global.text_visible_shields
+
+            default_priority_trunk:
+                filter: 
+                    all:
+                        - kind_detail: [trunk]
+                        - $zoom: { min: 10 }
+                draw:
+                    icons:
+                        priority: 48
+                        #color: red
+                        visible: global.text_visible_shields
+            default_priority_primary:
+                filter: 
+                    all:
+                        - kind_detail: [primary]
+                        - $zoom: { min: 12 }
+                draw:
+                    icons:
+                        priority: 49
+                        #color: aqua
+                        visible: global.text_visible_shields
+            default_priority_trunk_secondary:
+                filter:
+                    all:
+                        - kind_detail: [secondary]
+                        - $zoom: { min: 12 }
+                draw:
+                    icons:
+                        priority: 53
+                        #color: blue
+                        visible: global.text_visible_shields
+            default_priority_trunk_tertiary:
+                filter:
+                    all:
+                        - kind_detail: tertiary
+                        - $zoom: { min: 13 }
+                draw:
+                    icons:
+                        priority: 55
+                        #color: green
+                        visible: global.text_visible_shields
+            # not-special:
+            #     filter:
+            #         not: { network: ['US:I','US:US'] }
+            #         $zoom: { max: 9 }
+            #     draw:
+            #         icons:
+            #             visible: false
             width_1char:
                 filter: |
                     function() { 
@@ -2575,6 +2638,12 @@ layers:
                 draw:
                     icons:
                         size: [[6,[29px,14px]],[13,[31px,15px]],[15,[38px,18px]]]
+                # London sucks
+                early:
+                    filter: { $zoom: { max: 14 } }
+                    draw:
+                        icons:
+                            visible: false
             width_5char:
                 filter: |
                     function() { 
@@ -2587,6 +2656,12 @@ layers:
                 draw:
                     icons:
                         size: [[6,[34px,14px]],[13,[37px,15px]],[15,[45px,18px]]]
+                # London sucks
+                early:
+                    filter: { $zoom: { max: 14 } }
+                    draw:
+                        icons:
+                            visible: false
             # this is kinda a hack
             width_longggggg:
                 filter: |
@@ -2623,7 +2698,8 @@ layers:
                         icons:
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
-                            priority: 16
+                            priority: 46
+                            visible: global.text_visible_shields
                             text:
                                 offset: [0px, 0.5px]
                                 font:
@@ -2658,22 +2734,24 @@ layers:
                 US-US:
                     filter:
                         network: ['US:US','US:US:Business', 'US:US:Truck', 'US:US:Alternate']
+                        $zoom: { min: 7 }
                     draw:
                         icons:
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: |
                                 function() { return ('US:US_' + feature.shield_text.length + 'char'); }
-                            priority: 17
-                            size: [[8,19px],[13,23px],[15,27px]]
+                            priority: 47
+                            cull_from_tile: true
+                            visible: global.text_visible_shields
                             text:
                                 offset: [0px, -0.7px]
                                 font:
                                     fill: [0.0,0.0,0.0]
                                     size: [[7,8px],[13,9px],[15,11px]]
-                    early:
-                        filter: { $zoom: [7] }
-                        icons:
-                            visible: false
+                    # early:
+                    #     filter: { $zoom: [7] }
+                    #     icons:
+                    #         visible: false
                     width_1char:
                         filter: function() { return (feature.shield_text.length === 1) }
                         draw:
@@ -2700,21 +2778,21 @@ layers:
                             icons:
                                 size: [[6,[27px,17px]],[13,[30px,19px]],[15,[41px,25px]]]
                 # US State Routes
-                US-states:
-                    # Match state highways: `US:??`
-                    filter: |
-                        function() {
-                            return feature.shield_text &&
-                                /^US:(?!US)\w\w$/.test(feature.network)
-                        }
-                    draw:
-                        icons:
-                            # you need to match any custom shield to the vector tile `network` values
-                            priority: 18
-                    early:
-                        filter: { $zoom: [7,8,9] }
-                        icons:
-                            visible: false
+                # US-states:
+                #     # Match state highways: `US:??`
+                #     filter: |
+                #         function() {
+                #             return feature.shield_text &&
+                #                 /^US:(?!US)\w\w$/.test(feature.network)
+                #         }
+                #     draw:
+                #         icons:
+                #             # you need to match any custom shield to the vector tile `network` values
+                #             priority: 18
+                #     early:
+                #         filter: { $zoom: [7,8,9] }
+                #         icons:
+                #             visible: false
                 US-CA:
                     # Match California state highways: `US:CA`
                     filter: |
@@ -2730,6 +2808,21 @@ layers:
                                 font:
                                     fill: [1.0,1.0,1.0]
                                     size: [[7,7px],[13,9px],[15,10px]]
+                    motorway:
+                        filter: { kind_detail: [motorway], $zoom: [7,8] }
+                        draw:
+                            icons:
+                                visible: global.text_visible_shields
+                    trunk:
+                        filter: { kind_detail: [trunk], $zoom: [8,9] }
+                        draw:
+                            icons:
+                                visible: global.text_visible_shields
+                    primary:
+                        filter: { kind_detail: primary, $zoom: [10,11] }
+                        draw:
+                            icons:
+                                visible: global.text_visible_shields
                     width_1char:
                         filter: function() { return (feature.shield_text.length === 1) }
                         draw:
@@ -2868,13 +2961,15 @@ layers:
                     filter: |
                         function() {
                             return feature.shield_text &&
-                                /^\w+:\w+:(!Alternate).+$/.test(feature.network)
+                                /^\w+:\w+:(!Alternate).+$/.test(feature.network) &&
+                                $zoom > 10
                         }
                     draw:
                         icons:
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return ('county_shield_' + feature.shield_text.length + 'char'); }
-                            priority: 19
+                            # priority: 19
+                            visible: global.text_visible_shields
                             text:
                                 font:
                                     fill: [0.320,0.320,0.320]
@@ -3030,7 +3125,7 @@ layers:
                 filter: { $zoom: { min: 17 } }
                 draw:
                     text-blend-order:
-                        priority: 58
+                        priority: 61
                         visible: *text_visible_path
                         text_source: name
                         font:
@@ -3154,7 +3249,7 @@ layers:
                 filter: { $zoom: { min: 17 } }
                 draw:
                     text-blend-order:
-                        priority: 59
+                        priority: 63
                         visible: *text_visible_steps
                         text_source: name
                         font:
@@ -3308,7 +3403,7 @@ layers:
                 filter: { $zoom: { min: 14 } }
                 draw:
                     text-blend-order:
-                        priority: 59
+                        priority: 63
                         visible: *text_visible_aerialway
                         text_source: name
                         font:
@@ -3880,6 +3975,7 @@ layers:
                     priority: 5
                     text:
                         interactive: true
+                        buffer: 3px
 
             populated-places-natural-earth-z2:
                 filter: { $zoom: [2], min_zoom: 2 }
@@ -5392,7 +5488,7 @@ layers:
                 size: [[13, 18px], [16, 18px], [18, 22px]]
                 interactive: true
                 visible: false
-                priority: 45
+                priority: 65
                 repeat_group: abc
                 text:
                     visible: false    # labels are enabled by each layer below
