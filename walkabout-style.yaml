@@ -1,4 +1,81 @@
-# Terrain environment map demo
+# Walkabout is an outdoor style perfect for hiking or getting out and about, with
+# mountains, ski trails, biking paths, and transit stops.
+#
+# Give OpenStreetMap data a professional basemap skin using the Tangram graphics library
+# and Mapzen's versatile Vector Tiles.
+#
+# Please use and adapt the open source scene file in your own projects!
+#
+# Authors: Geraldine Sarmiento, Nathaniel V. Kelso
+# Read more: https://github.com/tangrams/walkabout-style
+#
+
+global:
+    #ux/ui
+    #
+    # missing language
+    # missing transit overlay
+    #
+    # To facilitate data visualizations several recommended sort orders are provided
+    #
+    # Your classic raster map overlay.
+    # Over all line and polygon features.
+    # Under map labels (icons and text), under UI elements
+    # (like routeline and search result pins).
+    sdk_order_over_everything_but_text_0: 490
+    sdk_order_over_everything_but_text_1: 491
+    sdk_order_over_everything_but_text_2: 492
+    sdk_order_over_everything_but_text_3: 493
+    sdk_order_over_everything_but_text_4: 494
+    sdk_order_over_everything_but_text_5: 495
+    sdk_order_over_everything_but_text_6: 496
+    sdk_order_over_everything_but_text_7: 497
+    sdk_order_over_everything_but_text_8: 498
+    sdk_order_over_everything_but_text_9: 499
+    #
+    # Your classic "underlay"
+    # Under roads. Above borders, water, landuse, and earth.
+    sdk_order_under_roads_0: 290
+    sdk_order_under_roads_1: 291
+    sdk_order_under_roads_2: 292
+    sdk_order_under_roads_3: 293
+    sdk_order_under_roads_4: 294
+    sdk_order_under_roads_5: 295
+    sdk_order_under_roads_6: 296
+    sdk_order_under_roads_7: 297
+    sdk_order_under_roads_8: 298
+    sdk_order_under_roads_9: 299
+    #
+    # Under water.
+    # Above earth and most landuse.
+    sdk_order_under_water_0: 190
+    sdk_order_under_water_1: 191
+    sdk_order_under_water_2: 192
+    sdk_order_under_water_3: 193
+    sdk_order_under_water_4: 194
+    sdk_order_under_water_5: 195
+    sdk_order_under_water_6: 196
+    sdk_order_under_water_7: 197
+    sdk_order_under_water_8: 198
+    sdk_order_under_water_9: 199
+    #
+    # Under everything.
+    # Tip: disable earth layer.
+    sdk_order_under_everything_0: 0
+    sdk_order_under_everything_1: 1
+    sdk_order_under_everything_2: 2
+    sdk_order_under_everything_3: 3
+    sdk_order_under_everything_4: 4
+    sdk_order_under_everything_5: 5
+    sdk_order_under_everything_6: 6
+    sdk_order_under_everything_7: 7
+    sdk_order_under_everything_8: 8
+    sdk_order_under_everything_9: 9
+    #
+    # default order for basemap features
+    feature_order: function() { return feature.sort_rank; }
+    #
+    # TODO: YAML based globals below will move into this Tangram globals block
 
 labels-global:
     - &text_visible_continent         true
@@ -397,6 +474,9 @@ textures:
             wine-bar: [366, 210, 38, 38]
             winery: [640, 168, 38, 38]
             zoo: [138, 126, 38, 38]
+            #
+            # HACK: not currently in source sprite sheet
+            transit-stop: [126, 294, 12, 12]
 
     building-grid:
         url: images/building-grid.gif
@@ -415,6 +495,61 @@ sources:
         type: Raster
         url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
         max_zoom: 15
+
+#    # Only enable this for local debug, should not be enabled for prod (app inserts these at runtime)
+#    # These are all in San Francisco, California
+#    #
+#    # Current location gem
+#    mz_current_location:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/9e9588228b0a604264a2/raw/b28be49bea0b7feb859eb65b588c28e9fee5ae2c/map.geojson
+#    # Route line
+#    mz_route_line:
+#        type: GeoJSON
+#        # sf to ny
+#        # url: https://gist.githubusercontent.com/anonymous/30c6c1a75c168d91d90c/raw/92bfe55e622766d250b1f2f5d17bdc7c26acb956/map.geojson
+#        # local sf trip
+#        url: https://gist.githubusercontent.com/anonymous/9a610ebda6fe4be7bccc/raw/8d217e43f2412d48d01534ba115f1e42dac72e68/map.geojson
+#    # Dashed route line
+#    mz_dash_line:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/d73b851c64c3e5fbfc2754aa32f44c10/raw/938ae435776e176919c4797bed1465a92e403ef3/map.geojson
+#    # Transit route line
+#    mz_route_line_transit:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/71ae88cbc6d62c4d141ecd6a61060050/raw/2254bbc18243f5dc609e663a580c9412a7447936/map.geojson
+#    # Pin at start of route
+#    mz_route_start:
+#       type: GeoJSON
+#       url: https://gist.githubusercontent.com/anonymous/5262969cb7549ea69221/raw/be03f233fa323d9b5cf50ef1d8e89a1faa3750f1/map.geojson
+#    # Pin at end of route
+#    mz_route_destination:
+#       type: GeoJSON
+#       url: https://gist.githubusercontent.com/anonymous/dbae9635dfe46796490e/raw/df55c318635a7d91b309ed40754d4738a292fd38/map.geojson
+#    # Arrow for current route location
+#    mz_route_location:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/36613092be6e2aa004fd/raw/f753d13069425199e1dea1b449ef67d723f6510e/map.geojson
+#    # Dots for transit stops in route preview
+#    mz_route_transit_stop:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/b9f16bca4a804f50faf71277d52ee4ab/raw/db13e4e765fa1ac8844b8ba02f4a0f66fe772907/map.geojson
+#    # Pins showing search result locations
+#    mz_search_result:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/57dc09eeb120919f76de/raw/43426217da3c2bae0522dc4257aaa61e4df3981e/map.geojson
+#    # Default point styling (SDK)
+#    mz_default_point:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/16324c771edfce45be0721390389b878/raw/7dbaebf17da7da8562e6c6f8768bc8cff83efa88/map.geojson
+#    # Default line styling (SDK)
+#    mz_default_line:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/26f4e8b6b34b2617b5d5533d89decb39/raw/df8e180ab4f7f19448014dccc4a755f7cfa20003/map.geojson
+#    # Default polygon styling (SDK)
+#    mz_default_polygon:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/88235c795bb44b8c45150bdd5561f947/raw/71d4fab97b6513833bf1a589167119e6169ef86d/map.geojson
 
 styles:
     highlight:
@@ -798,10 +933,196 @@ styles:
         blend: overlay
     polygons_transparent:
         base: polygons
-        #blend: overlay
-
+        blend: overlay
+    ux-route-line-overlay:
+        base: lines
+        blend: overlay
+        blend_order: 0
+    ux-route-line-dash-overlay:
+        base: lines
+        blend: overlay
+        blend_order: 0
+        dash: [2, 1]
+    ux-transit-line-overlay:
+        base: lines
+        blend: overlay
+        blend_order: 0
+    ux-location-gem-overlay:
+        base: points
+        texture: pois
+        interactive: true
+        blend: overlay
+        blend_order: 2
+    ux-icons-overlay:
+        base: points
+        texture: pois
+        interactive: true
+        blend: overlay
+        blend_order: 3
+    sdk-point-overlay:
+        base: points
+        texture: pois
+        interactive: true
+        blend: overlay
+        blend_order: 3
+    sdk-line-overlay:
+        base: lines
+        blend: overlay
+        blend_order: 0
+    sdk-polygon-overlay:
+        base: polygons
+        blend: overlay
+        blend_order: 0
 
 layers:
+    # Map overlays for styling the server response (using special source layer names) for route line, current location, and search result pins
+    mz_route_line:
+        data: { source: mz_route_line }
+        draw:
+            ux-route-line-overlay:
+                color: '#06a6d4'
+                order: 500
+                width: [[0,3.5px],[5,5px],[9,7px],[10,6px],[11,6px],[13,8px],[14,9px],[15,10px],[16,11px],[17,12px],[18,10px]]
+    mz_route_line_dash:
+        data: { source: mz_dash_line }
+        draw:
+            ux-route-line-dash-overlay:
+                color: '#06a6d4'
+                order: 500
+                width: [[2,2px],[5,2.5px],[11,3px],[16,7px],[17,9px]]
+    mz_route_line_transit:
+        data: { source: mz_route_line_transit }
+        draw:
+            ux-transit-line-overlay:
+                # each transit route segment could be a different "line" each with it's own color
+                # but some transit lines don't define a color, in those cases default to blue
+                # and since the color is coming from Transit.land they call it "color" instead of "colour"
+                color: function() { return feature.color || '#06a6d4'; }
+                order: 500
+                width: [[0,3.5px],[5,5px],[9,7px],[10,6px],[11,6px],[13,8px],[14,9px],[15,10px],[16,11px],[17,12px],[18,10px]]
+
+
+    mz_current_location_gem:
+        data: { source: mz_current_location }
+        draw:
+            ux-location-gem-overlay:
+                interactive: true
+                sprite: current-location
+                size: 36px
+                collide: false
+                transition:
+                    [show, hide]:
+                        time: 0s
+    mz_route_location:
+        data: { source: mz_route_location }
+        draw:
+            ux-location-gem-overlay:
+                interactive: true
+                sprite: route-arrow
+                size: [60px,60px]
+                collide: false
+                transition:
+                    [show, hide]:
+                        time: 0s
+    mz_route_start:
+        data: { source: mz_route_start }
+        draw:
+            ux-icons-overlay:
+                interactive: true
+                priority: 1
+                sprite: route-start
+                size: [36px,46px]
+                collide: false
+                anchor: top
+                transition:
+                    [show, hide]:
+                        time: 0s
+    mz_route_destination:
+        data: { source: mz_route_destination }
+        draw:
+            ux-icons-overlay:
+                interactive: true
+                priority: 1
+                sprite: route-stop
+                size: [36px,46px]
+                collide: false
+                anchor: top
+                transition:
+                    [show, hide]:
+                        time: 0s
+    mz_route_transit_stop:
+        data: { source: mz_route_transit_stop }
+        draw:
+            ux-icons-overlay:
+                interactive: true
+                sprite: transit-stop
+                size: [15px,15px]
+                collide: false
+                transition:
+                    [show, hide]:
+                         time: 0s
+    mz_search_result:
+        data: { source: mz_search_result }
+        draw:
+            ux-icons-overlay:
+                interactive: true
+                sprite: search-active
+                size: [36px,54px]
+                collide: false
+                anchor: top
+                transition:
+                    [show, hide]:
+                        time: 0s
+        inactive:
+            filter: { state: inactive }
+            draw:
+                ux-icons-overlay:
+                    sprite: search-inactive
+    mz_dropped_pin:
+        data: { source: mz_dropped_pin }
+        draw:
+            ux-icons-overlay:
+                interactive: true
+                sprite: search-active
+                size: [36px,54px]
+                collide: false
+                anchor: top
+                transition:
+                    [show, hide]:
+                        time: 0s
+
+    # Used by the SDK to place point, line, and polygon overlays on the map
+    mz_default_point:
+        data: { source: mz_default_point }
+        draw:
+            sdk-point-overlay:
+                interactive: true
+                sprite: search-active
+                size: [36px,54px]
+                collide: false
+                anchor: top
+                transition:
+                    [show, hide]:
+                        time: 0s
+    mz_default_line:
+        data: { source: mz_default_line }
+        draw:
+            sdk-line-overlay:
+                color: '#06a6d4'
+                order: 503
+                width: 3px
+    mz_default_polygon:
+        data: { source: mz_default_polygon }
+        draw:
+            sdk-polygon-overlay:
+                color: [0.02,0.65,0.82,0.5]  #'#06b1e2'
+                order: 501
+            sdk-line-overlay:
+                color: '#06a6d4'
+                order: 502
+                width: 0px
+
+    # Basemap styling
     earth:
         data: { source: mapzen}
         draw:
