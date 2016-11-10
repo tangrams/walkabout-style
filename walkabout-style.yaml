@@ -2974,11 +2974,11 @@ layers:
                                 font:
                                     fill: [0.320,0.320,0.320]
                                     #size: [[11,7px],[15,10px]]
-                    early:
-                        filter: { $zoom: { max: 11 } }
-                        draw:
-                            icons:
-                                visible: false
+                    # early:
+                    #     filter: { $zoom: { max: 11 } }
+                    #     draw:
+                    #         icons:
+                    #             visible: false
                     width_1char:
                         filter: function() { return (feature.shield_text.length === 1) }
                         draw:
@@ -2988,22 +2988,22 @@ layers:
                         filter: function() { return (feature.shield_text.length === 2) }
                         draw:
                             icons:
-                                size: [[6,[18px,14px]],[13,[20px,15px]],[15,[24px,18px]]]
+                                size: [[6,[16px,14px]],[13,[18px,15px]],[15,[22px,18px]]]
                     width_3char:
                         filter: function() { return (feature.shield_text.length === 3) }
                         draw:
                             icons:
-                                size: [[6,[25px,14px]],[13,[27px,15px]],[15,[33px,18px]]]
+                                size: [[6,[20px,14px]],[13,[21px,15px]],[15,[26px,18px]]]
                     width_4char:
                         filter: function() { return (feature.shield_text.length === 4) }
                         draw:
                             icons:
-                                size: [[6,[29px,14px]],[13,[31px,15px]],[15,[38px,18px]]]
+                                size: [[6,[25px,14px]],[13,[28px,15px]],[15,[34px,18px]]]
                     width_5char:
                         filter: function() { return (feature.shield_text.length === 5) }
                         draw:
                             icons:
-                                size: [[6,[34px,14px]],[13,[37px,15px]],[15,[45px,18px]]]
+                                size: [[6,[30px,14px]],[13,[33px,15px]],[15,[40px,18px]]]
         path:
             filter:
                 all:
