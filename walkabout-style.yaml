@@ -2530,7 +2530,7 @@ layers:
                             family: Montserrat
                             #fill: [0.308,0.308,0.308]
                             fill: [0.320,0.320,0.320]
-                            size: [[7,7px],[12,8px],[15,11px]]
+                            size: [[7,7px],[12,8px],[16,11px]]
 
             default_priority_highway:
                 filter: 
@@ -2601,7 +2601,7 @@ layers:
                     }
                 draw:
                     icons:
-                        size: [[6,[14px,14px]],[13,[16px,16px]],[15,[18px,18px]]]
+                        size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
             width_2char:
                 filter: |
                     function() { 
@@ -2613,7 +2613,7 @@ layers:
                     }
                 draw:
                     icons:
-                        size: [[6,[18px,14px]],[13,[20px,15px]],[15,[24px,18px]]]
+                        size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
             width_3char:
                 filter: |
                     function() { 
@@ -2625,7 +2625,7 @@ layers:
                     }
                 draw:
                     icons:
-                        size: [[6,[25px,14px]],[13,[27px,15px]],[15,[33px,18px]]]
+                        size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
             width_4char:
                 filter: |
                     function() { 
@@ -2637,7 +2637,7 @@ layers:
                     }
                 draw:
                     icons:
-                        size: [[6,[29px,14px]],[13,[31px,15px]],[15,[38px,18px]]]
+                        size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
                 # London sucks
                 early:
                     filter: { $zoom: { max: 14 } }
@@ -2655,7 +2655,7 @@ layers:
                     }
                 draw:
                     icons:
-                        size: [[6,[34px,14px]],[13,[37px,15px]],[15,[45px,18px]]]
+                        size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
                 # London sucks
                 early:
                     filter: { $zoom: { max: 14 } }
