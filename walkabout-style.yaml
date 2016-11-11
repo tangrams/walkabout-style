@@ -39,7 +39,7 @@ labels-global:
     - &text_visible_piste             true
     - &text_visible_steps             true
     - &text_visible_aerialway         true
-    - &text_visible_shields           false     #false for default
+    - &text_visible_shields           true
     - &text_visible_exits             true
     - &text_visible_exits_e           false     #false for default
     - &text_visible_airport_gate      true
@@ -1473,7 +1473,7 @@ layers:
                         priority: 50
                         visible: *text_visible_highway
                         #text_source: ref
-                        text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -1487,7 +1487,7 @@ layers:
                         priority: 50
                         visible: *text_visible_highway
                         #text_source: ref
-                        text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -1636,7 +1636,7 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary_e2
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     size: 11px
@@ -1647,7 +1647,7 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1659,7 +1659,7 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1671,7 +1671,7 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1683,7 +1683,7 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1725,7 +1725,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 9px
@@ -1737,7 +1737,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 10px
@@ -1749,7 +1749,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -1761,7 +1761,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -1772,7 +1772,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 12px
@@ -1783,7 +1783,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1795,7 +1795,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1807,7 +1807,7 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1884,7 +1884,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -1895,7 +1895,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -1906,7 +1906,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -1918,7 +1918,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -1937,7 +1937,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -1947,7 +1947,7 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -1970,7 +1970,7 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -1982,7 +1982,7 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -1994,7 +1994,7 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2005,7 +2005,7 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2017,7 +2017,7 @@ layers:
                             priority: 56
                             visible: *text_visible_secondary
                             #text_source: ref
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2090,7 +2090,7 @@ layers:
                             text-blend-order:
                                 priority: 57
                                 visible: *text_visible_tertiary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2100,7 +2100,7 @@ layers:
                             text-blend-order:
                                 priority: 57
                                 visible: *text_visible_tertiary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2122,7 +2122,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2133,7 +2133,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2144,7 +2144,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2155,7 +2155,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2166,7 +2166,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2177,7 +2177,7 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2498,7 +2498,7 @@ layers:
                     icons:
                         priority: 47
                         #color: yellow
-                        visible: global.text_visible_shields
+                        visible: *text_visible_shields
 
             default_priority_trunk:
                 filter: 
@@ -2509,7 +2509,7 @@ layers:
                     icons:
                         priority: 48
                         #color: red
-                        visible: global.text_visible_shields
+                        visible: *text_visible_shields
             default_priority_primary:
                 filter: 
                     all:
@@ -2519,7 +2519,7 @@ layers:
                     icons:
                         priority: 49
                         #color: aqua
-                        visible: global.text_visible_shields
+                        visible: *text_visible_shields
             default_priority_trunk_secondary:
                 filter:
                     all:
@@ -2529,7 +2529,7 @@ layers:
                     icons:
                         priority: 53
                         #color: blue
-                        visible: global.text_visible_shields
+                        visible: *text_visible_shields
             default_priority_trunk_tertiary:
                 filter:
                     all:
@@ -2539,7 +2539,7 @@ layers:
                     icons:
                         priority: 55
                         #color: green
-                        visible: global.text_visible_shields
+                        visible: *text_visible_shields
             # not-special:
             #     filter:
             #         not: { network: ['US:I','US:US'] }
@@ -2656,7 +2656,7 @@ layers:
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
                             priority: 46
-                            visible: global.text_visible_shields
+                            visible: *text_visible_shields
                             text:
                                 offset: [0px, 0.5px]
                                 font:
@@ -2699,7 +2699,7 @@ layers:
                                 function() { return ('US:US_' + feature.shield_text.length + 'char'); }
                             priority: 47
                             cull_from_tile: true
-                            visible: global.text_visible_shields
+                            visible: *text_visible_shields
                             text:
                                 offset: [0px, -0.7px]
                                 font:
@@ -2769,17 +2769,17 @@ layers:
                         filter: { kind_detail: [motorway], $zoom: [7,8] }
                         draw:
                             icons:
-                                visible: global.text_visible_shields
+                                visible: *text_visible_shields
                     trunk:
                         filter: { kind_detail: [trunk], $zoom: [8,9] }
                         draw:
                             icons:
-                                visible: global.text_visible_shields
+                                visible: *text_visible_shields
                     primary:
                         filter: { kind_detail: primary, $zoom: [10,11] }
                         draw:
                             icons:
-                                visible: global.text_visible_shields
+                                visible: *text_visible_shields
                     width_1char:
                         filter: function() { return (feature.shield_text.length === 1) }
                         draw:
@@ -2926,7 +2926,7 @@ layers:
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return ('county_shield_' + feature.shield_text.length + 'char'); }
                             # priority: 19
-                            visible: global.text_visible_shields
+                            visible: *text_visible_shields
                             text:
                                 font:
                                     fill: [0.320,0.320,0.320]
