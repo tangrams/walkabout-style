@@ -116,7 +116,7 @@ labels-global:
     - &text_visible_piste             true
     - &text_visible_steps             true
     - &text_visible_aerialway         true
-    - &text_visible_shields           false     #false for default
+    - &text_visible_shields           true
     - &text_visible_exits             true
     - &text_visible_exits_e           false     #false for default
     - &text_visible_airport_gate      true
@@ -289,194 +289,421 @@ scene:
         color: [0.894,0.902,0.898]
     # animated: true
 
+fonts:
+    Montserrat:
+        url: https://fonts.gstatic.com/s/montserrat/v7/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff
+
 textures:
     pois:
         url: images/poi_icons_18@2x.png
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
+            'US:CA_1char': [220, 606, 82, 92]
+            'US:CA_2char': [120, 606, 94, 94]
+            'US:CA_3char': [0, 606, 112, 92]
+            'US:CA_4char': [808, 510, 124, 92]
+            'US:CA_5char': [672, 510, 128, 92]
+            'US:I_1char': [0, 710, 90, 100]
+            'US:I_2char': [138, 314, 102, 102]
+            'US:I_3char': [0, 314, 132, 100]
+            'US:I_4char': [756, 210, 140, 100]
+            'US:I_5char': [596, 210, 152, 100]
+            'US:NY_1char': [768, 418, 72, 88]
+            'US:NY_2char': [112, 418, 88, 88]
+            'US:NY_3char': [0, 418, 104, 86]
+            'US:NY_4char': [896, 314, 116, 86]
+            'US:NY_5char': [768, 314, 120, 86]
+            'US:PA_1char': [688, 418, 72, 88]
+            'US:PA_2char': [592, 418, 88, 88]
+            'US:PA_3char': [472, 418, 112, 88]
+            'US:PA_4char': [344, 418, 120, 88]
+            'US:PA_5char': [208, 418, 128, 88]
+            'US:US_1char': [900, 606, 88, 94]
+            'US:US_2char': [788, 608, 106, 94]
+            'US:US_3char': [642, 606, 138, 100]
+            'US:US_4char': [478, 606, 158, 100]
+            'US:US_5char': [308, 606, 164, 100]
             airport: [952, 0, 38, 38]
-            allotments: [552, 252, 38, 38]
+            aerodrome: [952, 0, 38, 38]
+            allotments: [46, 814, 38, 38]
             aquarium: [916, 168, 38, 38]
             art-gallery: [824, 168, 38, 38]
+            art_gallery: [824, 168, 38, 38]
+            art: [824, 168, 38, 38]
             athletics-sports: [368, 168, 38, 38]
+            pitch: [368, 168, 38, 38]
+            athletic_sports: [368, 168, 38, 38]
+            recreation_ground: [368, 168, 38, 38]
             atm: [92, 168, 38, 38]
-            attraction: [550, 210, 38, 36]
+            attraction: [550, 210, 38, 38]
             automotive-shop: [184, 168, 38, 38]
+            car_repair: [184, 168, 38, 38]
+            automotive: [184, 168, 38, 38]
+            tyres: [184, 168, 38, 38]
             bakery: [732, 168, 38, 38]
-            bank: [138, 168, 38, 36]
+            pastry: [732, 168, 38, 38]
+            chocolate: [732, 168, 38, 38]
+            bank: [138, 168, 38, 38]
             bar: [414, 168, 38, 38]
+            pub: [414, 168, 38, 38]
             baseball-field: [690, 84, 38, 38]
             basketball-court: [644, 84, 38, 38]
-            battlefield: [826, 210, 38, 38]
-            bbq: [230, 252, 38, 38]
+            battlefield: [324, 710, 38, 38]
+            bbq: [738, 710, 38, 38]
             beach: [828, 84, 38, 38]
-            beach-resort: [734, 210, 38, 38]
+            beach-resort: [232, 710, 38, 38]
+            beach_resort: [232, 710, 38, 38]
             beer-garden: [458, 210, 38, 38]
+            biergarten: [458, 210, 38, 38]
+            brewery: [458, 210, 38, 38]
             bench: [630, 0, 38, 38]
             bicycle-parking: [828, 126, 38, 38]
             bike-shop: [46, 168, 38, 38]
+            bicycle: [46, 168, 38, 38]
+            bicycle_rental: [46, 168, 38, 38]
+            bike: [46, 168, 38, 38]
+            bike_shop: [46, 168, 38, 38]
             boat-ferry: [906, 0, 38, 38]
-            boat-ramp: [276, 84, 40, 38]
-            boat-rental: [598, 252, 38, 38]
+            ferry_terminal: [906, 0, 38, 38]
+            ferry-boat: [906, 0, 38, 38]
+            ferry: [906, 0, 38, 38]
+            boat-ramp: [276, 84, 38, 38]
+            slipway: [276, 84, 38, 38]
+            boat_ramp: [276, 84, 38, 38]
+            boat-rental: [92, 814, 38, 38]
+            boat_rental: [92, 814, 38, 38]
             bookstore: [0, 168, 38, 38]
+            books: [0, 168, 38, 38]
             bridge: [92, 126, 38, 38]
             buddhism: [966, 84, 38, 38]
-            building: [598, 168, 34, 34]
+            building: [598, 168, 38, 38]
+            auditorium: [598, 168, 38, 38]
+            terminal: [598, 168, 38, 38]
+            hangar: [598, 168, 38, 38]
+            retirement_home: [598, 168, 38, 38]
+            manor: [598, 168, 38, 38]
+            recreation_center: [598, 168, 38, 38]
+            apartments: [598, 168, 38, 38]
             burger: [320, 210, 38, 38]
+            fast_food: [320, 210, 38, 38]
             bus-station: [860, 0, 38, 38]
+            bus_stop: [860, 0, 38, 38]
+            bus_station: [860, 0, 38, 38]
             butcher: [46, 84, 38, 38]
             campground: [0, 126, 38, 38]
+            camp_site: [0, 126, 38, 38]
+            caravan_site: [0, 126, 38, 38]
             candy-store: [182, 210, 38, 38]
-            capital-l: [146, 294, 16, 16]
-            capital-m: [126, 294, 12, 12]
-            capital-s: [106, 294, 10, 10]
-            capital-xl: [170, 294, 20, 20]
-            capital-xs: [92, 294, 8, 8]
+            candy: [182, 210, 38, 38]
+            confectionery: [182, 210, 38, 38]
+            capital-l: [652, 814, 16, 16]
+            capital-m: [632, 814, 12, 12]
+            capital-s: [612, 814, 10, 10]
+            capital-xl: [676, 814, 20, 20]
+            capital-xs: [598, 814, 8, 8]
             car-dealership: [964, 126, 38, 38]
-            caravan-site: [964, 210, 38, 38]
+            car: [964, 126, 38, 38]
+            caravan-site: [462, 710, 38, 38]
+            caravan_site: [462, 710, 38, 38]
             castle: [506, 42, 38, 38]
+            fort: [506, 42, 38, 38]
             cemetery: [920, 84, 38, 38]
+            grave_yard: [920, 84, 38, 38]
             church: [414, 126, 38, 38]
             clothing-store: [0, 210, 38, 38]
-            coffee-shop: [686, 168, 38, 36]
+            clothes: [0, 210, 38, 38]
+            chothing-store: [0, 210, 38, 38]
+            "clothesstore": [0, 210, 38, 38]
+            fashion: [0, 210, 38, 38]
+            coffee-shop: [686, 168, 38, 38]
+            cafe: [686, 168, 38, 38]
             college-university: [46, 210, 38, 38]
+            university: [46, 210, 38, 38]
+            college: [46, 210, 38, 38]
             convenience-store: [184, 84, 38, 38]
+            convenience: [184, 84, 38, 38]
+            convenience_store: [184, 84, 38, 38]
+            beverages: [184, 84, 38, 38]
+            county_shield_1char: [848, 418, 72, 72]
+            county_shield_2char: [672, 314, 88, 72]
+            county_shield_3char: [560, 314, 104, 72]
+            county_shield_4char: [416, 314, 136, 72]
+            county_shield_5char: [248, 314, 160, 72]
             courthouse: [446, 0, 38, 38]
-            current-location: [702, 294, 88, 86]
-            dentist: [266, 0, 34, 34]
+            current-location: [294, 856, 88, 88]
+            dentist: [266, 0, 38, 38]
             department-store: [918, 126, 38, 38]
-            doctors: [224, 0, 34, 34]
-            dog-park: [138, 252, 38, 38]
-            dot-black: [0, 294, 38, 38]
-            dot-white: [966, 252, 38, 38]
+            department_store: [918, 126, 38, 38]
+            doctors: [224, 0, 38, 38]
+            clinic: [224, 0, 38, 38]
+            dog-park: [646, 710, 38, 38]
+            dog_park: [646, 710, 38, 38]
+            dog_run: [646, 710, 38, 38]
+            dog-run: [646, 710, 38, 38]
+            dot-black: [506, 814, 38, 38]
+            dot-white: [460, 814, 38, 38]
             drinking-water: [412, 210, 38, 38]
             dry-cleaning: [138, 84, 38, 38]
+            dry_cleaning: [138, 84, 38, 38]
             electronics-store: [782, 126, 38, 38]
+            electronics: [782, 126, 38, 38]
+            computer: [782, 126, 38, 38]
             factory: [552, 168, 38, 38]
+            industrial: [552, 168, 38, 38]
+            chimney: [552, 168, 38, 38]
+            sub_station: [552, 168, 38, 38]
+            substation: [552, 168, 38, 38]
+            wastewater_plant: [552, 168, 38, 38]
+            works: [552, 168, 38, 38]
+            water_works: [552, 168, 38, 38]
+            plant: [552, 168, 38, 38]
+            generator: [552, 168, 38, 38]
             fire-station: [400, 0, 38, 38]
-            firepit: [92, 252, 38, 38]
-            fishing-area: [0, 252, 38, 38]
+            fire_station: [400, 0, 38, 38]
+            firepit: [600, 710, 38, 38]
+            fishing-area: [508, 710, 38, 38]
+            fishing_area: [508, 710, 38, 38]
             fitness: [0, 84, 38, 38]
+            gym: [0, 84, 38, 38]
+            fitness_center: [0, 84, 38, 38]
             flower-shop: [368, 126, 38, 38]
+            florist: [368, 126, 38, 38]
             forest: [228, 210, 38, 38]
+            conservation: [228, 210, 38, 38]
+            nature_reserve: [228, 210, 38, 38]
             fountain: [506, 126, 38, 38]
             garden: [874, 84, 38, 38]
-            gas: [736, 252, 38, 38]
+            gas: [230, 814, 38, 38]
+            gas_canister: [230, 814, 38, 38]
             gas-station: [136, 210, 38, 38]
-            generic: [46, 294, 38, 38]
-            geyser: [688, 210, 38, 38]
+            fuel: [136, 210, 38, 38]
+            generic: [552, 814, 38, 38]
+            subway_entrance: [552, 814, 38, 38]
+            generic_shield_1char: [592, 510, 72, 72]
+            generic_shield_2char: [488, 510, 98, 72]
+            generic_shield_3char: [348, 510, 132, 72]
+            generic_shield_4char: [188, 510, 152, 72]
+            generic_shield_5char: [0, 510, 180, 72]
+            geyser: [186, 710, 38, 38]
             gift-shop: [322, 126, 38, 38]
+            gift: [322, 126, 38, 38]
             golf-course: [598, 84, 38, 38]
+            golf_course: [598, 84, 38, 38]
             government-building: [322, 168, 38, 38]
+            townhall: [322, 168, 38, 38]
+            public_building: [322, 168, 38, 38]
+            embassy: [322, 168, 38, 38]
             grocery-store: [736, 126, 38, 38]
-            harbor-marina: [276, 168, 40, 38]
+            supermarket: [736, 126, 38, 38]
+            health_food: [736, 126, 38, 38]
+            greengrocer: [736, 126, 38, 38]
+            harbor-marina: [276, 168, 38, 38]
+            marina: [276, 168, 38, 38]
+            harbor: [276, 168, 38, 38]
+            harbor_marina: [276, 168, 38, 38]
+            dock: [276, 168, 38, 38]
+            mooring: [276, 168, 38, 38]
             hardware-store: [966, 42, 38, 38]
+            hardware: [966, 42, 38, 38]
+            doityourself: [966, 42, 38, 38]
+            paint: [966, 42, 38, 38]
             historic-site: [276, 126, 38, 38]
-            hospital: [182, 0, 34, 34]
+            hospital: [182, 0, 38, 38]
             hot-spring: [460, 84, 38, 38]
+            hot_spring: [460, 84, 38, 38]
             hotel: [814, 0, 38, 38]
-            hunting: [642, 210, 38, 38]
+            motel: [814, 0, 38, 38]
+            hostel: [814, 0, 38, 38]
+            hunting: [140, 710, 38, 38]
             ice-cream-shop: [504, 210, 38, 38]
-            information: [596, 210, 38, 36]
+            ice_cream: [504, 210, 38, 38]
+            information: [96, 710, 38, 38]
+            info: [96, 710, 38, 38]
             jewelry-store: [828, 42, 38, 38]
+            jewelry: [828, 42, 38, 38]
+            jewelry_store: [828, 42, 38, 38]
             landmark: [354, 0, 38, 38]
+            memorial: [354, 0, 38, 38]
+            monument: [354, 0, 38, 38]
+            wayside_shrine: [354, 0, 38, 38]
+            tower: [354, 0, 38, 38]
+            beacon: [354, 0, 38, 38]
             laundry: [782, 42, 38, 38]
+            dry_cleaning: [782, 42, 38, 38]
             library: [0, 0, 38, 38]
             light-rail: [768, 0, 38, 38]
+            light_rail: [768, 0, 38, 38]
+            tram_stop: [768, 0, 38, 38]
             lighthouse: [414, 84, 38, 38]
             liquor-store: [690, 126, 38, 38]
-            locate-off: [80, 426, 72, 70]
-            locate-on: [0, 426, 72, 70]
+            alcohol: [690, 126, 38, 38]
+            liquor: [690, 126, 38, 38]
+            locate-off: [628, 856, 72, 72]
+            locate-on: [548, 856, 72, 72]
             mall: [736, 42, 38, 38]
             market: [690, 42, 38, 38]
+            variety_store: [690, 42, 38, 38]
+            boutique: [690, 42, 38, 38]
+            dairy: [690, 42, 38, 38]
+            retail: [690, 42, 38, 38]
             mine: [874, 42, 38, 38]
             mobile-phone-shop: [598, 42, 38, 38]
+            mobile_phone: [598, 42, 38, 38]
             mosque: [90, 0, 38, 38]
-            motorcycle: [368, 252, 38, 38]
+            motorcycle: [876, 710, 38, 38]
             mountain: [368, 84, 38, 38]
+            peak: [368, 84, 38, 38]
             movie-theatre: [962, 168, 38, 38]
+            cinema: [962, 168, 38, 38]
+            movie-theater: [962, 168, 38, 38]
             museum: [230, 126, 38, 38]
+            observatory: [230, 126, 38, 38]
             music-store: [460, 42, 38, 38]
+            music: [460, 42, 38, 38]
+            musical_instrument: [460, 42, 38, 38]
             newsstand: [414, 42, 38, 38]
-            observatory: [690, 252, 38, 38]
+            kiosk: [414, 42, 38, 38]
+            newsagent: [414, 42, 38, 38]
+            observatory: [184, 814, 38, 38]
             office: [782, 84, 38, 38]
+            insurance: [782, 84, 38, 38]
+            company: [782, 84, 38, 38]
             optical-shop: [368, 42, 38, 38]
-            outdoor: [828, 252, 38, 38]
+            optician: [368, 42, 38, 38]
+            optical_shop: [368, 42, 38, 38]
+            outdoor: [322, 814, 38, 38]
             park: [460, 126, 38, 38]
-            parking: [874, 126, 38, 36]
+            parking: [874, 126, 38, 38]
             performing-arts: [778, 168, 38, 38]
+            theater: [778, 168, 38, 38]
+            theatre: [778, 168, 38, 38]
             pet-store: [322, 42, 38, 38]
+            pet: [322, 42, 38, 38]
+            pet-service: [322, 42, 38, 38]
+            pet_store: [322, 42, 38, 38]
             pharmacy: [92, 84, 38, 38]
+            chemist: [92, 84, 38, 38]
             photography-lab: [276, 42, 38, 38]
-            picnic-spot: [322, 252, 38, 38]
+            photo_studio: [276, 42, 38, 38]
+            photography_lab: [276, 42, 38, 38]
+            photographer: [276, 42, 38, 38]
+            picnic-spot: [830, 710, 38, 38]
+            picnic_site: [830, 710, 38, 38]
+            picnic_table: [830, 710, 38, 38]
             pier: [722, 0, 38, 38]
             playground: [552, 42, 38, 38]
             police: [308, 0, 38, 38]
             pool: [322, 84, 38, 38]
+            swimming_pool: [322, 84, 38, 38]
             post-office: [506, 168, 38, 38]
-            quarry: [920, 42, 40, 38]
-            ranger-station: [276, 252, 38, 38]
+            post_office: [506, 168, 38, 38]
+            quarry: [920, 42, 38, 38]
+            mineshaft: [920, 42, 38, 38]
+            adit: [920, 42, 38, 38]
+            ranger-station: [784, 710, 38, 38]
+            ranger_station: [784, 710, 38, 38]
             real-estate: [230, 42, 38, 38]
-            recreation-track: [460, 252, 38, 38]
+            estate_agent: [230, 42, 38, 38]
+            real_estate: [230, 42, 38, 38]
+            recreation-track: [968, 710, 38, 38]
+            recreation_track: [968, 710, 38, 38]
             recycling-facility: [184, 42, 38, 38]
+            recycling: [184, 42, 38, 38]
             rental-car: [676, 0, 38, 38]
+            car_rental: [676, 0, 38, 38]
+            car_sharing: [676, 0, 38, 38]
             restaurant: [274, 210, 38, 38]
-            route-arrow: [408, 294, 128, 128]
-            route-start: [622, 294, 72, 92]
-            route-stop: [544, 294, 72, 92]
+            deli: [274, 210, 38, 38]
+            route-arrow: [0, 856, 128, 128]
+            route-start: [214, 856, 72, 92]
+            route-stop: [136, 856, 72, 92]
             ruin: [584, 0, 38, 38]
+            ruins: [584, 0, 38, 38]
+            archaeological_site: [584, 0, 38, 38]
             salon-barber: [138, 42, 38, 38]
+            hairdresser: [138, 42, 38, 38]
+            salon: [138, 42, 38, 38]
+            beauty_salon: [138, 42, 38, 38]
             school: [736, 84, 38, 38]
-            scuba-diving: [782, 252, 38, 38]
-            search-active: [796, 294, 72, 108]
-            search-inactive: [876, 294, 72, 108]
+            kindergarten: [736, 84, 38, 38]
+            scuba-diving: [276, 814, 38, 38]
+            scuba_diving: [276, 814, 38, 38]
+            dive_centre: [276, 814, 38, 38]
+            search-active: [388, 856, 72, 108]
+            search-inactive: [468, 856, 72, 108]
             shoe-store: [644, 42, 38, 38]
-            shower: [918, 210, 38, 38]
+            shoes: [644, 42, 38, 38]
+            shoe_store: [644, 42, 38, 38]
+            shower: [416, 710, 38, 38]
             ski-area: [552, 126, 38, 38]
-            slipway: [872, 210, 38, 38]
+            slipway: [370, 710, 38, 38]
             soccer-field: [552, 84, 38, 38]
             spiritual-center: [460, 168, 38, 38]
+            spiritual_center: [460, 168, 38, 38]
+            place_of_worship: [460, 168, 38, 38]
+            wayside_chapel: [460, 168, 38, 38]
             sporting-goods-shop: [92, 42, 38, 38]
+            sporting_goods: [92, 42, 38, 38]
+            sports: [92, 42, 38, 38]
+            outdoor: [92, 42, 38, 38]
             spring: [506, 84, 38, 38]
             stadium: [644, 126, 38, 38]
             subway-entrance: [538, 0, 38, 38]
-            summer-camp: [506, 252, 38, 38]
-            swimming-area: [46, 252, 38, 38]
+            summer-camp: [0, 814, 38, 38]
+            summer_camp: [0, 814, 38, 38]
+            swimming-area: [554, 710, 38, 38]
+            swimming_area: [554, 710, 38, 38]
             synagogue: [44, 0, 38, 38]
             tailor-shop: [46, 42, 38, 38]
-            telescope: [644, 252, 38, 38]
+            tailor: [46, 42, 38, 38]
+            telescope: [138, 814, 38, 38]
             tennis: [598, 126, 38, 38]
             theme-park: [184, 126, 38, 38]
+            theme_park: [184, 126, 38, 38]
+            miniature_golf: [184, 126, 38, 38]
             toilets: [46, 126, 38, 38]
-            townspot-l: [356, 294, 16, 16]
-            townspot-l-rev: [250, 294, 16, 16]
-            townspot-m: [336, 294, 12, 12]
-            townspot-m-rev: [230, 294, 12, 12]
-            townspot-s: [318, 294, 10, 10]
-            townspot-s-rev: [212, 294, 10, 10]
-            townspot-xl: [380, 294, 20, 20]
-            townspot-xl-rev: [274, 294, 20, 20]
-            townspot-xs: [302, 294, 8, 8]
-            townspot-xs-rev: [198, 294, 6, 6]
+            townspot-l: [862, 814, 16, 16]
+            townspot-l-rev: [756, 814, 16, 16]
+            townspot-m: [842, 814, 12, 12]
+            townspot-m-rev: [736, 814, 12, 12]
+            townspot-s: [824, 814, 10, 10]
+            townspot-s-rev: [718, 814, 10, 10]
+            townspot-xl: [886, 814, 20, 20]
+            townspot-xl-rev: [780, 814, 20, 20]
+            townspot-xs: [808, 814, 8, 8]
+            townspot-xs-rev: [704, 814, 6, 6]
             toy-game-store: [0, 42, 38, 38]
-            traffic-signal: [92, 210, 36, 34]
-            trailhead: [874, 252, 38, 38]
+            toys: [0, 42, 38, 38]
+            baby_goods: [0, 42, 38, 38]
+            traffic-signal: [92, 210, 38, 38]
+            traffic_signals: [92, 210, 38, 38]
+            trailhead: [368, 814, 38, 38]
             train-station: [492, 0, 38, 38]
-            tree: [920, 252, 38, 38]
+            station: [492, 0, 38, 38]
+            train-staion: [492, 0, 38, 38]
+            tree: [414, 814, 38, 38]
             veterinarian: [136, 0, 38, 38]
-            view-point: [870, 168, 40, 38]
-            vineyard: [230, 168, 40, 38]
+            pet_care: [136, 0, 38, 38]
+            veterinary: [136, 0, 38, 38]
+            view-point: [870, 168, 38, 38]
+            viewpoint: [870, 168, 38, 38]
+            view_point: [870, 168, 38, 38]
+            vista: [870, 168, 38, 38]
+            vineyard: [230, 168, 38, 38]
             volcano: [230, 84, 38, 38]
-            water-tower: [414, 252, 38, 38]
-            waterfall: [184, 252, 38, 38]
-            waterpark: [780, 210, 38, 38]
+            water-tower: [922, 710, 38, 38]
+            water_tower: [922, 710, 38, 38]
+            waterfall: [692, 710, 38, 38]
+            waterpark: [278, 710, 38, 38]
+            water_park: [278, 710, 38, 38]
             wine-bar: [366, 210, 38, 38]
             winery: [640, 168, 38, 38]
+            wine: [640, 168, 38, 38]
             zoo: [138, 126, 38, 38]
             #
-            # HACK: not currently in source sprite sheet
-            transit-stop: [126, 294, 12, 12]
+            # HACK: not currently in source sprite sheet (capital-xl)
+            transit-stop: [676, 814, 20, 20]
 
     building-grid:
         url: images/building-grid.gif
@@ -1511,54 +1738,54 @@ layers:
                         cap: round
                         outline:
                             cap: butt
-            labels-highway-early:
-                filter: { $zoom: [7,8,9] }
-                draw:
-                    text-blend-order:
-                        priority: 50
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 400
-                            size: 9px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z10:
-                filter:
-                    $zoom: 10
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 400
-                            size: 9px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z11:
-                filter:
-                    $zoom: 11
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 600
-                            size: 10px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
-            labels-highway-z12:
-                filter:
-                    $zoom: 12
-                draw:
-                    text-blend-order:
-                        visible: *text_visible_shields
-                        text_source: ref
-                        font:
-                            fill: [0.408,0.427,0.459]
-                            weight: 600
-                            size: 10px
-                            stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-early:
+            #     filter: { $zoom: [7,8,9] }
+            #     draw:
+            #         text-blend-order:
+            #             priority: 50
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 400
+            #                 size: 9px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z10:
+            #     filter:
+            #         $zoom: 10
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 400
+            #                 size: 9px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z11:
+            #     filter:
+            #         $zoom: 11
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 600
+            #                 size: 10px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
+            # labels-highway-z12:
+            #     filter:
+            #         $zoom: 12
+            #     draw:
+            #         text-blend-order:
+            #             visible: *text_visible_shields
+            #             text_source: ref
+            #             font:
+            #                 fill: [0.408,0.427,0.459]
+            #                 weight: 600
+            #                 size: 10px
+            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
             labels-highway-z13:
                 filter:
                     $zoom: 13
@@ -1567,7 +1794,7 @@ layers:
                         priority: 50
                         visible: *text_visible_highway
                         #text_source: ref
-                        text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -1581,7 +1808,7 @@ layers:
                         priority: 50
                         visible: *text_visible_highway
                         #text_source: ref
-                        text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -1728,9 +1955,9 @@ layers:
                         filter: { $zoom: [14] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary_e2
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     size: 11px
@@ -1739,9 +1966,9 @@ layers:
                         filter: { $zoom: [15] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1751,9 +1978,9 @@ layers:
                         filter: { $zoom: { min: 16 } }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1763,9 +1990,9 @@ layers:
                         filter: { $zoom: [17,18] }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1775,9 +2002,9 @@ layers:
                         filter: { $zoom: { min: 19 } }
                         draw:
                             text-blend-order:
-                                priority: 53
+                                priority: 51
                                 visible: *text_visible_trunk_primary
-                                text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -1817,9 +2044,9 @@ layers:
                         $zoom: [11]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 9px
@@ -1829,9 +2056,9 @@ layers:
                         $zoom: [12]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 10px
@@ -1841,9 +2068,9 @@ layers:
                         $zoom: [13]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -1853,9 +2080,9 @@ layers:
                         $zoom: [14]
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -1864,9 +2091,9 @@ layers:
                     filter: { $zoom: [15] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 12px
@@ -1875,9 +2102,9 @@ layers:
                     filter: { $zoom: [16] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1887,9 +2114,9 @@ layers:
                     filter: { $zoom: [17] }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1899,9 +2126,9 @@ layers:
                     filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 53
+                            priority: 51
                             visible: *text_visible_trunk_primary
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -1976,9 +2203,9 @@ layers:
                         filter: { $zoom: [13] }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -1987,9 +2214,9 @@ layers:
                         filter: { $zoom: [14] }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -1998,9 +2225,9 @@ layers:
                         filter: { $zoom: { min: 15 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -2010,9 +2237,9 @@ layers:
                         filter: { $zoom: { min: 16 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -2029,9 +2256,9 @@ layers:
                         filter: { $zoom: { min: 13 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2039,9 +2266,9 @@ layers:
                         filter: { $zoom: { min: 17 } }
                         draw:
                             text-blend-order:
-                                priority: 54
+                                priority: 56
                                 visible: *text_visible_secondary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2062,9 +2289,9 @@ layers:
                         $zoom: [13]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2074,9 +2301,9 @@ layers:
                         $zoom: [14]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2086,9 +2313,9 @@ layers:
                         $zoom: [15]
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2097,9 +2324,9 @@ layers:
                     filter: { $zoom: { min: 16, max: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2108,10 +2335,10 @@ layers:
                     filter: { $zoom: { min: 17 } }
                     draw:
                         text-blend-order:
-                            priority: 54
+                            priority: 56
                             visible: *text_visible_secondary
                             #text_source: ref
-                            text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2182,9 +2409,9 @@ layers:
                         filter: { $zoom: { min: 13 } }
                         draw:
                             text-blend-order:
-                                priority: 55
+                                priority: 57
                                 visible: *text_visible_tertiary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2192,9 +2419,9 @@ layers:
                         filter: { $zoom: { min: 17 } }
                         draw:
                             text-blend-order:
-                                priority: 55
+                                priority: 57
                                 visible: *text_visible_tertiary_e
-                                text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2214,9 +2441,9 @@ layers:
                     filter: { $zoom: [13] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2225,9 +2452,9 @@ layers:
                     filter: { $zoom: [14] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary_e
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2236,9 +2463,9 @@ layers:
                     filter: { $zoom: [15] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2247,9 +2474,9 @@ layers:
                     filter: { $zoom: [16] }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2258,9 +2485,9 @@ layers:
                     filter: { $zoom: { min: 17, max: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2269,9 +2496,9 @@ layers:
                     filter: { $zoom: { min: 18 } }
                     draw:
                         text-blend-order:
-                            priority: 55
+                            priority: 57
                             visible: *text_visible_tertiary
-                            text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
+                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2317,7 +2544,7 @@ layers:
                     filter: { $zoom: { min: 15 } }
                     draw:
                         text-blend-order:
-                            priority: 56
+                            priority: 59
                             visible: *text_visible_minor_road_e
                             text_source: name
                             font:
@@ -2327,7 +2554,7 @@ layers:
                     filter: { $zoom: { min: 17 } }
                     draw:
                         text-blend-order:
-                            priority: 56
+                            priority: 59
                             visible: *text_visible_minor_road_e
                             text_source: name
                             font:
@@ -2380,7 +2607,7 @@ layers:
                 filter: { $zoom: 15 }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2391,7 +2618,7 @@ layers:
                 filter: { $zoom: 16 }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2402,7 +2629,7 @@ layers:
                 filter: { $zoom: { min: 17, max: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road_e
                         text_source: name
                         font:
@@ -2413,7 +2640,7 @@ layers:
                 filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 56
+                        priority: 59
                         visible: *text_visible_minor_road
                         text_source: name
                         font:
@@ -2439,7 +2666,7 @@ layers:
                 labels-service-in-green:
                     draw:
                         text-blend-order:
-                            priority: 57
+                            priority: 60
                             visible: *text_visible_service_road
                             text_source: name
                             font:
@@ -2499,7 +2726,7 @@ layers:
                 filter: { $zoom: 17 }
                 draw:
                     text-blend-order:
-                        priority: 57
+                        priority: 60
                         visible: *text_visible_service_road
                         text_source: name
                         font:
@@ -2511,13 +2738,550 @@ layers:
                 filter: { $zoom: { min: 18 } }
                 draw:
                     text-blend-order:
-                        priority: 57
+                        priority: 60
                         visible: *text_visible_service_road
                         text_source: name
                         font:
                             fill: [0.536,0.556,0.581]
                             size: 13px
                             stroke: { color: [0.969,0.973,0.973], width: 4 }
+
+        shields:
+            filter:
+                $zoom: { min: 6 }
+                #
+                # United State looks great with shield_text alone, but...
+                #
+                #shield_text: true    # some roads don't have shield text, deal with that later
+                #
+                # Europe doesn't have many network relations set, so we could look for either
+                # shield_text or ref (with no shield_text) but...
+                # that makes United States look a bit funky with `(xxx)` and generic shields 
+                # showing up in fields of custom state shields like US:CA and US:NY
+                #
+                any:
+                    - shield_text: true    # some roads don't have shield text, deal with that later
+                    - all:
+                        - shield_text: false    # some roads don't have shield text, deal with that later
+                        - ref: true
+                        - kind_detail: [motorway, trunk, primary, secondary, tertiary]
+            # default
+            draw:
+                icons:
+                    # you need to match any custom shield to the vector tile `network` values
+                    sprite: |
+                        function() { 
+                            if( feature.shield_text ) { 
+                                return ('generic_shield_' + feature.shield_text.length + 'char');
+                            } else {
+                                return ('generic_shield_' + feature.ref.length + 'char');
+                            }
+                        }
+                    sprite_default: generic_shield_5char
+                    priority: 58
+                    repeat_group: shields
+                    repeat_distance: [[8,90px],[10,40px],[13,30px]]
+                    placement: midpoint
+                    placement_min_length_ratio:
+                        - [8, 0.1]
+                        - [9, 0.25]
+                        - [10, 0.25]
+                        - [11, 0.15]
+                        - [12, 1]
+                        - [13, 1.50]
+                        - [14, 2.0]
+                    cull_from_tile: true
+                    visible: false
+                    text:
+                        offset: [0px, -0.5px]
+                        repeat_distance: 200px
+                        anchor: center
+                        text_source: |
+                            function() { 
+                                if( feature.shield_text ) { 
+                                    return feature.shield_text;
+                                } else {
+                                    return feature.ref;
+                                }
+                            }
+                        font:
+                            family: Montserrat
+                            #fill: [0.308,0.308,0.308]
+                            fill: [0.320,0.320,0.320]
+                            size: [[7,7px],[12,8px],[16,11px]]
+
+            default_priority_highway:
+                filter: 
+                    all:
+                        - kind_detail: motorway
+                        - $zoom: { min: 9 }
+                draw:
+                    icons:
+                        priority: 47
+                        #color: yellow
+                        visible: *text_visible_shields
+
+            default_priority_trunk:
+                filter: 
+                    all:
+                        - kind_detail: [trunk]
+                        - $zoom: { min: 10 }
+                draw:
+                    icons:
+                        priority: 48
+                        #color: red
+                        visible: *text_visible_shields
+            default_priority_primary:
+                filter: 
+                    all:
+                        - kind_detail: [primary]
+                        - $zoom: { min: 12 }
+                draw:
+                    icons:
+                        priority: 49
+                        #color: aqua
+                        visible: *text_visible_shields
+            default_priority_trunk_secondary:
+                filter:
+                    all:
+                        - kind_detail: [secondary]
+                        - $zoom: { min: 12 }
+                draw:
+                    icons:
+                        priority: 53
+                        #color: blue
+                        visible: *text_visible_shields
+            default_priority_trunk_tertiary:
+                filter:
+                    all:
+                        - kind_detail: tertiary
+                        - $zoom: { min: 13 }
+                draw:
+                    icons:
+                        priority: 55
+                        #color: green
+                        visible: *text_visible_shields
+            # not-special:
+            #     filter:
+            #         not: { network: ['US:I','US:US'] }
+            #         $zoom: { max: 9 }
+            #     draw:
+            #         icons:
+            #             visible: false
+            width_1char:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length === 1)
+                        } else {
+                            return (feature.ref.length === 1)
+                        }
+                    }
+                draw:
+                    icons:
+                        size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
+            width_2char:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length === 2)
+                        } else {
+                            return (feature.ref.length === 2)
+                        }
+                    }
+                draw:
+                    icons:
+                        size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
+            width_3char:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length === 3)
+                        } else {
+                            return (feature.ref.length === 3)
+                        }
+                    }
+                draw:
+                    icons:
+                        size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
+            width_4char:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length === 4)
+                        } else {
+                            return (feature.ref.length === 4)
+                        }
+                    }
+                draw:
+                    icons:
+                        size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
+                # London sucks
+                early:
+                    filter: { $zoom: { max: 14 } }
+                    draw:
+                        icons:
+                            visible: false
+            width_5char:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length === 5)
+                        } else {
+                            return (feature.ref.length === 5)
+                        }
+                    }
+                draw:
+                    icons:
+                        size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
+                # London sucks
+                early:
+                    filter: { $zoom: { max: 14 } }
+                    draw:
+                        icons:
+                            visible: false
+            # this is kinda a hack
+            width_longggggg:
+                filter: |
+                    function() { 
+                        if( feature.shield_text ) { 
+                            return (feature.shield_text.length > 5)
+                        } else {
+                            return (feature.ref.length > 5)
+                        }
+                    }
+                draw:
+                    icons:
+                        visible: false
+            # missing-route-relations:
+            #     filter: { shield_text: false }
+            #     draw:
+            #         lines:
+            #             order: 1000
+            #             color: red
+            #             width: 2px
+            #
+            # Now for the good stuff
+            #
+            legit-shields:
+                filter: { shield_text: true }
+                # draw:
+                #     icons:
+                #         color: red
+                # US Interstate roads
+                US-I:
+                    filter:
+                        network: 'US:I'
+                    draw:
+                        icons:
+                            # you need to match any custom shield to the vector tile `network` values
+                            sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
+                            priority: 46
+                            visible: *text_visible_shields
+                            text:
+                                offset: [0px, 0.5px]
+                                font:
+                                    fill: [1.0,1.0,1.0]
+                                    size: [[7,8px],[13,9px],[15,11px]]
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[15px,18px]],[13,[17px,20px]],[15,[22px,25px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[18px,18px]],[13,[20px,20px]],[15,[25px,25px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[23px,18px]],[13,[26px,20px]],[15,[33px,25px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[25px,18px]],[13,[27px,20px]],[15,[35px,25px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[26px,18px]],[13,[30px,20px]],[15,[38px,25px]]]
+                # US Federal Routes
+                US-US:
+                    filter:
+                        network: ['US:US','US:US:Business', 'US:US:Truck', 'US:US:Alternate']
+                        $zoom: { min: 7 }
+                    draw:
+                        icons:
+                            # you need to match any custom shield to the vector tile `network` values
+                            sprite: |
+                                function() { return ('US:US_' + feature.shield_text.length + 'char'); }
+                            priority: 47
+                            cull_from_tile: true
+                            visible: *text_visible_shields
+                            text:
+                                offset: [0px, -0.7px]
+                                font:
+                                    fill: [0.0,0.0,0.0]
+                                    size: [[7,8px],[13,9px],[15,11px]]
+                    # early:
+                    #     filter: { $zoom: [7] }
+                    #     icons:
+                    #         visible: false
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[15px,17px]],[13,[17px,19px]],[15,[22px,24px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[18px,17px]],[13,[20px,19px]],[15,[26px,24px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[22px,17px]],[13,[25px,19px]],[15,[34px,25px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[25px,17px]],[13,[29px,19px]],[15,[39px,25px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[27px,17px]],[13,[30px,19px]],[15,[41px,25px]]]
+                # US State Routes
+                # US-states:
+                #     # Match state highways: `US:??`
+                #     filter: |
+                #         function() {
+                #             return feature.shield_text &&
+                #                 /^US:(?!US)\w\w$/.test(feature.network)
+                #         }
+                #     draw:
+                #         icons:
+                #             # you need to match any custom shield to the vector tile `network` values
+                #             priority: 18
+                #     early:
+                #         filter: { $zoom: [7,8,9] }
+                #         icons:
+                #             visible: false
+                US-CA:
+                    # Match California state highways: `US:CA`
+                    filter: |
+                        function() {
+                            return feature.shield_text &&
+                                /^US:CA$/.test(feature.network)
+                        }
+                    draw:
+                        icons:
+                            sprite: function() { return (feature.network + '_' + feature.shield_text.length + 'char'); }
+                            text:
+                                offset: [0px, 1px]
+                                font:
+                                    fill: [1.0,1.0,1.0]
+                                    size: [[7,7px],[13,9px],[15,10px]]
+                    motorway:
+                        filter: { kind_detail: [motorway], $zoom: [7,8] }
+                        draw:
+                            icons:
+                                visible: *text_visible_shields
+                    trunk:
+                        filter: { kind_detail: [trunk], $zoom: [8,9] }
+                        draw:
+                            icons:
+                                visible: *text_visible_shields
+                    primary:
+                        filter: { kind_detail: primary, $zoom: [10,11] }
+                        draw:
+                            icons:
+                                visible: *text_visible_shields
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[14px,16px]],[13,[15px,18px]],[15,[18px,21px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[18px,18px]],[13,[20px,20px]],[15,[23px,23px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[21px,18px]],[13,[24px,20px]],[15,[28px,23px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[24px,18px]],[13,[26px,20px]],[15,[31px,23px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[25px,18px]],[13,[27px,20px]],[15,[32px,23px]]]
+                US-NY:
+                    # Match New York state highways: `US:NY`
+                    filter: |
+                        function() {
+                            return feature.shield_text &&
+                                /^US:NY$/.test(feature.network)
+                                /* (/^US:NY$/.test(feature.network) || /^NY:US$/.test(feature.network)) */
+                        }
+                    draw:
+                        icons:
+                            sprite: |
+                                function() { return ( 'US:NY_' + feature.shield_text.length + 'char'); }
+                            text:
+                                # offset: [0px, 1px]
+                                font:
+                                    fill: [0.0,0.0,0.0]
+                                    size: [[7,7px],[13,9px],[15,10px]]
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[13px,17px]],[13,[15px,19px]],[15,[18px,22px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[17px,17px]],[13,[19px,19px]],[15,[22px,22px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[20px,17px]],[13,[22px,19px]],[15,[27px,22px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[21px,17px]],[13,[24px,19px]],[15,[29px,22px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[22px,17px]],[13,[25px,19px]],[15,[30px,22px]]]
+                US-PA:
+                    # Match Pennsylvania state highways
+                    filter: |
+                        function() {
+                            return feature.shield_text &&
+                                /^US:PA$/.test(feature.network)
+                        }
+                    draw:
+                        icons:
+                            sprite: |
+                                function() { return ( 'US:PA_' + feature.shield_text.length + 'char'); }
+                            text:
+                                offset: [0px, 1px]
+                                font:
+                                    fill: [0.0,0.0,0.0]
+                                    size: [[7,7px],[13,9px],[15,10px]]
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[13px,17px]],[13,[15px,19px]],[15,[18px,22px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[17px,17px]],[13,[19px,19px]],[15,[22px,22px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[21px,17px]],[13,[24px,19px]],[15,[28px,22px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[22px,17px]],[13,[25px,19px]],[15,[30x,22px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[24px,17px]],[13,[27px,19px]],[15,[32px,22px]]]
+                # USA County Routes
+                US-counties:
+                    # Match state highways: `US:??:*`
+                    #
+                    # this is very USA specific
+                    #
+                    # filter: |
+                    #     function() {
+                    #         return feature.shield_text &&
+                    #             /^US:(?!US)\w\w:.*$/.test(feature.network)
+                    #     }
+                    #
+                    # this generic for any country with 3rd level networks (like county routes in USA)
+                    # BEWARE: 
+                    # US:US:Business  about 150
+                    # US:US:Truck
+                    # US:US:Alternate
+    # 
+                    # STATE ROUTE
+                    # ??:??:Loop  about 200
+                    # ??:??:Spur  about 200
+                    # ??:??:Business   about 100
+    # 
+                    # STATE TEXAS SPECIAL ROUTE
+                    # US:TX:FM -- probably just state? there are 3k of these
+                    #
+                    #
+                    filter: |
+                        function() {
+                            return feature.shield_text &&
+                                /^\w+:\w+:(!Alternate).+$/.test(feature.network) &&
+                                $zoom > 10
+                        }
+                    draw:
+                        icons:
+                            # you need to match any custom shield to the vector tile `network` values
+                            sprite: function() { return ('county_shield_' + feature.shield_text.length + 'char'); }
+                            # priority: 19
+                            visible: *text_visible_shields
+                            text:
+                                font:
+                                    fill: [0.320,0.320,0.320]
+                                    #size: [[11,7px],[15,10px]]
+                    # early:
+                    #     filter: { $zoom: { max: 11 } }
+                    #     draw:
+                    #         icons:
+                    #             visible: false
+                    width_1char:
+                        filter: function() { return (feature.shield_text.length === 1) }
+                        draw:
+                            icons:
+                                size: [[6,[14px,14px]],[13,[16px,16px]],[15,[18px,18px]]]
+                    width_2char:
+                        filter: function() { return (feature.shield_text.length === 2) }
+                        draw:
+                            icons:
+                                size: [[6,[16px,14px]],[13,[18px,15px]],[15,[22px,18px]]]
+                    width_3char:
+                        filter: function() { return (feature.shield_text.length === 3) }
+                        draw:
+                            icons:
+                                size: [[6,[20px,14px]],[13,[21px,15px]],[15,[26px,18px]]]
+                    width_4char:
+                        filter: function() { return (feature.shield_text.length === 4) }
+                        draw:
+                            icons:
+                                size: [[6,[25px,14px]],[13,[28px,15px]],[15,[34px,18px]]]
+                    width_5char:
+                        filter: function() { return (feature.shield_text.length === 5) }
+                        draw:
+                            icons:
+                                size: [[6,[30px,14px]],[13,[33px,15px]],[15,[40px,18px]]]
         path:
             filter:
                 all:
@@ -2639,7 +3403,7 @@ layers:
                 filter: { $zoom: { min: 17 } }
                 draw:
                     text-blend-order:
-                        priority: 58
+                        priority: 61
                         visible: *text_visible_path
                         text_source: name
                         font:
@@ -2763,7 +3527,7 @@ layers:
                 filter: { $zoom: { min: 17 } }
                 draw:
                     text-blend-order:
-                        priority: 59
+                        priority: 63
                         visible: *text_visible_steps
                         text_source: name
                         font:
@@ -2917,7 +3681,7 @@ layers:
                 filter: { $zoom: { min: 14 } }
                 draw:
                     text-blend-order:
-                        priority: 59
+                        priority: 63
                         visible: *text_visible_aerialway
                         text_source: name
                         font:
@@ -3489,6 +4253,7 @@ layers:
                     priority: 5
                     text:
                         interactive: true
+                        buffer: 3px
 
             populated-places-natural-earth-z2:
                 filter: { $zoom: [2], min_zoom: 2 }
@@ -5001,7 +5766,7 @@ layers:
                 size: [[13, 18px], [16, 18px], [18, 22px]]
                 interactive: true
                 visible: false
-                priority: 45
+                priority: 65
                 repeat_group: abc
                 text:
                     visible: false    # labels are enabled by each layer below
