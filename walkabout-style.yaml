@@ -702,8 +702,8 @@ textures:
             wine: [640, 168, 38, 38]
             zoo: [138, 126, 38, 38]
             #
-            # HACK: not currently in source sprite sheet
-            transit-stop: [126, 294, 12, 12]
+            # HACK: not currently in source sprite sheet (capital-xl)
+            transit-stop: [676, 814, 20, 20]
 
     building-grid:
         url: images/building-grid.gif
