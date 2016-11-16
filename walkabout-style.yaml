@@ -431,7 +431,6 @@ textures:
             county_shield_4char: [416, 314, 136, 72]
             county_shield_5char: [248, 314, 160, 72]
             courthouse: [446, 0, 38, 38]
-            current-location: [294, 856, 88, 88]
             dentist: [266, 0, 38, 38]
             department-store: [918, 126, 38, 38]
             department_store: [918, 126, 38, 38]
@@ -539,8 +538,6 @@ textures:
             liquor-store: [690, 126, 38, 38]
             alcohol: [690, 126, 38, 38]
             liquor: [690, 126, 38, 38]
-            locate-off: [628, 856, 72, 72]
-            locate-on: [548, 856, 72, 72]
             mall: [736, 42, 38, 38]
             market: [690, 42, 38, 38]
             variety_store: [690, 42, 38, 38]
@@ -615,9 +612,6 @@ textures:
             car_sharing: [676, 0, 38, 38]
             restaurant: [274, 210, 38, 38]
             deli: [274, 210, 38, 38]
-            route-arrow: [0, 856, 128, 128]
-            route-start: [214, 856, 72, 92]
-            route-stop: [136, 856, 72, 92]
             ruin: [584, 0, 38, 38]
             ruins: [584, 0, 38, 38]
             archaeological_site: [584, 0, 38, 38]
@@ -630,8 +624,6 @@ textures:
             scuba-diving: [276, 814, 38, 38]
             scuba_diving: [276, 814, 38, 38]
             dive_centre: [276, 814, 38, 38]
-            search-active: [388, 856, 72, 108]
-            search-inactive: [468, 856, 72, 108]
             shoe-store: [644, 42, 38, 38]
             shoes: [644, 42, 38, 38]
             shoe_store: [644, 42, 38, 38]
@@ -702,8 +694,17 @@ textures:
             wine: [640, 168, 38, 38]
             zoo: [138, 126, 38, 38]
             #
+            ux-current-location: [294, 856, 88, 88]
+            ux-locate-off: [628, 856, 72, 72]
+            ux-locate-on: [548, 856, 72, 72]
+            ux-route-arrow: [0, 856, 128, 128]
+            ux-route-start: [214, 856, 72, 92]
+            ux-route-stop: [136, 856, 72, 92]
+            ux-search-active: [388, 856, 72, 108]
+            ux-search-inactive: [468, 856, 72, 108]
+            #
             # HACK: not currently in source sprite sheet (capital-xl)
-            transit-stop: [676, 814, 20, 20]
+            ux-transit-stop: [676, 814, 20, 20]
 
     building-grid:
         url: images/building-grid.gif
@@ -1234,7 +1235,7 @@ layers:
         draw:
             ux-location-gem-overlay:
                 interactive: true
-                sprite: current-location
+                sprite: ux-current-location
                 size: 36px
                 collide: false
                 transition:
@@ -1245,7 +1246,7 @@ layers:
         draw:
             ux-location-gem-overlay:
                 interactive: true
-                sprite: route-arrow
+                sprite: ux-route-arrow
                 size: [60px,60px]
                 collide: false
                 transition:
@@ -1257,7 +1258,7 @@ layers:
             ux-icons-overlay:
                 interactive: true
                 priority: 1
-                sprite: route-start
+                sprite: ux-route-start
                 size: [36px,46px]
                 collide: false
                 anchor: top
@@ -1270,7 +1271,7 @@ layers:
             ux-icons-overlay:
                 interactive: true
                 priority: 1
-                sprite: route-stop
+                sprite: ux-route-stop
                 size: [36px,46px]
                 collide: false
                 anchor: top
@@ -1282,7 +1283,7 @@ layers:
         draw:
             ux-icons-overlay:
                 interactive: true
-                sprite: transit-stop
+                sprite: ux-transit-stop
                 size: [15px,15px]
                 collide: false
                 transition:
@@ -1293,7 +1294,7 @@ layers:
         draw:
             ux-icons-overlay:
                 interactive: true
-                sprite: search-active
+                sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
                 anchor: top
@@ -1304,13 +1305,13 @@ layers:
             filter: { state: inactive }
             draw:
                 ux-icons-overlay:
-                    sprite: search-inactive
+                    sprite: ux-search-inactive
     mz_dropped_pin:
         data: { source: mz_dropped_pin }
         draw:
             ux-icons-overlay:
                 interactive: true
-                sprite: search-active
+                sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
                 anchor: top
@@ -1324,7 +1325,7 @@ layers:
         draw:
             sdk-point-overlay:
                 interactive: true
-                sprite: search-active
+                sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
                 anchor: top
