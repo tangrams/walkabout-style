@@ -408,7 +408,7 @@ textures:
             capital-l: [636, 752, 32, 32]
             capital-m: [604, 752, 24, 24]
             capital-s: [574, 752, 20, 20]
-            capital-xl: [724, 752, 42, 36]
+            capital-xl: [724, 752, 40, 40]
             capital-xs: [552, 752, 16, 16]
             car: [872, 126, 38, 38]
             car_repair: [92, 168, 38, 38]
