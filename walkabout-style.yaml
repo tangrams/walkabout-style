@@ -405,11 +405,11 @@ textures:
             butcher: [0, 84, 38, 38]
             cafe: [594, 168, 38, 38]
             camp_site: [874, 84, 38, 38]
-            capital-l: [422, 754, 16, 16]
-            capital-m: [402, 754, 12, 12]
-            capital-s: [382, 754, 10, 10]
-            capital-xl: [474, 754, 20, 20]
-            capital-xs: [368, 754, 8, 8]
+            capital-l: [636, 752, 32, 32]
+            capital-m: [604, 752, 24, 24]
+            capital-s: [574, 752, 20, 20]
+            capital-xl: [724, 752, 42, 36]
+            capital-xs: [552, 752, 16, 16]
             car: [872, 126, 38, 38]
             car_repair: [92, 168, 38, 38]
             car_sharing: [676, 0, 38, 38]
@@ -432,17 +432,19 @@ textures:
             county_shield-4char: [276, 314, 136, 72]
             county_shield-5char: [108, 314, 160, 72]
             courthouse: [446, 0, 38, 38]
+            dam: [322, 752, 38, 38]
             dentist: [266, 0, 38, 38]
             department_store: [826, 126, 38, 38]
             doctors: [224, 0, 38, 38]
             clinic: [224, 0, 38, 38]
             dog_park: [414, 710, 38, 38]
-            dot-black: [276, 752, 38, 38]
-            dot-white: [230, 752, 38, 38]
+            dot-black: [460, 752, 38, 38]
+            dot-white: [276, 752, 38, 38]
             drinking_water: [320, 210, 38, 38]
             dry_cleaning: [92, 84, 38, 38]
             electronics: [690, 126, 38, 38]
             computer: [690, 126, 38, 38]
+            enclosure: [368, 752, 38, 38]
             estate_agent: [184, 42, 38, 38]
             factory: [460, 168, 38, 38]
             industrial: [460, 168, 38, 38]
@@ -474,7 +476,8 @@ textures:
             gallery: [732, 168, 38, 38]
             garden: [736, 84, 38, 38]
             gas_canister: [0, 752, 38, 38]
-            generic: [322, 752, 38, 38]
+            gate: [414, 752, 38, 38]
+            generic: [506, 752, 38, 38]
             generic_shield-1char: [404, 510, 72, 72]
             generic_shield-2char: [300, 510, 98, 72]
             generic_shield-3char: [160, 510, 132, 72]
@@ -595,31 +598,32 @@ textures:
             theme_park: [46, 126, 38, 38]
             amusement_ride: [46, 126, 38, 38]
             toilets: [920, 84, 38, 38]
-            townspot-l: [660, 752, 16, 16]
-            townspot-l-rev: [554, 754, 16, 16]
-            townspot-m: [640, 752, 12, 12]
-            townspot-m-rev: [534, 754, 12, 12]
-            townspot-s: [622, 752, 10, 10]
-            townspot-s-rev: [516, 754, 10, 10]
-            townspot-xl: [684, 752, 20, 20]
-            townspot-xl-rev: [578, 754, 20, 20]
-            townspot-xs: [606, 752, 8, 8]
-            townspot-xs-rev: [502, 754, 6, 6]
+            townspot-l: [0, 796, 32, 32]
+            townspot-l-rev: [852, 752, 32, 32]
+            townspot-m: [992, 752, 24, 24]
+            townspot-m-rev: [820, 752, 24, 24]
+            townspot-s: [964, 752, 20, 20]
+            townspot-s-rev: [792, 752, 20, 20]
+            townspot-xl: [40, 796, 40, 40]
+            townspot-xl-rev: [892, 752, 38, 38]
+            townspot-xs: [940, 752, 16, 16]
+            townspot-xs-rev: [772, 752, 12, 12]
             toys: [0, 42, 38, 38]
             traffic_signals: [0, 210, 38, 38]
             trailhead: [138, 752, 38, 38]
             train_station: [492, 0, 38, 38]
             station: [492, 0, 38, 38]
-            tree: [184, 752, 38, 38]
-            ux-current-location: [0, 884, 88, 88]
-            ux-locate-off: [334, 884, 72, 72]
-            ux-locate-on: [254, 884, 72, 72]
-            ux-route-arrow: [712, 752, 128, 128]
-            ux-route-start: [926, 752, 72, 92]
-            ux-route-stop: [848, 752, 72, 92]
-            ux-search-active: [94, 884, 72, 108]
-            ux-search-inactive: [174, 884, 72, 108]
-            ux-transit-stop: [446, 754, 20, 20]
+            tree-s: [184, 752, 38, 38]
+            tree-xs: [230, 752, 38, 38]
+            ux-current-location: [382, 796, 88, 88]
+            ux-locate-off: [716, 796, 72, 72]
+            ux-locate-on: [636, 796, 72, 72]
+            ux-route-arrow: [88, 796, 128, 128]
+            ux-route-start: [302, 796, 72, 92]
+            ux-route-stop: [224, 796, 72, 92]
+            ux-search-active: [476, 796, 72, 108]
+            ux-search-inactive: [556, 796, 72, 108]
+            ux-transit-stop: [676, 754, 42, 36]
             veterinary: [136, 0, 38, 38]
             viewpoint: [778, 168, 38, 38]
             vineyard: [138, 168, 38, 38]
@@ -1581,7 +1585,7 @@ layers:
                         width: function () { return 3/16 * Math.log($zoom); }
 
         natural_earth_highways:
-            filter: { source: 'naturalearthdata.com' }
+            filter: { source: 'naturalearthdata.com', $zoom: { max: 8 } }
             draw:
                 lines:
                     color: [[5, [0.5,0.5,0.5]],[6, [0.350,0.350,0.350]]]
@@ -1590,7 +1594,7 @@ layers:
                         color: *highway_casing1
                         width: [[9, 0px], [10, 0px], [12, 1px], [16, 2px]]
             major_road:
-                filter: { type: ['Secondary Highway','Road'] }
+                filter: { kind: major_road }
                 draw:
                     lines:
                         color: [[5, [0.75,0.75,0.75]], [8, [0.4,0.4,0.4]], [13, [0.4,0.4,0.4]], [17, *major_road1]]
@@ -1599,7 +1603,7 @@ layers:
                         outline:
                             width: [[8, 0.0px], [9, 0.0px], [11, .5px], [16, .75px]]
             minor_road:
-                filter: { type: 'Unknown' }
+                filter: { kind: minor_road }
                 draw:
                     lines:
                         color: [[12, *minor_road1], [17, *minor_road2]]
@@ -1607,7 +1611,7 @@ layers:
                         # outline:
                         #     width: [[12, 0px], [14, .5px], [17, 1px]]
             ferry:
-                filter: { kind: Ferry }
+                filter: { kind: ferry }
                 draw:
                     lines:
                         color: *ferry1
@@ -1615,7 +1619,7 @@ layers:
                         outline:
                             width: 0px
         highway:
-            filter: { kind: highway }
+            filter: { kind: highway, $zoom: { min: 8 } }
             draw:
                 lines:
                     color: [[8, [0.408,0.430,0.461]], [14, [0.408,0.430,0.461]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
@@ -5775,7 +5779,7 @@ layers:
                     icons:
                         # TODO: put tree icons behind the buildings
                         # See SF State University #20/37.72314/-122.47772
-                        sprite: tree
+                        sprite: tree-s
                         color: [0.145,0.745,0.643]
                         visible: *icon_visible_poi_landuse_e
                 z18:
@@ -5784,19 +5788,19 @@ layers:
                         icons:
                             # to circle white SMALL
                             color: [0.459,0.765,0.722]
-                            sprite: dot-white
+                            sprite: tree-xs
                 z19:
                     filter: { $zoom: [19] }
                     draw:
                         icons:
                             # to circle white SMALL
-                            sprite: tree
+                            sprite: tree-s
             gate:
                 filter: { kind: gate, $zoom: { min: 19 } }
                 draw:
                     icons:
                         # to circle black generic
-                        sprite: dot-black
+                        sprite: gate
                         visible: *icon_visible_poi_landuse_e
                         text:
                             text_source: function() { return 'gate'; }
@@ -6349,7 +6353,7 @@ layers:
                     draw:
                         icons:
                             visible: false
-                            sprite_default: dot-black
+                            sprite_default: enclosure
                         text:
                             text_wrap: 10
                             font:
@@ -6905,7 +6909,7 @@ layers:
                     draw:   { icons: { sprite: college } }
                 dam:
                     filter: { kind: [dam] }
-                    draw:   { icons: { sprite: dot-black } }
+                    draw:   { icons: { sprite: dam } }
                 hardware-store:
                     filter: { kind: [hardware, hardware-store, doityourself, paint] }
                     draw:   { icons: { sprite: hardware-store } }
