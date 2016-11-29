@@ -613,8 +613,8 @@ textures:
             trailhead: [138, 752, 38, 38]
             train_station: [492, 0, 38, 38]
             station: [492, 0, 38, 38]
-            tree-s: [184, 752, 38, 38]
-            tree-xs: [230, 752, 38, 38]
+            tree: [184, 752, 38, 38]
+            tree-s: [230, 752, 38, 38]
             ux-current-location: [382, 796, 88, 88]
             ux-locate-off: [716, 796, 72, 72]
             ux-locate-on: [636, 796, 72, 72]
@@ -5779,22 +5779,20 @@ layers:
                     icons:
                         # TODO: put tree icons behind the buildings
                         # See SF State University #20/37.72314/-122.47772
-                        sprite: tree-s
+                        sprite: tree
                         color: [0.145,0.745,0.643]
                         visible: *icon_visible_poi_landuse_e
                 z18:
                     filter: { $zoom: [18] }
                     draw:
                         icons:
-                            # to circle white SMALL
                             color: [0.459,0.765,0.722]
-                            sprite: tree-xs
+                            sprite: tree-s
                 z19:
                     filter: { $zoom: [19] }
                     draw:
                         icons:
-                            # to circle white SMALL
-                            sprite: tree-s
+                            sprite: tree
             gate:
                 filter: { kind: gate, $zoom: { min: 19 } }
                 draw:
