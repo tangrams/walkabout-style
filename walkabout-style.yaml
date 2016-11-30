@@ -72,6 +72,10 @@ global:
     sdk_order_under_everything_8: 8
     sdk_order_under_everything_9: 9
     #
+    # SHIELDS
+    sdk_shield_color: black
+    sdk_shield_text_color: white
+    #
     # default order for basemap features
     feature_order: function() { return feature.sort_rank; }
     #
@@ -342,34 +346,34 @@ textures:
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-            'US:CA-1char': [0, 606, 82, 92]
-            'US:CA-2char': [872, 510, 94, 94]
-            'US:CA-3char': [752, 510, 112, 92]
-            'US:CA-4char': [620, 510, 124, 92]
-            'US:CA-5char': [484, 510, 128, 92]
-            'US:I-1char': [774, 606, 90, 100]
+            'US:CA-1char': [812, 602, 82, 92]
+            'US:CA-2char': [712, 602, 92, 92]
+            'US:CA-3char': [592, 602, 112, 92]
+            'US:CA-4char': [460, 602, 124, 92]
+            'US:CA-5char': [324, 602, 128, 92]
+            'US:I-1char': [686, 698, 90, 100]
             'US:I-2char': [0, 314, 102, 102]
             'US:I-3char': [812, 210, 134, 100]
             'US:I-4char': [664, 210, 140, 100]
             'US:I-5char': [504, 210, 152, 100]
-            'US:NY-1char': [656, 418, 72, 88]
+            'US:NY-1char': [444, 510, 72, 88]
             'US:NY-2char': [0, 418, 88, 88]
             'US:NY-3char': [880, 314, 104, 86]
             'US:NY-4char': [756, 314, 116, 86]
             'US:NY-5char': [628, 314, 120, 86]
-            'US:PA-1char': [576, 418, 72, 88]
+            'US:PA-1char': [364, 510, 72, 88]
             'US:PA-2char': [480, 418, 88, 88]
             'US:PA-3char': [360, 418, 112, 88]
             'US:PA-4char': [232, 418, 120, 88]
             'US:PA-5char': [96, 418, 128, 88]
-            'US:US-1char': [678, 606, 92, 92]
-            'US:US-2char': [568, 608, 106, 94]
-            'US:US-3char': [422, 606, 138, 100]
-            'US:US-4char': [260, 606, 156, 100]
-            'US:US-5char': [88, 606, 164, 100]
+            'US:US-1char': [592, 698, 88, 94]
+            'US:US-2char': [480, 700, 106, 94]
+            'US:US-3char': [336, 698, 136, 100]
+            'US:US-4char': [172, 698, 156, 100]
+            'US:US-5char': [0, 698, 164, 100]
             airport: [952, 0, 38, 38]
             aerodrome: [952, 0, 38, 38]
-            allotments: [828, 710, 38, 38]
+            allotments: [736, 802, 38, 38]
             aquarium: [824, 168, 38, 38]
             atm: [0, 168, 38, 38]
             attraction: [458, 210, 38, 38]
@@ -379,10 +383,10 @@ textures:
             pub: [322, 168, 38, 38]
             baseball: [552, 84, 38, 38]
             basketball: [506, 84, 38, 38]
-            battlefield: [92, 710, 38, 38]
-            bbq: [506, 710, 38, 38]
+            battlefield: [0, 802, 38, 38]
+            bbq: [414, 802, 38, 38]
             beach: [690, 84, 38, 38]
-            beach_resort: [0, 710, 38, 38]
+            beach_resort: [920, 698, 38, 38]
             bench: [630, 0, 38, 38]
             bicycle: [964, 126, 38, 38]
             bicycle_rental: [964, 126, 38, 38]
@@ -390,7 +394,7 @@ textures:
             bicycle_parking: [736, 126, 38, 38]
             biergarten: [366, 210, 38, 38]
             brewery: [366, 210, 38, 38]
-            boat_rental: [874, 710, 38, 38]
+            boat_rental: [782, 802, 38, 38]
             books: [918, 126, 38, 38]
             bridge: [966, 84, 38, 38]
             buddhist: [828, 84, 38, 38]
@@ -405,15 +409,15 @@ textures:
             butcher: [0, 84, 38, 38]
             cafe: [594, 168, 38, 38]
             camp_site: [874, 84, 38, 38]
-            capital-l: [636, 752, 32, 32]
-            capital-m: [604, 752, 24, 24]
-            capital-s: [574, 752, 20, 20]
-            capital-xl: [724, 752, 40, 40]
-            capital-xs: [552, 752, 16, 16]
+            capital-l: [544, 844, 32, 32]
+            capital-m: [512, 844, 24, 24]
+            capital-s: [482, 844, 20, 20]
+            capital-xl: [632, 844, 40, 40]
+            capital-xs: [460, 844, 16, 16]
             car: [872, 126, 38, 38]
             car_repair: [92, 168, 38, 38]
             car_sharing: [676, 0, 38, 38]
-            caravan_site: [230, 710, 38, 38]
+            caravan_site: [138, 802, 38, 38]
             castle: [460, 42, 38, 38]
             fort: [460, 42, 38, 38]
             cemetery: [782, 84, 38, 38]
@@ -426,25 +430,25 @@ textures:
             university: [962, 168, 38, 38]
             confectionery: [90, 210, 38, 38]
             convenience: [138, 84, 38, 38]
-            county_shield-1char: [736, 418, 72, 72]
+            county_shield-1char: [524, 510, 72, 72]
             county_shield-2char: [532, 314, 88, 72]
             county_shield-3char: [420, 314, 104, 72]
             county_shield-4char: [276, 314, 136, 72]
             county_shield-5char: [108, 314, 160, 72]
             courthouse: [446, 0, 38, 38]
-            dam: [322, 752, 38, 38]
+            dam: [230, 844, 38, 38]
             dentist: [266, 0, 38, 38]
             department_store: [826, 126, 38, 38]
             doctors: [224, 0, 38, 38]
             clinic: [224, 0, 38, 38]
-            dog_park: [414, 710, 38, 38]
-            dot-black: [460, 752, 38, 38]
-            dot-white: [276, 752, 38, 38]
+            dog_park: [322, 802, 38, 38]
+            dot-black: [368, 844, 38, 38]
+            dot-white: [184, 844, 38, 38]
             drinking_water: [320, 210, 38, 38]
             dry_cleaning: [92, 84, 38, 38]
             electronics: [690, 126, 38, 38]
             computer: [690, 126, 38, 38]
-            enclosure: [368, 752, 38, 38]
+            enclosure: [276, 844, 38, 38]
             estate_agent: [184, 42, 38, 38]
             factory: [460, 168, 38, 38]
             industrial: [460, 168, 38, 38]
@@ -459,9 +463,9 @@ textures:
             ferry: [906, 0, 38, 38]
             ferry_terminal: [906, 0, 38, 38]
             fire_station: [400, 0, 38, 38]
-            firepit: [368, 710, 38, 38]
-            fishing: [276, 710, 38, 38]
-            fishing_area: [276, 710, 38, 38]
+            firepit: [276, 802, 38, 38]
+            fishing: [184, 802, 38, 38]
+            fishing_area: [184, 802, 38, 38]
             fitness: [966, 42, 38, 38]
             fitness_station: [966, 42, 38, 38]
             florist: [230, 126, 38, 38]
@@ -475,15 +479,15 @@ textures:
             fuel: [44, 210, 38, 38]
             gallery: [732, 168, 38, 38]
             garden: [736, 84, 38, 38]
-            gas_canister: [0, 752, 38, 38]
-            gate: [414, 752, 38, 38]
-            generic: [506, 752, 38, 38]
-            generic_shield-1char: [404, 510, 72, 72]
-            generic_shield-2char: [300, 510, 98, 72]
-            generic_shield-3char: [160, 510, 132, 72]
-            generic_shield-4char: [0, 510, 152, 72]
-            generic_shield-5char: [816, 418, 180, 72]
-            geyser: [962, 606, 38, 38]
+            gas_canister: [920, 802, 38, 38]
+            gate: [322, 844, 38, 38]
+            generic: [414, 844, 38, 38]
+            generic_shield-1char: [244, 602, 72, 72]
+            generic_shield-2char: [140, 602, 98, 72]
+            generic_shield-3char: [0, 602, 132, 72]
+            generic_shield-4char: [792, 510, 152, 72]
+            generic_shield-5char: [604, 510, 180, 72]
+            geyser: [874, 698, 38, 38]
             gift: [184, 126, 38, 38]
             golf_course: [460, 84, 38, 38]
             government: [230, 168, 38, 38]
@@ -500,9 +504,9 @@ textures:
             hotel: [814, 0, 38, 38]
             motel: [814, 0, 38, 38]
             hostel: [814, 0, 38, 38]
-            hunting: [916, 606, 38, 38]
+            hunting: [828, 698, 38, 38]
             ice_cream: [412, 210, 38, 38]
-            information: [872, 606, 38, 38]
+            information: [784, 698, 38, 38]
             jewelry: [782, 42, 38, 38]
             jewish: [44, 0, 38, 38]
             landmark: [354, 0, 38, 38]
@@ -522,18 +526,18 @@ textures:
             dock: [184, 168, 38, 38]
             mine: [828, 42, 38, 38]
             mobile_phone: [552, 42, 38, 38]
-            motorcycle: [644, 710, 38, 38]
+            motorcycle: [552, 802, 38, 38]
             museum: [92, 126, 38, 38]
             music: [414, 42, 38, 38]
             muslim: [90, 0, 38, 38]
             newspaper: [368, 42, 38, 38]
             kiosk: [368, 42, 38, 38]
-            observatory: [966, 710, 38, 38]
+            observatory: [874, 802, 38, 38]
             office: [644, 84, 38, 38]
             insurance: [644, 84, 38, 38]
             company: [644, 84, 38, 38]
             optician: [322, 42, 38, 38]
-            outdoor: [92, 752, 38, 38]
+            outdoor: [0, 844, 38, 38]
             park: [322, 126, 38, 38]
             national_park: [322, 126, 38, 38]
             battlefield: [322, 126, 38, 38]
@@ -544,8 +548,8 @@ textures:
             pharmacy: [46, 84, 38, 38]
             photographic_laboratory: [230, 42, 38, 38]
             photographer: [230, 42, 38, 38]
-            picnic_site: [598, 710, 38, 38]
-            picnic_table: [598, 710, 38, 38]
+            picnic_site: [506, 802, 38, 38]
+            picnic_table: [506, 802, 38, 38]
             pier: [722, 0, 38, 38]
             place_of_worship: [368, 168, 38, 38]
             chapel: [368, 168, 38, 38]
@@ -556,8 +560,8 @@ textures:
             quarry: [874, 42, 38, 38]
             mineshaft: [874, 42, 38, 38]
             adit: [874, 42, 38, 38]
-            ranger_station: [552, 710, 38, 38]
-            recreation_track: [736, 710, 38, 38]
+            ranger_station: [460, 802, 38, 38]
+            recreation_track: [644, 802, 38, 38]
             recycling: [138, 42, 38, 38]
             restaurant: [182, 210, 38, 38]
             retail: [644, 42, 38, 38]
@@ -567,17 +571,22 @@ textures:
             archaeological_site: [584, 0, 38, 38]
             school: [598, 84, 38, 38]
             kindergarten: [598, 84, 38, 38]
-            scuba_diving: [46, 752, 38, 38]
-            dive_centre: [46, 752, 38, 38]
+            scuba_diving: [966, 802, 38, 38]
+            dive_centre: [966, 802, 38, 38]
+            sdk_shield-1char: [272, 510, 84, 84]
+            sdk_shield-2char: [152, 510, 112, 84]
+            sdk_shield-3char: [0, 510, 144, 84]
+            sdk_shield-4char: [776, 418, 168, 84]
+            sdk_shield-5char: [576, 418, 192, 84]
             shoemaker: [598, 42, 38, 38]
-            shower: [184, 710, 38, 38]
+            shower: [92, 802, 38, 38]
             ski: [414, 126, 38, 38]
             winter_sports: [414, 126, 38, 38]
             ski_rental: [414, 126, 38, 38]
             ski_school: [414, 126, 38, 38]
             ski_jumping: [414, 126, 38, 38]
             skiing: [414, 126, 38, 38]
-            slipway: [138, 710, 38, 38]
+            slipway: [46, 802, 38, 38]
             soccer: [414, 84, 38, 38]
             sports: [276, 168, 38, 38]
             pitch: [276, 168, 38, 38]
@@ -586,52 +595,52 @@ textures:
             spring: [368, 84, 38, 38]
             stadium: [506, 126, 38, 38]
             subway_entrance: [538, 0, 38, 38]
-            summer_camp: [782, 710, 38, 38]
+            summer_camp: [690, 802, 38, 38]
             supermarket: [644, 126, 38, 38]
             greengrocer: [644, 126, 38, 38]
-            swimming_area: [322, 710, 38, 38]
+            swimming_area: [230, 802, 38, 38]
             swimming_pool: [552, 126, 38, 38]
             tailor: [46, 42, 38, 38]
-            telescope: [920, 710, 38, 38]
+            telescope: [828, 802, 38, 38]
             tennis: [460, 126, 38, 38]
             theatre: [686, 168, 38, 38]
             theme_park: [46, 126, 38, 38]
             amusement_ride: [46, 126, 38, 38]
             toilets: [920, 84, 38, 38]
-            townspot-l: [0, 796, 32, 32]
-            townspot-l-rev: [852, 752, 32, 32]
-            townspot-m: [992, 752, 24, 24]
-            townspot-m-rev: [820, 752, 24, 24]
-            townspot-s: [964, 752, 20, 20]
-            townspot-s-rev: [792, 752, 20, 20]
-            townspot-xl: [40, 796, 40, 40]
-            townspot-xl-rev: [892, 752, 38, 38]
-            townspot-xs: [940, 752, 16, 16]
-            townspot-xs-rev: [772, 752, 12, 12]
+            townspot-l: [932, 844, 32, 32]
+            townspot-l-rev: [760, 844, 32, 32]
+            townspot-m: [900, 844, 24, 24]
+            townspot-m-rev: [728, 844, 24, 24]
+            townspot-s: [872, 844, 20, 20]
+            townspot-s-rev: [700, 844, 20, 20]
+            townspot-xl: [972, 844, 40, 40]
+            townspot-xl-rev: [800, 844, 38, 38]
+            townspot-xs: [848, 844, 16, 16]
+            townspot-xs-rev: [680, 844, 12, 12]
             toys: [0, 42, 38, 38]
             traffic_signals: [0, 210, 38, 38]
-            trailhead: [138, 752, 38, 38]
+            trailhead: [46, 844, 38, 38]
             train_station: [492, 0, 38, 38]
             station: [492, 0, 38, 38]
-            tree: [184, 752, 38, 38]
-            tree-s: [230, 752, 38, 38]
-            ux-current-location: [382, 796, 88, 88]
-            ux-locate-off: [716, 796, 72, 72]
-            ux-locate-on: [636, 796, 72, 72]
-            ux-route-arrow: [88, 796, 128, 128]
-            ux-route-start: [302, 796, 72, 92]
-            ux-route-stop: [224, 796, 72, 92]
-            ux-search-active: [476, 796, 72, 108]
-            ux-search-inactive: [556, 796, 72, 108]
-            ux-transit-stop: [676, 754, 42, 36]
+            tree: [92, 844, 38, 38]
+            tree-s: [138, 844, 38, 38]
+            ux-current-location: [294, 888, 88, 88]
+            ux-locate-off: [628, 888, 72, 72]
+            ux-locate-on: [548, 888, 72, 72]
+            ux-route-arrow: [0, 888, 128, 128]
+            ux-route-start: [214, 888, 72, 92]
+            ux-route-stop: [136, 888, 72, 92]
+            ux-search-active: [388, 888, 72, 108]
+            ux-search-inactive: [468, 888, 72, 108]
+            ux-transit-stop: [584, 846, 42, 36]
             veterinary: [136, 0, 38, 38]
             viewpoint: [778, 168, 38, 38]
             vineyard: [138, 168, 38, 38]
             volcano: [184, 84, 38, 38]
-            water_park: [46, 710, 38, 38]
-            water_slide: [46, 710, 38, 38]
-            water_tower: [690, 710, 38, 38]
-            waterfall: [460, 710, 38, 38]
+            water_park: [966, 698, 38, 38]
+            water_slide: [966, 698, 38, 38]
+            water_tower: [598, 802, 38, 38]
+            waterfall: [368, 802, 38, 38]
             wine: [274, 210, 38, 38]
             winery: [548, 168, 38, 38]
             zoo: [0, 126, 38, 38]
@@ -700,6 +709,10 @@ sources:
 #    mz_default_point:
 #        type: GeoJSON
 #        url: https://gist.githubusercontent.com/anonymous/16324c771edfce45be0721390389b878/raw/7dbaebf17da7da8562e6c6f8768bc8cff83efa88/map.geojson
+#    # Default shield styling (SDK)
+#    mz_default_shield:
+#        type: GeoJSON
+#        url: https://gist.githubusercontent.com/anonymous/5a789f6bd8b51b5693ba9cd57a767aa1/raw/d4523a6c9deebca125298c31085958262caa1ecd/map.geojson
 #    # Default line styling (SDK)
 #    mz_default_line:
 #        type: GeoJSON
@@ -1123,6 +1136,12 @@ styles:
         interactive: true
         blend: overlay
         blend_order: 3
+    sdk-shield-overlay:
+        base: points
+        texture: pois
+        interactive: true
+        blend: overlay
+        blend_order: 3
     sdk-line-overlay:
         base: lines
         blend: overlay
@@ -1262,6 +1281,115 @@ layers:
                 transition:
                     [show, hide]:
                         time: 0s
+    mz_default_shield:
+        data: { source: mz_default_shield }
+        draw:
+            sdk-shield-overlay:
+                interactive: true
+                sprite: |
+                    function() {
+                        if( feature.ref ) {
+                            return ('sdk_shield-' + feature.ref.length + 'char');
+                        } else {
+                            return ('sdk_shield-' + feature.name.length + 'char');
+                        }
+                    }
+                sprite_default: sdk_shield-1char
+                color: global.sdk_shield_color
+                collide: false
+                transition:
+                    [show, hide]:
+                        time: 0s
+                text:
+                    # offset: [0px, -1px]
+                    text_source: |
+                        function() {
+                            if( feature.ref ) {
+                                return feature.ref;
+                            } else {
+                                return feature.name;
+                            }
+                        }
+                    anchor: center
+                    font:
+                        family: Montserrat
+                        fill: global.sdk_shield_text_color
+                        style: bold
+                        size: [[7,7px],[12,8px],[16,11px]]
+
+        width_1char:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length === 1);
+                    } else {
+                        return (feature.name.length === 1);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    size: [[6,[16px,16px]],[13,[18px,18px]],[16,[21px,21px]]]
+        width_2char:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length === 2);
+                    } else {
+                        return (feature.name.length === 2);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    size: [[6,[21px,16px]],[13,[24px,18px]],[16,[28px,21px]]]
+        width_3char:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length === 3);
+                    } else {
+                        return (feature.name.length === 3);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
+        width_4char:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length === 4);
+                    } else {
+                        return (feature.name.length === 4);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    size: [[6,[32px,16px]],[13,[36px,18px]],[16,[41px,21px]]]
+        width_5char:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length === 5);
+                    } else {
+                        return (feature.name.length === 5);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    size: [[6,[37px,16px]],[13,[41px,18px]],[16,[48px,21px]]]
+        # this is kinda a hack
+        width_longggggg:
+            filter: |
+                function() {
+                    if( feature.ref ) {
+                        return (feature.ref.length > 5);
+                    } else {
+                        return (feature.name.length > 5);
+                    }
+                }
+            draw:
+                sdk-shield-overlay:
+                    visible: false
     mz_default_line:
         data: { source: mz_default_line }
         draw:
