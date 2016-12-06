@@ -346,47 +346,49 @@ textures:
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
-            'US:CA-1char': [812, 602, 82, 92]
-            'US:CA-2char': [712, 602, 92, 92]
-            'US:CA-3char': [592, 602, 112, 92]
-            'US:CA-4char': [460, 602, 124, 92]
-            'US:CA-5char': [324, 602, 128, 92]
-            'US:I-1char': [686, 698, 90, 100]
+            'US:CA-1char': [688, 598, 82, 92]
+            'US:CA-2char': [588, 598, 92, 92]
+            'US:CA-3char': [468, 598, 112, 92]
+            'US:CA-4char': [336, 598, 124, 92]
+            'US:CA-5char': [200, 598, 128, 92]
+            'US:I-1char': [514, 702, 90, 100]
             'US:I-2char': [0, 314, 102, 102]
             'US:I-3char': [812, 210, 134, 100]
             'US:I-4char': [664, 210, 140, 100]
             'US:I-5char': [504, 210, 152, 100]
-            'US:NY-1char': [444, 510, 72, 88]
+            'US:NY-1char': [656, 418, 72, 88]
             'US:NY-2char': [0, 418, 88, 88]
             'US:NY-3char': [880, 314, 104, 86]
             'US:NY-4char': [756, 314, 116, 86]
             'US:NY-5char': [628, 314, 120, 86]
-            'US:PA-1char': [364, 510, 72, 88]
+            'US:PA-1char': [576, 418, 72, 88]
             'US:PA-2char': [480, 418, 88, 88]
             'US:PA-3char': [360, 418, 112, 88]
             'US:PA-4char': [232, 418, 120, 88]
             'US:PA-5char': [96, 418, 128, 88]
-            'US:US-1char': [592, 698, 88, 94]
-            'US:US-2char': [480, 700, 106, 94]
-            'US:US-3char': [336, 698, 136, 100]
-            'US:US-4char': [172, 698, 156, 100]
-            'US:US-5char': [0, 698, 164, 100]
+            'US:US-1char': [420, 702, 88, 94]
+            'US:US-2char': [308, 704, 106, 94]
+            'US:US-3char': [162, 702, 136, 100]
+            'US:US-4char': [0, 702, 156, 100]
+            'US:US-5char': [776, 600, 164, 100]
             airport: [952, 0, 38, 38]
             aerodrome: [952, 0, 38, 38]
-            allotments: [736, 802, 38, 38]
+            allotments: [552, 806, 38, 38]
             aquarium: [824, 168, 38, 38]
             atm: [0, 168, 38, 38]
             attraction: [458, 210, 38, 38]
             bakery: [640, 168, 38, 38]
             bank: [46, 168, 38, 38]
+            category-predicate-money: [46, 168, 38, 38]
             bar: [322, 168, 38, 38]
             pub: [322, 168, 38, 38]
+            category-predicate-drink: [322, 168, 38, 38]
             baseball: [552, 84, 38, 38]
             basketball: [506, 84, 38, 38]
-            battlefield: [0, 802, 38, 38]
-            bbq: [414, 802, 38, 38]
+            battlefield: [840, 702, 38, 38]
+            bbq: [230, 806, 38, 38]
             beach: [690, 84, 38, 38]
-            beach_resort: [920, 698, 38, 38]
+            beach_resort: [748, 702, 38, 38]
             bench: [630, 0, 38, 38]
             bicycle: [964, 126, 38, 38]
             bicycle_rental: [964, 126, 38, 38]
@@ -394,7 +396,7 @@ textures:
             bicycle_parking: [736, 126, 38, 38]
             biergarten: [366, 210, 38, 38]
             brewery: [366, 210, 38, 38]
-            boat_rental: [782, 802, 38, 38]
+            boat_rental: [598, 806, 38, 38]
             books: [918, 126, 38, 38]
             bridge: [966, 84, 38, 38]
             buddhist: [828, 84, 38, 38]
@@ -409,15 +411,17 @@ textures:
             butcher: [0, 84, 38, 38]
             cafe: [594, 168, 38, 38]
             camp_site: [874, 84, 38, 38]
-            capital-l: [544, 844, 32, 32]
-            capital-m: [512, 844, 24, 24]
-            capital-s: [482, 844, 20, 20]
-            capital-xl: [632, 844, 40, 40]
-            capital-xs: [460, 844, 16, 16]
+            capital-l: [360, 848, 32, 32]
+            capital-m: [328, 848, 24, 24]
+            capital-s: [298, 848, 20, 20]
+            capital-xl: [448, 848, 40, 40]
+            capital-xs: [276, 848, 16, 16]
             car: [872, 126, 38, 38]
+            category-namespace-mobility: [872, 126, 38, 38]
+            category-predicate-mobility: [872, 126, 38, 38]
             car_repair: [92, 168, 38, 38]
             car_sharing: [676, 0, 38, 38]
-            caravan_site: [138, 802, 38, 38]
+            caravan_site: [978, 702, 38, 38]
             castle: [460, 42, 38, 38]
             fort: [460, 42, 38, 38]
             cemetery: [782, 84, 38, 38]
@@ -430,25 +434,25 @@ textures:
             university: [962, 168, 38, 38]
             confectionery: [90, 210, 38, 38]
             convenience: [138, 84, 38, 38]
-            county_shield-1char: [524, 510, 72, 72]
+            county_shield-1char: [736, 418, 72, 72]
             county_shield-2char: [532, 314, 88, 72]
             county_shield-3char: [420, 314, 104, 72]
             county_shield-4char: [276, 314, 136, 72]
             county_shield-5char: [108, 314, 160, 72]
             courthouse: [446, 0, 38, 38]
-            dam: [230, 844, 38, 38]
+            dam: [46, 848, 38, 38]
             dentist: [266, 0, 38, 38]
             department_store: [826, 126, 38, 38]
             doctors: [224, 0, 38, 38]
             clinic: [224, 0, 38, 38]
-            dog_park: [322, 802, 38, 38]
-            dot-black: [368, 844, 38, 38]
-            dot-white: [184, 844, 38, 38]
+            dog_park: [138, 806, 38, 38]
+            dot-black: [184, 848, 38, 38]
+            dot-white: [0, 848, 38, 38]
             drinking_water: [320, 210, 38, 38]
             dry_cleaning: [92, 84, 38, 38]
             electronics: [690, 126, 38, 38]
             computer: [690, 126, 38, 38]
-            enclosure: [276, 844, 38, 38]
+            enclosure: [92, 848, 38, 38]
             estate_agent: [184, 42, 38, 38]
             factory: [460, 168, 38, 38]
             industrial: [460, 168, 38, 38]
@@ -459,13 +463,14 @@ textures:
             water_works: [460, 168, 38, 38]
             plant: [460, 168, 38, 38]
             generator: [460, 168, 38, 38]
+            category-predicate-industry: [460, 168, 38, 38]
             fast_food: [228, 210, 38, 38]
             ferry: [906, 0, 38, 38]
             ferry_terminal: [906, 0, 38, 38]
             fire_station: [400, 0, 38, 38]
-            firepit: [276, 802, 38, 38]
-            fishing: [184, 802, 38, 38]
-            fishing_area: [184, 802, 38, 38]
+            firepit: [92, 806, 38, 38]
+            fishing: [0, 806, 38, 38]
+            fishing_area: [0, 806, 38, 38]
             fitness: [966, 42, 38, 38]
             fitness_station: [966, 42, 38, 38]
             florist: [230, 126, 38, 38]
@@ -479,34 +484,40 @@ textures:
             fuel: [44, 210, 38, 38]
             gallery: [732, 168, 38, 38]
             garden: [736, 84, 38, 38]
-            gas_canister: [920, 802, 38, 38]
-            gate: [322, 844, 38, 38]
-            generic: [414, 844, 38, 38]
-            generic_shield-1char: [244, 602, 72, 72]
-            generic_shield-2char: [140, 602, 98, 72]
-            generic_shield-3char: [0, 602, 132, 72]
-            generic_shield-4char: [792, 510, 152, 72]
-            generic_shield-5char: [604, 510, 180, 72]
-            geyser: [874, 698, 38, 38]
+            gas_canister: [736, 806, 38, 38]
+            gate: [138, 848, 38, 38]
+            generic: [230, 848, 38, 38]
+            category-namespace-other: [230, 848, 38, 38]
+            category-predicate-addressing: [230, 848, 38, 38]
+            generic_shield-1char: [404, 510, 72, 72]
+            generic_shield-2char: [300, 510, 98, 72]
+            generic_shield-3char: [160, 510, 132, 72]
+            generic_shield-4char: [0, 510, 152, 72]
+            generic_shield-5char: [816, 418, 180, 72]
+            geyser: [702, 702, 38, 38]
             gift: [184, 126, 38, 38]
             golf_course: [460, 84, 38, 38]
             government: [230, 168, 38, 38]
             townhall: [230, 168, 38, 38]
             public: [230, 168, 38, 38]
             embassy: [230, 168, 38, 38]
+            category-predicate-civic: [230, 168, 38, 38]
             hairdresser: [92, 42, 38, 38]
             hardware: [920, 42, 38, 38]
             doityourself: [920, 42, 38, 38]
             painter: [920, 42, 38, 38]
             historical: [138, 126, 38, 38]
             hospital: [182, 0, 38, 38]
+            category-namespace-health: [182, 0, 38, 38]
+            category-predicate-health: [182, 0, 38, 38]
             hot_spring: [322, 84, 38, 38]
             hotel: [814, 0, 38, 38]
             motel: [814, 0, 38, 38]
             hostel: [814, 0, 38, 38]
-            hunting: [828, 698, 38, 38]
+            category-predicate-sleep: [814, 0, 38, 38]
+            hunting: [656, 702, 38, 38]
             ice_cream: [412, 210, 38, 38]
-            information: [784, 698, 38, 38]
+            information: [612, 702, 38, 38]
             jewelry: [782, 42, 38, 38]
             jewish: [44, 0, 38, 38]
             landmark: [354, 0, 38, 38]
@@ -526,67 +537,76 @@ textures:
             dock: [184, 168, 38, 38]
             mine: [828, 42, 38, 38]
             mobile_phone: [552, 42, 38, 38]
-            motorcycle: [552, 802, 38, 38]
+            motorcycle: [368, 806, 38, 38]
             museum: [92, 126, 38, 38]
             music: [414, 42, 38, 38]
             muslim: [90, 0, 38, 38]
             newspaper: [368, 42, 38, 38]
             kiosk: [368, 42, 38, 38]
-            observatory: [874, 802, 38, 38]
+            observatory: [690, 806, 38, 38]
             office: [644, 84, 38, 38]
             insurance: [644, 84, 38, 38]
             company: [644, 84, 38, 38]
+            category-predicate-service: [644, 84, 38, 38]
             optician: [322, 42, 38, 38]
-            outdoor: [0, 844, 38, 38]
+            outdoor: [828, 806, 38, 38]
             park: [322, 126, 38, 38]
             national_park: [322, 126, 38, 38]
             battlefield: [322, 126, 38, 38]
             protected_area: [322, 126, 38, 38]
+            category-predicate-nature: [322, 126, 38, 38]
             parking: [782, 126, 38, 38]
             peak: [230, 84, 38, 38]
             pet: [276, 42, 38, 38]
             pharmacy: [46, 84, 38, 38]
             photographic_laboratory: [230, 42, 38, 38]
             photographer: [230, 42, 38, 38]
-            picnic_site: [506, 802, 38, 38]
-            picnic_table: [506, 802, 38, 38]
+            picnic_site: [322, 806, 38, 38]
+            picnic_table: [322, 806, 38, 38]
             pier: [722, 0, 38, 38]
             place_of_worship: [368, 168, 38, 38]
             chapel: [368, 168, 38, 38]
             wayside_shrine: [368, 168, 38, 38]
+            category-predicate-religion: [368, 168, 38, 38]
             playground: [506, 42, 38, 38]
             police: [308, 0, 38, 38]
             post_office: [414, 168, 38, 38]
             quarry: [874, 42, 38, 38]
             mineshaft: [874, 42, 38, 38]
             adit: [874, 42, 38, 38]
-            ranger_station: [460, 802, 38, 38]
-            recreation_track: [644, 802, 38, 38]
+            ranger_station: [276, 806, 38, 38]
+            recreation_track: [460, 806, 38, 38]
             recycling: [138, 42, 38, 38]
             restaurant: [182, 210, 38, 38]
+            category-namespace-eat_and_drink: [182, 210, 38, 38]
+            category-predicate-eat: [182, 210, 38, 38]
             retail: [644, 42, 38, 38]
             store: [644, 42, 38, 38]
+            category-namespace-shop_and_service: [644, 42, 38, 38]
+            category-predicate-shop: [644, 42, 38, 38]
             ruin: [584, 0, 38, 38]
             ruins: [584, 0, 38, 38]
             archaeological_site: [584, 0, 38, 38]
             school: [598, 84, 38, 38]
             kindergarten: [598, 84, 38, 38]
-            scuba_diving: [966, 802, 38, 38]
-            dive_centre: [966, 802, 38, 38]
-            sdk_shield-1char: [272, 510, 84, 84]
-            sdk_shield-2char: [152, 510, 112, 84]
-            sdk_shield-3char: [0, 510, 144, 84]
-            sdk_shield-4char: [776, 418, 168, 84]
-            sdk_shield-5char: [576, 418, 192, 84]
+            category-namespace-education_and_religion: [598, 84, 38, 38]
+            category-predicate-education: [598, 84, 38, 38]
+            scuba_diving: [782, 806, 38, 38]
+            dive_centre: [782, 806, 38, 38]
+            sdk_shield-1char: [484, 510, 84, 84]
+            sdk_shield-2char: [576, 510, 112, 84]
+            sdk_shield-3char: [696, 510, 144, 84]
+            sdk_shield-4char: [848, 510, 168, 84]
+            sdk_shield-5char: [0, 598, 192, 84]
             shoemaker: [598, 42, 38, 38]
-            shower: [92, 802, 38, 38]
+            shower: [932, 702, 38, 38]
             ski: [414, 126, 38, 38]
             winter_sports: [414, 126, 38, 38]
             ski_rental: [414, 126, 38, 38]
             ski_school: [414, 126, 38, 38]
             ski_jumping: [414, 126, 38, 38]
             skiing: [414, 126, 38, 38]
-            slipway: [46, 802, 38, 38]
+            slipway: [886, 702, 38, 38]
             soccer: [414, 84, 38, 38]
             sports: [276, 168, 38, 38]
             pitch: [276, 168, 38, 38]
@@ -595,52 +615,56 @@ textures:
             spring: [368, 84, 38, 38]
             stadium: [506, 126, 38, 38]
             subway_entrance: [538, 0, 38, 38]
-            summer_camp: [690, 802, 38, 38]
+            summer_camp: [506, 806, 38, 38]
             supermarket: [644, 126, 38, 38]
             greengrocer: [644, 126, 38, 38]
-            swimming_area: [230, 802, 38, 38]
+            swimming_area: [46, 806, 38, 38]
             swimming_pool: [552, 126, 38, 38]
             tailor: [46, 42, 38, 38]
-            telescope: [828, 802, 38, 38]
+            telescope: [644, 806, 38, 38]
             tennis: [460, 126, 38, 38]
             theatre: [686, 168, 38, 38]
+            category-predicate-fun: [686, 168, 38, 38]
             theme_park: [46, 126, 38, 38]
             amusement_ride: [46, 126, 38, 38]
             toilets: [920, 84, 38, 38]
-            townspot-l: [932, 844, 32, 32]
-            townspot-l-rev: [760, 844, 32, 32]
-            townspot-m: [900, 844, 24, 24]
-            townspot-m-rev: [728, 844, 24, 24]
-            townspot-s: [872, 844, 20, 20]
-            townspot-s-rev: [700, 844, 20, 20]
-            townspot-xl: [972, 844, 40, 40]
-            townspot-xl-rev: [800, 844, 38, 38]
-            townspot-xs: [848, 844, 16, 16]
-            townspot-xs-rev: [680, 844, 12, 12]
+            townspot-l: [748, 848, 32, 32]
+            townspot-l-rev: [576, 848, 32, 32]
+            townspot-m: [716, 848, 24, 24]
+            townspot-m-rev: [544, 848, 24, 24]
+            townspot-s: [688, 848, 20, 20]
+            townspot-s-rev: [516, 848, 20, 20]
+            townspot-xl: [788, 848, 40, 40]
+            townspot-xl-rev: [616, 848, 38, 38]
+            townspot-xs: [664, 848, 16, 16]
+            townspot-xs-rev: [496, 848, 12, 12]
             toys: [0, 42, 38, 38]
             traffic_signals: [0, 210, 38, 38]
-            trailhead: [46, 844, 38, 38]
+            trailhead: [874, 806, 38, 38]
             train_station: [492, 0, 38, 38]
             station: [492, 0, 38, 38]
-            tree: [92, 844, 38, 38]
-            tree-s: [138, 844, 38, 38]
-            ux-current-location: [294, 888, 88, 88]
-            ux-locate-off: [628, 888, 72, 72]
-            ux-locate-on: [548, 888, 72, 72]
-            ux-route-arrow: [0, 888, 128, 128]
-            ux-route-start: [214, 888, 72, 92]
-            ux-route-stop: [136, 888, 72, 92]
-            ux-search-active: [388, 888, 72, 108]
-            ux-search-inactive: [468, 888, 72, 108]
-            ux-transit-stop: [584, 846, 42, 36]
+            category-predicate-transport: [492, 0, 38, 38]
+            tree: [920, 806, 38, 38]
+            tree-s: [966, 806, 38, 38]
+            ux-current-location: [158, 980, 88, 88]
+            ux-locate-off: [492, 980, 72, 72]
+            ux-locate-on: [412, 980, 72, 72]
+            ux-route-arrow: [836, 848, 128, 128]
+            ux-route-start: [78, 980, 72, 92]
+            ux-route-stop: [0, 980, 72, 92]
+            ux-search-active: [252, 980, 72, 108]
+            ux-search-inactive: [332, 980, 72, 108]
+            ux-transit-stop: [400, 850, 42, 36]
             veterinary: [136, 0, 38, 38]
             viewpoint: [778, 168, 38, 38]
+            category-namespace-do_and_see: [778, 168, 38, 38]
+            category-predicate-attraction: [778, 168, 38, 38]
             vineyard: [138, 168, 38, 38]
             volcano: [184, 84, 38, 38]
-            water_park: [966, 698, 38, 38]
-            water_slide: [966, 698, 38, 38]
-            water_tower: [598, 802, 38, 38]
-            waterfall: [368, 802, 38, 38]
+            water_park: [794, 702, 38, 38]
+            water_slide: [794, 702, 38, 38]
+            water_tower: [414, 806, 38, 38]
+            waterfall: [184, 806, 38, 38]
             wine: [274, 210, 38, 38]
             winery: [548, 168, 38, 38]
             zoo: [0, 126, 38, 38]
@@ -712,7 +736,7 @@ sources:
 #    # Default shield styling (SDK)
 #    mz_default_shield:
 #        type: GeoJSON
-#        url: https://gist.githubusercontent.com/anonymous/5a789f6bd8b51b5693ba9cd57a767aa1/raw/d4523a6c9deebca125298c31085958262caa1ecd/map.geojson
+#        url: https://gist.githubusercontent.com/nvkelso/3c08dba1eced4d01df98c1a9a7801162/raw/d83a5a396fc7b22309b8ca89336ad2dcfff6c452/map.geojson
 #    # Default line styling (SDK)
 #    mz_default_line:
 #        type: GeoJSON
@@ -1288,8 +1312,8 @@ layers:
                 interactive: true
                 sprite: |
                     function() {
-                        if( feature.ref ) {
-                            return ('sdk_shield-' + feature.ref.length + 'char');
+                        if( feature.shield_text ) {
+                            return ('sdk_shield-' + feature.shield_text.length + 'char');
                         } else {
                             return ('sdk_shield-' + feature.name.length + 'char');
                         }
@@ -1304,8 +1328,8 @@ layers:
                     # offset: [0px, -1px]
                     text_source: |
                         function() {
-                            if( feature.ref ) {
-                                return feature.ref;
+                            if( feature.shield_text ) {
+                                return feature.shield_text;
                             } else {
                                 return feature.name;
                             }
@@ -1320,8 +1344,8 @@ layers:
         width_1char:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length === 1);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length === 1);
                     } else {
                         return (feature.name.length === 1);
                     }
@@ -1332,8 +1356,8 @@ layers:
         width_2char:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length === 2);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length === 2);
                     } else {
                         return (feature.name.length === 2);
                     }
@@ -1344,8 +1368,8 @@ layers:
         width_3char:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length === 3);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length === 3);
                     } else {
                         return (feature.name.length === 3);
                     }
@@ -1356,8 +1380,8 @@ layers:
         width_4char:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length === 4);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length === 4);
                     } else {
                         return (feature.name.length === 4);
                     }
@@ -1368,8 +1392,8 @@ layers:
         width_5char:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length === 5);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length === 5);
                     } else {
                         return (feature.name.length === 5);
                     }
@@ -1381,8 +1405,8 @@ layers:
         width_longggggg:
             filter: |
                 function() {
-                    if( feature.ref ) {
-                        return (feature.ref.length > 5);
+                    if( feature.shield_text ) {
+                        return (feature.shield_text.length > 5);
                     } else {
                         return (feature.name.length > 5);
                     }
