@@ -740,6 +740,10 @@ styles:
         base: lines
         dash: [1.25, 1.25]
         dash_background_color: [0.808,0.860,0.851]
+    dashed_big:
+        base: lines
+        dash: [2.0, 1.0]
+        dash_background_color: [0.808,0.860,0.851]
     dashedTunnel:
         base: lines
         dash: [5, 3]
@@ -4004,14 +4008,11 @@ layers:
             lines:
                 interactive: true
                 order: function() { return (feature.sort_rank + 100); }
-#                color: red
-#                width: [[9, 1px], [14, 2px], [16, 3px], [17, 8m]]
         country:
             filter:
-                kind: country
-                # any:
-                #     - kind: country
-                #     - kind_detail: 2
+                any:
+                    - kind: country
+                    - admin_level: 2
             draw:
                 lines:
                     interactive: true
@@ -4031,45 +4032,49 @@ layers:
                         priority: 2
                         visible: *text_visible_admin
                         text_source: name
-                        # NOTE: there is a bug on feature order for country boundary names
-                        # text_source: |
+                        # text_source:  |
                         #     function() {
-                        #         if( feature['name:right'] && feature['name:left'] ) {
-                        #             if( feature['name:right'].includes(' ') || feature['name:left'].includes(' ') ) {
-                        #                 return feature['name'];
+                        #         var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
+                        #         var left = (global.ux_language && feature['name:left:'+global.ux_language]) || (global.ux_language_fallback && feature['name:left:'+global.ux_language_fallback]) || feature['name:left'];
+                        #         if( right && left ) {
+                        #             if( right.includes(' ') || left.includes(' ') ) {
+                        #                 return left + " - " + right;
                         #             } else {
-                        #                 return feature['name:left'] + '\n' + feature['name:right'];
+                        #                 return right + '\n' + left;
                         #             }
                         #         } else {
-                        #             return feature['name'];
+                        #             return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
                         #         }
                         #     }
-                        text_wrap: 100px
+                        text_wrap: 100
                         font:
                             family: *text_font_family
                             size: 9px
                             fill: [0.00,0.00,0.00]
                             transform: uppercase
 
-        # other_country_boundary_disputed_etc:
-        #     filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
-        #     draw:
-        #         dashed:
-        #             interactive: true
-        #             color: *country_boundary
-        #             width: [[1, 0.2px], [2, 0.5px], [4, 1.0px], [9, 1.5px], [14, 2.5px], [16, 3.5px], [17, 10m]]
+        other_country_boundary_disputed_etc:
+            filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
+            draw:
+                dashed:
+                    order: function() { return (feature.sort_rank + 100); }
+                    color: *country_boundary
+                    width: [[1,0.2px],[9,1.5px],[17,10m]]
+            disputed:
+                filter: { kind: [disputed, line_of_control] }
+                draw:
+                    dashed:
+                        visible: false
+                    dashed_big:
+                        order: function() { return (feature.sort_rank + 100); }
+                        color: *country_boundary
+                        width: [[1,0.5px],[9,2.5px],[17,14m]]
 
         region:
             filter:
-                kind: region
-                # any:
-                #     - type: state
-                #     # territorial here is probably a hack
-                #     - kind: [state, department, region, provincial, territorial]
-                #     - kind_detail: 4
-                # not:
-                #     # deal with bogus Hungary data
-                #     - scalerank: 0
+                any:
+                    - kind: [region,macroregion]
+                    - kind_detail: [3,4]
             draw:
                 lines:
                     interactive: true
@@ -4091,7 +4096,7 @@ layers:
                     text-blend-order:
                         priority: 3
                         visible: *text_visible_admin
-                        text_source: |
+                        text_source:  |
                             function() {
                                 if( feature['name:right'] && feature['name:left'] ) {
                                     if( feature['name:right'].includes(' ') || feature['name:left'].includes(' ') ) {
@@ -4103,14 +4108,13 @@ layers:
                                     return feature['name'];
                                 }
                             }
-                        text_wrap: 100px
-                        offset: 10px
+                        text_wrap: 100
+                        # offset: [0px, 10px]
                         anchor: top
                         font:
                             family: *text_font_family
                             size: 9px
                             fill: [0.35,0.35,0.35]
-                            # stroke: { color: global.text_stroke, width: 4 }
                             transform: uppercase
         city_walls:
             filter: { kind: city_wall }
@@ -4145,91 +4149,110 @@ layers:
 
     places:
         data: { source: mapzen, layer: places }
+        filter:
+            name: true
         draw:
             icons:
                 text:
                     # text_source: global.ux_language_text_source
                     visible: false
+                    buffer: 3px
                     font:
                         family: *text_font_family
                         fill: *text_fill
-                        # stroke: { color: *text_stroke, width: 4 }
             # NOTE: This is a hack for localities because of an icon & text bug, see note below
             text-blend-order:
                 # text_source: global.ux_language_text_source
                 visible: false    # labels are enabled by each layer below
+                buffer: 3px
                 font:
                     family: *text_font_family
-                    # weight: 500
                     fill: *text_fill
-                    # stroke: { color: *text_stroke, width: 4 }
-
             # END NOTE
 
         country:
             filter:
-                name: true
                 kind: country
                 $zoom: { min: 2, max: 9 }
             draw:
                 text-blend-order:
                     priority: 3
                     visible: *text_visible_admin
-                    text_source: function() { return feature["name:en"] || feature["name"]; }
+                    text_source:  |
+                        function() { return feature["name:en"] || feature["name"]; }
                     font:
                         fill: *text_fill
                         weight: 600
                         stroke: { color: *text_stroke, width: 4 }
             country-z2-3:
-                    filter: { $zoom: [2,3] }
+                    filter:
+                        $zoom: [2,3]
                     draw:
                         text-blend-order:
                             font:
+                                priority: 10
+                                buffer: 10px
                                 weight: 200
                                 size: 11px
-                    early-ones:
-                        # US, Brazil, China, Russia, Canada, Greenland, Iceland, Australia, India, Japan, Guam, Indonesia, South Africa, Egypt, Nigeria, Kenya
-                        filter: { not: { name: ["United States of America","Brasil","中华人民共和国","Россия","Canada","Kalaallit Nunaat","Ísland","Australia","India","日本","Guam","Indonesia","South Africa","مصر","Nigeria","Kenya"] } }
+                    early-ones-z2:
+                        filter:
+                            $zoom: [2]
+                            not: { name: [United States of America,Brasil,中华人民共和国,Россия,Canada,Kalaallit Nunaat,Ísland,Australia,India,日本,Guam,Indonesia,South Africa,مصر,Nigeria,Kenya] }
+                        draw:
+                            text-blend-order:
+                                visible: false
+                    early-ones-z3:
+                        filter:
+                            $zoom: [3]
+                            name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España]
                         draw:
                             text-blend-order:
                                 visible: false
             country-z4:
-                    filter: { population: true, $zoom: [4] }
+                    filter:
+                        $zoom: [4]
                     draw:
                         text-blend-order:
+                            buffer: 10px
+                            priority: 8
                             font:
                                 weight: 200
                                 size: 13px
                     early-ones-z4:
-                        filter: { name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien], $zoom: {min: 4, max: 5} }
+                        filter:
+                            name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España,Magyarország,Österreich,Polska,Хуссар Ирыстон,Аҧсны - Абхазия]
                         draw:
                             text-blend-order:
                                 visible: false
             country-z5:
                 filter:
-                    all:
-                        - population: true
-                        - $zoom: [5]
-                    any:
-                        - { population: { min: 5000000 } }
+                    $zoom: [5]
                 draw:
                     text-blend-order:
+                        priority: 8
                         font:
                             size: 13px
                 early-ones-z5:
-                    filter: { name: [Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,El Salvador,Belize,België - Belgique - Belgien], $zoom: {min: 5, max: 6} }
+                    filter:
+                        # South Ossetia and Abkhazia aren't countries (they are disputed areas)
+                        - name: [Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,El Salvador,Belize,België - Belgique - Belgien,"Хуссар Ирыстон - Южная Осетия","Хуссар Ирыстон","Аҧсны - Абхазия","Լեռնային Ղարաբաղի Հանրապետությու (Nagorno-Karabakh Republic)"]
+                        - population: { max: 5000000 }
                     draw:
                         text-blend-order:
                             visible: false
             country-z6:
-                # South Ossetia and Abkhazia aren't countries (they are disputed areas)
-                filter: { $zoom: [6] }
+                filter:
+                    $zoom: [6]
                 draw:
                     text-blend-order:
+                        priority: 8
                         font:
                             size: 14px
                 small-ones-z6:
-                    filter: { name: [Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,België - Belgique - Belgien,Хуссар Ирыстон,Аҧсны - Абхазия], $zoom: {min: 6, max: 7} }
+                    filter:
+                        # South Ossetia and Abkhazia aren't countries (they are disputed areas)
+                        - name: [Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,België - Belgique - Belgien,"Хуссар Ирыстон - Южная Осетия","Хуссар Ирыстон","Аҧсны - Абхазия","Լեռնային Ղարաբաղի Հանրապետությու (Nagorno-Karabakh Republic)"]
+                        - population: { max: 5000000 }
                     draw:
                         text-blend-order:
                             visible: false
@@ -4241,15 +4264,25 @@ layers:
                         font:
                             size: 16px
                 small-ones-z7:
-                    filter: { name: [Liechtenstein,San Marino,Civitatis Vaticanæ,Хуссар Ирыстон,Аҧсны - Абхазия], $zoom: {min: 7, max: 8} }
+                    filter:
+                        $zoom: [7]
+                        # South Ossetia and Abkhazia aren't countries (they are disputed areas)
+                        name: [Liechtenstein,San Marino,Civitatis Vaticanæ,"Хуссар Ирыстон - Южная Осетия","Хуссар Ирыстон","Аҧсны - Абхазия","Լեռնային Ղարաբաղի Հանրապետությու (Nagorno-Karabakh Republic)"]
                     draw:
                         text-blend-order:
                             visible: false
+                small-pop:
+                    filter:
+                        - population: { max: 5000000 }
+                    draw:
+                        text-blend-order:
+                            priority: 30
+                            font:
+                                size: 12px
 
         region:
             filter:
                 kind: region
-                name: true
                 $zoom: { min: 4, max: 9 }
             draw:
                 text-blend-order:
@@ -4257,19 +4290,23 @@ layers:
                     visible: false
                     text_source: 'name:short'
                     font:
+                        size: 11px
+                        weight: normal
                         fill: [0.5,0.5,0.5,0.5]
             region-z4:
-                filter: { $zoom: [4], not: { name: ["Western Cape","Eastern Cape","Northern Cape","North West","Limpopo","KwaZulu-Natal","Hamburg","Freie und Hansestadt Hamburg","Neuchâtel","Nordrhein-Westfalen","Haute-Normandie","Baden-Württemberg","Bayern","Sachsen-Anhalt","Berlin","Mecklenburg-Vorpommern","Schleswig-Holstein","Brandenburg","Niedersachsen","Saarland","Thüringen","Hessen","Sachsen"] } }
+                filter:
+                    $zoom: [4]
+                    not: { name: [Western Cape,Eastern Cape,Northern Cape,North West,Limpopo,KwaZulu-Natal,Hamburg,Freie und Hansestadt Hamburg,Neuchâtel,Nordrhein-Westfalen,Haute-Normandie,Baden-Württemberg,Bayern,Sachsen-Anhalt,Berlin,Mecklenburg-Vorpommern,Schleswig-Holstein,Brandenburg,Niedersachsen,Saarland,Thüringen,Hessen,Sachsen] }
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
                         font:
-                            size: 11px
-                            weight: 400
                             fill: [0.70,0.70,0.70]
                             stroke: { color: *text_stroke, width: 4 }
             region-z5:
-                filter: { $zoom: [5], not: { name: ["Western Cape","Eastern Cape","Northern Cape","North West","Limpopo","KwaZulu-Natal","Hamburg","Freie und Hansestadt Hamburg","Neuchâtel","Nordrhein-Westfalen","Haute-Normandie","Baden-Württemberg","Bayern","Sachsen-Anhalt","Berlin","Mecklenburg-Vorpommern","Schleswig-Holstein","Brandenburg","Niedersachsen","Saarland","Thüringen","Hessen","Sachsen"] } }
+                filter:
+                    $zoom: [5]
+                    not: { name: [Western Cape,Eastern Cape,Northern Cape,North West,Limpopo,KwaZulu-Natal,Hamburg,Freie und Hansestadt Hamburg,Neuchâtel,Nordrhein-Westfalen,Haute-Normandie,Baden-Württemberg,Bayern,Sachsen-Anhalt,Berlin,Mecklenburg-Vorpommern,Schleswig-Holstein,Brandenburg,Niedersachsen,Saarland,Thüringen,Hessen,Sachsen] }
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
@@ -4278,7 +4315,9 @@ layers:
                             weight: 200
                             stroke: { color: *text_stroke, width: 4 }
             region-z6:
-                filter: { $zoom: [6], not: { name: ["Western Cape","Eastern Cape","Northern Cape","North West","Limpopo","KwaZulu-Natal","Hamburg","Freie und Hansestadt Hamburg","Neuchâtel","Nordrhein-Westfalen","Haute-Normandie","Baden-Württemberg","Bayern","Sachsen-Anhalt","Berlin","Mecklenburg-Vorpommern","Schleswig-Holstein","Brandenburg","Niedersachsen","Saarland","Thüringen","Hessen","Sachsen"] } }
+                filter:
+                    $zoom: [6]
+                    not: { name: [Western Cape,Eastern Cape,Northern Cape,North West,Limpopo,KwaZulu-Natal,Hamburg,Freie und Hansestadt Hamburg,Neuchâtel,Nordrhein-Westfalen,Haute-Normandie,Baden-Württemberg,Bayern,Sachsen-Anhalt,Berlin,Mecklenburg-Vorpommern,Schleswig-Holstein,Brandenburg,Niedersachsen,Saarland,Thüringen,Hessen,Sachsen] }
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
@@ -4287,27 +4326,50 @@ layers:
                             weight: 200
                             transform: uppercase
 
-            region:
-                filter: { $zoom: {min: 7, max: 9} }
+            region-z7-z8:
+                filter: { $zoom: [7,8] }
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
-                        text_source: function() { if(feature["name:short"]) { return feature["name"]; } else { return ""; } }
+                        text_source: |
+                            function() { if(feature["name:short"]) { return feature["name"]; } else { return ""; } }
                         font:
                             size: 30px
                             weight: 200
                             transform: uppercase
                 pesky:
-                    filter: { name: ["Western Cape","Eastern Cape","Northern Cape","North West","Limpopo","KwaZulu-Natal","Hamburg","Freie und Hansestadt Hamburg","Neuchâtel","Nordrhein-Westfalen","Haute-Normandie","Baden-Württemberg","Bayern","Sachsen-Anhalt","Berlin","Mecklenburg-Vorpommern","Schleswig-Holstein","Brandenburg","Niedersachsen","Saarland","Thüringen","Hessen","Sachsen"], $zoom: {min: 7, max: 8} }
+                    filter:
+                        $zoom: [7]
+                        name: [Western Cape,Eastern Cape,Northern Cape,North West,Limpopo,KwaZulu-Natal,Hamburg,Freie und Hansestadt Hamburg,Neuchâtel,Nordrhein-Westfalen,Haute-Normandie,Baden-Württemberg,Bayern,Sachsen-Anhalt,Berlin,Mecklenburg-Vorpommern,Schleswig-Holstein,Brandenburg,Niedersachsen,Saarland,Thüringen,Hessen,Sachsen]
                     draw:
                         text-blend-order:
                             visible: false
-                small-ones:
-                    filter: { name: ["Delaware","New Jersey","Connecticut","Rhode Island","Massachusetts","New Hampshire","Vermont"], $zoom: {min: 7, max: 8} }
+
+                abbrev-small-ones-z7:
+                    filter:
+                        $zoom: [7]
+                        name: [Delaware,New Jersey,Connecticut,Rhode Island,Massachusetts,New Hampshire,Vermont]
                     draw:
                         text-blend-order:
-                            text_source: function() { return feature["name:abbreviation"] || feature["name"]; }
+                            text_source: |
+                                function() { return feature["name:abbreviation"] || feature["name"]; }
                             font: { transform: uppercase }
+                region-z8:
+                    filter:
+                        $zoom: [8]
+                    draw:
+                        text-blend-order:
+                            text_source: name
+                    no-pop:
+                        filter:
+                            any:
+                                - population: false
+                                - population: { max: 1000000 }
+                        draw:
+                            text-blend-order:
+                                font:
+                                    size: 16px
+
 
         populated-places:
             filter: { kind: locality }
