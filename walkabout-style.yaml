@@ -81,6 +81,9 @@ global:
     sdk_shield_color: black
     sdk_shield_text_color: white
     #
+    # enable interactivity for key features
+    interactive: true
+    #
     # default order for basemap features
     feature_order: function() { return feature.sort_rank; }
     #
@@ -1107,25 +1110,25 @@ styles:
     ux-location-gem-overlay:
         base: points
         texture: pois
-        interactive: true
+        interactive: global.interactive
         blend: overlay
         blend_order: 2
     ux-icons-overlay:
         base: points
         texture: pois
-        interactive: true
+        interactive: global.interactive
         blend: overlay
         blend_order: 3
     sdk-point-overlay:
         base: points
         texture: pois
-        interactive: true
+        interactive: global.interactive
         blend: overlay
         blend_order: 3
     sdk-shield-overlay:
         base: points
         texture: pois
-        interactive: true
+        interactive: global.interactive
         blend: overlay
         blend_order: 3
     sdk-line-overlay:
@@ -1169,7 +1172,6 @@ layers:
         data: { source: mz_current_location }
         draw:
             ux-location-gem-overlay:
-                interactive: true
                 sprite: ux-current-location
                 size: 36px
                 collide: false
@@ -1180,7 +1182,6 @@ layers:
         data: { source: mz_route_location }
         draw:
             ux-location-gem-overlay:
-                interactive: true
                 sprite: ux-route-arrow
                 size: [60px,60px]
                 collide: false
@@ -1191,7 +1192,7 @@ layers:
         data: { source: mz_route_start }
         draw:
             ux-icons-overlay:
-                interactive: true
+                interactive: global.interactive
                 priority: 1
                 sprite: ux-route-start
                 size: [36px,46px]
@@ -1204,7 +1205,7 @@ layers:
         data: { source: mz_route_destination }
         draw:
             ux-icons-overlay:
-                interactive: true
+                interactive: global.interactive
                 priority: 1
                 sprite: ux-route-stop
                 size: [36px,46px]
@@ -1217,7 +1218,7 @@ layers:
         data: { source: mz_route_transit_stop }
         draw:
             ux-icons-overlay:
-                interactive: true
+                interactive: global.interactive
                 sprite: ux-transit-stop
                 size: [15px,15px]
                 collide: false
@@ -1228,7 +1229,7 @@ layers:
         data: { source: mz_search_result }
         draw:
             ux-icons-overlay:
-                interactive: true
+                interactive: global.interactive
                 sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
@@ -1245,7 +1246,7 @@ layers:
         data: { source: mz_dropped_pin }
         draw:
             ux-icons-overlay:
-                interactive: true
+                interactive: global.interactive
                 sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
@@ -1259,7 +1260,7 @@ layers:
         data: { source: mz_default_point }
         draw:
             sdk-point-overlay:
-                interactive: true
+                interactive: global.interactive
                 sprite: ux-search-active
                 size: [36px,54px]
                 collide: false
@@ -1271,7 +1272,7 @@ layers:
         data: { source: mz_default_shield }
         draw:
             sdk-shield-overlay:
-                interactive: true
+                interactive: global.interactive
                 sprite: |
                     function() {
                         if( feature.shield_text ) {
@@ -1406,7 +1407,6 @@ layers:
         data: { source: mapzen, layer: water }
         draw:
             polygons:
-                #interactive: true
                 order: function() { return feature.sort_rank; }
                 #color: [0.608,0.925,0.965]
         later:
@@ -1535,7 +1535,6 @@ layers:
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }
-                    interactive: true
                     color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
                     # color: [0.592,0.929,0.961]
                     #color: [[11,[0.753,0.820,0.835]],[12,[0.710,0.800,0.824]],[13,[0.886,0.937,0.988]]]
@@ -1559,7 +1558,6 @@ layers:
                     lines:
                         visible: false
                     dots-lines:
-                        interactive: true
                         order: function() { return feature.sort_rank; }
                         color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
                         width: [[10,0px],[11,0.5px],[12,1px],[13,2px],[14,3px],[15,4px],[16,5px]]
@@ -1601,7 +1599,6 @@ layers:
         filter: { not: { kind: [platform] }, $zoom: { min: 14 } }
         draw:
             lines:
-                interactive: true
                 order: function() { return feature.sort_rank || 275; }
         railway:
             filter: { kind: [railway,train] }
@@ -1628,7 +1625,6 @@ layers:
         filter: { kind: rail, not: { railway: [subway,light_rail,tram] } }
         draw:
             lines:
-                interactive: true
                 order: function() { return feature.sort_rank; }
                 color: [0.588,0.671,0.698]
                 width: [[12,0px],[13,0.25px],[14,0.4px],[15,0.75px],[16,0.75px],[18,1m]]
@@ -1661,7 +1657,6 @@ layers:
         filter: { not: { kind: rail } }
         draw:
             lines:
-                interactive: true
                 #color: black
                 width: 1px
                 order: function() { return feature.sort_rank; }
@@ -3337,7 +3332,6 @@ layers:
             draw:
                 dashedline:
                     order: function() { return feature.sort_rank; }
-                    interactive: true
                     visible: false
                     color: [0.350,0.350,0.350]
                     width: [[14, 0.35px], [15, 0.5px], [16, 1px], [17, 2px], [18, 3px], [19, 4px]]
@@ -3497,11 +3491,9 @@ layers:
                     order: 1005
                     color: [0.501,0.650,0.650]
                     width: [[15, 0.6], [16, 1px], [17, 1px], [18, 4px], [19, 1.5m]]
-                    interactive: true
                 lines:
                     visible: false
                     order: 1000
-                    interactive: true
                     #width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 2px], [17, 6px], [18, 7px], [19, 10px]]
                     #color: [[15,[0.120,0.600,0.520]],[16,[0.623,0.820,0.797]]]
                     color: [[14,[0.510,0.752,0.695]],[15,[0.671,0.839,0.820]],[16,[0.671,0.839,0.820]]]
@@ -3644,7 +3636,6 @@ layers:
             filter: { kind: racetrack }
             draw:
                 lines:
-                    interactive: true
                     cap: round
                     join: round
                     color: [0.400,0.666,0.690]
@@ -3701,7 +3692,6 @@ layers:
             filter: { kind: aerialway }
             draw:
                 lines:
-                    interactive: true
                     color: [0.5,0.5,0.5]
                     width: [[14, 0.5px], [15, 1.0px], [16, 2m]]
             gondola_cable_car:
@@ -3766,11 +3756,6 @@ layers:
                 visible: false
                 color: [[14,[0.750,0.750,0.750]],[17,[0.85, 0.85, 0.85]]]
                 width: [[14, 0px], [15, 0.5px], [16,0.5px], [17,1px], [18, 1.25px]]
-
-        # turn interactive feature selection on for buildings with names
-        interactive:
-            filter: { name: true }
-            draw: { polygons: { interactive: true } }
 
         # building footprints, pre-extrusion
         footprints:
@@ -3947,7 +3932,7 @@ layers:
                     - { $zoom: { min: 20 }, area: true }
             draw:
                 text-blend-order:
-                    interactive: true
+                    interactive: global.interactive
                     move_into_tile: true
                     priority: 70
                     visible: *text_visible_building
@@ -3990,7 +3975,7 @@ layers:
                     - { label_position: true, addr_housenumber: true, name: false }
             draw:
                 text-blend-order:
-                    interactive: true
+                    interactive: global.interactive
                     order: 7
                     visible: *text_visible_address
                     text_source: addr_housenumber
@@ -4006,7 +3991,6 @@ layers:
         # country subdivisions (states, provinces)
         draw:
             lines:
-                interactive: true
                 order: function() { return (feature.sort_rank + 100); }
 #                color: red
 #                width: [[9, 1px], [14, 2px], [16, 3px], [17, 8m]]
@@ -4018,7 +4002,6 @@ layers:
                 #     - kind_detail: 2
             draw:
                 lines:
-                    interactive: true
                     color: *country_boundary
                     width: [[1, 0.5px], [2, 1.0px], [4, 1.5px], [9, 2.5px], [14, 3.5px], [16, 4.5px], [17, 14m]]
             water:
@@ -4033,7 +4016,6 @@ layers:
         #     filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
         #     draw:
         #         dashed:
-        #             interactive: true
         #             color: *country_boundary
         #             width: [[1, 0.2px], [2, 0.5px], [4, 1.0px], [9, 1.5px], [14, 2.5px], [16, 3.5px], [17, 10m]]
 
@@ -4050,7 +4032,6 @@ layers:
                 #     - scalerank: 0
             draw:
                 lines:
-                    interactive: true
                     color: *region_boundary
                     width: [[0, 0.5px], [2, 1.0px], [5, 1.25px], [6, 1.5px], [7, 1.75px], [9, 2.0px], [14, 4.0px], [16, 5.0px], [17, 10m]]
             water:
@@ -4135,7 +4116,6 @@ layers:
                         stroke: { color: *text_stroke, width: 4 }
     #            icons:
     #                size: [[13, 12px], [15, 18px]]
-    #                interactive: true
     #                sprite: *townspot_sprite
             early-ones:
                 # US, Brazil, China, Russia, Canada, Greenland, Iceland, Australia, India, Japan, Guam, Indonesia, South Africa, Egypt, Nigeria, Kenya
@@ -4157,7 +4137,6 @@ layers:
                         stroke: { color: *text_stroke, width: 4 }
     #            icons:
     #                size: [[13, 12px], [15, 18px]]
-    #                interactive: true
     #                sprite: *townspot_sprite
             early-ones-z4:
                 filter: { name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien], $zoom: {min: 4, max: 5} }
@@ -4191,7 +4170,6 @@ layers:
             #             text_wrap: false
     #            icons:
     #                size: [[13, 12px], [15, 18px]]
-    #                interactive: true
     #                sprite: *townspot_sprite
             early-ones-z5:
                 filter: { name: [Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,El Salvador,Belize,België - Belgique - Belgien], $zoom: {min: 5, max: 6} }
@@ -4290,7 +4268,6 @@ layers:
                         transform: uppercase
     #            icons:
     #                size: [[13, 12px], [15, 18px]]
-    #                interactive: true
     #                sprite: *townspot_sprite
             pesky:
                 filter: { name: ["Western Cape","Eastern Cape","Northern Cape","North West","Limpopo","KwaZulu-Natal","Hamburg","Freie und Hansestadt Hamburg","Neuchâtel","Nordrhein-Westfalen","Haute-Normandie","Baden-Württemberg","Bayern","Sachsen-Anhalt","Berlin","Mecklenburg-Vorpommern","Schleswig-Holstein","Brandenburg","Niedersachsen","Saarland","Thüringen","Hessen","Sachsen"], $zoom: {min: 7, max: 8} }
@@ -4310,10 +4287,8 @@ layers:
                 name: true
             draw:
                 icons:
-                    interactive: true
                     priority: 5
                     text:
-                        interactive: true
                         buffer: 3px
 
             populated-places-natural-earth-z2:
@@ -5768,7 +5743,7 @@ layers:
                 visible: false
             text-blend-order:
                 visible: *text_visible_exits
-                interactive: true
+                interactive: global.interactive
                 text_source: ref
                 priority: 52
                 font:
@@ -5789,7 +5764,7 @@ layers:
                 visible: false
             text-blend-order:
                 visible: *text_visible_airport_gate
-                interactive: true
+                interactive: global.interactive
                 text_source: ref
                 font:
                     fill: *text_fill_exits
@@ -5825,7 +5800,7 @@ layers:
         draw:
             icons:
                 size: [[13, 18px], [16, 18px], [18, 22px]]
-                interactive: true
+                interactive: global.interactive
                 visible: false
                 priority: 65
                 repeat_group: abc
@@ -5833,7 +5808,6 @@ layers:
                     visible: false    # labels are enabled by each layer below
                     move_into_tile: false # preserves text alignment w/icons in JS
                     buffer: 7px
-                    interactive: true
                     font:
                         family: *text_font_family
                         weight: 600
@@ -5843,7 +5817,7 @@ layers:
             text:
                 visible: false    # labels are enabled by each layer below, and these are only for special cases like enclosures
                 move_into_tile: false # preserves text alignment w/icons in JS
-                interactive: true
+                interactive: global.interactive
                 font:
                     family: *text_font_family
                     weight: 600
@@ -6307,11 +6281,9 @@ layers:
                 draw:
                     icons:
                         visible: *icon_visible_landuse_green
-                        interactive: true
                         sprite: beach
                         text:
                             visible: *text_visible_landuse_green
-                            interactive: true
             airport:
                 filter:
                     all:
@@ -6539,7 +6511,6 @@ layers:
                     text:
                         visible: true
                         priority: 44
-                        interactive: true
                         text_wrap: 10
                         font:
                             weight: 400
@@ -6914,7 +6885,6 @@ layers:
                     text:
                         visible: false
                         priority: 45
-                        interactive: true
                         text_wrap: 10
                         font:
                             weight: 400
@@ -7764,7 +7734,6 @@ layers:
         draw:
             lines:
                 order: 999
-                interactive: true
         #cliff:
 #            filter: { kind: cliff }
 #            draw:
@@ -7890,7 +7859,6 @@ layers:
             draw:
                 dots-lines:
                     order: 1002
-                    interactive: true
                     color: [0.120,0.600,0.520]
                     #width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 3px], [17, 6px], [18, 7px], [19, 10px]]
                     width: [[13, 0.75px], [14, 1px], [15, 3.5px], [16, 3px], [17, 4px], [18, 5px], [19, 8px]]
@@ -7898,7 +7866,6 @@ layers:
                     #color: purple
                 lines:
                     order: 1000
-                    interactive: true
                     #width: [[13, 0.75px], [14, 0.85px], [15, 1.1px], [16, 2px], [17, 6px], [18, 7px], [19, 10px]]
                     #color: [[15,[0.120,0.600,0.520]],[16,[0.623,0.820,0.797]]]
                     color: [[14,[0.510,0.752,0.695]],[15,[0.671,0.839,0.820]],[16,[0.671,0.839,0.820]]]
@@ -8033,7 +8000,6 @@ layers:
 #                    color: blue #[0.120,0.600,0.520]
 #                    width: [[13, 1px], [14, 1.45px], [15, 1.1px], [16, 1.5px], [17, 2px], [18, 5px], [19, 6px]]
 #                    order: 1004
-                    interactive: true
                     color: [[11,[0.120,0.600,0.520]],[14,[0.120,0.600,0.520]],[15,[1.00,1.00,1.00]]]
                     #width: [[11, 0.25px], [12, 0.35px], [13, 0.55px],[14,1px],[15,0px]]
                     width: [[13, 0.75px], [14, 1.1px], [15, 1.1px], [16, 1.5px], [17, 2.2px], [18, 5px], [19, 6px]]
@@ -8090,7 +8056,6 @@ layers:
                 # color: [0.756,0.563,0.499]
                 width: [[13, 0.6px], [14, 1px], [15, 1.1px], [16, 1.25px], [17, 1.5px], [18, 5px], [19, 6px]]
                 order: 990
-                interactive: true
         late:
             filter: { $zoom: { min: 16 } }
             draw:
@@ -8156,7 +8121,6 @@ layers:
                 color: [0.710,0.553,0.522]
                 width: [[11, 0.25px], [12, 0.35px], [13, 0.55px], [14, 1px], [15, 0px], [16, 1.5px], [17, 3px], [18, 3m]]
                 order: 990
-                interactive: true
         late:
             filter: { $zoom: { min: 15 } }
             draw:
@@ -8197,7 +8161,6 @@ layers:
                 color: [0.120,0.600,0.520]
                 width: [[11, 0.25px], [12, 0.35px], [13, 0.55px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
                 order: 990
-                interactive: true
         double-lines:
             filter: { $zoom: { min: 16 } }
             draw:
@@ -8209,13 +8172,11 @@ layers:
                         width: [[15, 0.5px],[16, 1.5px],[17, 1.5px],[18, 2.5px],[19, 1m]]
                 casing_left:
                     visible: false
-                    interactive: true
                     order: 486
                     color: [0.120,0.600,0.520]
                     width: [[15, 0.5px],[16, 5.5px],[17, 10px],[18, 9m],[19, 8m]]
                 casing_right:
                     visible: false
-                    interactive: true
                     order: 486
                     color: white
                     width: [[15, 0.5px],[16, 6px],[17, 10px],[18, 9m],[19, 8m]]
