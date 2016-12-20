@@ -1581,7 +1581,7 @@ layers:
                         width: [[10,0px],[11,0.5px],[12,1px],[13,2px],[14,3px],[15,4px],[16,5px]]
 
     water-line-labels:
-        data: { source: mapzen, layer: [water] }
+        data: { source: mapzen, layer: water }
         visible: *text_visible_water_labels
         filter:
             all:
@@ -1595,12 +1595,8 @@ layers:
                     fill: *text_fill_water
                     family: *text_font_family
                     style: italic
-                    weight: 400
-                    size: [[12,11px],[13,12px]]
-        water-line-labels-z17:
-            filter: { $zoom: [17] }
-            draw:
-                text-blend-order: { font: { size: 14px } }
+                    weight: normal
+                    size: [[12,10px],[17,14px]]
         not-river-not-stream:
             filter: { kind: [canal,dam,ditch,drain], $zoom: { max: 14 } }
             draw:
@@ -3666,12 +3662,12 @@ layers:
                     color: [0.400,0.666,0.690]
                     width: [[13,0.5px],[14,1px],[15, 1px], [16, 1.5px], [18, 3px], [19, 5px]]
         airport-lines:
-            filter: { kind: aeroway }
+            filter: { kind: aeroway, kind_detail: [runway,taxiway] }
             draw:
                 lines:
-                    color: [[11, [0.25,0.25,0.25]], [17, [0.0,0.0,0.0]]]
+                    color: [[11,[0.25,0.25,0.25]],[17,[0.00,0.00,0.00]]]
                     cap: butt
-                    width: [[10, 1px], [11, 1.5px], [12, 2px], [13, 4px], [14, 8px], [15, 16px], [16, 32px], [17, 60m]]
+                    width: [[10,1px],[13,3px],[15,16px],[17,60m]]
                     outline:
                         color: [1.0,1.0,1.0]
             # Features come in at zoom 9, but include mostly minor airports without POIs until z13
@@ -3689,11 +3685,11 @@ layers:
                 filter: { kind_detail: taxiway }
                 draw:
                     lines:
-                        color: [[11, [0.885,0.885,0.885]], [13, [0.779,0.802,0.828]], [14,[0.779,0.802,0.828]], [15, [1.0,1.0,1.0]], [16, [1.0,1.0,1.0]]]
-                        width: [[11, 0.5px], [12, 0.65px], [13, 0.65px], [14, 1px], [15, 0px], [16, 1px], [17, 6px], [18, 9m]]
+                        color: [[11,[0.885,0.885,0.885]],[13,[0.779,0.802,0.828]],[14,[0.779,0.802,0.828]],[15,[1.0,1.0,1.0]]]
+                        width: [[11,0.5px],[14,1px],[15,0px],[16,1px],[17,6px],[18,9m]]
                         outline:
-                            color: [[11, [0.894,0.906,0.914]], [14,[0.779,0.802,0.828]], [15, [0.714,0.733,0.760]], [16, [0.714,0.733,0.760]], [17, [0.744,0.764,0.792]]]
-                            width: [[11, 0px], [14, 0px], [15, 0.75px], [16, 1.5px], [17, 2px], [18, 3px]]
+                            color: [[11,[0.894,0.906,0.914]],[14,[0.779,0.802,0.828]],[15,[0.714,0.733,0.760]],[17,[0.744,0.764,0.792]]]
+                            width: [[11, 0px],[14,0px],[15,0.75px],[17,2px],[18,3px]]
                 early:
                     filter: { $zoom: { max: 13 } }
                     draw:
@@ -6278,72 +6274,61 @@ layers:
                 font:
                     fill: *text_fill_water
                     family: *text_font_family
-                    weight: 400
+                    weight: normal
                     size: 12px
                     transform: uppercase
-        sea-early:
-            filter: { $zoom: [3], kind: sea }
-            draw: { text-blend-order: { visible: false } }
         ocean-spacer:
             filter: { kind: ocean }
             ocean-spacer-z1-z4:
                 filter: { $zoom: { min: 1, max: 4 } }
                 draw:
                     text-blend-order:
-                        text_source: function() { return feature.name.split('').join(' ') }
+                        text_source: |
+                            function() {
+                                var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+                                name = name.split(' ').join('\n');
+                                return name.split('').join('  ');
+                            }
                         text_wrap: false
             ocean-spacer-z4-up:
                 filter: { $zoom: { min: 4 } }
                 draw:
                     text-blend-order:
-                        text_source: function() { return feature.name.split('').join('  ') }
+                        text_source:  |
+                            function() {
+                                var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+                                name = name.split(' ').join('\n');
+                                return name.split('').join('  ');
+                            }
                         text_wrap: false
-        ocean-labels-z1:
-            filter: { $zoom: [1] }
+        ocean-labels:
             draw:
-                text-blend-order: { font: { size: 8px } }
-        ocean-labels-z2:
-            filter: { $zoom: [2] }
-            draw:
-                text-blend-order: { font: { size: 10px } }
-        ocean-labels-z3:
-            filter: { $zoom: [3] }
-            draw:
-                text-blend-order: { font: { size: 13px } }
-        ocean-labels-z4-up:
-            filter: { $zoom: { min: 4} }
-            draw:
-                text-blend-order: { font: { size: 16px } }
+                text-blend-order:
+                    font:
+                        size: [[1,8px],[2,10px],[3,13px],[4,16px]]
 
+        sea-early:
+            filter: { $zoom: [3], kind: sea }
+            draw: { text-blend-order: { visible: false } }
         sea-spacer:
             filter: { not: { kind: [ocean] }, $zoom: { min: 4 } }
             draw:
                 text-blend-order:
-                    text_source: function() { return feature.name.split('').join(' ') }
+                    text_source: |
+                        function() {
+                            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+                            name = name.split(' ').join('\n');
+                            return name.split('').join(' ');
+                        }
                     text_wrap: false
 
         sea-labels:
             filter: { not: { kind: [ocean] } }
-            sea-labels-z4:
-                filter: { $zoom: [4] }
-                draw:
-                    text-blend-order: { font: { size: 8px, fill: [0.250,0.250,0.250] } }
-            sea-labels-z5:
-                filter: { $zoom: [5] }
-                draw:
-                    text-blend-order: { font: { size: 10px } }
-            sea-labels-z6:
-                filter: { $zoom: [6] }
-                draw:
-                    text-blend-order: { font: { size: 11px } }
-            sea-labels-z7:
-                filter: { $zoom: [7] }
-                draw:
-                    text-blend-order: { font: { size: 12px } }
-            sea-labels-z8:
-                filter: { $zoom: { min: 8} }
-                draw:
-                    text-blend-order: { font: { size: 14px } }
+            draw:
+                text-blend-order:
+                    font:
+                        fill: [0.350,0.350,0.350]
+                        size: [[4,8px],[6,11px],[8,14px]]
 
     earth-labels:
         data: { source: mapzen, layer: earth }
