@@ -41,12 +41,29 @@ map = (function () {
         }
     }
 
-    // normal case, eg: http://tangrams.github.io/nameless-maps/?roads#4/0/0
-    var url_search = window.location.search.slice(1).split('/')[0];
-    // console.log('url_search', url_search);
-    if (url_search.length > 0) {
-        style_file = url_search + ".yaml";
-        // console.log('style_file', style_file);
+    // enable setting language by URL argument
+    // eg: '?language=en&this=no'
+
+    var query = splitQueryParams();
+    // { language: 'en', this: 'no'}
+
+    function splitQueryParams () {
+       var str = window.location.search;
+
+       var kvArray = str.slice(1).split('&');
+       // ['language=en', 'this=no']
+
+       var obj = {};
+
+       for (var i = 0, j=kvArray.length; i<j; i++) {
+           var value = kvArray[i].split('=');
+           var k = window.decodeURIComponent(value[0]);
+           var v = window.decodeURIComponent(value[1]);
+
+           obj[k] = v;
+       }
+
+       return obj;
     }
 
     /*** Map ***/
@@ -176,7 +193,91 @@ map = (function () {
 
     /***** Render loop *****/
 
+    // Create dat GUI
+    var gui = new dat.GUI({ autoPlace: true, width: 250 });
+
     function addGUI() {
+        gui.domElement.parentNode.style.zIndex = 10000;
+        window.gui = gui;
+
+        // Language selector
+        var langs = {
+            '(default)': false,
+            'English': 'en',
+            'Russian': 'ru',
+            'Chinese': 'zh',
+            'Japanese': 'ja',
+            'Korean': 'ko',
+            'Vietnamese': 'vi',
+            'German': 'de',
+            'French': 'fr',
+            'Arabic': 'ar',
+            'Spanish': 'es',
+            'Italian': 'it',
+            'Greek': 'el'
+        };
+        // use query language, else default to English
+        gui.language = query.language || false;
+        gui.add(gui, 'language', langs).onChange(function(value) {
+            scene.config.global.ux_language = value;
+            scene.updateConfig();
+            //window.location.search = 'language=' + value;
+        });
+        gui.fallback_lang = query.language || false;
+        gui.add(gui, 'fallback_lang', langs).onChange(function(value) {
+            scene.config.global.ux_language_fallback = value;
+            scene.updateConfig();
+            //window.location.search = 'language=' + value;
+        });
+
+        // Transit selector
+        var transit_overlay = {
+            '(default)': false,
+            'Show': true,
+            'Hide': false
+        };
+        // use transit ux, else default to false
+        gui.transit_overlay = query.transit_overlay || false;
+        gui.add(gui, 'transit_overlay', transit_overlay).onChange(function(value) {
+            scene.config.global.sdk_transit_overlay = (value === 'true' || value === true); // dat.gui passes a string
+            scene.updateConfig();
+        });
+
+        // Building extrusion selector
+        var building_3d = {
+            '(default)': true,
+            'Yes': true,
+            'No': false
+        };
+        // use transit ux, else default to false
+        gui.building_3d = query.building_3d || true;
+        gui.add(gui, 'building_3d', building_3d).onChange(function(value) {
+            scene.config.global.building_extrude = (value === 'true' || value === true); // dat.gui passes a string
+            scene.updateConfig();
+        });
+
+        // Take a screenshot and save to file
+        gui.save_screenshot = function () {
+            return scene.screenshot().then(function(screenshot) {
+                // uses FileSaver.js: https://github.com/eligrey/FileSaver.js/
+                timestamp = new Date();
+                month = timestamp.getMonth()+1;
+                if( month < 10 ) { month = '0' + month; }
+                prettydate = timestamp.getFullYear() + month + timestamp.getDate() + timestamp.getHours() + timestamp.getMinutes();
+                map_location = map.getZoom() + '-' + map.getCenter().lat.toFixed(5) + '-' + map.getCenter().lng.toFixed(5);
+                saveAs(screenshot.blob, 'tangram-' + map_location + '-' + prettydate + '.png');
+            });
+        };
+        gui.add(gui, 'save_screenshot');
+
+        // Enable/disable interactivity for all features
+        var interactive_label = 'debug_interactive';
+        gui[interactive_label] = false;
+        gui.add(gui, interactive_label).onChange(function(value) {
+            scene.setIntrospection(value);
+        });
+        scene.setIntrospection(gui[interactive_label]);
+
         // Link to edit in OSM - hold 'e' and click
         map.getContainer().addEventListener('dblclick', function (event) {
             //console.log( 'dblclick was had' );
@@ -236,13 +337,7 @@ map = (function () {
                                 label += "<span class='labelLine' key="+x+" value="+val+"'>"+x+" : "+val+"</span><br>"
                             }
 
-                            //var mz_layers = JSON.stringify(
-                            //   selection.feature.layers.reduce((set, val) => { let last=set; val.split(':').forEach(k => { last = last[k] = last[k] || {} }); return set }, {}),
-                            //   null, '\t')
-                            //label += "<span class='labelLine'>layers : "+mz_layers+"</span><br>";
-
                             if (label != '') {
-                                popup.style.width = '300px'; // 'auto';
                                 popup.style.left = (pixel.x) + 'px';
                                 popup.style.top = (pixel.y) + 'px';
                                 popup.style.margin = '0px';
@@ -277,6 +372,12 @@ map = (function () {
     window.addEventListener('load', function () {
         // Scene initialized
         layer.on('init', function() {
+            if (!inIframe()) {
+                map.scrollWheelZoom.enable();
+                addGUI();
+                initFeatureSelection();
+            }
+
             var camera = scene.config.cameras[scene.getActiveCamera()];
             // if a camera position is set in the scene file, use that
             if (defaultpos && typeof camera.position != "undefined") {
@@ -284,11 +385,14 @@ map = (function () {
             }
             map.setView([map_start_location[0], map_start_location[1]], map_start_location[2]);
         });
-        if (!inIframe()) {
-            map.scrollWheelZoom.enable();
-            addGUI();
-            initFeatureSelection();
-        }
+
+        // Set initial language on scene load
+        layer.scene.subscribe({
+            load: function (msg) {
+                msg.config.global.ux_language = query.language;
+            }
+        });
+
         layer.addTo(map);
     });
 

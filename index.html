@@ -55,7 +55,7 @@
         padding: 3px 0px;
         font-family: Helvetica, sans-serif;
         font-weight: bold;
-        font-size: 24px;
+        font-size: 18px;
         color: #666;
         opacity: 2.0;
         margin: 0px;
@@ -77,6 +77,13 @@
     }
 
     </style>
+
+    <!-- A lightweight graphical user interface for changing variables in JavaScript.  -->
+    <script src="lib/dat.gui.min.js"></script>
+
+    <!-- FileSaver.js implements the HTML5 W3C saveAs(), used in the demo to save screenshots -->
+    <script src="lib/FileSaver.js"></script>
+
   </head>
 
   <body>
@@ -121,17 +128,7 @@
       ga('create', 'UA-47035811-1', 'auto');
       ga('send', 'pageview');
     </script>
-<!--
-    <script>
-        MPZN.bug();
-        var cs = document.getElementById("mz-citysearch");
-        if (cs != null) cs.parentNode.removeChild(cs);
-        var gl = document.getElementById("mz-geolocator");
-        if (gl != null) gl.parentNode.removeChild(gl);
-        var lc = document.getElementsByClassName("leaflet-top leaflet-left")[0];
-        if (lc != null) lc.style.top = "0px";
-    </script>
- -->
+
 
   </body>
 </html>
