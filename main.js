@@ -199,37 +199,37 @@ map = (function () {
     function addGUI() {
         gui.domElement.parentNode.style.zIndex = 10000;
         window.gui = gui;
-
-        // Language selector
-        var langs = {
-            '(default)': false,
-            'English': 'en',
-            'Russian': 'ru',
-            'Chinese': 'zh',
-            'Japanese': 'ja',
-            'Korean': 'ko',
-            'Vietnamese': 'vi',
-            'German': 'de',
-            'French': 'fr',
-            'Arabic': 'ar',
-            'Spanish': 'es',
-            'Italian': 'it',
-            'Greek': 'el'
-        };
-        // use query language, else default to English
-        gui.language = query.language || false;
-        gui.add(gui, 'language', langs).onChange(function(value) {
-            scene.config.global.ux_language = value;
-            scene.updateConfig();
-            //window.location.search = 'language=' + value;
-        });
-        gui.fallback_lang = query.language || false;
-        gui.add(gui, 'fallback_lang', langs).onChange(function(value) {
-            scene.config.global.ux_language_fallback = value;
-            scene.updateConfig();
-            //window.location.search = 'language=' + value;
-        });
-
+//
+//         // Language selector
+//         var langs = {
+//             '(default)': false,
+//             'English': 'en',
+//             'Russian': 'ru',
+//             'Chinese': 'zh',
+//             'Japanese': 'ja',
+//             'Korean': 'ko',
+//             'Vietnamese': 'vi',
+//             'German': 'de',
+//             'French': 'fr',
+//             'Arabic': 'ar',
+//             'Spanish': 'es',
+//             'Italian': 'it',
+//             'Greek': 'el'
+//         };
+//         // use query language, else default to English
+//         gui.language = query.language || false;
+//         gui.add(gui, 'language', langs).onChange(function(value) {
+//             scene.config.global.ux_language = value;
+//             scene.updateConfig();
+//             //window.location.search = 'language=' + value;
+//         });
+//         gui.fallback_lang = query.language || false;
+//         gui.add(gui, 'fallback_lang', langs).onChange(function(value) {
+//             scene.config.global.ux_language_fallback = value;
+//             scene.updateConfig();
+//             //window.location.search = 'language=' + value;
+//         });
+//
         // Transit selector
         var transit_overlay = {
             '(default)': false,
@@ -242,20 +242,20 @@ map = (function () {
             scene.config.global.sdk_transit_overlay = (value === 'true' || value === true); // dat.gui passes a string
             scene.updateConfig();
         });
-
-        // Building extrusion selector
-        var building_3d = {
-            '(default)': true,
-            'Yes': true,
-            'No': false
-        };
-        // use transit ux, else default to false
-        gui.building_3d = query.building_3d || true;
-        gui.add(gui, 'building_3d', building_3d).onChange(function(value) {
-            scene.config.global.building_extrude = (value === 'true' || value === true); // dat.gui passes a string
-            scene.updateConfig();
-        });
-
+//
+//         // Building extrusion selector
+//         var building_3d = {
+//             '(default)': true,
+//             'Yes': true,
+//             'No': false
+//         };
+//         // use transit ux, else default to false
+//         gui.building_3d = query.building_3d || true;
+//         gui.add(gui, 'building_3d', building_3d).onChange(function(value) {
+//             scene.config.global.building_extrude = (value === 'true' || value === true); // dat.gui passes a string
+//             scene.updateConfig();
+//         });
+//
         // Take a screenshot and save to file
         gui.save_screenshot = function () {
             return scene.screenshot().then(function(screenshot) {
