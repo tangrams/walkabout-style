@@ -4181,45 +4181,45 @@ layers:
                         weight: 600
                         stroke: { color: *text_stroke, width: 4 }
             country-z2-3:
-                    filter:
-                        $zoom: [2,3]
-                    draw:
-                        text-blend-order:
-                            font:
-                                priority: 10
-                                buffer: 10px
-                                weight: 200
-                                size: 11px
-                    early-ones-z2:
-                        filter:
-                            $zoom: [2]
-                            not: { name: [United States of America,Brasil,中华人民共和国,Россия,Canada,Kalaallit Nunaat,Ísland,Australia,India,日本,Guam,Indonesia,South Africa,مصر,Nigeria,Kenya] }
-                        draw:
-                            text-blend-order:
-                                visible: false
-                    early-ones-z3:
-                        filter:
-                            $zoom: [3]
-                            name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España]
-                        draw:
-                            text-blend-order:
-                                visible: false
-            country-z4:
-                    filter:
-                        $zoom: [4]
-                    draw:
-                        text-blend-order:
+                filter:
+                    $zoom: [2,3]
+                draw:
+                    text-blend-order:
+                        font:
+                            priority: 10
                             buffer: 10px
-                            priority: 8
-                            font:
-                                weight: 200
-                                size: 13px
-                    early-ones-z4:
-                        filter:
-                            name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España,Magyarország,Österreich,Polska,Хуссар Ирыстон,Аҧсны - Абхазия]
-                        draw:
-                            text-blend-order:
-                                visible: false
+                            weight: 200
+                            size: 11px
+                early-ones-z2:
+                    filter:
+                        $zoom: [2]
+                        not: { name: [United States of America,Brasil,中华人民共和国,Россия,Canada,Kalaallit Nunaat,Ísland,Australia,India,日本,Guam,Indonesia,South Africa,مصر,Nigeria,Kenya] }
+                    draw:
+                        text-blend-order:
+                            visible: false
+                early-ones-z3:
+                    filter:
+                        $zoom: [3]
+                        name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España]
+                    draw:
+                        text-blend-order:
+                            visible: false
+            country-z4:
+                filter:
+                    $zoom: [4]
+                draw:
+                    text-blend-order:
+                        buffer: 10px
+                        priority: 8
+                        font:
+                            weight: 200
+                            size: 13px
+                early-ones-z4:
+                    filter:
+                        name: [Nederland,Luxembourg,Liechtenstein,San Marino,Civitatis Vaticanæ,Crna Gora,Македонија,The Gambia,Burundi,Swaziland,الإمارات العربية المتحدة,العراق,Singapore,El Salvador,Belize,Trinidad and Tobago, Saint Lucia, Montserrat,Anguilla,República Dominicana,Bahamas,British Virgin Islands,Antigua and Barbuda,Grenada,Sint Maarten,Saint Kitts and Nevis,Cayman Islands,België - Belgique - Belgien,Deutschland,España,Magyarország,Österreich,Polska,Хуссар Ирыстон,Аҧсны - Абхазия]
+                    draw:
+                        text-blend-order:
+                            visible: false
             country-z5:
                 filter:
                     $zoom: [5]
