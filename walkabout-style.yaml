@@ -4027,7 +4027,7 @@ layers:
                     text-blend-order:
                         priority: 2
                         visible: *text_visible_admin
-                        text_source: name
+                        #text_source: name
                         # text_source:  |
                         #     function() {
                         #         var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
@@ -4092,20 +4092,20 @@ layers:
                     text-blend-order:
                         priority: 3
                         visible: *text_visible_admin
-                        text_source:  |
-                            function() {
-                                if( feature['name:right'] && feature['name:left'] ) {
-                                    if( feature['name:right'].includes(' ') || feature['name:left'].includes(' ') ) {
-                                        return feature['name'];
-                                    } else {
-                                        return feature['name:right'] + '\n' + feature['name:left'];
-                                    }
-                                } else {
-                                    return feature['name'];
-                                }
-                            }
+                        #text_source:  |
+#                            function() {
+#                                if( feature['name:right'] && feature['name:left'] ) {
+#                                    if( feature['name:right'].includes(' ') || feature['name:left'].includes(' ') ) {
+#                                        return feature['name'];
+#                                    } else {
+#                                        return feature['name:right'] + '\n' + feature['name:left'];
+#                                    }
+#                                } else {
+#                                    return feature['name'];
+#                                }
+#                            }
                         text_wrap: 100
-                        # offset: [0px, 10px]
+                        #offset: [0px, -7px]
                         anchor: top
                         font:
                             family: *text_font_family
@@ -4405,18 +4405,18 @@ layers:
             #
             # NOTE: So instead we play a shell game with symbolizers per zoom
             #
-            _icons_later: 
+            _icons_later:
                 filter: { $zoom: { min: 11 } }
                 draw:
-                    icons: 
+                    icons:
                         visible: false
                     text-blend-order:
                         visible: *text_visible_populated_places
 
-            _text_early: 
+            _text_early:
                 filter: { $zoom: { max: 11 } }
                 draw:
-                    text-blend-order: 
+                    text-blend-order:
                         visible: false
             # END HACK
 
