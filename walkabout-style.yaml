@@ -11,7 +11,7 @@
 #
 
 global:
-    sdk_api_key: false
+    # sdk_api_key: your-api-key # uncomment and set this value to your API key
 
     #ux/ui
     ux_language: false             # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
