@@ -74,8 +74,7 @@ map = (function () {
     map.setView(map_start_location.slice(0, 2), map_start_location[2]);
 
     var layer = Tangram.leafletLayer({
-        scene: style_file,
-        global: { sdk_api_key: 'vector-tiles-VyYjZGS' },
+        scene: { import: style_file, global: { sdk_api_key: 'vector-tiles-VyYjZGS' } },
         attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>'
     });
 
