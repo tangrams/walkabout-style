@@ -11,6 +11,8 @@
 #
 
 global:
+    sdk_api_key: vector-tiles-VyYjZGS
+
     #ux/ui
     ux_language: false             # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
     ux_language_fallback: false    # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
@@ -781,12 +783,14 @@ sources:
         # dev
         #url:  https://tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
         url_params:
-            api_key: vector-tiles-VyYjZGS
+            api_key: global.sdk_api_key
         rasters: [normals]
         max_zoom: 16
     normals: # normals
         type: Raster
         url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        url_params:
+            api_key: global.sdk_api_key
         max_zoom: 15
 
 #    # Only enable this for local debug, should not be enabled for prod (app inserts these at runtime)
