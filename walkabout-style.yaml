@@ -11,7 +11,7 @@
 #
 
 global:
-    sdk_api_key: vector-tiles-VyYjZGS
+    sdk_api_key: false
 
     #ux/ui
     ux_language: false             # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
