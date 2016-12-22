@@ -208,6 +208,7 @@ global:
     #
     # default order for basemap features
     feature_order: function() { return feature.sort_rank; }
+    building_extrude: true                  # building extrusion toggle
     #
     # TODO: YAML based globals below will move into this Tangram globals block
 
@@ -3834,19 +3835,21 @@ layers:
 
             extrude:
                 filter:
-                    any:
-                        # for the buildings that were visible at zoom 15, extrude those all up a bit at z17
-                        - { $zoom: [16], area: { min: 20000 }, name: true }
-                        - { $zoom: [16], area: { min: 20000 }, kind: true }
-                        - { $zoom: [16], area: { min: 5000 }, landuse_kind: true }
-                        - { $zoom: [16], height: { min: 150 } }
-                        - { $zoom: [16], volume: { min: 150000 } }
-                        - { $zoom: [17], area: { min: 5000 }, name: true }
-                        - { $zoom: [17], area: { min: 5000 }, kind: true }
-                        - { $zoom: [17], area: { min: 3000 }, landuse_kind: true }
-                        - { $zoom: [17], height: { min: 100 } }
-                        - { $zoom: [17], volume: { min: 100000 } }
-                        - { $zoom: { min: 18 } }
+                    all:
+                        - function() { return global.building_extrude; }
+                        - any:
+                            # for the buildings that were visible at zoom 15, extrude those all up a bit at z17
+                            - { $zoom: [16], area: { min: 20000 }, name: true }
+                            - { $zoom: [16], area: { min: 20000 }, kind: true }
+                            - { $zoom: [16], area: { min: 5000 }, landuse_kind: true }
+                            - { $zoom: [16], height: { min: 150 } }
+                            - { $zoom: [16], volume: { min: 150000 } }
+                            - { $zoom: [17], area: { min: 5000 }, name: true }
+                            - { $zoom: [17], area: { min: 5000 }, kind: true }
+                            - { $zoom: [17], area: { min: 3000 }, landuse_kind: true }
+                            - { $zoom: [17], height: { min: 100 } }
+                            - { $zoom: [17], volume: { min: 100000 } }
+                            - { $zoom: { min: 18 } }
                 draw:
                     polygons:
                         visible: true
