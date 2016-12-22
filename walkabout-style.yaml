@@ -4376,7 +4376,6 @@ layers:
             draw:
                 icons:
                     visible: *icon_visible_populated_places
-                    interactive: true
                     size: [[10,4px],[11,0px]]
                     sprite: townspot-xs-rev
                     buffer: 8px
@@ -4390,7 +4389,6 @@ layers:
                 text-blend-order:
                     visible: *text_visible_populated_places
                     buffer: 10px
-                    interactive: true
                     font:
                         size: [[5,9px],[8,10px],[12,11px]]
                         stroke: { color: *text_stroke, width: 4 }
