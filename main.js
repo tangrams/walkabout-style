@@ -199,37 +199,37 @@ map = (function () {
     function addGUI() {
         gui.domElement.parentNode.style.zIndex = 10000;
         window.gui = gui;
-//
-//         // Language selector
-//         var langs = {
-//             '(default)': false,
-//             'English': 'en',
-//             'Russian': 'ru',
-//             'Chinese': 'zh',
-//             'Japanese': 'ja',
-//             'Korean': 'ko',
-//             'Vietnamese': 'vi',
-//             'German': 'de',
-//             'French': 'fr',
-//             'Arabic': 'ar',
-//             'Spanish': 'es',
-//             'Italian': 'it',
-//             'Greek': 'el'
-//         };
-//         // use query language, else default to English
-//         gui.language = query.language || false;
-//         gui.add(gui, 'language', langs).onChange(function(value) {
-//             scene.config.global.ux_language = value;
-//             scene.updateConfig();
-//             //window.location.search = 'language=' + value;
-//         });
-//         gui.fallback_lang = query.language || false;
-//         gui.add(gui, 'fallback_lang', langs).onChange(function(value) {
-//             scene.config.global.ux_language_fallback = value;
-//             scene.updateConfig();
-//             //window.location.search = 'language=' + value;
-//         });
-//
+
+        // Language selector
+        var langs = {
+            '(default)': false,
+            'English': 'en',
+            'Russian': 'ru',
+            'Chinese': 'zh',
+            'Japanese': 'ja',
+            'Korean': 'ko',
+            'Vietnamese': 'vi',
+            'German': 'de',
+            'French': 'fr',
+            'Arabic': 'ar',
+            'Spanish': 'es',
+            'Italian': 'it',
+            'Greek': 'el'
+        };
+        // use query language, else default to English
+        gui.language = query.language || false;
+        gui.add(gui, 'language', langs).onChange(function(value) {
+            scene.config.global.ux_language = value;
+            scene.updateConfig();
+            //window.location.search = 'language=' + value;
+        });
+        gui.fallback_lang = query.language || false;
+        gui.add(gui, 'fallback_lang', langs).onChange(function(value) {
+            scene.config.global.ux_language_fallback = value;
+            scene.updateConfig();
+            //window.location.search = 'language=' + value;
+        });
+
         // Transit selector
         var transit_overlay = {
             '(default)': false,

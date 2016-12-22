@@ -12,10 +12,128 @@
 
 global:
     #ux/ui
-    #
-    # missing language
-    # missing transit overlay
-    #
+    ux_language: false             # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
+    ux_language_fallback: false    # l10n language code, trusting OSM in v0.10 tiles, fixed in v1.0 tiles
+    ux_language_text_source: |
+        function() {
+            // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
+            return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
+        }
+    ux_language_text_source_boundary_lines: |
+        function() {
+            var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
+            var left = (global.ux_language && feature['name:left:'+global.ux_language]) || (global.ux_language_fallback && feature['name:left:'+global.ux_language_fallback]) || feature['name:left'];
+            if( right && left ) {
+                //if( right.includes(' ') || left.includes(' ') ) {
+                    return left + " - " + right;
+                //} else {
+                //    return right + '\n' + left;
+                //}
+            } else {
+                return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
+            }
+        }
+    ux_language_text_source_short: |
+        function() {
+            return (global.ux_language && feature['name:short:'+global.ux_language]) || (global.ux_language_fallback && feature['name:short:'+global.ux_language_fallback]) || feature['name:short'];
+        }
+    ux_language_text_source_short_proxy_name: |
+        function() {
+            var name  = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            var short = (global.ux_language && feature['name:short:'+global.ux_language]) || (global.ux_language_fallback && feature['name:short:'+global.ux_language_fallback]) || feature['name:short'];
+            return short ? name : '';
+        }
+    ux_language_text_source_abbreviation: |
+        function() {
+            var name  = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            var abbrev = (global.ux_language && feature['name:abbreviation:'+global.ux_language]) || (global.ux_language_fallback && feature['name:abbreviation:'+global.ux_language_fallback]) || feature['name:abbreviation'];
+            return abbrev || name;
+        }
+    ux_language_text_source_iata: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            if(feature.iata) {
+                if (name) {
+                    return name + ' (' + feature.iata + ')';
+                }
+                else {
+                    return feature.iata;
+                }
+            } else {
+                return name;
+            }
+        }
+    ux_language_text_source_ocean: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            name = name.split(' ').join('\n');
+            return name.split('').join('  ');
+        }
+    ux_language_text_source_sea: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            name = name.split(' ').join('\n');
+            return name.split('').join(' ');
+        }
+    ux_language_text_source_continent_stacked_only: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            return name.split(' ').join('\n');
+        }
+    ux_language_text_source_continent: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
+            name = name.split(' ').join('\n');
+            return name.split('').join(' ');
+        }
+    ux_language_text_source_road_ref_and_name: |
+        function() {
+            // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
+            return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
+
+            /*
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            if(feature.ref && name) {
+                return (feature.ref + ' ' + name);
+            } else {
+                return name;
+            }
+            */
+        }
+    ux_language_text_source_road_ref_and_name_short: |
+        function() {
+            // if a ux_langauge has been defined use that, else if there is feature name in the fallback_ux_language then use that, else use the feature's default name in the local language
+            return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
+
+            /*
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            if (feature.ref && (feature.ref.length < 6) && name) {
+                return feature.ref + ' ' + name;
+            } else {
+                return name;
+            }
+            */
+        }
+    ux_language_text_source_piste_advanced: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            return name ? ('◆ ' + name) : '◆';
+        }
+    ux_language_text_source_piste_expert: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            return name ? ('◆◆ ' + name) : '◆◆';
+        }
+    ux_language_text_source_building_and_address: |
+        function() {
+            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'];
+            if (name && feature.addr_housenumber) {
+                return name + '\n' + feature.addr_housenumber;
+            } else {
+                return name;
+            }
+        }
+
     # To facilitate data visualizations several recommended sort orders are provided
     #
     # Your classic raster map overlay.
@@ -1594,6 +1712,7 @@ layers:
                 - $zoom: { min: 11 }
         draw:
             text-blend-order:
+                text_source: global.ux_language_text_source
                 font:
                     fill: *text_fill_water
                     family: *text_font_family
@@ -1682,6 +1801,7 @@ layers:
                     order: 352
             text-blend-order:
                 visible: false    # labels are enabled by each layer below
+                text_source: global.ux_language_text_source
                 font:
                     family: *text_font_family
                     weight: 500
@@ -1795,54 +1915,6 @@ layers:
                         cap: round
                         outline:
                             cap: butt
-            # labels-highway-early:
-            #     filter: { $zoom: [7,8,9] }
-            #     draw:
-            #         text-blend-order:
-            #             priority: 50
-            #             visible: *text_visible_shields
-            #             text_source: ref
-            #             font:
-            #                 fill: [0.408,0.427,0.459]
-            #                 weight: 400
-            #                 size: 9px
-            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
-            # labels-highway-z10:
-            #     filter:
-            #         $zoom: 10
-            #     draw:
-            #         text-blend-order:
-            #             visible: *text_visible_shields
-            #             text_source: ref
-            #             font:
-            #                 fill: [0.408,0.427,0.459]
-            #                 weight: 400
-            #                 size: 9px
-            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
-            # labels-highway-z11:
-            #     filter:
-            #         $zoom: 11
-            #     draw:
-            #         text-blend-order:
-            #             visible: *text_visible_shields
-            #             text_source: ref
-            #             font:
-            #                 fill: [0.408,0.427,0.459]
-            #                 weight: 600
-            #                 size: 10px
-            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
-            # labels-highway-z12:
-            #     filter:
-            #         $zoom: 12
-            #     draw:
-            #         text-blend-order:
-            #             visible: *text_visible_shields
-            #             text_source: ref
-            #             font:
-            #                 fill: [0.408,0.427,0.459]
-            #                 weight: 600
-            #                 size: 10px
-            #                 stroke: { color: [0.898,0.906,0.910], width: 4 }
             labels-highway-z13:
                 filter:
                     $zoom: 13
@@ -1850,8 +1922,6 @@ layers:
                     text-blend-order:
                         priority: 50
                         visible: *text_visible_highway
-                        #text_source: ref
-                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -1864,8 +1934,6 @@ layers:
                     text-blend-order:
                         priority: 50
                         visible: *text_visible_highway
-                        #text_source: ref
-                        #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                         font:
                             fill: [0.408,0.427,0.459]
                             weight: 600
@@ -2014,7 +2082,6 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary_e2
-                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     size: 11px
@@ -2025,7 +2092,6 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -2037,7 +2103,6 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -2049,7 +2114,6 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -2061,7 +2125,6 @@ layers:
                             text-blend-order:
                                 priority: 51
                                 visible: *text_visible_trunk_primary
-                                #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                                 font:
                                     fill: [0.495,0.511,0.532]
                                     weight: 600
@@ -2103,7 +2166,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 9px
@@ -2115,7 +2177,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 10px
@@ -2127,7 +2188,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -2139,7 +2199,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 11px
@@ -2150,7 +2209,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 size: 12px
@@ -2161,7 +2219,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -2173,7 +2230,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -2185,7 +2241,6 @@ layers:
                         text-blend-order:
                             priority: 51
                             visible: *text_visible_trunk_primary
-                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.495,0.511,0.532]
                                 weight: 600
@@ -2262,7 +2317,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -2273,7 +2327,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     size: 11px
@@ -2284,7 +2337,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -2296,7 +2348,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     weight: 600
@@ -2315,7 +2366,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2325,7 +2375,6 @@ layers:
                             text-blend-order:
                                 priority: 56
                                 visible: *text_visible_secondary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2348,7 +2397,6 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2360,7 +2408,6 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2372,7 +2419,6 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2383,7 +2429,6 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2394,8 +2439,6 @@ layers:
                         text-blend-order:
                             priority: 56
                             visible: *text_visible_secondary
-                            #text_source: ref
-                            #text_source: function() { if( feature.ref && feature.name ) { return feature.ref + " " + feature.name; } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2468,7 +2511,6 @@ layers:
                             text-blend-order:
                                 priority: 57
                                 visible: *text_visible_tertiary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2478,7 +2520,6 @@ layers:
                             text-blend-order:
                                 priority: 57
                                 visible: *text_visible_tertiary_e
-                                #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                                 font:
                                     fill: [0.536,0.556,0.581]
                                     stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2500,7 +2541,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2511,7 +2551,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary_e
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 9px
@@ -2522,7 +2561,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 10px
@@ -2533,7 +2571,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 12px
@@ -2544,7 +2581,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2555,7 +2591,6 @@ layers:
                         text-blend-order:
                             priority: 57
                             visible: *text_visible_tertiary
-                            #text_source: function() { if( feature.ref && feature.name ) { if( feature.ref.length < 6 ) { return feature.ref + " " + feature.name; } else { return feature.name; } } else { return feature.name; } }
                             font:
                                 fill: [0.536,0.556,0.581]
                                 size: 13px
@@ -2603,7 +2638,6 @@ layers:
                         text-blend-order:
                             priority: 59
                             visible: *text_visible_minor_road_e
-                            text_source: name
                             font:
                                 fill: [0.536,0.556,0.581]
                                 stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2613,7 +2647,6 @@ layers:
                         text-blend-order:
                             priority: 59
                             visible: *text_visible_minor_road_e
-                            text_source: name
                             font:
                                 fill: [0.536,0.556,0.581]
                                 stroke: { color: [1.00,1.00,1.00], width: 4 }
@@ -2666,7 +2699,6 @@ layers:
                     text-blend-order:
                         priority: 59
                         visible: *text_visible_minor_road_e
-                        text_source: name
                         font:
                             fill: [0.536,0.556,0.581]
                             size: 9px
@@ -2677,7 +2709,6 @@ layers:
                     text-blend-order:
                         priority: 59
                         visible: *text_visible_minor_road_e
-                        text_source: name
                         font:
                             fill: [0.536,0.556,0.581]
                             size: 12px
@@ -2688,7 +2719,6 @@ layers:
                     text-blend-order:
                         priority: 59
                         visible: *text_visible_minor_road_e
-                        text_source: name
                         font:
                             fill: [0.40,0.40,0.40]
                             size: 12px
@@ -2699,7 +2729,6 @@ layers:
                     text-blend-order:
                         priority: 59
                         visible: *text_visible_minor_road
-                        text_source: name
                         font:
                             fill: [0.40,0.40,0.40]
                             size: 13px
@@ -2725,7 +2754,6 @@ layers:
                         text-blend-order:
                             priority: 60
                             visible: *text_visible_service_road
-                            text_source: name
                             font:
                                 fill: [0.536,0.556,0.581]
                                 stroke: { color: [0.843,0.961,0.914], width: 4 }
@@ -2785,7 +2813,6 @@ layers:
                     text-blend-order:
                         priority: 60
                         visible: *text_visible_service_road
-                        text_source: name
                         font:
                             # need fill color?
                             fill: [0.536,0.556,0.581]
@@ -2797,7 +2824,6 @@ layers:
                     text-blend-order:
                         priority: 60
                         visible: *text_visible_service_road
-                        text_source: name
                         font:
                             fill: [0.536,0.556,0.581]
                             size: 13px
@@ -3461,7 +3487,6 @@ layers:
                     text-blend-order:
                         priority: 61
                         visible: *text_visible_path
-                        text_source: name
                         font:
                             fill: [0.536,0.556,0.581]
                             size: 12px
@@ -3583,7 +3608,6 @@ layers:
                     text-blend-order:
                         priority: 63
                         visible: *text_visible_steps
-                        text_source: name
                         font:
                             fill: [0.45,0.45,0.45]
                             size: 11px
@@ -3632,14 +3656,14 @@ layers:
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
-                        text_source: function() { if( feature.name ){ return '◆ ' + feature.name; } else { return ''; } }
+                        text_source: global.ux_language_text_source_piste_advanced
             expert:
                 filter: { piste_difficulty: expert }
                 draw:
                     lines:
                         color: [0.450,0.450,0.450]
                     text-blend-order:
-                        text_source: function() { if( feature.name ){ return '◆◆ ' + feature.name; } else { return ''; } }
+                        text_source: global.ux_language_text_source_piste_expert
         pier:
             filter: { kind: path, kind_detail: pier }
             draw:
@@ -3735,7 +3759,7 @@ layers:
                     text-blend-order:
                         priority: 63
                         visible: *text_visible_aerialway
-                        text_source: name
+                        text_source: global.ux_language_text_source
                         font:
                             fill: *text_fill
                             size: 10px
@@ -3949,6 +3973,7 @@ layers:
                     - { $zoom: { min: 20 }, area: true }
             draw:
                 text-blend-order:
+                    text_source: global.ux_language_text_source
                     interactive: global.interactive
                     move_into_tile: true
                     priority: 70
@@ -3983,7 +4008,7 @@ layers:
                 filter: { $zoom: { min: 20 } }
                 draw:
                     text-blend-order:
-                        text_source: function() { if( feature.addr_housenumber ) { return feature.name + '\n' + feature.addr_housenumber; } else { return feature.name; } }
+                        text_source: global.ux_language_text_source_building_and_address
         address-labels:
             filter:
                 $zoom: { min: 20 }
@@ -4005,7 +4030,6 @@ layers:
 
     boundaries:
         data: { source: mapzen, layer: boundaries }
-        # country subdivisions (states, provinces)
         draw:
             lines:
                 order: function() { return (feature.sort_rank + 100); }
@@ -4022,29 +4046,13 @@ layers:
                 draw:
                     lines:
                         visible: false
-                        #order: function() { return (feature.sort_rank - 2); }
-                        #color: [0.568,0.942,1.000]
             labels-z9-up:
                 filter: { name: true, $zoom: { min: 9 }, not: { maritime_boundary: true } }
                 draw:
                     text-blend-order:
                         priority: 2
                         visible: *text_visible_admin
-                        #text_source: name
-                        # text_source:  |
-                        #     function() {
-                        #         var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
-                        #         var left = (global.ux_language && feature['name:left:'+global.ux_language]) || (global.ux_language_fallback && feature['name:left:'+global.ux_language_fallback]) || feature['name:left'];
-                        #         if( right && left ) {
-                        #             if( right.includes(' ') || left.includes(' ') ) {
-                        #                 return left + " - " + right;
-                        #             } else {
-                        #                 return right + '\n' + left;
-                        #             }
-                        #         } else {
-                        #             return (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature.name;
-                        #         }
-                        #     }
+                        text_source: global.ux_language_text_source_boundary_lines
                         text_wrap: 100
                         font:
                             family: *text_font_family
@@ -4093,18 +4101,7 @@ layers:
                     text-blend-order:
                         priority: 3
                         visible: *text_visible_admin
-                        #text_source:  |
-#                            function() {
-#                                if( feature['name:right'] && feature['name:left'] ) {
-#                                    if( feature['name:right'].includes(' ') || feature['name:left'].includes(' ') ) {
-#                                        return feature['name'];
-#                                    } else {
-#                                        return feature['name:right'] + '\n' + feature['name:left'];
-#                                    }
-#                                } else {
-#                                    return feature['name'];
-#                                }
-#                            }
+                        text_source: global.ux_language_text_source_boundary_lines
                         text_wrap: 100
                         #offset: [0px, -7px]
                         anchor: top
@@ -4151,7 +4148,7 @@ layers:
         draw:
             icons:
                 text:
-                    # text_source: global.ux_language_text_source
+                    text_source: global.ux_language_text_source
                     visible: false
                     buffer: 3px
                     font:
@@ -4159,7 +4156,7 @@ layers:
                         fill: *text_fill
             # NOTE: This is a hack for localities because of an icon & text bug, see note below
             text-blend-order:
-                # text_source: global.ux_language_text_source
+                text_source: global.ux_language_text_source
                 visible: false    # labels are enabled by each layer below
                 buffer: 3px
                 font:
@@ -4175,8 +4172,6 @@ layers:
                 text-blend-order:
                     priority: 3
                     visible: *text_visible_admin
-                    text_source:  |
-                        function() { return feature["name:en"] || feature["name"]; }
                     font:
                         fill: *text_fill
                         weight: 600
@@ -4285,7 +4280,6 @@ layers:
                 text-blend-order:
                     priority: 14
                     visible: false
-                    text_source: 'name:short'
                     font:
                         size: 11px
                         weight: normal
@@ -4297,6 +4291,7 @@ layers:
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
+                        text_source: global.ux_language_text_source_short
                         font:
                             fill: [0.70,0.70,0.70]
                             stroke: { color: *text_stroke, width: 4 }
@@ -4307,6 +4302,7 @@ layers:
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
+                        text_source: global.ux_language_text_source_short
                         font:
                             size: 18px
                             weight: 200
@@ -4318,6 +4314,7 @@ layers:
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
+                        text_source: global.ux_language_text_source_short
                         font:
                             size: 21px
                             weight: 200
@@ -4328,8 +4325,7 @@ layers:
                 draw:
                     text-blend-order:
                         visible: *text_visible_admin
-                        text_source: |
-                            function() { if(feature["name:short"]) { return feature["name"]; } else { return ""; } }
+                        text_source: global.ux_language_text_source_short_proxy_name
                         font:
                             size: 30px
                             weight: 200
@@ -4348,15 +4344,14 @@ layers:
                         name: [Delaware,New Jersey,Connecticut,Rhode Island,Massachusetts,New Hampshire,Vermont]
                     draw:
                         text-blend-order:
-                            text_source: |
-                                function() { return feature["name:abbreviation"] || feature["name"]; }
+                            text_source: global.ux_language_text_source_abbreviation
                             font: { transform: uppercase }
                 region-z8:
                     filter:
                         $zoom: [8]
                     draw:
                         text-blend-order:
-                            text_source: name
+                            text_source: global.ux_language_text_source
                     no-pop:
                         filter:
                             any:
@@ -4988,6 +4983,7 @@ layers:
                 repeat_group: abc
                 text:
                     visible: false    # labels are enabled by each layer below
+                    text_source: global.ux_language_text_source
                     move_into_tile: false # preserves text alignment w/icons in JS
                     buffer: 7px
                     font:
@@ -5000,6 +4996,7 @@ layers:
                 visible: false    # labels are enabled by each layer below, and these are only for special cases like enclosures
                 move_into_tile: false # preserves text alignment w/icons in JS
                 interactive: global.interactive
+                text_source: global.ux_language_text_source
                 font:
                     family: *text_font_family
                     weight: 600
@@ -5265,6 +5262,7 @@ layers:
                             priority: 41
                             text:
                                 visible: *text_visible_landuse_green
+                                text_source: global.ux_language_text_source
                                 font:
                                     style: italic
                                     stroke: { color: *text_stroke_park, width: 4 }
@@ -5492,7 +5490,7 @@ layers:
                         priority: 42
                         text:
                             visible: *text_visible_landuse_green
-                            text_source: function() { if(feature.iata) { return feature.name + ' (' + feature.iata + ')'; } else { return feature.name; } }
+                            text_source: global.ux_language_text_source_iata
                             font:
                                 #fill: [0.10,0.10,0.10]
                                 size: 10px
@@ -6239,6 +6237,7 @@ layers:
         default-label-text:
             draw:
                 text-blend-order:
+                    text_source: global.ux_language_text_source
                     font:
                         fill: *text_fill_water
                         family: *text_font_family
@@ -6265,6 +6264,7 @@ layers:
         filter: { name: true, kind: [sea, ocean] }
         draw:
             text-blend-order:
+                text_source: global.ux_language_text_source
                 font:
                     fill: *text_fill_water
                     family: *text_font_family
@@ -6277,23 +6277,13 @@ layers:
                 filter: { $zoom: { min: 1, max: 4 } }
                 draw:
                     text-blend-order:
-                        text_source: |
-                            function() {
-                                var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
-                                name = name.split(' ').join('\n');
-                                return name.split('').join('  ');
-                            }
+                        text_source: global.ux_language_text_source_sea
                         text_wrap: false
             ocean-spacer-z4-up:
                 filter: { $zoom: { min: 4 } }
                 draw:
                     text-blend-order:
-                        text_source:  |
-                            function() {
-                                var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
-                                name = name.split(' ').join('\n');
-                                return name.split('').join('  ');
-                            }
+                        text_source: global.ux_language_text_source_ocean
                         text_wrap: false
         ocean-labels:
             draw:
@@ -6308,12 +6298,7 @@ layers:
             filter: { not: { kind: [ocean] }, $zoom: { min: 4 } }
             draw:
                 text-blend-order:
-                    text_source: |
-                        function() {
-                            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
-                            name = name.split(' ').join('\n');
-                            return name.split('').join(' ');
-                        }
+                    text_source: global.ux_language_text_source_sea
                     text_wrap: false
 
         sea-labels:
@@ -6327,16 +6312,15 @@ layers:
     earth-labels:
         data: { source: mapzen, layer: earth }
         filter: { name: true }
+        draw:
+            text-blend-order:
+                text_source: global.ux_language_text_source
         continent:
             filter: { kind: [continent], $zoom: {max: 5} }
             draw:
                 text-blend-order:
                     visible: *text_visible_continent
-                    text_source: |
-                        function() {
-                            var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
-                            return name.split(' ').join('\n');
-                        }
+                    text_source: global.ux_language_text_source_continent_stacked_only
                     text_wrap: false
                     font:
                         family: *text_font_family
@@ -6349,12 +6333,7 @@ layers:
                 filter: { $zoom: { min: 2 } }
                 draw:
                     text-blend-order:
-                        text_source: |
-                            function() {
-                                var name = (global.ux_language && feature['name:'+global.ux_language]) || (global.ux_language_fallback && feature['name:'+global.ux_language_fallback]) || feature['name'] || '';
-                                name = name.split(' ').join('\n');
-                                return name.split('').join(' ');
-                            }
+                        text_source: global.ux_language_text_source_continent
         island:
             filter: { kind: [archipelago, island, islet] }
             draw:
