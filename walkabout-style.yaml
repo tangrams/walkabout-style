@@ -4011,9 +4011,8 @@ layers:
                 order: function() { return (feature.sort_rank + 100); }
         country:
             filter:
-                any:
-                    - kind: country
-                    - admin_level: 2
+                - kind: country
+                - admin_level: 2
             draw:
                 lines:
                     color: *country_boundary
@@ -4072,9 +4071,8 @@ layers:
 
         region:
             filter:
-                any:
-                    - kind: [region,macroregion]
-                    - kind_detail: [3,4]
+                - kind: [region,macroregion]
+                - kind_detail: [3,4]
             draw:
                 lines:
                     color: *region_boundary
