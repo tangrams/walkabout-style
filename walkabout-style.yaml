@@ -777,9 +777,11 @@ sources:
     mapzen:
         type: TopoJSON
         # prod
-        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-VyYjZGS
+        url:  https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
         # dev
         #url:  https://tile.dev.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
+        url_params:
+            api_key: vector-tiles-VyYjZGS
         rasters: [normals]
         max_zoom: 16
     normals: # normals
