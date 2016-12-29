@@ -4679,11 +4679,11 @@ layers:
         visible: *label_visible_poi_landuse
         filter:
             all:
-                - not: { kind: [building,address,farm,tree,apron,residential,commercial,industrial] }
+                - not: { kind: [building,address,farm,apron,residential,commercial,industrial] }
                 - $geometry: point
                 # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
                 #- function() { return feature.min_zoom <= $zoom }
-                - function() { if( feature.kind == 'restaurant' || feature.kind == 'landmark' || feature.kind == 'cafe' ) { return true } else { return feature.min_zoom <= $zoom } }
+                - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'playground' || feature.kind == 'toilets' ) { return true } else { return feature.min_zoom <= $zoom } }
         draw:
             icons:
                 visible: *icon_visible_poi_landuse
@@ -4734,6 +4734,7 @@ layers:
                         text:
                             font:
                                 fill: [0.032,0.522,0.530]
+                                style: italic
 
         has-name:
             filter: { name: true }
