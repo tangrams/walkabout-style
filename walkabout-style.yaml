@@ -232,6 +232,7 @@ labels-global:
     - &label_visible_poi_landuse_e    true
     - &icon_visible_poi_landuse_e     true    #false for default
     - &text_visible_poi_landuse_e     true
+    - &text_visible_landuse_generic   true
     - &label_visible_station          true     #false for default
     - &icon_visible_station           true     #false for default
     - &text_visible_station           true     #false for default
@@ -448,6 +449,7 @@ fonts:
 textures:
     pois:
         url: images/walkabout@2x.png
+        #url: https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/images/walkabout%402x.png
         filtering: mipmap
         sprites:
             # define sprites: [x origin, y origin, width, height]
@@ -776,6 +778,7 @@ textures:
 
     building-grid:
         url: images/building-grid.gif
+        #url: https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/images/building-grid.png
         filtering: mipmap
 
 sources:
@@ -4675,7 +4678,7 @@ layers:
                         weight: 600
 
     pois:
-        data: { source: mapzen, layer: [pois] }
+        data: { source: mapzen, layer: pois }
         visible: *label_visible_poi_landuse
         filter:
             all:
@@ -4683,7 +4686,7 @@ layers:
                 - $geometry: point
                 # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
                 #- function() { return feature.min_zoom <= $zoom }
-                - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'playground' || feature.kind == 'toilets' ) { return true } else { return feature.min_zoom <= $zoom } }
+                - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'hunting' || feature.kind == 'fishing_area' || feature.kind == 'playground' || feature.kind == 'toilets' ) { return true } else { return feature.min_zoom <= $zoom } }
         draw:
             icons:
                 visible: *icon_visible_poi_landuse
@@ -4797,7 +4800,7 @@ layers:
                     any:
                         - { $zoom: [15], area: { min: 600 } }
                         - { $zoom: [16], area: { min: 300 } }
-                        - { $zoom: { min: 17 } }
+                        - { $zoom: { min: 17 }, area: true }
                 draw:
                     icons:
                         visible: *icon_visible_landuse_green
@@ -4830,20 +4833,8 @@ layers:
                         text:
                             visible: *text_visible_poi_landuse
                             font:
-                                #fill: [0.10,0.10,0.10]
                                 size: 10px
                                 stroke: { color: *text_stroke, width: 4 }
-                enclosure:
-                    filter: { kind: [enclosure, animal] }
-                    draw:
-                        icons:
-                            visible: false
-                            sprite_default: enclosure
-                        text:
-                            text_wrap: 10
-                            font:
-                                style: italic
-                                weight: 400
             outdoor-needing-icons:
                 filter: { kind: [boat_rental,bicycle_repair_station, cycle_barrier, life_ring, waste_disposal, watering_place, water_point, lifeguard_tower, power_pole, power_tower, petroleum_well, communications_tower, putin, egress, hazard, put_in_egress, rapid, beacon, cross, mineshaft, adit, water_well, saddle, dune, sinkhole, rock, stone, bicycle_junction, walking_junction, dam, boat_storage, windmill, fishing, recreation_track, horse, fire_lookout, fee_station, rest_area] }
                 draw:
@@ -5799,6 +5790,25 @@ layers:
             terrain:
                 order: function() { return feature.sort_rank; }
                 visible: false
+
+        landuse-labels:
+            filter:
+                all:
+                    - label_placement: true
+                    - name: true
+            draw:
+                text-blend-order:
+                    text_source: global.ux_language_text_source
+                    interactive: global.interactive
+                    move_into_tile: true
+                    priority: 100
+                    visible: *text_visible_landuse_generic
+                    font:
+                        fill: '#666'
+                        family: *text_font_family
+                        style: italic
+                        size: 11px
+                        stroke: { color: *text_stroke_address, width: 1 }
         tier1:
             # filter:
             #     any:
