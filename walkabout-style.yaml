@@ -227,15 +227,15 @@ labels-global:
     - &icon_visible_landuse_green     true      #this needs work
     - &text_visible_landuse_green     true
     - &label_visible_poi_landuse      true
-    - &icon_visible_poi_landuse       true     #false for default
-    - &text_visible_poi_landuse       true     #false for default
+    - &icon_visible_poi_landuse       false     #false for default
+    - &text_visible_poi_landuse       false     #false for default
     - &label_visible_poi_landuse_e    true
-    - &icon_visible_poi_landuse_e     true    #false for default
+    - &icon_visible_poi_landuse_e     false    #false for default
     - &text_visible_poi_landuse_e     true
     - &text_visible_landuse_generic   true
-    - &label_visible_station          true     #false for default
-    - &icon_visible_station           true     #false for default
-    - &text_visible_station           true     #false for default
+    - &label_visible_station          false     #false for default
+    - &icon_visible_station           false     #false for default
+    - &text_visible_station           false     #false for default
     - &text_visible_highway           true
     - &text_visible_highway_e         false     #false for default
     - &text_visible_trunk_primary     true
@@ -4743,7 +4743,7 @@ layers:
         has-name:
             filter: { name: true }
             # match 1:1 correlations between data and sprite name
-            # draw: 
+            # draw:
             #     icons:
             #         visible: false
             direct-match:
@@ -5044,7 +5044,7 @@ layers:
                             size: 11px
                 # This should work, but doesn't. hmmm
                 no-area:
-                    filter: 
+                    filter:
                         area: false
                         $zoom: { max: 16 }
                     draw:
