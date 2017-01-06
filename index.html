@@ -510,7 +510,9 @@
                 if (value === 'true' || value === true) {
                     scene.config.global.sdk_road_shields = false;
                 } else {
-                    scene.config.global.sdk_road_shields = true;
+                    if( scene.config.global.text_visible_roads ) {
+                        scene.config.global.sdk_road_shields = true;
+                    }
                 }
                 scene.updateConfig();
             });
@@ -711,14 +713,14 @@
 
         <!-- Mapzen map UI -->
         <script src='https://mapzen.com/common/ui/mapzen-ui.min.js'></script>
-		<script>
-		  MPZN.bug({
-		  name: 'Mapzen Walkabout cartography',
-		  link: 'https://tangrams.github.io/walkabout-style/',
-		  tweet: 'Walkabout cartography from @mapzen',
-		  repo: 'https://github.com/tangrams/walkabout-style/'
-		});
-		</script>
+        <script>
+          MPZN.bug({
+          name: 'Mapzen Walkabout cartography',
+          link: 'https://tangrams.github.io/walkabout-style/',
+          tweet: 'Walkabout cartography from @mapzen',
+          repo: 'https://github.com/tangrams/walkabout-style/'
+        });
+        </script>
 
   </body>
 </html>
