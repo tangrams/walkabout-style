@@ -1637,7 +1637,7 @@ layers:
                         width: [[11, 0px], [13, 0.6px], [14, 0px], [16, 2.5px], [18, 8px]]
                         outline:
                             color: [[9,[0.894,0.906,0.914]], [13, [0.408,0.430,0.461]]]
-                            width: [[13, 0px], [15, 0px], [16, 2px]]
+                            width: [[13, 0px], [15, 1px], [16, 2px]]
                 early_link:
                     filter: { $zoom: { min: 13, max: 15 } }
                     draw:
