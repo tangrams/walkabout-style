@@ -3664,6 +3664,7 @@ layers:
                     - $geometry: point
                     - not: { location: underground, kind: address }
                     - name: true
+                    - function() { return global.text_visible_building; }
                 any:
                     - { $zoom: [16], area: { min: 5000 } }
                     - { $zoom: [16], area: { min: 5000 } }
@@ -3680,10 +3681,9 @@ layers:
             draw:
                 text-blend-order:
                     text_source: global.ux_language_text_source
-                    interactive: global.interactive
+                    #interactive: global.interactive
                     move_into_tile: true
                     priority: 70
-                    visible: global.text_visible_building
                     order: 7
                     font:
                         fill: '#666'
@@ -3717,15 +3717,16 @@ layers:
                         text_source: global.ux_language_text_source_building_and_address
         address-labels:
             filter:
-                $zoom: { min: 20 }
+                all:
+                    - $zoom: { min: 20 }
+                    - function() { return global.text_visible_address; }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }
             draw:
                 text-blend-order:
-                    interactive: global.interactive
+                    #interactive: global.interactive
                     order: 7
-                    visible: global.text_visible_address
                     text_source: addr_housenumber
                     font:
                         fill: global.text_fill_address
@@ -4905,7 +4906,14 @@ layers:
             draw:
                 icons:
                     visible: false
-
+            # eg park polygons in SF that have area but no name, sigh
+            no-name-no-area:
+                filter:
+                    kind: true
+                    name: false
+                draw:
+                    icons:
+                        visible: false
             # we agree with server value, always show
             always-show:
                 filter:
@@ -4916,7 +4924,6 @@ layers:
             z15-always-show-but-server-show-later-z15-server-14:
                 filter: { kind: [ranger_station, spring], $zoom: { min: 15 } }             # server says min_zoom: 14
                 draw:   { icons: { visible: global.icon_visible_poi_landuse_e } }
-
             z17:
                 filter:
                     $zoom: { min: 17 }
@@ -5328,6 +5335,21 @@ layers:
                         font:
                             fill: global.text_fill_park
                             style: italic
+#        wilderness-nature_reserve:
+#            filter:
+#                - kind: nature_reserve
+#            draw:
+#                icons:
+#                    visible: global.icon_visible_landuse_green
+#                    size: global.icon_size_green
+#                    sprite: forest
+#                    priority: 41
+#                    text:
+#                        visible: global.text_visible_poi_landuse_green
+#                        font:
+#                            fill: global.text_fill_park
+#                            style: italic
+
         beach:
             filter:
                 kind: [beach]
