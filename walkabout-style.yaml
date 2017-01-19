@@ -895,7 +895,7 @@ styles:
         shaders:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
-                u_envmap: images/draw-test9.jpg
+                u_envmap: images/draw-test10.jpg
                 # u_envmap: https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/images/draw-test9.jpg
                 u_contrast: 1.
                 u_brightness: 1.
@@ -1567,7 +1567,7 @@ layers:
                     fill: global.text_fill
 
         early:
-            filter: { $zoom: { max: 11 } }
+            filter: { $zoom: { max: 14 } }          # was max: 15 (11)
             draw:
                 lines:
                     outline:
@@ -1625,24 +1625,35 @@ layers:
             draw:
                 lines:
                     color: [[8, [0.457,0.438,0.457]], [10, [0.548,0.483,0.491]], [11, [1.00,1.00,1.00]]]
-                    width: [[8, 1.25px], [12, 1.25px], [14, 2.5px], [16, 5.5px], [17, 10px], [18, 10m]]
+                    width: [[8, 1.25px], [12, 1.5px], [14, 2.5px], [16, 5.5px], [17, 10px], [18, 10m]]
                     outline:
                         color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.548,0.483,0.491]]]
                         width: [[8, 1px], [10, 1px], [12, 1.5px], [14, 1.75px], [16, 2.5px], [18, 4px]]
+            early:
+                filter: { $zoom: { max: 15 } }          # was max: 15 (11)
+                draw:
+                    lines:
+                        outline:
+                            order: function() { return feature.sort_rank; }
             link:
                 filter: { is_link: true } # on- and off-ramps, etc
                 draw:
                     lines:
-                        color: [1.00,1.00,1.00]
-                        width: [[8, 0px], [9, 0px], [11, 0.5px], [12, 0.5px], [14, 0px], [16, 3px], [18, 5m]]
+                        color: [[11, [0.627,0.612,0.616]], [13, [0.627,0.612,0.616]], [14, [1.00,1.00,1.00]]]
+                        width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
                         outline:
-                            color: [[12, [0.627,0.612,0.616]], [14, [0.548,0.483,0.491]]]
-                            width: [[8, 0px], [9, 0px], [11, 0.2px], [12, 0.3px], [14, 0.5px], [16, 1.25px], [18, 2px]]
+                            color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, [0.548,0.483,0.491]]]
+                            width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
                 early_link:
-                    filter: { $zoom: { max: 14 } }
+                    filter: { $zoom: { max: 15 } }      # was max: 15 (14)
                     draw:
                         lines:
                             order: 352
+                    z12-13:
+                        filter: { $zoom: { max: 14 } }
+                        draw:
+                            lines:
+                                order: 351
                 tunnel-link:
                     filter: { is_tunnel: true, $zoom: { min: 13 } }
                     draw:
@@ -1692,9 +1703,9 @@ layers:
                         width: [[8, 0.5px], [10, 1px], [12, 1px], [14, 2.5px], [16, 4px], [17, 6px], [18, 9m]]
                         outline:
                             color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.714,0.694,0.706]]]
-                            width: [[8, 0.5px], [10, 1px], [12, 1px], [14, 1px], [16, 2.25px], [17, 2px], [18, 4px]]
+                            width: [[8, 0.5px], [10, 1px], [14, 1px], [16, 2.25px], [17, 2px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 12 } }
+                    filter: { $zoom: { max: 14 } }      # was max: 16 (12)
                     draw:
                         lines:
                             order: 352
@@ -1711,17 +1722,24 @@ layers:
                     draw:
                         lines:
                             color: [[8, [0.603,0.620,0.642]], [10, [0.603,0.620,0.642]], [11, [1.00,1.00,1.00]]]
-                            width: [[8, 1px], [10, 1.1px], [12, 1px], [14, 2.5px], [16, 5px], [17, 8px], [18, 9m]]
+                            width: [[8, 1px], [12, 1px], [14, 2.5px], [16, 5px], [17, 8px], [18, 9m]]
                             outline:
                                 color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.670,0.623,0.654]]]
                                 width: [[9, 1px], [10, 1px], [12, 1.25px], [16, 2.25px], [17, 4px]]
                     early:
-                        filter: { $zoom: { max: 11 } }
+                        filter: { $zoom: { max: 13 } }      # max: 16 (11)
                         draw:
                             lines:
                                 order: function() { return feature.sort_rank + 2; }
                                 outline:
                                     order: 353
+                    earlyz-13:
+                        filter: { $zoom: [13] }
+                        draw:
+                            lines:
+                                order: 352
+                                outline:
+                                    order: function() { return feature.sort_rank + 1; }
                     tunnel:
                         filter: { is_tunnel: true, $zoom: { min: 13 } }
                         draw:
@@ -1769,11 +1787,16 @@ layers:
                 filter: { is_link: true } # on- and off-ramps, etc
                 draw:
                     lines:
-                        color: [1.00,1.00,1.00]
-                        width: [[8, 0px], [14, 1.5px], [18, 5m]]
+                        color: [[11, [0.627,0.612,0.616]], [13, [0.627,0.612,0.616]], [14, [1.00,1.00,1.00]]]
+                        width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
                         outline:
-                            color: [0.581,0.599,0.619]
-                            width: [[8, 0.25px], [14, 0.25px], [16, 1px], [18, 2px]]
+                            color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, [0.670,0.623,0.654]]]
+                            width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
+                early_link:
+                    filter: { $zoom: { max: 14 } }      # was max: 15 (14)
+                    draw:
+                        lines:
+                            order: 351
             tunnel:
                 filter: { is_tunnel: true, $zoom: { min: 13 } }
                 draw:
@@ -1789,30 +1812,43 @@ layers:
                         width: [[10, 0px], [11, 0px], [12, 1px], [14, 2px], [16, 4px], [17, 6px], [18, 9m]]
                         outline:
                             color: [[9, [0.906,0.906,0.906]], [10, [0.788,0.780,0.800]], [11, [0.787,0.763,0.767]], [14, [0.700,0.665,0.688]]]
-                            width: [[9, 0.7px], [10, 0.7px], [11, 0.5px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
+                            width: [[10, 0px], [11, 0.5px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 15 } }
+                    filter: { $zoom: { max: 14 } }      # was max: 16 (15)
                     draw:
                         lines:
                             order: 352
                             outline:
                                 order: 353 #function() { return feature.sort_rank + 2; }
+                    earlyz-13:
+                        filter: { $zoom: [13] }
+                        draw:
+                            lines:
+                                outline:
+                                    order: function() { return feature.sort_rank + 1; }
                 routes:
                     filter: { ref: true, $zoom: { min: 8 } }
                     draw:
                         lines:
-                            color: [1.00, 1.00, 1.00]
-                            width: [[8, 0px], [10, 0px], [11, 1px], [12, 1px], [14, 2px], [16, 4px], [18, 9m]]
+                            color: [[10, [0.584,0.604,0.624]], [11, [1.00, 1.00, 1.00]]]
+                            width: [[8, 0px], [10, 0.7px], [11, 1px], [12, 1px], [14, 2px], [16, 4px], [18, 9m]]
                             outline:
-                                color: [[10, [0.788,0.780,0.800]], [11, [0.787,0.763,0.767]], [14, [0.700,0.665,0.688]]]
-                                width: [[9, 0px], [10, 0.5px], [11, 0.75px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
+                                color: [[9, [0.906,0.906,0.906]], [10, [0.906,0.906,0.906]], [11, [0.787,0.763,0.767]], [14, [0.700,0.665,0.688]]]
+                                width: [[9, 0.25px], [10, 0.75px], [11, 0.75px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
                     early:
-                        filter: { $zoom: { max: 12 } }
+                        filter: { $zoom: { max: 14 } }      # was max: 15 (12)
                         draw:
                             lines:
                                 order: function() { return feature.sort_rank + 2; }
                                 outline:
                                     order: 353
+                        # earlyz-13:
+                        #     filter: { $zoom: [13] }
+                        #     draw:
+                        #         lines:
+                        #             order: 352
+                        #             outline:
+                        #                 order: function() { return feature.sort_rank + 1; }
                     tunnel:
                         filter: { is_tunnel: true, $zoom: { min: 13 } }
                         draw:
@@ -1858,7 +1894,7 @@ layers:
                             color: [[11, [0.847,0.822,0.826]], [12, [0.797,0.770,0.775]], [14, [0.714,0.694,0.706]]]
                             width: [[10, 0px], [11, 0px], [12, 0.3px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 12 } }
+                    filter: { $zoom: { max: 14 } }          # was max: 15 (12)
                     draw:
                         lines:
                             order: 352
@@ -1868,13 +1904,13 @@ layers:
                     filter: { ref: true, $zoom: { min: 12 } }
                     draw:
                         lines:
-                            color: [1.00,1.00,1.00] #[[11, [0.408,0.430,0.461]], [14, [0.408,0.430,0.461]], [15, [1.00,1.00,1.00]]]
+                            color: [1.00,1.00,1.00]
                             width: [[11, 0px], [12, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
                             outline:
                                 color: [[11, [0.788,0.780,0.800]], [12, [0.797,0.770,0.775]]]
                                 width: [[11, 0.4px], [12, 1px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                     early:
-                        filter: { $zoom: { max: 13 } }
+                        filter: { $zoom: { max: 14 } }
                         draw:
                             lines:
                                 order: function() { return feature.sort_rank + 3; }
@@ -1887,15 +1923,16 @@ layers:
                                 color: [0.929,0.929,0.929]
                                 outline:
                                     color: global.major_tunnel_casing1
-                link:
-                    filter: { is_link: true } # on- and off-ramps, etc
-                    draw:
-                        lines:
-                            color: [[14, [0.714,0.733,0.760]], [15, [0.578,0.608,0.650]], [16, [0.533,0.555,0.586]], [17, [1.00,1.00,1.00]]]
-                            width: [[11, 0.0px], [12, 0.15px], [14, 0.15px], [15, 0.75px], [16, 1.25px], [17, 2px], [18, 2px], [19, 4px]]
-                            outline:
-                                color: [[11, [1.00,1.00,1.00]], [16, [1.00,1.00,1.00]], [17,[0.578,0.608,0.650]]]
-                                width: [[11, 0px], [16, 0px], [17, 1px], [18, 1px]]
+                # this was needed in the past, but where is an example map location to debug now? hmm.
+                # link:
+                #     filter: { is_link: true } # on- and off-ramps, etc
+                #     draw:
+                #         lines:
+                #             color: [[14, [0.714,0.733,0.760]], [15, [0.578,0.608,0.650]], [16, [0.533,0.555,0.586]], [17, [1.00,1.00,1.00]]]
+                #             width: [[11, 0.0px], [12, 0.15px], [14, 0.15px], [15, 0.75px], [16, 1.25px], [17, 2px], [18, 2px], [19, 4px]]
+                #             outline:
+                #                 color: [[11, [1.00,1.00,1.00]], [16, [1.00,1.00,1.00]], [17,[0.578,0.608,0.650]]]
+                #                 width: [[11, 0px], [16, 0px], [17, 1px], [18, 1px]]
                 labels-tertiary:
                     filter: 
                         $zoom: { min: 13 }
@@ -1917,7 +1954,7 @@ layers:
                         color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
                         width: [[11, 0px], [12, 0px], [13, 0px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
             early:
-                filter: { $zoom: { max: 14 } }
+                filter: { $zoom: { max: 14 } }      # was max: 16 (14)
                 draw:
                     lines:
                         order: 350
@@ -1961,6 +1998,13 @@ layers:
                             fill: [[15, [0.536,0.556,0.581]], [17, [0.40,0.40,0.40]]]
                             size: [[15, 9px], [16, 12px], [17, 12px], [18, 13px]]
                             stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: 4px }
+            early-residential:
+                filter: { kind_detail: residential, $zoom: { max: 15 } }      # was max: 16 (14)
+                draw:
+                    lines:
+                        order: 350
+                        outline:
+                            order: 351
         service_road:
             filter: { kind: minor_road, kind_detail: service }
             draw:
@@ -1970,6 +2014,13 @@ layers:
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [14, [0.791,0.816,0.840]]]
                         width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
+            early:
+                filter: { $zoom: { max: 15 } }      # was max: 16 (14)
+                draw:
+                    lines:
+                        order: 350
+                        outline:
+                            order: 351
             labels-service_road:
                 filter: 
                     $zoom: { min: 17 }
