@@ -1128,9 +1128,7 @@ layers:
                 sprite: ux-transit-stop
                 size: [15px,15px]
                 collide: false
-                transition:
-                    [show, hide]:
-                         time: 0s
+                transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_search_result:
         data: { source: mz_search_result }
         draw:
@@ -5285,7 +5283,7 @@ layers:
                     sprite: park
                     priority: 41
                     text:
-                        visible: global.text_visible_poi_landuse_green
+                        visible: global.text_visible_landuse_green
                         font:
                             fill: global.text_fill_park
                             style: italic
@@ -5307,7 +5305,7 @@ layers:
                     sprite: park
                     priority: 41
                     text:
-                        visible: global.text_visible_poi_landuse_green
+                        visible: global.text_visible_landuse_green
                         font:
                             fill: global.text_fill_park
                             style: italic
@@ -5331,7 +5329,7 @@ layers:
                     sprite: forest
                     priority: 41
                     text:
-                        visible: global.text_visible_poi_landuse_green
+                        visible: global.text_visible_landuse_green
                         font:
                             fill: global.text_fill_park
                             style: italic
@@ -5345,7 +5343,7 @@ layers:
 #                    sprite: forest
 #                    priority: 41
 #                    text:
-#                        visible: global.text_visible_poi_landuse_green
+#                        visible: global.text_visible_landuse_green
 #                        font:
 #                            fill: global.text_fill_park
 #                            style: italic
@@ -5358,7 +5356,7 @@ layers:
                     visible: global.icon_visible_landuse_green
                     size: global.icon_size_green
                     text:
-                        visible: global.text_visible_poi_landuse_green
+                        visible: global.text_visible_landuse_green
                         font:
                             fill: global.text_fill_beach
         airport:
@@ -5370,7 +5368,7 @@ layers:
                     size: global.icon_size_green
                     priority: 42
                     text:
-                        visible: global.text_visible_poi_landuse_green
+                        visible: global.text_visible_landuse_green
                         text_source: global.ux_language_text_source_iata
             early:
                 filter: { $zoom: [9,10,11] }
@@ -5721,7 +5719,7 @@ layers:
                     interactive: global.interactive
                     move_into_tile: true
                     priority: 100
-                    visible: global.text_visible_poi_landuse_generic
+                    visible: global.text_visible_landuse_generic
                     font:
                         fill: '#666'
                         family: global.text_font_family
