@@ -10,6 +10,10 @@
 # Read more: https://github.com/tangrams/walkabout-style
 #
 
+import:
+    # Layers
+    - layers/bike.yaml
+
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
     # https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys
