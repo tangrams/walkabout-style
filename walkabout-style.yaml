@@ -215,51 +215,51 @@ global:
     sdk_building_extrude: true              # building extrusion toggle
     #
     #labels-global:
-    text_visible_continent: true
-    text_visible_island: true
-    text_visible_admin: true
-    text_visible_populated_places: true
-    icon_visible_populated_places: true
-    text_visible_neighbourhoods: true
-    text_visible_neighbourhoods_e: true
-    text_visible_building: true
-    text_visible_address: true
-    text_visible_water_labels: true
-    label_visible_landuse_green: true                          #this needs work
-    icon_visible_landuse_green: true                           #this needs work
-    icon_size_green: [[13, '14px'], [16, '18px'], [18, '19px']]      # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
-    icon_size_green_l: [[14, '24px'],[16, '32px']]                   # 0px for no, default, more  [[14,24px],[16,32px]]
-    text_visible_landuse_green: true
-    label_visible_poi_landuse: true
-    icon_visible_poi_landuse: true          #false for default
-    text_visible_poi_landuse: true          #false for default
-    label_visible_poi_landuse_e: true
-    icon_visible_poi_landuse_e: true        #false for default
-    text_visible_poi_landuse_e: true
-    text_visible_landuse_generic: true
-    label_visible_station: true             #false for default
-    icon_visible_station: true              #false for default
-    text_visible_station: true              #false for default
-    text_visible_highway: true
-    text_visible_highway_e: true            #false for default
-    text_visible_trunk_primary: true
-    text_visible_trunk_primary_e2: true     #false for default
-    text_visible_trunk_primary_e: true      #false for default
-    text_visible_secondary: true
-    text_visible_secondary_e: true          #false for default
-    text_visible_tertiary: true
-    text_visible_tertiary_e: true           #false for default
-    text_visible_minor_road: true
-    text_visible_minor_road_e: true
-    text_visible_service_road: true
-    text_visible_path: true
-    text_visible_piste: true
-    text_visible_steps: true
-    text_visible_aerialway: true
-    sdk_road_shields: true
-    text_visible_exits: true
-    text_visible_exits_e: true              #false for default
-    text_visible_airport_gate: true
+    text_visible_continent:         true
+    text_visible_island:            true
+    text_visible_admin:             true
+    text_visible_populated_places:  true
+    icon_visible_populated_places:  true
+    text_visible_neighbourhoods:    true
+    text_visible_neighbourhoods_e:  true
+    text_visible_building:          true
+    text_visible_address:           true
+    text_visible_water_labels:      true
+    label_visible_landuse_green:    true            #this needs work
+    icon_visible_landuse_green:     true            #this needs work
+    icon_size_green:                [[0, '0px']]    # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
+    icon_size_green_l:              [[0, '0px']]    # 0px for no, default, more  [[14,24px],[16,32px]]
+    text_visible_landuse_green:     true
+    label_visible_poi_landuse:      true
+    icon_visible_poi_landuse:       false           #false for default
+    text_visible_poi_landuse:       false           #false for default
+    label_visible_poi_landuse_e:    true
+    icon_visible_poi_landuse_e:     false           #false for default
+    text_visible_poi_landuse_e:     true
+    text_visible_landuse_generic:   true
+    label_visible_station:          false           #false for default
+    icon_visible_station:           false           #false for default
+    text_visible_station:           false           #false for default
+    text_visible_highway:           true
+    text_visible_highway_e:         false           #false for default
+    text_visible_trunk_primary:     true
+    text_visible_trunk_primary_e2:  false           #false for default
+    text_visible_trunk_primary_e:   false           #false for default
+    text_visible_secondary:         true
+    text_visible_secondary_e:       false           #false for default
+    text_visible_tertiary:          true
+    text_visible_tertiary_e:        false           #false for default
+    text_visible_minor_road:        true
+    text_visible_minor_road_e:      true
+    text_visible_service_road:      true
+    text_visible_path:              true
+    text_visible_piste:             true
+    text_visible_steps:             true
+    text_visible_aerialway:         true
+    sdk_road_shields:               true
+    text_visible_exits:             true
+    text_visible_exits_e:           false           #false for default
+    text_visible_airport_gate:      true
 
     #cameras:
     camera_settings: { type: isometric, axis: [-.2, .2] }
@@ -900,7 +900,7 @@ styles:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
                 u_envmap: images/draw-test10.jpg
-                # u_envmap: https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/images/draw-test9.jpg
+                # u_envmap: https://raw.githubusercontent.com/tangrams/walkabout-style/gh-pages/images/draw-test10.jpg
                 u_contrast: 1.
                 u_brightness: 1.
             blocks:
@@ -1571,13 +1571,13 @@ layers:
                     fill: global.text_fill
 
         early:
-            filter: { $zoom: { max: 14 } }          # was max: 15 (11)
+            filter: { $zoom: { max: 14 } }
             draw:
                 lines:
                     outline:
                         order: function() { return feature.sort_rank; }
         bridges-tunnels:
-            filter: { any: [is_bridge: true, is_tunnel: true ] }
+            filter: { any: [is_bridge: true, is_tunnel: true] }
             draw:
                 lines:
                     #cap: butt
@@ -1649,7 +1649,7 @@ layers:
                             color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, [0.548,0.483,0.491]]]
                             width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
                 early_link:
-                    filter: { $zoom: { max: 15 } }      # was max: 15 (14)
+                    filter: { $zoom: { max: 15 } }
                     draw:
                         lines:
                             order: 352
@@ -1709,7 +1709,7 @@ layers:
                             color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.714,0.694,0.706]]]
                             width: [[8, 0.5px], [10, 1px], [14, 1px], [16, 2.25px], [17, 2px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 14 } }      # was max: 16 (12)
+                    filter: { $zoom: { max: 14 } }
                     draw:
                         lines:
                             order: 352
@@ -1731,7 +1731,7 @@ layers:
                                 color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.670,0.623,0.654]]]
                                 width: [[9, 1px], [10, 1px], [12, 1.25px], [16, 2.25px], [17, 4px]]
                     early:
-                        filter: { $zoom: { max: 13 } }      # max: 16 (11)
+                        filter: { $zoom: { max: 13 } }
                         draw:
                             lines:
                                 order: function() { return feature.sort_rank + 2; }
@@ -1797,7 +1797,7 @@ layers:
                             color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, [0.670,0.623,0.654]]]
                             width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
                 early_link:
-                    filter: { $zoom: { max: 14 } }      # was max: 15 (14)
+                    filter: { $zoom: { max: 14 } }
                     draw:
                         lines:
                             order: 351
@@ -1818,7 +1818,7 @@ layers:
                             color: [[9, [0.906,0.906,0.906]], [10, [0.788,0.780,0.800]], [11, [0.787,0.763,0.767]], [14, [0.700,0.665,0.688]]]
                             width: [[10, 0px], [11, 0.5px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 14 } }      # was max: 16 (15)
+                    filter: { $zoom: { max: 14 } }
                     draw:
                         lines:
                             order: 352
@@ -1840,7 +1840,7 @@ layers:
                                 color: [[9, [0.906,0.906,0.906]], [10, [0.906,0.906,0.906]], [11, [0.787,0.763,0.767]], [14, [0.700,0.665,0.688]]]
                                 width: [[9, 0.25px], [10, 0.75px], [11, 0.75px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
                     early:
-                        filter: { $zoom: { max: 14 } }      # was max: 15 (12)
+                        filter: { $zoom: { max: 14 } }
                         draw:
                             lines:
                                 order: function() { return feature.sort_rank + 2; }
@@ -1898,7 +1898,7 @@ layers:
                             color: [[11, [0.847,0.822,0.826]], [12, [0.797,0.770,0.775]], [14, [0.714,0.694,0.706]]]
                             width: [[10, 0px], [11, 0px], [12, 0.3px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                 early:
-                    filter: { $zoom: { max: 14 } }          # was max: 15 (12)
+                    filter: { $zoom: { max: 14 } }
                     draw:
                         lines:
                             order: 352
@@ -1938,7 +1938,7 @@ layers:
                 #                 color: [[11, [1.00,1.00,1.00]], [16, [1.00,1.00,1.00]], [17,[0.578,0.608,0.650]]]
                 #                 width: [[11, 0px], [16, 0px], [17, 1px], [18, 1px]]
                 labels-tertiary:
-                    filter: 
+                    filter:
                         $zoom: { min: 13 }
                     draw:
                         text-blend-order:
@@ -1958,7 +1958,7 @@ layers:
                         color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
                         width: [[11, 0px], [12, 0px], [13, 0px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
             early:
-                filter: { $zoom: { max: 14 } }      # was max: 16 (14)
+                filter: { $zoom: { max: 14 } }
                 draw:
                     lines:
                         order: 350
@@ -1992,7 +1992,7 @@ layers:
                         outline:
                             cap: butt
             labels-minor_road:
-                filter: 
+                filter:
                     $zoom: { min: 15 }
                 draw:
                     text-blend-order:
@@ -2003,7 +2003,7 @@ layers:
                             size: [[15, 9px], [16, 12px], [17, 12px], [18, 13px]]
                             stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: 4px }
             early-residential:
-                filter: { kind_detail: residential, $zoom: { max: 15 } }      # was max: 16 (14)
+                filter: { kind_detail: residential, $zoom: { max: 15 } }
                 draw:
                     lines:
                         order: 350
@@ -2019,14 +2019,14 @@ layers:
                         color: [[12, [0.900,0.900,0.900]], [14, [0.791,0.816,0.840]]]
                         width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
             early:
-                filter: { $zoom: { max: 15 } }      # was max: 16 (14)
+                filter: { $zoom: { max: 15 } }
                 draw:
                     lines:
                         order: 350
                         outline:
                             order: 351
             labels-service_road:
-                filter: 
+                filter:
                     $zoom: { min: 17 }
                 draw:
                     text-blend-order:
@@ -3114,6 +3114,7 @@ layers:
                     - $geometry: point
                     - not: { location: underground, kind: address }
                     - name: true
+                    - function() { return global.text_visible_building; }
                 any:
                     - { $zoom: [16], area: { min: 5000 } }
                     - { $zoom: [16], area: { min: 5000 } }
@@ -3130,10 +3131,9 @@ layers:
             draw:
                 text-blend-order:
                     text_source: global.ux_language_text_source
-                    interactive: global.interactive
+                    #interactive: global.interactive
                     move_into_tile: true
                     priority: 70
-                    visible: global.text_visible_building
                     order: 7
                     font:
                         fill: '#666'
@@ -3167,15 +3167,16 @@ layers:
                         text_source: global.ux_language_text_source_building_and_address
         address-labels:
             filter:
-                $zoom: { min: 20 }
+                all:
+                    - $zoom: { min: 20 }
+                    - function() { return global.text_visible_address; }
                 any:
                     - kind: address
                     - { label_position: true, addr_housenumber: true, name: false }
             draw:
                 text-blend-order:
-                    interactive: global.interactive
+                    #interactive: global.interactive
                     order: 7
-                    visible: global.text_visible_address
                     text_source: addr_housenumber
                     font:
                         fill: global.text_fill_address
@@ -4355,7 +4356,14 @@ layers:
             draw:
                 icons:
                     visible: false
-
+            # eg park polygons in SF that have area but no name, sigh
+            no-name-no-area:
+                filter:
+                    kind: true
+                    name: false
+                draw:
+                    icons:
+                        visible: false
             # we agree with server value, always show
             always-show:
                 filter:
@@ -4366,7 +4374,6 @@ layers:
             z15-always-show-but-server-show-later-z15-server-14:
                 filter: { kind: [ranger_station, spring], $zoom: { min: 15 } }             # server says min_zoom: 14
                 draw:   { icons: { visible: global.icon_visible_poi_landuse_e } }
-
             z17:
                 filter:
                     $zoom: { min: 17 }
@@ -4778,6 +4785,21 @@ layers:
                         font:
                             fill: global.text_fill_park
                             style: italic
+#        wilderness-nature_reserve:
+#            filter:
+#                - kind: nature_reserve
+#            draw:
+#                icons:
+#                    visible: global.icon_visible_landuse_green
+#                    size: global.icon_size_green
+#                    sprite: forest
+#                    priority: 41
+#                    text:
+#                        visible: global.text_visible_poi_landuse_green
+#                        font:
+#                            fill: global.text_fill_park
+#                            style: italic
+
         beach:
             filter:
                 kind: [beach]
