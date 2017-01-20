@@ -218,8 +218,8 @@ global:
     icon_visible_populated_places:  true
     text_visible_neighbourhoods:    true
     text_visible_neighbourhoods_e:  true
-    text_visible_building:          true
-    text_visible_address:           true
+    text_visible_building:          false     # false for default
+    text_visible_address:           false     # false for default
     text_visible_water_labels:      true
     label_visible_landuse_green:    true            #this needs work
     icon_visible_landuse_green:     true            #this needs work
