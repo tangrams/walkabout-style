@@ -2630,66 +2630,6 @@ layers:
                         # outline:
                         #     color: [0.790,0.790,0.790]
                         #     width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            #     golf_course:
-            #         filter: { landuse_kind: golf_course }
-            #         draw:
-            #             lines:
-            #                 color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #                 outline:
-            #                     color: [0.790,0.790,0.790]
-            #                     width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            #     nature_reserve:
-            #         filter: { landuse_kind: nature_reserve }
-            #         draw:
-            #             lines:
-            #                 color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #                 outline:
-            #                     color: [0.790,0.790,0.790]
-            #                     width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            #     conservation:
-            #         filter: { landuse_kind: conservation }
-            #         draw:
-            #             lines:
-            #                 color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #                 outline:
-            #                     color: [0.790,0.790,0.790]
-            #                     width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            # in_cemetery_garden:
-            #     filter: { landuse_kind: [cemetery,garden] }
-            #     draw:
-            #         lines:
-            #             color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #             width: [[14, 0.35px], [15, 0px], [16, 0.25px], [17, 3px], [18, 3px], [19, 4px]]
-            #             outline:
-            #                 color: [0.790,0.790,0.790]
-            #                 width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            # in_zoo:
-            #     filter: { landuse_kind: zoo }
-            #     draw:
-            #         lines:
-            #             color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #             width: [[14, 0.35px], [15, 0px], [16, 0.25px], [17, 3px], [18, 3px], [19, 4px]]
-            #             outline:
-            #                 color: [0.790,0.790,0.790]
-            #                 width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            # in_university:
-            #     filter: { landuse_kind: university }
-            #     draw:
-            #         lines:
-            #             color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #             width: [[14, 0.35px], [15, 0px], [16, 0.25px], [17, 3px], [18, 3px], [19, 4px]]
-            #             outline:
-            #                 color: [0.790,0.790,0.790]
-            #                 width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
-            # in_hospital:
-            #     filter: { landuse_kind: hospital }
-            #     draw:
-            #         lines:
-            #             color: [[14, [0.790,0.790,0.790]], [15, [1.00,1.00,1.00]]]
-            #             width: [[14, 0.35px], [15, 0px], [16, 0.25px], [17, 3px], [18, 3px], [19, 4px]]
-            #             outline:
-            #                 color: [0.790,0.790,0.790]
-            #                 width: [[14, 0.0px], [15, 0.35px], [16, 0.45px], [17, 0.85px], [18, 1px]]
             labels-path:
                 filter: { $zoom: { min: 17 } }
                 draw:
