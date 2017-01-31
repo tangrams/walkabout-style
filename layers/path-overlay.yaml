@@ -1,0 +1,99 @@
+layers:
+    roads:
+
+        path:
+
+            paths:
+                draw:
+                    lines:
+                        outline:
+                            color: [0.034,0.757,0.616]
+                            width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            visible: true
+                        highlight:
+                            order: function() { return feature.sort_rank - 5; }
+                            color: yellow
+                            width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+
+            footway:
+                draw:
+                    lines:
+                        outline:
+                            style: dashed
+                            color: [0.035,0.782,0.636]
+                            width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            visible: true
+                        highlight:
+                            order: function() { return feature.sort_rank - 5; }
+                            color: yellow
+                            width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+        #     footway:
+        #         filter: 
+        #             kind_detail: footway
+        #         draw:
+        #             lines:
+        #                 outline:
+        #                     style: dashed
+        #                     color: [0.035,0.782,0.636]
+        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+        #     path:
+        #         filter:
+        #             kind_detail: path
+        #         draw:
+        #             lines:
+        #                 outline:
+        #                     color: [0.034,0.757,0.616]
+        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+        #     walking-network:
+        #         filter:
+        #             all:
+        #                 - walking_network: [lwn,rwn]
+        #         draw:
+        #             lines:
+        #                 visible: true
+        #             highlight:
+        #                 order: function() { return feature.sort_rank - 5; }
+        #                 color: [1.000,1.000,0.867]
+        #                 width: [[15, 0px], [16, 10px], [17, 1px], [18, 3px]]
+
+        # track:
+        #     track-overlay:
+        #         draw:
+        #             lines:
+        #                 outline:
+        #                     color: [0.845,0.697,0.560]
+        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+        #     walking-network:
+        #         filter:
+        #             all:
+        #                 - walking_network: [lwn,rwn]
+        #         draw:
+        #             lines:
+        #                 visible: true
+        #             highlight:
+        #                 order: function() { return feature.sort_rank - 5; }
+        #                 color: [1.000,1.000,0.867]
+        #                 width: [[15, 0px], [16, 10px], [17, 1px], [18, 3px]]
+
+
+
+
+
+styles:
+    dashed:
+        base: lines
+        dash: [2, 0.25]
+        dash_background_color: [0.808,0.860,0.851]
