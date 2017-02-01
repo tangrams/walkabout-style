@@ -13,7 +13,7 @@
 import:
     # Layers
     # - layers/bike.yaml
-    - layers/path-overlay.yaml
+    # - layers/path-overlay.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
@@ -2585,10 +2585,10 @@ layers:
                 lines:
                     order: function() { return feature.sort_rank; }
                     color: [1.00,1.00,1.00]
-                    width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
+                    width: [[14, 0.6px], [15, 1px], [17, 2.5m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[16, 0px], [17, 1px], [18, 3px]]
+                        width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
             paths:
                 filter:
                     any:
@@ -2600,11 +2600,6 @@ layers:
                     lines:
                         visible: true
 
-                # networked:
-                #     filter: { walking_network: true }
-                #     draw:
-                #         lines:
-                #             visible: true
 
             footway:
                 filter: { kind_detail: [footway] }
@@ -2612,17 +2607,11 @@ layers:
                     lines:
                         visible: true
 
-                # networked:
-                #     filter: { walking_network: true }
-                #     draw:
-                #         lines:
-                #             visible: true
 
             pedestrian:
                 filter:
-                    all:
-                        - kind_detail: [pedestrian]
-                        - not: { kind_detail: [pedestrian], walking_network: true }
+                    kind_detail: [cycleway, pedestrian]
+                    not: { kind_detail: [pedestrian], walking_network: true }
                 draw:
                     lines:
                         visible: true
@@ -2638,14 +2627,9 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
                     outline:
-                        color: brown #[[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[16, 0px], [17, 1px], [18, 3px]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
+                        width: [[14, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
-            networked:
-                filter: { walking_network: true }
-                draw:
-                    lines:
-                        visible: true
 
 
 

@@ -7,7 +7,7 @@ layers:
                 draw:
                     lines:
                         outline:
-                            color: [0.034,0.757,0.616]
+                            color: [0.639,0.780,0.667]
                             width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
                 networked:
@@ -15,10 +15,10 @@ layers:
                     draw:
                         lines:
                             visible: true
-                        highlight:
-                            order: function() { return feature.sort_rank - 5; }
-                            color: yellow
-                            width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+                        # highlight:
+                        #     order: function() { return feature.sort_rank - 5; }
+                        #     color: yellow
+                        #     width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
 
             footway:
                 draw:
@@ -28,15 +28,58 @@ layers:
                             color: [0.035,0.782,0.636]
                             width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
+                early:
+                    filter:
+                        $zoom: { max: 16 }
+                    draw:
+                        lines:
+                            style: dots-lines
+                            color: [0.035,0.782,0.636]
+                            width: [[14, 0.6px], [15, 3px], [17, 2.5m]]
+                            outline:
+                                width: 0px    
+
                 networked:
                     filter: { walking_network: true }
                     draw:
                         lines:
                             visible: true
-                        highlight:
-                            order: function() { return feature.sort_rank - 5; }
-                            color: yellow
-                            width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+                        # highlight:
+                        #     order: function() { return feature.sort_rank - 5; }
+                        #     color: yellow
+                        #     width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+
+            pedestrian:
+                draw:
+                    lines:
+                        outline:
+                            color: [0.034,0.757,0.616]
+                            width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            visible: true
+                        # highlight:
+                        #     order: function() { return feature.sort_rank - 5; }
+                        #     color: yellow
+                        #     width: [[15, 4px], [16, 10px], [17, 1px], [18, 3px]]
+
+        track:
+            tracks:
+                draw:
+                    lines:
+                        outline:
+                            color: [0.682,0.690,0.616]
+
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            visible: true
+
+
         #     footway:
         #         filter: 
         #             kind_detail: footway
