@@ -12,7 +12,7 @@
 
 import:
     # Layers
-    - layers/bike.yaml
+    # - layers/bike.yaml
     - layers/path-overlay.yaml
 
 global:
@@ -2664,6 +2664,19 @@ layers:
                     width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
+                        width: [[14, 0px], [16, 1px], [17, 1px], [18, 3px]]
+
+        other-roads-no-motorvehicle-overlay:
+            filter:
+                not: { kind: [path,ferry] }
+                motor_vehicle: no
+            draw:
+                lines:
+                    order: function() { return feature.sort_rank; }
+                    color: red #[1.00,1.00,1.00]
+                    width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
+                    outline:
+                        color: green #[[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
                         width: [[14, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
 
