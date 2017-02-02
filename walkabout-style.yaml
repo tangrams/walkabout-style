@@ -12,8 +12,8 @@
 
 import:
     # Layers
-    # - layers/bike.yaml
-    # - layers/path-overlay.yaml
+    - layers/bike.yaml
+    - layers/path-overlay.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
@@ -879,12 +879,16 @@ styles:
                     color.a = 1.- step(dotSize, dot(st,st)*2.);
     dashed:
         base: lines
-        dash: [1.25, 1.25]
+        dash: [2.25, 1.25]
         dash_background_color: [0.808,0.860,0.851]
     dashed_small:
         base: lines
         dash: [0.5, 0.5]
         dash_background_color: [0.867, 0.867, 0.867]
+    dashed_footway:
+        base: lines
+        dash: [0.5, 0.3]
+        dash_background_color: [0.808,0.922,0.875]
     dashed_big:
         base: lines
         dash: [2.0, 1.0]
@@ -936,6 +940,38 @@ styles:
                     color.rgb += brightness;
 
                     color *= v_color; // apply layer color
+
+    terrain-park:
+        base: polygons
+        lighting: false
+        raster: normal
+        shaders:
+            uniforms:
+                u_envmap: images/walkabout-green1.jpg
+            blocks:
+                global: |
+                    vec4 terrainEnvmap (in sampler2D _tex, in vec3 _normal) {
+                        const vec3 eye = vec3(0.,0.,-1.);
+                        vec3 r = reflect(eye, _normal);
+                        r.z += 1.;
+                        float m = 2. * length(r);
+                        vec2 uv = r.xy / m + .5;
+                        return texture2D(_tex, uv);
+                    }
+                    const float e = 2.71828;
+                color: |
+                    float scale1 = 20./(u_map_position.z) + 1.5;
+                    normal.z /= scale1; 
+                    float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
+                    m = clamp(m, 0., 1.5);
+                    color = terrainEnvmap(u_envmap, normal);
+
+                    float contrast = m;
+                    color.rgb = ((color.rgb - 0.5) * max(contrast, 0.)) + 0.5;
+                    float brightness = .5 - m * .5;
+                    color.rgb += brightness;
+
+                    color *= v_color;
 
     # HSV/RGB functions
     hsv:
@@ -2588,7 +2624,7 @@ layers:
                     width: [[14, 0.6px], [15, 1px], [17, 2.5m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+                        width: [[15, 0px], [16, 0.75px], [17, 1px], [18, 3px]]
             paths:
                 filter:
                     any:
@@ -4974,6 +5010,10 @@ layers:
                 order: function() { return feature.sort_rank; }
                 visible: false
 
+            terrain-park:
+                order: function() { return feature.sort_rank; }
+                visible: false
+
         landuse-labels:
             filter:
                 all:
@@ -5046,7 +5086,7 @@ layers:
                         - not: { operator: [ "United States Forest Service" ] }
                         - protect_class: ['2','3','5']
                 draw:
-                    terrain:
+                    terrain-park:
                         interactive: false
                         color: [0.890,1.00,1.00]
                         # todo: what is this?
@@ -5059,9 +5099,9 @@ layers:
                             - operator: [ "United States National Park Service" ]
                             - protect_class: ['2','3','5']
                     draw:
-                        terrain:
+                        terrain-park:
                             visible: true
-                            color: [0.890,1.00,1.00]
+                            color: [0.920,1.000,1.000]
 
         tier2:
             # filter:
@@ -5090,9 +5130,9 @@ layers:
                         - kind: [protected_area, nature_reserve, national_park]
                         - not: { protect_class: [2,3,5]}
                 draw:
-                    terrain:
-                        # color: [1.00,0.974,0.950]
-                        color: [0.88,0.99,0.88]
+                    terrain-park:
+                        #color: [0.880,0.990,0.880]
+                        color: [1.000,1.000,0.930]
                         visible: true
                     # outline:
                     #     style: lines
@@ -5107,8 +5147,8 @@ layers:
                         - protect_class: ['6']
                         - operator: ['United States Forest Service']
                 draw:
-                    terrain:
-                        color: [0.945,0.995,0.945] #global.green7
+                    terrain-park:
+                        color: [0.995,1.000,0.985] #global.green7
                         visible: true
 
             parks-and-national-forests-not-national-park:
@@ -5121,8 +5161,10 @@ layers:
                         - not: { protect_class: ['2','3','5','6'] }
                 # default for national forests and more?
                 draw:
-                    terrain:
-                        color: [0.880,1.000,0.950]
+                    terrain-park:
+                        # color: [0.880,1.000,0.950]
+                        color: [0.940,1.000,0.970] #[[4, [0.900,1.000,0.990]], [13, [0.827,0.941,0.894]]]
+                        # color: [1.0,1.0,1.0]
                         visible: true
                 national_park:
                     #filter: function() { return feature.name && (feature.name.indexOf('National Park') > -1); }
@@ -5131,7 +5173,7 @@ layers:
                             - kind: national_park
                             - not: [ protect_class: ['2','3','5','6'], operator: [ "United States National Park Service"] ]
                     draw:
-                        terrain:
+                        terrain-park:
                             color: [0.890,1.00,1.00]
                             visible: true
 
@@ -5148,8 +5190,8 @@ layers:
             forest:
                 filter: { kind: [forest, wood, natural_wood, natural_forest, natural_park], $zoom: { min: 10 }, not: { operator: [ "United States Forest Service"] } }
                 draw:
-                    terrain:
-                        color: [0.956,0.99,0.966]
+                    terrain-park:
+                        color: [0.976,1.000,0.986]
                         visible: true
 
             # nature_reserve:
@@ -5237,14 +5279,14 @@ layers:
                 filter:
                     kind: cemetery
                 draw:
-                    terrain:
+                    terrain-park:
                         color: [0.982,1.000,0.960]
                         visible: true
             golf_course:
                 filter:
                     kind: golf_course
                 draw:
-                    terrain:
+                    terrain-park:
                         color: [0.890,1.000,0.892]
                         # color: [0.840,1.000,0.907]
                         visible: true
@@ -5431,20 +5473,20 @@ layers:
             filter:
                 kind: [pitch, meadow, village_green, grass, farmland, playground]
             draw:
-                terrain:
+                terrain-park:
                     color: [0.808,0.962,0.951]
                     visible: true
             farmland_friends:
                 filter: { kind: [farmland] }
                 draw:
-                    terrain:
-                        color: [0.965,0.996,0.965]
+                    terrain-park:
+                        color: [1.000,1.000,1.000]
                         #visible: false
             meadow_friends:
                 filter: { kind: [meadow, grass] }
                 draw:
-                    terrain:
-                        color: [0.825,0.976,0.895]
+                    terrain-park:
+                        color: [0.900,1.000,0.955]
             pitch_later:
                 filter: { kind: pitch, $zoom: { min: 17 } }
                 draw:
