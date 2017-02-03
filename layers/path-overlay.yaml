@@ -22,6 +22,14 @@ layers:
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                                 width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
+                    in_zoo_golf_course-early:
+                        filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                        draw:
+                            lines:
+                                visible: false
+                                outline:
+                                    visible: false
+
 
 
             footway:
@@ -41,7 +49,7 @@ layers:
                             $zoom: 15
                         draw:
                             lines:
-                                style: dots-lines
+                                style: dots_footway
                                 color: [0.135,0.595,0.500]
                                 width: 3px
                                 outline:
@@ -58,6 +66,15 @@ layers:
                                 order: function() { return feature.sort_rank - 5; }
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                                 width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+
+                    in_zoo_golf_course-early:
+                        filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                        draw:
+                            lines:
+                                visible: false
+                                outline:
+                                    visible: false
+
 
             pedestrian:
                 pedestrian-overlay:
@@ -79,6 +96,15 @@ layers:
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                                 width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
+                    in_zoo_golf_course-early:
+                        filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                        draw:
+                            lines:
+                                visible: false
+                                outline:
+                                    visible: false
+
+
         track:
             tracks-overlay:
                 draw:
@@ -98,6 +124,14 @@ layers:
                             order: function() { return feature.sort_rank - 5; }
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                             width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+
+                    in_zoo_golf_course-early:
+                        filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                        draw:
+                            lines:
+                                visible: false
+                                outline:
+                                    visible: false
 
 
 
@@ -121,6 +155,14 @@ layers:
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                             width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
+                in_zoo_golf_course-early:
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                    draw:
+                        lines:
+                            visible: false
+                            outline:
+                                visible: false
+
         other-roads-walking-network-only:
             path-other-roads-walking-network-only:
                 draw:
@@ -141,6 +183,14 @@ layers:
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
                             width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
+                in_zoo_golf_course-early:
+                    filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
+                    draw:
+                        lines:
+                            visible: false
+                            outline:
+                                visible: false
+
 
 
 
@@ -148,7 +198,20 @@ layers:
 
 
 styles:
-    # dashed:
-    #     base: lines
-    #     dash: [4.0, 1.0]
-    #     dash_background_color: [0.808,0.860,0.851]
+    dashed_footway:
+        base: lines
+        dash: [0.5, 0.3]
+        dash_background_color: [0.690,0.875,0.824]
+    dots_footway:
+        base: lines
+        lighting: false
+        texcoords: true
+        blend: overlay
+        shaders:
+            defines:
+                dotSize: .1
+            blocks:
+                color: |
+                    vec2 st = fract(v_texcoord.xy);
+                    st -= .5;
+                    color.a = 1.- step(dotSize, dot(st,st)*2.);

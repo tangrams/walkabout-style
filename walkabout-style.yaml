@@ -13,7 +13,7 @@
 import:
     # Layers
     # - layers/bike.yaml
-    - layers/path-overlay.yaml
+    # - layers/path-overlay.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
@@ -303,7 +303,7 @@ global:
     minor_casing1:              white                     # same as highway_casing1
     minor_casing2:              white                     # zoomed out
     minor_tunnel1:              [0.929,0.929,0.929]
-    minor_tunnel_casing1:       [1.00, 1.00, 1.00]
+    minor_tunnel_casing1:       [0.695,0.739,0.790]
     service_road1:              [0.935, 0.935, 0.935]
     service_road2:              white
     service_road_casing1:       [0.40, 0.40, 0.40]
@@ -885,10 +885,6 @@ styles:
         base: lines
         dash: [0.5, 0.5]
         dash_background_color: [0.867, 0.867, 0.867]
-    dashed_footway:
-        base: lines
-        dash: [0.5, 0.3]
-        dash_background_color: [0.690,0.875,0.824]
     dashed_big:
         base: lines
         dash: [2.0, 1.0]
@@ -962,7 +958,7 @@ styles:
                 color: |
                     float scale1 = 20./(u_map_position.z) + 1.5;
                     normal.z /= scale1; 
-                    float m = 3.75 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
+                    float m = 3.95 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
                     color = terrainEnvmap(u_envmap, normal);
 
@@ -2071,8 +2067,8 @@ layers:
                         visible: global.text_visible_service_road
                         font:
                             fill: [0.536,0.556,0.581]
-                            size: [[17, 12px], [18, 13px]]
-                            stroke: { color: [0.969,0.973,0.973], width: 4px }
+                            size: [[15, 9px], [16, 12px], [17, 12px], [18, 13px]]
+                            stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: 4px }
 
 
         shields:
@@ -2623,7 +2619,7 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]], [16, [0.725,0.747,0.766]]]
                         width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
             paths:
                 filter:
@@ -2636,6 +2632,16 @@ layers:
                     lines:
                         visible: true
 
+                labels-path:
+                    draw:
+                        text-blend-order:
+                            priority: 58
+                            visible: global.text_visible_path
+                            font:
+                                fill: [0.536,0.556,0.581]
+                                size: [[15, 9px], [18, 13px]]
+                                stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
+
 
             footway:
                 filter: { kind_detail: [footway] }
@@ -2647,6 +2653,24 @@ layers:
                             # casing for footway starts at  z16
                             width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
+                sidewalk-crossing:
+                    filter: { footway: [sidewalk, crossing], not: { walking_network: true }, $zoom: { max: 19 } }
+                    draw:
+                        lines:
+                            outline:
+                                color: [0.816,0.840,0.861]
+
+                labels-footpaths:
+                    filter: { $zoom: { min: 15 } }
+                    draw:
+                        text-blend-order:
+                            priority: 58
+                            visible: global.text_visible_path
+                            font:
+                                fill: [0.536,0.556,0.581]
+                                size: [[15, 9px], [18, 13px]]
+                                stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
+
 
             pedestrian:
                 filter:
@@ -2655,6 +2679,17 @@ layers:
                 draw:
                     lines:
                         visible: true
+
+                labels-pedestrian:
+                    filter: { $zoom: { min: 14 } }
+                    draw:
+                        text-blend-order:
+                            priority: 58
+                            visible: global.text_visible_path
+                            font:
+                                fill: [0.536,0.556,0.581]
+                                size: [[15, 9px], [18, 13px]]
+                                stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
 
         track:
             filter:
@@ -2667,8 +2702,17 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]], [16, [0.725,0.747,0.766]]]
                         width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
+            labels-track:
+                draw:
+                    text-blend-order:
+                        priority: 58
+                        visible: global.text_visible_path
+                        font:
+                            fill: [0.536,0.556,0.581]
+                            size: [[15, 9px], [18, 13px]]
+                            stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
 
         other-roads-no-motorvehicle-overlay:
             filter:
@@ -2680,8 +2724,17 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]], [16, [0.725,0.747,0.766]]]
                         width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
+            labels-track:
+                draw:
+                    text-blend-order:
+                        priority: 58
+                        visible: global.text_visible_path
+                        font:
+                            fill: [0.536,0.556,0.581]
+                            size: [[15, 9px], [18, 13px]]
+                            stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
 
         other-roads-walking-network-only:
             filter:
@@ -2697,7 +2750,7 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]], [16, [0.725,0.747,0.766]]]
                         width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
 
 
