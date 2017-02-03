@@ -2,175 +2,146 @@ layers:
     roads:
 
         path:
-
             paths:
-                draw:
-                    lines:
-                        width: [[13, 0.3px], [14, 0.5px], [15, 0.5px], [17, 2.5m]]
-                        outline:
-                            color: [[15, [0.218,0.780,0.668]], [18, [0.478,0.859,0.773]]]
-                            width: [[14, 0px], [15, 1px], [16, 1px], [17, 1px], [18, 3px]]
-
-                early:
-                    filter:
-                        $zoom: { min: 11, max: 16 }
+                paths-overlay:
                     draw:
                         lines:
-                            color: [0.147,0.640,0.541]
+                            width: [[14, 0.15], [15, 1px], [17, 2.5m]]
                             outline:
-                                color: [0.765,0.900,0.824]
+                                color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
+                                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+
+                    networked:
+                        filter: { walking_network: true }
+                        draw:
+                            lines:
+                                outline:
+                                    width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            highlight:
+                                order: function() { return feature.sort_rank - 5; }
+                                color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
 
-                networked:
-                    filter: { walking_network: true }
-                    draw:
-                        lines:
-                            # networked paths are thicker at z13 and z14
-                            width: [[13, 0.5px], [14, 0.75px], [15, 0.5px], [17, 2.5m]]
-                        highlight:
-                            order: function() { return feature.sort_rank - 5; }
-                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2px], [14, 4px], [15, 5px], [16, 8px]]
 
             footway:
-                draw:
-                    lines:
-                        color: [[14, [0.147,0.640,0.541]], [15, [1.000,1.000,1.000]]]
-                        width: [[14, 0.35px], [15, 0.5px], [17, 2.5m]]
-                        outline:
-                            style: dashed_footway
-                            color: [[15, [0.147,0.640,0.541]], [18, [0.478,0.859,0.773]]]
-                            width: [[15, 0px], [16, 1px], [17, 1px], [18, 2px]]
-
-                z15-transition:
-                    filter:
-                        $zoom: 15
+                footway-overlay:
                     draw:
                         lines:
-                            style: dots-lines
-                            color: [0.147,0.640,0.541]
-                            width: 3px
+                            # widths are narrower for footway, so does not follow default widths
+                            color: [[14, [0.147,0.640,0.541]], [15, [1.000,1.000,1.000]]]
+                            width: [[14, 0.35px], [15, 0.5px], [16, 1px], [17, 2.5m]]
                             outline:
-                                color: [0.765,0.900,0.824]
-                                width: 0.15px
+                                style: dashed_footway
+                                color: [[15, [0.147,0.640,0.541]], [18, [0.118,0.600,0.518]]]
+                                width: [[15, 0px], [16, 1px], [17, 1.25px], [18, 2px]]
 
-                networked:
-                    filter: { walking_network: true }
-                    draw:
-                        lines:
-                            width: [[13, 0.5px], [14, 0.75px], [15, 0.5px], [17, 2.5m]]
-                        highlight:
-                            order: function() { return feature.sort_rank - 5; }
-                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2px], [14, 4px], [15, 5px], [16, 8px]]
+                    z15-transition:
+                        filter:
+                            $zoom: 15
+                        draw:
+                            lines:
+                                style: dots-lines
+                                color: [0.135,0.595,0.500]
+                                width: 3px
+                                outline:
+                                    color: [0.765,0.900,0.824]
+                                    width: 0.1px
+
+                    networked:
+                        filter: { walking_network: true }
+                        draw:
+                            lines:
+                                outline:
+                                    width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            highlight:
+                                order: function() { return feature.sort_rank - 5; }
+                                color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
             pedestrian:
-                draw:
-                    lines:
-                        width: [[13, 0.3px], [14, 0.5px], [15, 0.5px], [17, 2.5m]]
-                        outline:
-                            # color: [0.034,0.757,0.616]
-                            color: [[15, [0.218,0.780,0.668]], [18, [0.478,0.859,0.773]]]
-                            width: [[14, 0px], [15, 1px], [16, 1px], [17, 1px], [18, 3px]]
-
-                early:
-                    filter:
-                        $zoom: { min: 11, max: 16 }
+                pedestrian-overlay:
                     draw:
                         lines:
-                            color: [0.147,0.640,0.541]
+                            width: [[14, 0.15], [15, 1px], [17, 2.5m]]
                             outline:
-                                color: [0.765,0.900,0.824]
+                                color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
+                                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
-                networked:
-                    filter: { walking_network: true }
-                    draw:
-                        lines:
-                            width: [[13, 0.5px], [14, 0.75px], [15, 0.5px], [17, 2.5m]]
-                        highlight:
-                            order: function() { return feature.sort_rank - 5; }
-                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2px], [14, 4px], [15, 5px], [16, 8px]]
+                    networked:
+                        filter: { walking_network: true }
+                        draw:
+                            lines:
+                                outline:
+                                    width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            highlight:
+                                order: function() { return feature.sort_rank - 5; }
+                                color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
         track:
-            tracks:
+            tracks-overlay:
                 draw:
                     lines:
-                        width: [[13, 0.3px], [14, 0.5px], [15, 0.5px], [17, 2.5m]]
+                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
                         outline:
-                            color: [0.682,0.690,0.616]
-                            width: [[15, 1px], [16, 1px], [17, 1px], [18, 3px]]
-
-                early:
-                    filter:
-                        $zoom: { min: 11, max: 16 }
-                    draw:
-                        lines:
-                            color: [0.704,0.581,0.466]
-                            outline:
-                                color: [0.859,0.882,0.843]
+                            color: [[14, [0.682,0.690,0.616]], [16, [0.710,0.553,0.522]]]
+                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                 networked:
                     filter: { walking_network: true }
                     draw:
                         lines:
-                            width: [[13, 0.5px], [14, 0.75px], [15, 0.5px], [17, 2.5m]]
+                            outline:
+                                width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
                         highlight:
                             order: function() { return feature.sort_rank - 5; }
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2px], [13, 2px], [14, 4px], [15, 5px], [16, 8px]]
+                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
 
-        #     footway:
-        #         filter: 
-        #             kind_detail: footway
-        #         draw:
-        #             lines:
-        #                 outline:
-        #                     style: dashed
-        #                     color: [0.035,0.782,0.636]
-        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
-        #     path:
-        #         filter:
-        #             kind_detail: path
-        #         draw:
-        #             lines:
-        #                 outline:
-        #                     color: [0.034,0.757,0.616]
-        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+        other-roads-no-motorvehicle-overlay:
+            path-other-roads-no-motorvehicle-overlay:
+                draw:
+                    lines:
+                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                        outline:
+                            color: [[14, [0.682,0.690,0.616]], [16, [0.710,0.553,0.522]]]
+                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
-        #     walking-network:
-        #         filter:
-        #             all:
-        #                 - walking_network: [lwn,rwn]
-        #         draw:
-        #             lines:
-        #                 visible: true
-        #             highlight:
-        #                 order: function() { return feature.sort_rank - 5; }
-        #                 color: [1.000,1.000,0.867]
-        #                 width: [[15, 0px], [16, 10px], [17, 1px], [18, 3px]]
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            outline:
+                                width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                        highlight:
+                            order: function() { return feature.sort_rank - 5; }
+                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
 
-        # track:
-        #     track-overlay:
-        #         draw:
-        #             lines:
-        #                 outline:
-        #                     color: [0.845,0.697,0.560]
-        #                     width: [[15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+        other-roads-walking-network-only:
+            path-other-roads-walking-network-only:
+                draw:
+                    lines:
+                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                        outline:
+                            color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
+                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
-        #     walking-network:
-        #         filter:
-        #             all:
-        #                 - walking_network: [lwn,rwn]
-        #         draw:
-        #             lines:
-        #                 visible: true
-        #             highlight:
-        #                 order: function() { return feature.sort_rank - 5; }
-        #                 color: [1.000,1.000,0.867]
-        #                 width: [[15, 0px], [16, 10px], [17, 1px], [18, 3px]]
+                networked:
+                    filter: { walking_network: [lwn,rwn] }
+                    draw:
+                        lines:
+                            outline:
+                                width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                        highlight:
+                            order: function() { return feature.sort_rank - 50; }
+                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+
+
 
 
 

@@ -888,7 +888,7 @@ styles:
     dashed_footway:
         base: lines
         dash: [0.5, 0.3]
-        dash_background_color: [0.808,0.922,0.875]
+        dash_background_color: [0.690,0.875,0.824]
     dashed_big:
         base: lines
         dash: [2.0, 1.0]
@@ -962,7 +962,7 @@ styles:
                 color: |
                     float scale1 = 20./(u_map_position.z) + 1.5;
                     normal.z /= scale1; 
-                    float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
+                    float m = 3.75 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
                     color = terrainEnvmap(u_envmap, normal);
 
@@ -1992,7 +1992,7 @@ layers:
                     color: [1.00,1.00,1.00] #[[12, [0.850,0.850,0.850]], [13, [0.714,0.733,0.760]], [16, [1.00,1.00,1.00]]]
                     width: [[11, 0px], [12, 0.5px], [13, 0.5px], [14, 1px], [16, 3px], [18, 9m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
                         width: [[11, 0px], [12, 0px], [13, 0px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
             early:
                 filter: { $zoom: { max: 14 } }
@@ -2053,7 +2053,7 @@ layers:
                     color: [1.00,1.00,1.00]
                     width: [[14, 1px], [16, 2px], [18, 4m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [14, [0.791,0.816,0.840]]]
+                        color: [[12, [0.900,0.900,0.900]], [14, [0.774,0.797,0.819]]]
                         width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
             early:
                 filter: { $zoom: { max: 15 } }
@@ -2621,10 +2621,10 @@ layers:
                 lines:
                     order: function() { return feature.sort_rank; }
                     color: [1.00,1.00,1.00]
-                    width: [[14, 0.6px], [15, 1px], [17, 2.5m]]
+                    width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[15, 0px], [16, 0.75px], [17, 1px], [18, 3px]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
             paths:
                 filter:
                     any:
@@ -2641,7 +2641,11 @@ layers:
                 filter: { kind_detail: [footway] }
                 draw:
                     lines:
-                        visible: true
+                        # footway is narrower than default
+                        width: [[13, 0.35px], [14, 0.5px], [15, 1px], [17, 2.5m]]
+                        outline:
+                            # casing for footway starts at  z16
+                            width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
 
             pedestrian:
@@ -2661,10 +2665,10 @@ layers:
                 lines:
                     order: function() { return feature.sort_rank; }
                     color: [1.00,1.00,1.00]
-                    width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
+                    width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[14, 0px], [16, 1px], [17, 1px], [18, 3px]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
 
         other-roads-no-motorvehicle-overlay:
             filter:
@@ -2673,11 +2677,28 @@ layers:
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }
-                    color: red #[1.00,1.00,1.00]
-                    width: [[14, 0.6px], [15, 1.5px], [17, 2.5m]]
+                    color: [1.00,1.00,1.00]
+                    width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
                     outline:
-                        color: green #[[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.798,0.823,0.847]]]
-                        width: [[14, 0px], [16, 1px], [17, 1px], [18, 3px]]
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
+
+        other-roads-walking-network-only:
+            filter:
+                all:
+                - walking_network: true
+                - not:
+                    any:
+                        - { kind: [path,ferry], not: { kind_detail: pedestrian } }
+                        - kind_detail: [track]
+            draw:
+                lines:
+                    order: function() { return feature.sort_rank; }
+                    color: [1.00,1.00,1.00]
+                    width: [[13, 0.65px], [14, 0.85px], [15, 1px], [17, 2.5m]]
+                    outline:
+                        color: [[12, [0.900,0.900,0.900]], [13, [0.774,0.797,0.823]], [14, [0.774,0.797,0.819]]]
+                        width: [[14, 0px], [15, 0.75px], [16, 1px], [17, 1px], [18, 3px]]
 
 
 
@@ -5204,7 +5225,7 @@ layers:
                 filter: { kind: [forest, wood, natural_wood, natural_forest, natural_park], $zoom: { min: 10 }, not: { operator: [ "United States Forest Service"] } }
                 draw:
                     terrain-park:
-                        color: [0.976,1.000,0.986]
+                        color: [0.946,1.000,0.966]
                         visible: true
 
             # nature_reserve:
