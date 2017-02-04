@@ -30,6 +30,12 @@ layers:
                                 outline:
                                     visible: false
 
+                    labels-path:
+                        draw:
+                            text-blend-order:
+                                font:
+                                    fill: green
+
 
 
             footway:
@@ -75,6 +81,12 @@ layers:
                                 outline:
                                     visible: false
 
+                    labels-footpaths:
+                        draw:
+                            text-blend-order:
+                                font:
+                                    fill: green
+
 
             pedestrian:
                 pedestrian-overlay:
@@ -103,6 +115,12 @@ layers:
                                 visible: false
                                 outline:
                                     visible: false
+
+                    labels-pedestrian:
+                        draw:
+                            text-blend-order:
+                                font:
+                                    fill: green
 
 
         track:
@@ -133,6 +151,12 @@ layers:
                                 outline:
                                     visible: false
 
+                labels-track:
+                    draw:
+                        text-blend-order:
+                            font:
+                                fill: green
+
 
 
         other-roads-no-motorvehicle-overlay:
@@ -162,6 +186,12 @@ layers:
                             visible: false
                             outline:
                                 visible: false
+
+                labels-track:
+                    draw:
+                        text-blend-order:
+                            font:
+                                fill: green
 
         other-roads-walking-network-only:
             path-other-roads-walking-network-only:
