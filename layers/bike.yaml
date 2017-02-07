@@ -77,10 +77,12 @@ global:
 
     # COLORS
     bike: [0.000,0.549,0.929] #[0.137,0.584,0.812]
-    bike_separate: [0.110,0.686,0.435]
+    bike_path: [0.000,0.565,0.345]
+    bike_separate: [0.110,0.686,0.435] #green
     left_right_lane: [0.414,0.940,0.607]
     # left_right_lane: [0.122,0.894,0.400]
     cycle: [0.000,0.680,0.385]
+    cycle_path: [0.000,0.565,0.345]
     shared: [1.000,1.000,0.271]
 
 
@@ -411,6 +413,148 @@ layers:
                 shared_lane: global.draw_block_shared_yellow_lane
 
         path:
+
+            paths:
+                bike:
+                    filter:
+                        is_bicycle_related: true
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+
+                    cycleway:
+                        filter: global.cycleway
+                        draw:
+                            lines:
+                                outline:
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.cycle_path]]
+
+                    separated_bike_lanes_tracks_etc:
+                        filter: global.separated_bike_lanes_tracks_etc
+                        draw:
+                            lines:
+                                outline: 
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.bike_separate]]
+                            casing_left:
+                                visible: false
+                                order: 486
+                                color: [0.460,0.640,1.000]
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                            casing_right:
+                                visible: false
+                                order: 486
+                                color: white
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                        left_or_right_or_implied: global.draw_block_left_or_right_or_implied
+                        shared_yellow_lane: global.draw_block_shared_yellow_lane
+                        cycle_track:
+                            filter: global.cycle_track
+                            draw:
+                                lines:
+                                    outline:
+                                        color: [[12, [0.900,0.900,0.900]], [13, green]]
+                    shared_lane: global.draw_block_shared_yellow_lane
+                bicycle-no:
+                    filter: 
+                        bicycle: no
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, red]]
+
+            footway:
+                bike:
+                    filter:
+                        is_bicycle_related: true
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+
+                    cycleway:
+                        filter: global.cycleway
+                        draw:
+                            lines:
+                                outline:
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.cycle_path]]
+
+                    separated_bike_lanes_tracks_etc:
+                        filter: global.separated_bike_lanes_tracks_etc
+                        draw:
+                            lines:
+                                outline: 
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.bike_separate]]
+                            casing_left:
+                                visible: false
+                                order: 486
+                                color: [0.460,0.640,1.000]
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                            casing_right:
+                                visible: false
+                                order: 486
+                                color: white
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                        left_or_right_or_implied: global.draw_block_left_or_right_or_implied
+                        shared_yellow_lane: global.draw_block_shared_yellow_lane
+                        cycle_track:
+                            filter: global.cycle_track
+                            draw:
+                                lines:
+                                    outline:
+                                        color: [[12, [0.900,0.900,0.900]], [13, green]]
+                    shared_lane: global.draw_block_shared_yellow_lane
+                bicycle-no:
+                    filter: 
+                        bicycle: no
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, red]]
+
+            pedestrian:
+                bike:
+                    filter:
+                        is_bicycle_related: true
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+
+                    cycleway:
+                        filter: global.cycleway
+                        draw:
+                            lines:
+                                outline:
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.cycle_path]]
+
+                    separated_bike_lanes_tracks_etc:
+                        filter: global.separated_bike_lanes_tracks_etc
+                        draw:
+                            lines:
+                                outline: 
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.bike_separate]]
+                            casing_left:
+                                visible: false
+                                order: 486
+                                color: [0.460,0.640,1.000]
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                            casing_right:
+                                visible: false
+                                order: 486
+                                color: white
+                                width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                        left_or_right_or_implied: global.draw_block_left_or_right_or_implied
+                        shared_yellow_lane: global.draw_block_shared_yellow_lane
+                        cycle_track:
+                            filter: global.cycle_track
+                            draw:
+                                lines:
+                                    outline:
+                                        color: [[12, [0.900,0.900,0.900]], [13, green]]
+                    shared_lane: global.draw_block_shared_yellow_lane
+
+        track:
             bike:
                 filter:
                     is_bicycle_related: true
@@ -424,7 +568,49 @@ layers:
                     draw:
                         lines:
                             outline:
-                                color: [[12, [0.900,0.900,0.900]], [13, green]]
+                                color: [[12, [0.900,0.900,0.900]], [13, global.cycle_path]]
+
+                separated_bike_lanes_tracks_etc:
+                    filter: global.separated_bike_lanes_tracks_etc
+                    draw:
+                        lines:
+                            outline: 
+                                color: [[12, [0.900,0.900,0.900]], [13, global.bike_separate]]
+                        casing_left:
+                            visible: false
+                            order: 486
+                            color: [0.460,0.640,1.000]
+                            width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                        casing_right:
+                            visible: false
+                            order: 486
+                            color: white
+                            width: [[13, 0px], [14, 1px], [15, 2px],[16, 3px],[17, 6px],[18, 9m],[19, 9m]]
+                    left_or_right_or_implied: global.draw_block_left_or_right_or_implied
+                    shared_yellow_lane: global.draw_block_shared_yellow_lane
+                    cycle_track:
+                        filter: global.cycle_track
+                        draw:
+                            lines:
+                                outline:
+                                    color: [[12, [0.900,0.900,0.900]], [13, green]]
+                shared_lane: global.draw_block_shared_yellow_lane
+
+        other-roads-no-motorvehicle-overlay:
+            bike:
+                filter:
+                    is_bicycle_related: true
+                draw:
+                    lines:
+                        outline:
+                            color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+
+                cycleway:
+                    filter: global.cycleway
+                    draw:
+                        lines:
+                            outline:
+                                color: [[12, [0.900,0.900,0.900]], [13, global.cycle]]
 
                 separated_bike_lanes_tracks_etc:
                     filter: global.separated_bike_lanes_tracks_etc
