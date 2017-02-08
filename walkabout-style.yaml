@@ -12,7 +12,7 @@
 
 import:
     # Layers
-    - layers/bike.yaml
+    - layers/bike2.yaml
     # - layers/path-overlay.yaml
 
 global:
@@ -2695,7 +2695,7 @@ layers:
             filter:
                 kind: path
                 kind_detail: [track]
-                motor_vehicle: false
+                motor_vehicle: [false, no]
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }

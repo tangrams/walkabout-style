@@ -76,14 +76,14 @@ global:
 
 
     # COLORS
-    bike: [0.000,0.549,0.929] #[0.137,0.584,0.812]
+    bike: [0.000,0.549,0.929] # blue is route #[0.137,0.584,0.812]
     bike_path: [0.000,0.565,0.345]
-    bike_separate: [0.110,0.686,0.435] #green
+    bike_separate: [0.110,0.686,0.435] #green is safest
     left_right_lane: [0.414,0.940,0.607]
     # left_right_lane: [0.122,0.894,0.400]
     cycle: [0.000,0.680,0.385]
     cycle_path: [0.000,0.565,0.345]
-    shared: [1.000,1.000,0.271]
+    shared: [1.000,1.000,0.271] #not so safe, biking with cars, no dedicated lane
 
 
 layers:
@@ -176,7 +176,7 @@ layers:
                             casing_left:
                                 visible: false
                                 order: 486
-                                color: [0.460,0.640,1.000]
+                                color: red #[0.460,0.640,1.000]
                                 width: [[12, 0.5px], [14, 1.5px], [15, 2px], [16, 3px], [17, 5px], [18, 5m], [19, 6m]]
                             casing_right:
                                 visible: false
@@ -376,18 +376,38 @@ layers:
                     is_bicycle_related: true
                 draw:
                     lines:
+                        color: [[12, global.bike], [13, [1.00,1.00,1.00]]]
+                        width: [[11, 0px], [12, 0.75px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
                         outline:
                             color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+                            width: [[11, 0px], [12, 0px], [13, 0.4px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
 
                 cycleway:
-                    filter: global.cycleway
+                    filter:
+                        all:
+                            - any:
+                                - kind_detail: [cycleway, track, path, pedestrian, footway, steps]
+                                - cycleway: [sidepath, track, opposite_track]
+                                - cycleway_left: [sidepath, track, opposite_track]
+                                - cycleway_right: [sidepath, track, opposite_track]
+                            - not:
+                                any:
+                                    - cycleway: [lane, opposite, opposite_lane]
+                                    - cycleway_left: [lane, opposite, opposite_lane]
+                                    - cycleway_right: [lane, opposite, opposite_lane]
                     draw:
                         lines:
                             outline:
                                 color: [[12, [0.900,0.900,0.900]], [13, global.cycle]]
 
                 separated_bike_lanes_tracks_etc:
-                    filter: global.separated_bike_lanes_tracks_etc
+                    filter:
+                        any:
+                            - { oneway: yes, kind_detail: [cycleway, track, path, pedestrian, footway, steps] }
+                            - { oneway: yes, cycleway: [lane, track, opposite, opposite_lane, opposite_track] }
+                            - cycleway_left: [lane, track, opposite, opposite_lane, opposite_track]
+                            - cycleway_right: [lane, track, opposite, opposite_lane, opposite_track]
+                            - { not: { kind_detail: [path, cycleway] } }
                     draw:
                         lines:
                             outline: 
@@ -402,15 +422,72 @@ layers:
                             order: 486
                             color: white
                             width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m], [19, 6m]]
-                    left_or_right_or_implied: global.draw_block_left_or_right_or_implied
-                    shared_yellow_lane: global.draw_block_shared_yellow_lane
+                    left_or_right_or_implied: 
+                        filter:
+                            any:
+                                - cycleway_left: true
+                                - cycleway_right: true
+                                - { oneway: yes, cycleway: true }
+                                - { oneway: yes, kind_detail: true }
+                        draw:
+                            # lines:
+                            #     outline:
+                            #         color: [[12, [0.900,0.900,0.900]], [13, red]]
+                            casing_left:
+                                color: white
+                            casing_right:
+                                visible: true
+                                color: global.left_right_lane
+                        left_is_special:
+                            filter: 
+                                any:
+                                    - cycleway_left: true
+                                    - cycleway: opposite
+                            draw:
+                                casing_left:
+                                    visible: true
+                                    color: global.left_right_lane
+                                casing_right:
+                                    visible: false
+                                    color: white
+                    shared_yellow_lane: 
+                        filter: 
+                            any:
+                                - cycleway: [shared_lane, shared]
+                                - cycleway_left: [shared_lane, shared]
+                                - cycleway_right: [shared_lane, shared]
+                        draw:
+                            lines:
+                                color: [[12, global.bike_separate], [13, yellow]]
+                                width: [[11, 0px], [12, 0.75px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
+                                outline:
+                                    color: [[12, [0.900,0.900,0.900]], [13, global.bike_separate]]
+                                    width: [[11, 0px], [12, 0px], [13, 0.4px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
                     cycle_track:
                         filter: global.cycle_track
                         draw:
                             lines:
                                 outline:
                                     color: [[12, [0.900,0.900,0.900]], [13, global.cycle]]
-                shared_lane: global.draw_block_shared_yellow_lane
+                shared_lane: 
+                    filter:
+                        any:
+                            - cycleway: [shared_lane, shared]
+                            - cycleway_left: [shared_lane, shared]
+                            - cycleway_right: [shared_lane, shared]
+                    draw:
+                        lines:
+                            color: yellow
+            bicycle-no:
+                filter: 
+                    bicycle: no
+                draw:
+                    lines:
+                        color: [[12, red], [13, [1.00,1.00,1.00]]]
+                        width: [[11, 0px], [12, 0.75px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
+                        outline:
+                            color: [[12, [0.900,0.900,0.900]], [13, red]]
+                            width: [[11, 0px], [12, 0px], [13, 0.4px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
 
         path:
 
@@ -518,8 +595,11 @@ layers:
                         is_bicycle_related: true
                     draw:
                         lines:
+                            color: [[12, global.bike], [13, global.bike], [14, [1.00,1.00,1.00]]]
+                            width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                             outline:
                                 color: [[12, [0.900,0.900,0.900]], [13, global.bike]]
+                                width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
 
                     cycleway:
                         filter: global.cycleway
@@ -1107,37 +1187,15 @@ styles:
         base: points
         texture: oneway
     casing_left:
-        base: lines
-        texcoords: true
+        mix: casing_right
         shaders:
-            defines:
+            uniforms:
                 FLIP: true
-                LINE_WIDTH:  0.0001
-                SPIKE_WIDTH: 1.
-                SPIKE_SCALE: 2.
-            blocks:
-                global: |
-                    float pulse(float x,float p, float w){
-                        x = abs(x - p);
-                        if( x>w ) return 0.0;
-                        x /= w;
-                        return 1.0 - x*x*(3.0-2.0*x);
-                    }
-                color: |
-                    vec2 st = v_texcoord.xy;
-                    #ifdef FLIP
-                    st.x = 1. - st.x;
-                    #endif
-                    float pattern = step(.5,  pulse(st.x,0.5,LINE_WIDTH) + pulse(st.x,0.146,LINE_WIDTH));
-                    pattern += (step(.5,st.x))*pulse(fract(st.y*SPIKE_SCALE),.1,SPIKE_WIDTH);
-                    if (pattern==0.) {
-                        discard;
-                    }
     casing_right:
         base: lines
         texcoords: true
         shaders:
-            defines:
+            uniforms:
                 FLIP: false
                 LINE_WIDTH:  0.0001
                 SPIKE_WIDTH: 1.
@@ -1152,9 +1210,9 @@ styles:
                     }
                 color: |
                     vec2 st = v_texcoord.xy;
-                    #ifdef FLIP
-                    st.x = 1. - st.x;
-                    #endif
+                    if (FLIP) {
+                        st.x = 1. - st.x;
+                    }
                     float pattern = step(.5,  pulse(st.x,0.5,LINE_WIDTH) + pulse(st.x,0.146,LINE_WIDTH));
                     pattern += (step(.5,st.x))*pulse(fract(st.y*SPIKE_SCALE),.1,SPIKE_WIDTH);
                     if (pattern==0.) {
