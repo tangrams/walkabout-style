@@ -245,9 +245,9 @@ global:
     text_visible_highway_e:         false           #false for default
     text_visible_trunk_primary:     true
     text_visible_trunk_primary_e2:  false           #false for default
-    text_visible_trunk_primary_e:   false           #false for default
+    text_visible_trunk_primary_e:   true            #false for default # true now after labels refactor?
     text_visible_secondary:         true
-    text_visible_secondary_e:       false           #false for default
+    text_visible_secondary_e:       true           #false for default  # true now after labels refactor?
     text_visible_tertiary:          true
     text_visible_tertiary_e:        false           #false for default
     text_visible_minor_road:        true
@@ -1662,7 +1662,7 @@ layers:
             draw:
                 lines:
                     color: [[8, [0.457,0.438,0.457]], [10, [0.548,0.483,0.491]], [11, [1.00,1.00,1.00]]]
-                    width: [[8, 1.25px], [12, 1.5px], [14, 2.5px], [16, 5.5px], [17, 10px], [18, 10m]]
+                    width: [[8, 1.25px], [12, 1.5px], [14, 2.5px], [16, 6.5px], [17, 10px], [18, 10m]]
                     outline:
                         color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.548,0.483,0.491]]]
                         width: [[8, 1px], [10, 1px], [12, 1.5px], [14, 1.75px], [16, 2.5px], [18, 4px]]
@@ -1737,10 +1737,10 @@ layers:
                 draw:
                     lines:
                         color: [[10, [0.603,0.620,0.642]], [11, [1.00,1.00,1.00]]]
-                        width: [[8, 0.5px], [10, 1px], [12, 1px], [14, 2.5px], [16, 4px], [17, 6px], [18, 9m]]
+                        width: [[8, 0.5px], [10, 1px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                         outline:
                             color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.659,0.626,0.648]]]
-                            width: [[8, 0.5px], [10, 1px], [14, 1px], [16, 2.25px], [17, 2px], [18, 4px]]
+                            width: [[8, 0.5px], [10, 1px], [14, 1px], [16, 2.25px], [17, 3px], [18, 4px]]
                 early:
                     filter: { $zoom: { max: 14 } }
                     draw:
@@ -1759,10 +1759,10 @@ layers:
                     draw:
                         lines:
                             color: [[8, [0.603,0.620,0.642]], [10, [0.603,0.620,0.642]], [11, [1.00,1.00,1.00]]]
-                            width: [[8, 1px], [12, 1px], [14, 2.5px], [16, 5px], [17, 8px], [18, 9m]]
+                            width: [[8, 1px], [12, 1px], [14, 2.5px], [16, 6.5px], [17, 9px], [18, 10m]]
                             outline:
                                 color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.629,0.612,0.615]], [14, [0.659,0.626,0.648]]]
-                                width: [[9, 1px], [10, 1px], [12, 1.25px], [16, 2.25px], [17, 4px]]
+                                width: [[9, 1px], [10, 1px], [12, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
                     early:
                         filter: { $zoom: { max: 13 } }
                         draw:
@@ -1846,7 +1846,7 @@ layers:
                 draw:
                     lines:
                         color: [1.00,1.00,1.00]
-                        width: [[10, 0px], [11, 0px], [12, 1px], [14, 2px], [16, 4px], [17, 6px], [18, 9m]]
+                        width: [[10, 0px], [11, 0px], [12, 1px], [14, 2px], [16, 5px], [17, 7.5px], [18, 9m]]
                         outline:
                             color: [[9, [0.906,0.906,0.906]], [10, [0.788,0.780,0.800]], [11, [0.787,0.763,0.767]], [14, [0.659,0.626,0.648]]]
                             width: [[10, 0px], [11, 0.5px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
@@ -1868,7 +1868,7 @@ layers:
                     draw:
                         lines:
                             color: [[10, [0.584,0.604,0.624]], [11, [1.00, 1.00, 1.00]]]
-                            width: [[8, 0px], [10, 0.7px], [11, 1px], [12, 1px], [14, 2px], [16, 4px], [18, 9m]]
+                            width: [[8, 0px], [10, 0.7px], [11, 1px], [12, 1px], [14, 2px], [16, 5px], [17, 7.5px], [18, 9m]]
                             outline:
                                 color: [[9, [0.906,0.906,0.906]], [10, [0.906,0.906,0.906]], [11, [0.787,0.763,0.767]], [14, [0.659,0.626,0.648]]]
                                 width: [[9, 0.25px], [10, 0.75px], [11, 0.75px], [12, 1px], [14, 1px], [16, 2.25px], [18, 4px]]
@@ -1997,11 +1997,11 @@ layers:
                         order: 350
                         outline:
                             order: 351
-            motor_vehicle_no:
-                filter: { kind_detail: unclassified, motor_vehicle: no }
-                draw:
-                    lines:
-                        visible: false
+            # motor_vehicle_no:
+            #     filter: { kind_detail: unclassified, motor_vehicle: no }
+            #     draw:
+            #         lines:
+            #             visible: false
 
             # Is this junk code?
             round:
@@ -2930,7 +2930,7 @@ layers:
     buildings:
         data: { source: mapzen, layer: buildings }
         filter:
-            not: { location: underground }
+            not: { location: underground, layer: -1 }
         # set default footprint and extrusion draw properties, but don't draw by default (rules below will turn visibility on)
         draw:
             polygons:
