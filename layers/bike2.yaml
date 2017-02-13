@@ -50,31 +50,70 @@ layers:
                 labels-tertiary:
                     bike_labels: global.bike_draw_labels
 
-        minor_road:
-            bike: global.bike_draw_minor
-            no_bike: global.no_bike_draw_minor
-            labels-minor_road:
-                bike_labels: global.bike_draw_labels
+#         minor_road:
+#             bike: global.bike_draw_minor
+#             no_bike: global.no_bike_draw_minor
+#             labels-minor_road:
+#                 bike_labels: global.bike_draw_labels
 
-        path:
-            bike: global.bike_draw_path
-            no_bike: global.no_bike_draw_path
-            paths:
-                labels-path:
-                    bike_labels: global.bike_draw_labels
-            footway:
-                bike: global.bike_draw_footway
-                no_bike: global.no_bike_draw_footway
-                labels-footpaths:
-                    bike_labels: global.bike_draw_labels
-            pedestrian:
-                labels-pedestrian:
-                    bike_labels: global.bike_draw_labels
+#         path:
+#             bike: global.bike_draw_path
+#             no_bike: global.no_bike_draw_path
+#             paths:
+#                 labels-path:
+#                     bike_labels: global.bike_draw_labels
+#             footway:
+#                 bike: global.bike_draw_footway
+#                 no_bike: global.no_bike_draw_footway
+#                 labels-footpaths:
+#                     bike_labels: global.bike_draw_labels
+#             pedestrian:
+#                 labels-pedestrian:
+#                     bike_labels: global.bike_draw_labels
 
-        track:
-            bike: global.bike_draw_track
+#         track:
+#             bike: global.bike_draw_track
 
-        other-roads-no-motorvehicle-overlay:
+#         junction:
+#             filter:
+#                 $zoom: { min: 6 }
+#                 any:
+#                     - shield_text: true
+#                     - kind_detail: [motorway, trunk, primary, secondary, tertiary]
+#                     - bicycle_network: rcn
+#                     - rcn_ref: true
+
+#             draw:
+#                 icons:
+#                     priority: 20
+#                     # you need to match any custom shield to the vector tile `network` values
+#                     sprite: sdk_shield_3char
+#                     # color: function() { if ( feature.kind === 'train') { return 'purple' } else { return feature.colour || 'purple'; } }
+#                     # Size is specified below, and limited to 5 char in another filter
+#                     repeat_group: shields
+#                     repeat_distance: [[8,90px],[10,40px],[13,30px]]
+#                     size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
+#                     placement: midpoint
+#                     placement_min_length_ratio:
+#                         - [8, 0.1]
+#                         - [9, 0.25]
+#                         - [10, 0.25]
+#                         - [11, 0.15]
+#                         - [12, 1]
+#                         - [13, 1.50]
+#                         - [14, 2.0]
+#                     cull_from_tile: true
+# #                    visible: false
+#                     text:
+#                         offset: [0px, -0.5px]
+#                         repeat_distance: 200px
+#                         anchor: center
+#                         text_source: function() { if( feature.ref.length < 6 ) { return feature.ref; } else { return ''; } }
+#                         font:
+#                             family: Montserrat
+#                             fill: function() { if(feature.colour == 'yellow') { return '#555'; } else { return 'white'; } }
+#                             style: bold
+#                             size: [[7,7px],[12,8px],[16,11px]]
 
 
 global:
@@ -86,14 +125,15 @@ global:
     bike_tier1_off_road_track_color_lite: [0.917,0.759,0.610]
     bike_tier2_on_road_protected_color: [0.983,0.628,0.096] # yellow orange
     bike_tier2_on_road_protected_color_casing: [1.000,0.792,0.110]
-    bike_tier2_on_road_protected_color_lite: [0.980,0.881,0.608]
+    bike_tier2_on_road_protected_color_lite: [0.980,0.904,0.696]
     bike_tier3_on_road_not_protected_color: [0.180,0.535,1.000] # blue
     bike_tier3_on_road_not_protected_color_casing: [0.000,0.759,0.990]
-    bike_tier3_on_road_not_protected_color_lite: [0.470,0.876,1.000]
+    bike_tier3_on_road_not_protected_color_lite: [0.750,0.942,1.000]
     bike_prohibited_color: [0.930,0.679,0.721]
     bike_prohibited_color_lite: [1.000,1.000,1.000]
     left_right_lane: purple #[0.414,0.940,0.607]
-    regional_network_highlight: [0.973,1.000,0.318]
+    # regional_network_highlight: [0.973,1.000,0.318]
+    regional_network_highlight: [0.652,0.850,0.890]
 
     # FILTERS
     # labels
