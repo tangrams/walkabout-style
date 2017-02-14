@@ -13,6 +13,16 @@ layers:
             draw:
                 icons:
                     priority: 43
+
+        bike-barrier:
+            filter:
+                kind: barrier
+            draw:
+                icons:
+                    visible: true
+                    sprite: generic
+                    color: red
+                    size: 20px
     roads:
         arrows:
             # oneway arrows and shields are distinct groups!
@@ -50,29 +60,29 @@ layers:
                 labels-tertiary:
                     bike_labels: global.bike_draw_labels
 
-#         minor_road:
-#             bike: global.bike_draw_minor
-#             no_bike: global.no_bike_draw_minor
-#             labels-minor_road:
-#                 bike_labels: global.bike_draw_labels
+        minor_road:
+            bike: global.bike_draw_minor
+            no_bike: global.no_bike_draw_minor
+            labels-minor_road:
+                bike_labels: global.bike_draw_labels
 
-#         path:
-#             bike: global.bike_draw_path
-#             no_bike: global.no_bike_draw_path
-#             paths:
-#                 labels-path:
-#                     bike_labels: global.bike_draw_labels
-#             footway:
-#                 bike: global.bike_draw_footway
-#                 no_bike: global.no_bike_draw_footway
-#                 labels-footpaths:
-#                     bike_labels: global.bike_draw_labels
-#             pedestrian:
-#                 labels-pedestrian:
-#                     bike_labels: global.bike_draw_labels
+        path:
+            bike: global.bike_draw_path
+            no_bike: global.no_bike_draw_path
+            paths:
+                labels-path:
+                    bike_labels: global.bike_draw_labels
+            footway:
+                bike: global.bike_draw_footway
+                no_bike: global.no_bike_draw_footway
+                labels-footpaths:
+                    bike_labels: global.bike_draw_labels
+            pedestrian:
+                labels-pedestrian:
+                    bike_labels: global.bike_draw_labels
 
-#         track:
-#             bike: global.bike_draw_track
+        track:
+            bike: global.bike_draw_track
 
 #         junction:
 #             filter:
@@ -118,22 +128,22 @@ layers:
 
 global:
     # COLORS
-    bike_tier1_off_road_path_color: [0.000,0.700,0.397] # green
+    bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
     bike_tier1_off_road_path_color_casing: [0.000,0.850,0.411]
-    bike_tier1_off_road_path_color_lite: [0.595,0.930,0.595]
+    bike_tier1_off_road_path_color_lite: [0.554,0.865,0.554]
     bike_tier1_off_road_track_color: [0.639,0.388,0.306]  # brown
     bike_tier1_off_road_track_color_lite: [0.917,0.759,0.610]
-    bike_tier2_on_road_protected_color: [0.983,0.628,0.096] # yellow orange
-    bike_tier2_on_road_protected_color_casing: [1.000,0.792,0.110]
-    bike_tier2_on_road_protected_color_lite: [0.980,0.904,0.696]
-    bike_tier3_on_road_not_protected_color: [0.180,0.535,1.000] # blue
-    bike_tier3_on_road_not_protected_color_casing: [0.000,0.759,0.990]
-    bike_tier3_on_road_not_protected_color_lite: [0.750,0.942,1.000]
+    bike_tier2_on_road_protected_color: [0.930,0.460,0.167] # orange
+    bike_tier2_on_road_protected_color_casing: [0.980,0.635,0.545]
+    bike_tier2_on_road_protected_color_lite: [0.980,0.792,0.706]
+    bike_tier3_on_road_not_protected_color: [0.361,0.416,0.800] # blue
+    bike_tier3_on_road_not_protected_color_casing: [0.426,0.766,0.870]
+    bike_tier3_on_road_not_protected_color_lite: [0.660,0.829,0.880]
     bike_prohibited_color: [0.930,0.679,0.721]
     bike_prohibited_color_lite: [1.000,1.000,1.000]
     left_right_lane: purple #[0.414,0.940,0.607]
     # regional_network_highlight: [0.973,1.000,0.318]
-    regional_network_highlight: [0.652,0.850,0.890]
+    regional_network_highlight: [1.000,1.000,0.549]
 
     # FILTERS
     # labels
@@ -610,8 +620,9 @@ global:
                         text_source: global.bike_labels
                         font:
                             fill: global.bike_tier1_off_road_path_color
+                            weight: 600
                             #size: 10px
-                            stroke: { color: white }
+                            stroke: { color: global.bike_tier1_off_road_path_color_lite }
             bike_tier2:
                 filter: global.bike_tier2_on_road_protected_filter
                 draw:
@@ -619,8 +630,9 @@ global:
                         text_source: global.bike_labels
                         font:
                             fill: global.bike_tier2_on_road_protected_color
+                            weight: 600
                             #size: 10px
-                            stroke: { color: white }
+                            stroke: { color: global.bike_tier2_on_road_protected_color_lite }
             bike_tier3:
                 filter: global.bike_tier3_on_road_not_protected_filter
                 draw:
@@ -628,8 +640,9 @@ global:
                         text_source: global.bike_labels
                         font:
                             fill: global.bike_tier3_on_road_not_protected_color
+                            weight: 600
                             #size: 10px
-                            stroke: { color: white }
+                            stroke: { color: global.bike_tier3_on_road_not_protected_color_lite }
 
     bike_networks_highway:
         filter:

@@ -881,6 +881,10 @@ styles:
         base: lines
         dash: [2.25, 1.25]
         dash_background_color: [0.808,0.860,0.851]
+    dashed_steps:
+        base: lines
+        dash: [0.5, 0.25]
+        dash_background_color: [0.760,0.785,0.805]
     dashed_small:
         base: lines
         dash: [0.5, 0.5]
@@ -2713,6 +2717,28 @@ layers:
                             fill: [0.536,0.556,0.581]
                             size: [[15, 9px], [18, 13px]]
                             stroke: { color: [[15, global.text_stroke], [17,[0.969,0.973,0.973]]], width: [[15, 2px], [17, 4px]] }
+
+        steps:
+            filter:
+                all:
+                    - kind: path
+                    - kind_detail: steps
+            draw:
+                dashed_steps:
+                    #order: function() { return feature.sort_rank; }
+                    order: 1005
+                    color: [1.00,1.00,1.00]
+                    width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+            labels-steps:
+                filter: { $zoom: { min: 17 } }
+                draw:
+                    text-blend-order:
+                        priority: 63
+                        visible: global.text_visible_steps
+                        font:
+                            fill: [0.45,0.45,0.45]
+                            size: 11px
+                            stroke: { color: global.text_stroke, width: 4 }
 
         other-roads-no-motorvehicle-overlay:
             filter:
