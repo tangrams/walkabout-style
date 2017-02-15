@@ -510,6 +510,8 @@
                 scene.config.global.sdk_transit_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 if (value === 'true' || value === true) {
                     scene.config.global.sdk_road_shields = false;
+                    scene.config.global.sdk_bike_overlay = false;
+                    //gui.bike_button.value = false;
                 } else {
                     if( scene.config.global.text_visible_roads ) {
                         scene.config.global.sdk_road_shields = true;
@@ -518,6 +520,22 @@
                 scene.updateConfig();
             });
             gui.transit_button.name('transit');
+
+            // Bike selector
+            var bike_overlay = {
+                '(default)': false,
+                'Show': true,
+                'Hide': false
+            };
+            // use transit ux, else default to false
+            gui.bike_overlay = query.bike_overlay || false;
+            gui.bike_button = gui.add(gui, 'bike_overlay', bike_overlay).onChange(function(value) {
+                scene.config.global.sdk_bike_overlay = (value === 'true' || value === true); // dat.gui passes a string
+                scene.config.global.sdk_transit_overlay = false;
+				//gui.transit_button.value = false;
+                scene.updateConfig();
+            });
+            gui.bike_button.name('bike');
 
             // Building extrusion selector
             var building_3d = {

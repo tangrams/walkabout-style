@@ -7,33 +7,17 @@
 
 layers:
     # todo: make special color bike shop icon, hide other icons early
-    pois:
-        bike:
-            filter: { kind: bike }
-            draw:
-                icons:
-                    priority: 43
-
-        bike-barrier:
-            filter:
-                kind: barrier
-            draw:
-                icons:
-                    visible: true
-                    sprite: generic
-                    color: red
-                    size: 20px
     roads:
-        arrows:
-            # oneway arrows and shields are distinct groups!
-            filter: { oneway: yes, shield_text: false, $zoom: { min: 17 } }
-            draw:
-                oneway:
-                    sprite: arrow
-                    size: [[17, 7px], [18, 10px]]
-                    placement: spaced
-                    placement_spacing: [[17, 70px], [20, 175px]]
-                    angle: auto
+        # arrows:
+        #     # oneway arrows and shields are distinct groups!
+        #     filter: { oneway: yes, shield_text: false, $zoom: { min: 17 } }
+        #     draw:
+        #         oneway:
+        #             sprite: arrow
+        #             size: [[17, 7px], [18, 10px]]
+        #             placement: spaced
+        #             placement_spacing: [[17, 70px], [20, 175px]]
+        #             angle: auto
         highway:
             bike: global.bike_draw_highway
 
@@ -84,49 +68,135 @@ layers:
         track:
             bike: global.bike_draw_track
 
-#         junction:
-#             filter:
-#                 $zoom: { min: 6 }
-#                 any:
-#                     - shield_text: true
-#                     - kind_detail: [motorway, trunk, primary, secondary, tertiary]
-#                     - bicycle_network: rcn
-#                     - rcn_ref: true
+    # pois:
+    #     filter:
+    #         all:
+    #             - not: { kind: [building,address,farm,apron,residential,commercial,industrial] }
+    #             - $geometry: point
+    #             # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
+    #             #- function() { return feature.min_zoom <= $zoom }
+    #             - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'hunting' || feature.kind == 'dive_centre' || feature.kind == 'gas_canister' || feature.kind == 'hunting' || feature.kind == 'fishing_area' || feature.kind == 'playground' || feature.kind == 'toilets' || feature.kind == 'cycle_barrier' ) { return true } else { return feature.min_zoom <= $zoom } }
+    bike_pois:
+        data: { source: mapzen, layer: pois }
+        #visible: global.label_visible_poi_landuse
+        filter:
+            kind:
+                - bicycle
+                - cycle_barrier
+                - bicycle_junction
+                - bicycle_parking
+                - bicycle_rental
+                - bicycle_rental_station
+                - cafe
+                - drinking_water
+                - pub
+                - toilets
 
-#             draw:
-#                 icons:
-#                     priority: 20
-#                     # you need to match any custom shield to the vector tile `network` values
-#                     sprite: sdk_shield_3char
-#                     # color: function() { if ( feature.kind === 'train') { return 'purple' } else { return feature.colour || 'purple'; } }
-#                     # Size is specified below, and limited to 5 char in another filter
-#                     repeat_group: shields
-#                     repeat_distance: [[8,90px],[10,40px],[13,30px]]
-#                     size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
-#                     placement: midpoint
-#                     placement_min_length_ratio:
-#                         - [8, 0.1]
-#                         - [9, 0.25]
-#                         - [10, 0.25]
-#                         - [11, 0.15]
-#                         - [12, 1]
-#                         - [13, 1.50]
-#                         - [14, 2.0]
-#                     cull_from_tile: true
-# #                    visible: false
-#                     text:
-#                         offset: [0px, -0.5px]
-#                         repeat_distance: 200px
-#                         anchor: center
-#                         text_source: function() { if( feature.ref.length < 6 ) { return feature.ref; } else { return ''; } }
-#                         font:
-#                             family: Montserrat
-#                             fill: function() { if(feature.colour == 'yellow') { return '#555'; } else { return 'white'; } }
-#                             style: bold
-#                             size: [[7,7px],[12,8px],[16,11px]]
+        draw:
+            icons:
+                visible: global.icon_visible_poi_landuse
+                size: [[13, 18px], [16, 18px], [18, 22px]]
+                sprite: function() { return 'bike_' + feature.kind; }
+                sprite_default: generic
+                interactive: global.interactive
+                priority: 65 #function() { return (feature.min_zoom && Math.floor(feature.min_zoom * 1000)) || 65; }
+                repeat_group: abc
+                buffer: 7px
+                text:
+                    visible: global.text_visible_poi_landuse
+                    text_source: global.ux_language_text_source
+                    text_wrap: 18
+                    max_lines: 3
+                    font:
+                        family: global.text_font_family
+                        weight: 600
+                        fill: [0.10,0.10,0.10]
+                        size: [[13,10px],[14,10px],[18,11px]]
+                        stroke: { color: global.text_stroke, width: 3 }
 
+        bicycle:
+            filter: 
+                all:
+                    - kind: bicycle
+                    - function() { return global.sdk_bike_overlay; }
+            draw:
+                icons:
+                    priority: 43
+        no-name:
+            cycle_barrier:
+                filter:
+                    all:
+                        - kind: cycle_barrier
+                        - function() { return global.sdk_bike_overlay; }
+                draw:
+                    icons:
+                        priority: 20
+                        visible: true
+            walking-or-bicycle_junction:
+                bicycle_junction:
+                    filter:
+                        all:
+                            - function() { return global.sdk_bike_overlay; }
+                            #- $zoom: { min: 16 }
+                            - kind: bicycle_junction
+                            - ref: true
+                            # - name: [true, false]
+                            #- bicycle_network: [icn, ncn, rcn, lcn]
+                    draw:
+                        icons:
+                            priority: 20
+                            # you need to match any custom shield to the vector tile `network` values
+                            sprite: function() { return ('sdk_shield-' + feature.ref.length + 'char'); }
+                            # Size is specified below, and limited to 5 char in another filter
+                            size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
+                            visible: true
+                            color: [0.361,0.416,0.800]
+                            text:
+                                #offset: [0px, -1px]
+                                anchor: center
+                                text_source: ref
+                                visible: true
+                                font:
+                                    family: Montserrat
+                                    fill: white
+                                    weight: bold
+                                    size: [[7,7px],[12,8px],[16,11px]]
+                                    stroke: { width: 0px }
+                    width_1char:
+                        filter: function() { return (feature.ref.length === 1); }
+                        draw:
+                            icons:
+                                size: [[6,[16px,16px]],[13,[18px,18px]],[16,[21px,21px]]]
+                    width_2char:
+                        filter: function() { return (feature.ref.length === 2); }
+                        draw:
+                            icons:
+                                size: [[6,[21px,16px]],[13,[24px,18px]],[16,[28px,21px]]]
+                    width_3char:
+                        filter: function() { return (feature.ref.length === 3); }
+                        draw:
+                            icons:
+                                size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
+                    width_4char:
+                        filter: function() { return (feature.ref.length === 4); }
+                        draw:
+                            icons:
+                                size: [[6,[32px,16px]],[13,[36px,18px]],[16,[41px,21px]]]
+                    width_5char:
+                        filter: function() { return (feature.ref.length === 5); }
+                        draw:
+                            icons:
+                                size: [[6,[37px,16px]],[13,[41px,18px]],[16,[48px,21px]]]
+                    # this is kinda a hack
+                    width_longggggg:
+                        filter: function() { return (feature.ref.length > 5); }
+                        draw:
+                            icons:
+                                visible: false
 
 global:
+    sdk_bike_overlay: true          # should be false (true for dev)
+
     # COLORS
     bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
     bike_tier1_off_road_path_color_casing: [0.000,0.850,0.411]
@@ -187,6 +257,8 @@ global:
     #
     # green
     bike_tier1_off_road_filter:
+        all:
+            - function() { return global.sdk_bike_overlay; }
         any:
             - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, footway, steps] }
             - cycleway: [sidepath, track, opposite_track]
@@ -194,10 +266,14 @@ global:
             - cycleway_right: [sidepath, track, opposite_track]
     # brown
     bike_tier1_off_road_track_filter:
+        all:
+            - function() { return global.sdk_bike_overlay; }
         any:
             - { is_bicycle_related: true, kind_detail: [track] }
     # orange
     bike_tier2_on_road_protected_filter:
+        all:
+            - function() { return global.sdk_bike_overlay; }
         any:
             - cycleway: [lane, opposite, opposite_lane]
             - cycleway_left: [lane, opposite, opposite_lane]
@@ -205,6 +281,7 @@ global:
     # blue
     bike_tier3_on_road_not_protected_filter:
         all:
+            - function() { return global.sdk_bike_overlay; }
             - is_bicycle_related: true
             - not:
                 any:
@@ -734,11 +811,6 @@ global:
                 highlight:
                     visible: false
 
-
-textures:
-    # todo: merge with main walkabout spritesheet
-    oneway:
-        url: ../images/arrow.png
 
 styles:
     no_bike_dash:
