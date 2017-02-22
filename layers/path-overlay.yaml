@@ -280,7 +280,7 @@ layers:
 
 
 global:
-    sdk_path_overlay: true          # should be false (true for dev)
+    sdk_path_overlay: false          # should be true for default walkabout
 
 
 styles:

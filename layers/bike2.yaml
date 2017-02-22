@@ -8,16 +8,6 @@
 layers:
     # todo: make special color bike shop icon, hide other icons early
     roads:
-        # arrows:
-        #     # oneway arrows and shields are distinct groups!
-        #     filter: { oneway: yes, shield_text: false, $zoom: { min: 17 } }
-        #     draw:
-        #         oneway:
-        #             sprite: arrow
-        #             size: [[17, 7px], [18, 10px]]
-        #             placement: spaced
-        #             placement_spacing: [[17, 70px], [20, 175px]]
-        #             angle: auto
         highway:
             bike: global.bike_draw_highway
 

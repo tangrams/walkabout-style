@@ -13,7 +13,7 @@
 import:
     # Layers
     - layers/bike2.yaml
-    # - layers/path-overlay.yaml
+    - layers/path-overlay.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits

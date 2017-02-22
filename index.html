@@ -539,22 +539,22 @@
             });
             gui.bike_button.name('bike');
 
-            // // Path/Trails selector
-            // var path_overlay = {
-            //     '(default)': true,
-            //     'Show': true,
-            //     'Hide': false
-            // };
-            // // use path ux, else default to false
-            // gui.path_overlay = query.path_overlay || false;
-            // gui.path_button = gui.add(gui, 'path_overlay', path_overlay).onChange(function(value) {
-            //     scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
-            //     scene.config.global.sdk_transit_overlay = false;
-            //     scene.config.global.sdk_bike_overlay = false;
-            //     //gui.transit_button.value = false;
-            //     scene.updateConfig();
-            // });
-            // gui.bike_button.name('path');
+            // Path/Trails selector
+            var path_overlay = {
+                '(default)': true,
+                'Show': true,
+                'Hide': false
+            };
+            // use path ux, else default to false
+            gui.path_overlay = query.path_overlay || false;
+            gui.path_button = gui.add(gui, 'path_overlay', path_overlay).onChange(function(value) {
+                scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
+                scene.config.global.sdk_transit_overlay = false;
+                scene.config.global.sdk_bike_overlay = false;
+                //gui.transit_button.value = false;
+                scene.updateConfig();
+            });
+            gui.path_button.name('path');
 
             // Building extrusion selector
             var building_3d = {
