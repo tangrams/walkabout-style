@@ -4,6 +4,9 @@ layers:
         path:
             paths:
                 paths-overlay:
+                    filter:
+                        all:
+                            - function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -20,7 +23,7 @@ layers:
                             highlight:
                                 order: function() { return feature.sort_rank - 5; }
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                                width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                     in_zoo_golf_course-early:
                         filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -40,6 +43,9 @@ layers:
 
             footway:
                 footway-overlay:
+                    filter:
+                        all:
+                            - function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             # widths are narrower for footway, so does not follow default widths
@@ -71,7 +77,7 @@ layers:
                             highlight:
                                 order: function() { return feature.sort_rank - 5; }
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                                width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                     in_zoo_golf_course-early:
                         filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -90,6 +96,9 @@ layers:
 
             pedestrian:
                 pedestrian-overlay:
+                    filter:
+                        all:
+                            - function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -106,7 +115,7 @@ layers:
                             highlight:
                                 order: function() { return feature.sort_rank - 5; }
                                 color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                                width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                                width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                     in_zoo_golf_course-early:
                         filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -125,6 +134,9 @@ layers:
 
         track:
             tracks-overlay:
+                filter:
+                    all:
+                        - function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -141,7 +153,7 @@ layers:
                         highlight:
                             order: function() { return feature.sort_rank - 5; }
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                            width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                     in_zoo_golf_course-early:
                         filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -161,6 +173,9 @@ layers:
 
         other-roads-no-motorvehicle-overlay:
             path-other-roads-no-motorvehicle-overlay:
+                filter:
+                    all:
+                        - function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -177,7 +192,7 @@ layers:
                         highlight:
                             order: function() { return feature.sort_rank - 5; }
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                            width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                 in_zoo_golf_course-early:
                     filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -195,6 +210,9 @@ layers:
 
         other-roads-walking-network-only:
             path-other-roads-walking-network-only:
+                filter:
+                    all:
+                        - function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -211,7 +229,7 @@ layers:
                         highlight:
                             order: function() { return feature.sort_rank - 50; }
                             color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
-                            width: [[12, 2.5px], [14, 3.5px], [15, 6px], [16, 7px], [18, 16px]]
+                            width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
                 in_zoo_golf_course-early:
                     filter: { landuse_kind: [zoo, golf_course, garden, university, cemetery, allotments], $zoom: { max: 15 } }
@@ -221,13 +239,55 @@ layers:
                             outline:
                                 visible: false
 
+        # steps:
+        #     steps-overlay:
+        #         draw:
+        #             lines:
+        #                 outline:
+        #                     color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
+            # dashed_steps_path_overlay:
+            #     #order: function() { return feature.sort_rank; }
+            #     order: 1005
+            #     color: red #[0.118,0.600,0.518]
+            #     width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+        steps:
+            steps-overlay:
+                filter:
+                    all:
+                        - function() { return global.sdk_path_overlay; }
+                # bike_tier1_off_road:
+                    # filter: global.bike_tier1_off_road_steps_filter
+                draw:
+                    lines:
+                        outline:
+                            color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
+                    dashed_steps:
+                        color: white #[0.633,0.988,0.633] #global.bike_tier1_off_road_path_color_lite
+                        width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+
+                networked:
+                    filter: { walking_network: true }
+                    draw:
+                        lines:
+                            outline:
+                                width: [[13, 0.5px], [14, 0.6px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                        highlight:
+                            order: function() { return feature.sort_rank - 5; }
+                            color: [[12, [0.937,0.973,0.447]], [14, [1.000,1.000,0.000]]]
+                            width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
 
 
 
+global:
+    sdk_path_overlay: true          # should be false (true for dev)
 
 
 styles:
+    dashed_steps_path_overlay:
+        base: lines
+        dash: [0.5, 0.25]
+        dash_background_color: red #[0.760,0.785,0.805]
     dashed_footway:
         base: lines
         dash: [0.5, 0.3]

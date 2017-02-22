@@ -511,6 +511,7 @@
                 if (value === 'true' || value === true) {
                     scene.config.global.sdk_road_shields = false;
                     scene.config.global.sdk_bike_overlay = false;
+                    scene.config.global.sdk_path_overlay = false;
                     //gui.bike_button.value = false;
                 } else {
                     if( scene.config.global.text_visible_roads ) {
@@ -532,6 +533,7 @@
             gui.bike_button = gui.add(gui, 'bike_overlay', bike_overlay).onChange(function(value) {
                 scene.config.global.sdk_bike_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
+                scene.config.global.sdk_path_overlay = false;
                 //gui.transit_button.value = false;
                 scene.updateConfig();
             });
@@ -546,8 +548,9 @@
             // // use path ux, else default to false
             // gui.path_overlay = query.path_overlay || false;
             // gui.path_button = gui.add(gui, 'path_overlay', path_overlay).onChange(function(value) {
-            //     scene.config.global.sdk_bike_overlay = false; // dat.gui passes a string
+            //     scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
             //     scene.config.global.sdk_transit_overlay = false;
+            //     scene.config.global.sdk_bike_overlay = false;
             //     //gui.transit_button.value = false;
             //     scene.updateConfig();
             // });

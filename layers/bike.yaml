@@ -422,7 +422,7 @@ layers:
                             order: 486
                             color: white
                             width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m], [19, 6m]]
-                    left_or_right_or_implied: 
+                    left_or_right_or_implied:
                         filter:
                             any:
                                 - cycleway_left: true
