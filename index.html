@@ -546,7 +546,7 @@
                 'Hide': false
             };
             // use path ux, else default to false
-            gui.path_overlay = query.path_overlay || false;
+            gui.path_overlay = query.path_overlay || true;
             gui.path_button = gui.add(gui, 'path_overlay', path_overlay).onChange(function(value) {
                 scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;

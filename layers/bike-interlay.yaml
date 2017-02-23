@@ -16,7 +16,7 @@ layers:
                 bike: global.bike_draw_trunk_primary
                 routes:
                     bike: global.bike_draw_trunk_primary
-                labels-trunk_primary-z11-up: 
+                labels-trunk_primary-z11-up:
                     bike_labels: global.bike_draw_labels
 
 
@@ -126,7 +126,7 @@ layers:
                         stroke: { color: global.text_stroke, width: 3 }
 
         bicycle:
-            filter: 
+            filter:
                 all:
                     - kind: bicycle
                     - function() { return global.sdk_bike_overlay; }
@@ -206,7 +206,7 @@ layers:
                                 visible: false
 
 global:
-    sdk_bike_overlay: true          # should be false (true for dev)
+    sdk_bike_overlay: false          # should be false (true for dev)
 
     # COLORS
     bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
@@ -243,35 +243,35 @@ global:
             } else {
                 name = '';
             }
-            if( (feature.kind_detail == 'cycleway' && feature.cycleway == 'sidepath' || feature.cycleway == 'segregated') || 
-                (feature.kind_detail == 'footway'  && feature.bicycle == 'yes' && feature.segregated == 'yes' ) 
+            if( (feature.kind_detail == 'cycleway' && feature.cycleway == 'sidepath' || feature.cycleway == 'segregated') ||
+                (feature.kind_detail == 'footway'  && feature.bicycle == 'yes' && feature.segregated == 'yes' )
             ) {
-                return name + " (sidepath)"; 
+                return name + " (sidepath)";
             } else if( feature.bicycle == 'no' ) {
                 return name + " (walk your bike)";
-            } else if( feature.kind_detail == "cycleway" && feature.cycleway != 'sidepath' ) { 
+            } else if( feature.kind_detail == "cycleway" && feature.cycleway != 'sidepath' ) {
                 return name + " (bike path)";
-            } else if( feature.kind_detail == "footway" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) { 
+            } else if( feature.kind_detail == "footway" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
                 return name + " (bikes okay)";
-            } else if( feature.kind_detail == "steps" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) { 
+            } else if( feature.kind_detail == "steps" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
                 return name + " (bikes okay)";
             } else if( feature.kind_detail == 'track' && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
                 return name + " (bikes okay)";
             } else if( feature.kind_detail == 'pedestrian' ) {
-                return name + " (bikes okay)"; 
+                return name + " (bikes okay)";
             } else if( feature.kind == 'path' && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
-                return name + " (bikes okay)"; 
+                return name + " (bikes okay)";
             } else if( feature.cycleway && feature.oneway == 'yes' ) {
                 return name + " (" + feature.cycleway + ")";
             } else if( feature.cycleway ) {
-                return name + " (" + feature.cycleway + ")"; 
-            } else if( feature.cycleway_left && feature.cycleway_right ){ 
+                return name + " (" + feature.cycleway + ")";
+            } else if( feature.cycleway_left && feature.cycleway_right ){
                 return name + " (" + feature.cycleway_left + " & " + feature.cycleway_right + ")";
-            } else if( feature.cycleway_left ){ 
+            } else if( feature.cycleway_left ){
                 return name + " (" + feature.cycleway_left + ")";
-            } else if ( feature.cycleway_right ){ 
-                return name + " (" + feature.cycleway_right + ")"; 
-            } else { 
+            } else if ( feature.cycleway_right ){
+                return name + " (" + feature.cycleway_right + ")";
+            } else {
                 return name + " (bike route)";
             }
         }
@@ -499,7 +499,7 @@ global:
             networks: global.bike_networks_minor
 
     no_bike_draw_minor:
-        filter: 
+        filter:
             bicycle: no
         draw:
             lines:
@@ -566,7 +566,7 @@ global:
                         width: [[13, 0px], [14, 0.4px], [15, 1px], [17, 2px], [18, 3px]]
         sidewalk-crossing:
             bike:
-                filter: 
+                filter:
                     is_bicycle_related: true
                     not: { kind_detail: footway }
                 draw:
@@ -575,7 +575,7 @@ global:
                             color: global.bike_tier1_off_road_path_color
 
     no_bike_draw_path:
-        filter: 
+        filter:
             bicycle: no
         draw:
             lines:
@@ -587,7 +587,7 @@ global:
                     width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
 
     no_bike_draw_footway:
-        filter: 
+        filter:
             bicycle: no
         draw:
             lines:
@@ -728,7 +728,7 @@ global:
             casing_right:
                 visible: true
         left:
-            filter: 
+            filter:
                 any:
                     - cycleway_left: true
                     - cycleway: opposite
@@ -738,7 +738,7 @@ global:
                 casing_right:
                     visible: false
             and_right:
-                filter: 
+                filter:
                     all:
                         - cycleway_left: true
                         - cycleway_right: true
@@ -780,7 +780,7 @@ global:
 
     bike_draw_labels:
         z18:
-            filter: 
+            filter:
                 $zoom: { min: 18 }
             bike_tier1a:
                 filter: global.bike_tier1_off_road_filter
@@ -823,7 +823,7 @@ global:
                             #size: 10px
                             stroke: { color: global.bike_tier3_on_road_not_protected_color_lite }
             no_bike:
-                filter: 
+                filter:
                     bicycle: no
                 draw:
                     text-blend-order:
@@ -895,7 +895,7 @@ global:
                     visible: false
 
     bike_networks_minor:
-        filter: 
+        filter:
             bicycle_network: true
         draw:
             highlight:

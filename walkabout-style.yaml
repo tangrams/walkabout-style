@@ -232,10 +232,10 @@ global:
     icon_size_green_l:              [[0, '0px']]    # 0px for no, default, more  [[14,24px],[16,32px]]
     text_visible_landuse_green:     true
     label_visible_poi_landuse:      true
-    icon_visible_poi_landuse:       true           #false for default
+    icon_visible_poi_landuse:       false           #false for default
     text_visible_poi_landuse:       false           #false for default
     label_visible_poi_landuse_e:    true
-    icon_visible_poi_landuse_e:     true           #false for default
+    icon_visible_poi_landuse_e:     false           #false for default
     text_visible_poi_landuse_e:     true
     text_visible_landuse_generic:   true
     label_visible_station:          false           #false for default
