@@ -12,7 +12,7 @@
 
 import:
     # Layers
-    - layers/bike2.yaml
+    - layers/bike-interlay.yaml
     - layers/path-overlay.yaml
 
 global:
@@ -976,7 +976,7 @@ styles:
                     const float e = 2.71828;
                 color: |
                     float scale1 = 20./(u_map_position.z) + 1.5;
-                    normal.z /= scale1; 
+                    normal.z /= scale1;
                     float m = 3.95 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
                     color = terrainEnvmap(u_envmap, normal);
