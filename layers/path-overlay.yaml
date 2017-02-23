@@ -5,8 +5,7 @@ layers:
             paths:
                 paths-overlay:
                     filter:
-                        all:
-                            - function() { return global.sdk_path_overlay; }
+                        function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -44,8 +43,7 @@ layers:
             footway:
                 footway-overlay:
                     filter:
-                        all:
-                            - function() { return global.sdk_path_overlay; }
+                        function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             # widths are narrower for footway, so does not follow default widths
@@ -97,8 +95,7 @@ layers:
             pedestrian:
                 pedestrian-overlay:
                     filter:
-                        all:
-                            - function() { return global.sdk_path_overlay; }
+                        function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
                             width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -135,8 +132,7 @@ layers:
         track:
             tracks-overlay:
                 filter:
-                    all:
-                        - function() { return global.sdk_path_overlay; }
+                    function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -174,8 +170,7 @@ layers:
         other-roads-no-motorvehicle-overlay:
             path-other-roads-no-motorvehicle-overlay:
                 filter:
-                    all:
-                        - function() { return global.sdk_path_overlay; }
+                    function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -211,8 +206,7 @@ layers:
         other-roads-walking-network-only:
             path-other-roads-walking-network-only:
                 filter:
-                    all:
-                        - function() { return global.sdk_path_overlay; }
+                    function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
                         width: [[14, 0.15], [15, 1px], [17, 2.5m]]
@@ -253,8 +247,7 @@ layers:
         steps:
             steps-overlay:
                 filter:
-                    all:
-                        - function() { return global.sdk_path_overlay; }
+                    function() { return global.sdk_path_overlay; }
                 # bike_tier1_off_road:
                     # filter: global.bike_tier1_off_road_steps_filter
                 draw:
@@ -280,7 +273,7 @@ layers:
 
 
 global:
-    sdk_path_overlay: false          # should be true for default walkabout
+    sdk_path_overlay: true          # should be true for default walkabout
 
 
 styles:
