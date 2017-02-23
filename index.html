@@ -401,13 +401,13 @@
 
             // Labels selector
             var labels = {
-                '(default)': 'more',
+                '(default)': 'some',
                 'More': 'more',
                 'Some': 'some',
                 'Some (no shields)': 'some_no_shields',
                 'None': 'none'
             };
-            gui.labels = query.labels || 'more';
+            gui.labels = query.labels || 'some';
             gui.add(gui, 'labels', labels).onChange(function(value) {
                 var _default = true;
                 var _more = false;
@@ -512,7 +512,6 @@
                     scene.config.global.sdk_road_shields = false;
                     scene.config.global.sdk_bike_overlay = false;
                     scene.config.global.sdk_path_overlay = false;
-                    //gui.bike_button.value = false;
                 } else {
                     if( scene.config.global.text_visible_roads ) {
                         scene.config.global.sdk_road_shields = true;
@@ -534,7 +533,6 @@
                 scene.config.global.sdk_bike_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_path_overlay = false;
-                //gui.transit_button.value = false;
                 scene.updateConfig();
             });
             gui.bike_button.name('bike');
@@ -551,7 +549,6 @@
                 scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_bike_overlay = false;
-                //gui.transit_button.value = false;
                 scene.updateConfig();
             });
             gui.path_button.name('path');
