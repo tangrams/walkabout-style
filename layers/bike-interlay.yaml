@@ -6,6 +6,18 @@
 # tier4: bike prohibited -- red for us
 
 layers:
+    mz_route_line_bicycle:
+        data: { source: mz_route_line_bicycle }
+        draw:
+            ux-bicycle-line-overlay:
+                # each transit route segment could be a different "line" each with it's own color
+                # but some transit lines don't define a color, in those cases default to blue
+                # and since the color is coming from Transit.land they call it "color" instead of "colour"
+                color: pink
+                order: global.sdk_order_under_roads_0 #[[14,global.sdk_order_over_everything_but_text_0],[15,global.sdk_order_under_roads_0]]
+                width: [[0,3.5px],[5,5px],[9,7px],[10,6px],[11,6px],[13,8px],[14,9px],[15,10px],[16,11px],[17,12px],[18,10px]]
+
+
     # todo: make special color bike shop icon, hide other icons early
     roads:
         highway:
@@ -204,6 +216,13 @@ layers:
                         draw:
                             icons:
                                 visible: false
+
+sources:
+    # Bicycle route line
+    mz_route_line_bicycle:
+        type: GeoJSON
+        url: https://gist.githubusercontent.com/nvkelso/8a066359dbe7e773926fe01c44c793d4/raw/d32bbf3221a8d8ef47cf22de706768a92ed645d9/map.geojson
+
 
 global:
     sdk_bike_overlay: false          # should be false (true for dev)
@@ -950,6 +969,10 @@ global:
 
 
 styles:
+    ux-bicycle-line-overlay:
+        base: lines
+        #blend: overlay
+        #blend_order: 0
     no_bike_dash:
         base: lines
         dash: [1.00, 0.75]
