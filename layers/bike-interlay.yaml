@@ -457,7 +457,7 @@ global:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: global.bike_tier1_off_road_path_color_lite
+                    color: [[11, global.bike_tier1_off_road_path_color], [12, global.bike_tier1_off_road_path_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier1_off_road_path_color]]
                         width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
@@ -467,7 +467,7 @@ global:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier2_on_road_protected_color_lite
+                    color: [[11, global.bike_tier2_on_road_protected_color], [12, global.bike_tier2_on_road_protected_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier2_on_road_protected_color]]
                         width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
@@ -477,7 +477,8 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier3_on_road_not_protected_color_lite
+                    color: 
+                    color: [[11, global.bike_tier3_on_road_not_protected_color], [12, global.bike_tier3_on_road_not_protected_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier3_on_road_not_protected_color]]
                         width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
@@ -632,31 +633,11 @@ global:
             draw:
                 lines:
                     color: [[12, global.bike_tier1_off_road_track_color], [13, global.bike_tier1_off_road_track_color], [14, global.bike_tier1_off_road_track_color_lite]]
-                    width: [[12, 0.75px], [13, 0.75px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_track_color]]
                         width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             networks: global.bike_networks_track
-        # bike_tier2_on_road_protected:
-        #     filter: global.bike_tier2_on_road_protected_filter
-        #     draw:
-        #         lines:
-        #             color: [[12, global.bike_tier1_off_road_track_color], [13, global.bike_tier1_off_road_track_color], [14, global.bike_tier1_off_road_track_color_lite]]
-        #             width: [[12, 0.75px], [13, 0.75px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-        #             outline:
-        #                 color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_track_color]]
-        #                 width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
-        #     networks: global.bike_networks_track
-        # bike_tier3_on_road_not_protected:
-        #     filter: global.bike_tier3_on_road_not_protected_filter
-        #     draw:
-        #         lines:
-        #             color: [[12, global.bike_tier1_off_road_track_color], [13, global.bike_tier1_off_road_track_color], [14, global.bike_tier1_off_road_track_color_lite]]
-        #             width: [[12, 0.75px], [13, 0.75px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-        #             outline:
-        #                 color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_track_color]]
-        #                 width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
-        #     networks: global.bike_networks_track
 
     bike_draw_steps:
         bike_tier1_off_road:
@@ -665,18 +646,7 @@ global:
                 dashed_steps:
                     color: [0.633,0.988,0.633] #global.bike_tier1_off_road_path_color_lite
                     width: [[15, 0.6], [16, 1px], [17, 2.5m]]
-        # bike_tier2_on_road_protected:
-        #     filter: global.bike_tier2_on_road_protected_filter
-        #     draw:
-        #         dashed_steps:
-        #             color: global.bike_tier2_on_road_protected_filter_color_lite
-        #             width: [[15, 0.6], [16, 1px], [17, 2.5m]]
-        # bike_tier3_on_road_not_protected:
-        #     filter: global.bike_tier3_on_road_not_protected_filter
-        #     draw:
-        #         dashed_steps:
-        #             color: global.bike_tier3_on_road_not_protected_filter_color_lite
-        #             width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+
 
     bike_draw_left_or_right_or_implied_tier1:
         filter:
@@ -922,11 +892,15 @@ global:
                 - function() { return global.sdk_bike_network_overlay; }
                 - bicycle_network: true
         draw:
+            lines:
+                width: [[11, 1px], [12, 0.15px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                outline:
+                    width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 30; }
                 color: global.regional_network_highlight
-                width: [[11, 0px], [12, 5px], [13, 7px], [15, 13px], [17, 18px], [19, 50px], [20, 90px]]
+                width: [[11, 4px], [12, 5px], [13, 7px], [15, 13px], [17, 18px], [19, 50px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn, $zoom: { max: 15 } }
             draw:
