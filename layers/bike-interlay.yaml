@@ -8,14 +8,19 @@
 layers:
     mz_route_line_bicycle:
         data: { source: mz_route_line_bicycle }
+        filter: 
+            function() { return global.sdk_directions; }
         draw:
+            ux-bicycle-dot-overlay:
+                color: black
+                width: [[0,0px],[15,0px],[16,5px],[18,7px],[20,10px]]
             ux-bicycle-line-overlay:
-                # each transit route segment could be a different "line" each with it's own color
-                # but some transit lines don't define a color, in those cases default to blue
-                # and since the color is coming from Transit.land they call it "color" instead of "colour"
-                color: pink
-                order: global.sdk_order_under_roads_0 #[[14,global.sdk_order_over_everything_but_text_0],[15,global.sdk_order_under_roads_0]]
-                width: [[0,3.5px],[5,5px],[9,7px],[10,6px],[11,6px],[13,8px],[14,9px],[15,10px],[16,11px],[17,12px],[18,10px]]
+                color: black
+                width: [[0,0px],[5,0.5px],[11,1px],[13,1.5px],[15,2.5px],[16,0px]]
+            ux-bicycle-line-highlight:
+                color: yellow
+                order: function() { if($zoom <16 ) { return global.sdk_order_over_everything_but_text_0; } else { return global.sdk_order_under_roads_0; } }
+                width: [[0,0px],[5,1px],[11,4px],[13,9px],[14,12px],[15,18px],[16,22px],[17,28px],[18,50px],[20,20m]]
 
 
     # todo: make special color bike shop icon, hide other icons early
@@ -218,22 +223,26 @@ layers:
                                 visible: false
 
 sources:
-    # Bicycle route line
-    mz_route_line_bicycle:
-        type: GeoJSON
-        url: https://gist.githubusercontent.com/nvkelso/8a066359dbe7e773926fe01c44c793d4/raw/d32bbf3221a8d8ef47cf22de706768a92ed645d9/map.geojson
+    # # Bicycle route line
+    # mz_route_line_bicycle:
+    #     type: GeoJSON
+    #     url: https://gist.githubusercontent.com/nvkelso/8a066359dbe7e773926fe01c44c793d4/raw/d32bbf3221a8d8ef47cf22de706768a92ed645d9/map.geojson
 
 
 global:
-    sdk_bike_overlay: false          # should be false (true for dev)
+    # TODO: temp
+    sdk_directions: true
+    #
+    sdk_bike_overlay: false #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
+    sdk_bike_network_overlay: true         # should be false (true for dev)
 
     # COLORS
     bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
     bike_tier1_off_road_path_color_casing: [0.000,0.810,0.392]
     bike_tier1_off_road_path_color_lite: [0.554,0.865,0.554]
-    bike_tier1_off_road_footway_color: [0.639,0.388,0.306]  # brown
-    bike_tier1_off_road_footway_color_lite: [0.917,0.759,0.610]
-    bike_tier1_off_road_track_color: [0.639,0.388,0.306]  # brown
+    bike_tier1_off_road_footway_color: [0.690,0.547,0.504]  # lighter brown
+    bike_tier1_off_road_footway_color_lite: [1.000,0.881,0.770]
+    bike_tier1_off_road_track_color: [0.500,0.343,0.290]  # brown
     bike_tier1_off_road_track_color_lite: [0.917,0.759,0.610]
     bike_tier1a_label: [0.063,0.474,0.294] #green
     bike_tier1b_label: [0.559,0.338,0.269] #brown
@@ -853,9 +862,14 @@ global:
                             #size: 10px
                             stroke: { color: global.no_bike_color_lite }
 
+    #
+    # Bike Networks
+    #
     bike_networks_highway:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -870,7 +884,9 @@ global:
 
     bike_networks_primary:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -885,7 +901,9 @@ global:
 
     bike_networks_secondary:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -900,7 +918,9 @@ global:
 
     bike_networks_tertiary:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -915,7 +935,9 @@ global:
 
     bike_networks_minor:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -930,7 +952,9 @@ global:
 
     bike_networks_path:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -954,7 +978,9 @@ global:
 
     bike_networks_track:
         filter:
-            bicycle_network: true
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -962,14 +988,31 @@ global:
                 color: global.regional_network_highlight
                 width: [[11, 0px], [12, 5px], [15, 10px], [17, 13px], [19, 30px]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+            filter: { bicycle_network: lcn, $zoom: { max: 14 } }
             draw:
                 highlight:
                     visible: false
 
 
 styles:
+    ux-bicycle-dot-overlay:
+        base: lines
+        lighting: false
+        texcoords: true
+        blend: overlay
+        shaders:
+            defines:
+                dotSize: .2
+            blocks:
+                color: |
+                    vec2 st = fract(v_texcoord.xy);
+                    st -= .5;
+                    color.a = 1.- step(dotSize, dot(st,st)*2.);
     ux-bicycle-line-overlay:
+        base: lines
+        blend: overlay
+        blend_order: 0
+    ux-bicycle-line-highlight:
         base: lines
         #blend: overlay
         #blend_order: 0
