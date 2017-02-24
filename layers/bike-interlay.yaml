@@ -875,7 +875,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[10, 0px], [11, 3px], [12, 10px], [13, 12px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
+                width: [[9, 6px], [10, 7px], [11, 8px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn, $zoom: { max: 15 } }
             draw:
@@ -904,6 +904,7 @@ global:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
                 - bicycle_network: true
+                - ref: true
         draw:
             highlight:
                 base: lines
