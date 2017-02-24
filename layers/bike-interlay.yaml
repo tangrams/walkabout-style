@@ -233,7 +233,7 @@ global:
     # TODO: temp
     sdk_directions: true
     #
-    sdk_bike_overlay: false #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
+    sdk_bike_overlay: true #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
     sdk_bike_network_overlay: true         # should be false (true for dev)
 
     # COLORS
@@ -904,13 +904,12 @@ global:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
                 - bicycle_network: true
-                - ref: true
         draw:
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[10, 6px], [11, 7px], [12, 10px], [13, 12px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[10, 0px], [11, 7px], [12, 10px], [13, 12px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn, $zoom: { max: 15 } }
             draw:
@@ -983,13 +982,17 @@ global:
                 - function() { return global.sdk_bike_network_overlay; }
                 - bicycle_network: true
         draw:
+            lines:
+                width: [[12, 0.75px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                outline:
+                    width: [[13, 0px], [14, 1px], [15, 1px], [17, 2px], [18, 3px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
                 width: [[11, 0px], [12, 5px], [15, 10px], [17, 13px], [19, 30px]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 14 } }
+            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
             draw:
                 highlight:
                     visible: false
