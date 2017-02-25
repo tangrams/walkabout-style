@@ -233,7 +233,7 @@ global:
     # TODO: temp
     sdk_directions: true
     #
-    sdk_bike_overlay: true #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
+    sdk_bike_overlay: false #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
     sdk_bike_network_overlay: true         # should be false (true for dev)
 
     # COLORS
