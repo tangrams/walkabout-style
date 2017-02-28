@@ -8,7 +8,7 @@
 layers:
     mz_route_line_bicycle:
         data: { source: mz_route_line_bicycle }
-        filter: 
+        filter:
             function() { return global.sdk_directions; }
         draw:
             ux-bicycle-dot-overlay:
@@ -95,53 +95,26 @@ layers:
         steps:
             bike: global.bike_draw_steps
 
-    # pois:
-    #     filter:
-    #         all:
-    #             - not: { kind: [building,address,farm,apron,residential,commercial,industrial] }
-    #             - $geometry: point
-    #             # White list a few kinds to "always" show per the tile zoom inclusion, else test feature's min_zoom
-    #             #- function() { return feature.min_zoom <= $zoom }
-    #             - function() { if( feature.kind == 'attraction' || feature.kind == 'landmark' || feature.kind == 'hunting' || feature.kind == 'dive_centre' || feature.kind == 'gas_canister' || feature.kind == 'hunting' || feature.kind == 'fishing_area' || feature.kind == 'playground' || feature.kind == 'toilets' || feature.kind == 'cycle_barrier' ) { return true } else { return feature.min_zoom <= $zoom } }
-    bike_pois:
-        data: { source: mapzen, layer: pois }
-        #visible: global.label_visible_poi_landuse
-        filter:
-            kind:
-                - bicycle
-                - cycle_barrier
-                - bicycle_junction
-                - bicycle_parking
-                - bicycle_rental
-                - bicycle_rental_station
-                - cafe
-                - drinking_water
-                - pub
-                - toilets
-
-        draw:
-            icons:
-                visible: global.icon_visible_poi_landuse
-                size: [[13, 18px], [16, 18px], [18, 22px]]
-                sprite: function() { return 'bike_' + feature.kind; }
-                sprite_default: generic
-                interactive: global.interactive
-                # todo: any of these needs a great priority to collide out the generic form (eg 20)
-                priority: 20 #65 #function() { return (feature.min_zoom && Math.floor(feature.min_zoom * 1000)) || 65; }
-                repeat_group: abc
-                buffer: 7px
-                text:
-                    visible: global.text_visible_poi_landuse
-                    text_source: global.ux_language_text_source
-                    text_wrap: 18
-                    max_lines: 3
-                    font:
-                        family: global.text_font_family
-                        weight: 600
-                        fill: [0.10,0.10,0.10]
-                        size: [[13,10px],[14,10px],[18,11px]]
-                        stroke: { color: global.text_stroke, width: 3 }
-
+    pois:
+        bike-overlay-pois:
+            filter:
+                all:
+                    - function() { return global.sdk_bike_overlay; }
+                    - kind:
+                        - bicycle
+                        - cycle_barrier
+                        - bicycle_junction
+                        - bicycle_parking
+                        - bicycle_rental
+                        - bicycle_rental_station
+                        - cafe                      # if we want to see more cafe or pub, then we need to mod
+                        - pub                       # the main pois: layer filter
+                        - drinking_water
+                        - toilets
+            draw:
+                icons:
+                    sprite: function() { return 'bike_' + feature.kind; }
+                    priority: 30
         bicycle:
             filter:
                 all:
@@ -149,16 +122,76 @@ layers:
                     - function() { return global.sdk_bike_overlay; }
             draw:
                 icons:
-                    priority: 43
+                    priority: 20
+        z-server-friend:
+            hide-until-z16-no-area:
+                bicycle:
+                    filter:
+                        all:
+                            - kind: bicycle
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            visible: true
+            hide-until-z17-no-area:
+                bicycle_rental_station:
+                    filter:
+                        all:
+                            - kind: bicycle_rental_station
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            visible: true
+                            # if we wanted to have icon only labels...
+                            # text:
+                            #     font:
+                            #         size: [[18,0px],[18,11px]]
+                drinking_water:
+                    filter:
+                        all:
+                            - kind: drinking_water
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            visible: true
+            hide-until-z18-any:
+                drinking_water:
+                    filter:
+                        all:
+                            - kind: drinking_water
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            visible: true
+            hide-until-z19-any:
+                bicycle:
+                    filter:
+                        all:
+                            - kind: bicycle_parking
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            priority: 66
+                            visible: true
         no-name:
-            cycle_barrier:
+            no-name-no-area:
+                cycle_barrier:
+                    filter:
+                        all:
+                            - kind: cycle_barrier
+                            - function() { return global.sdk_bike_overlay; }
+                    draw:
+                        icons:
+                            priority: 31
+                            visible: true
+            drinking_water_toilets:
                 filter:
                     all:
-                        - kind: cycle_barrier
+                        - kind: [drinking_water,toilets]
                         - function() { return global.sdk_bike_overlay; }
                 draw:
                     icons:
-                        priority: 20
+                        priority: 31
                         visible: true
             walking-or-bicycle_junction:
                 bicycle_junction:
@@ -172,7 +205,7 @@ layers:
                             #- bicycle_network: [icn, ncn, rcn, lcn]
                     draw:
                         icons:
-                            priority: 20
+                            priority: 21
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return ('sdk_shield-' + feature.ref.length + 'char'); }
                             # Size is specified below, and limited to 5 char in another filter
@@ -477,7 +510,7 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: 
+                    color:
                     color: [[11, global.bike_tier3_on_road_not_protected_color], [12, global.bike_tier3_on_road_not_protected_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier3_on_road_not_protected_color]]
