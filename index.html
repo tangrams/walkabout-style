@@ -525,12 +525,65 @@
             var bike_overlay = {
                 '(default)': false,
                 'Show': true,
-                'Hide': false
+                'Hide': false,
+                'Tier1': 'tier1',
+                'Tier1+': 'tier1+',
+                'Tier1,2': 'tier1_2',
+                'Tier1,2+': 'tier1_2+',
+                'Tier1,2,3': 'tier1_2_3'
             };
             // use transit ux, else default to false
             gui.bike_overlay = query.bike_overlay || false;
             gui.bike_button = gui.add(gui, 'bike_overlay', bike_overlay).onChange(function(value) {
-                scene.config.global.sdk_bike_overlay = (value === 'true' || value === true); // dat.gui passes a string
+                if(value === 'true' || value === true ) { // dat.gui passes a string
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = true;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = true;
+                } else if( value === 'tier1' ) {
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = false;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = false;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = false;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = false;
+                } else if( value === 'tier1+' ) {
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = false;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = false;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = false;
+                } else if( value === 'tier1_2' ) {
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = false;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = false;
+                } else if( value === 'tier1_2+' ) {
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = true;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = false;
+                } else if( value === 'tier1_2_3' ) {
+                    scene.config.global.sdk_bike_overlay = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_path = true;
+                    scene.config.global.sdk_bike_network_tier1_off_road_track = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_path = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected = true;
+                    scene.config.global.sdk_bike_network_tier2_on_road_protected_big_road = true;
+                    scene.config.global.sdk_bike_network_tier3_on_road_not_protected = true;
+                }
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_path_overlay = false;
                 scene.updateConfig();
@@ -617,6 +670,29 @@
 //                 scene.updateConfig();
 //                 //window.location.search = 'animated=' + value;
 //             });
+
+            // Other debug
+            var debug_overlay = {
+                '(default)': 'default',
+                'Hide terrain': 'hide_terrain',
+                'Hide roads': 'hide_roads'
+            };
+            // use path ux, else default to false
+            gui.debug_overlay = query.debug_overlay || 'default';
+            gui.debug_button = gui.add(gui, 'debug_overlay', debug_overlay).onChange(function(value) {
+                if( value === 'default' ) {
+                    scene.config.global.sdk_bike_overlay_hide_other_roads = false;
+                    scene.config.sources.normals = { type: 'Raster', url: 'https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png', url_params: { api_key: 'global.sdk_mapzen_api_key'}, max_zoom: 15 }
+                } else if( value === 'hide_terrain' ) {
+                    scene.config.sources.normals = {};
+                    scene.config.global.sdk_bike_overlay_hide_other_roads = false;
+                } else if( value === 'hide_roads' ) {
+                    scene.config.sources.normals = {};
+                    scene.config.global.sdk_bike_overlay_hide_other_roads = true;
+                }
+                scene.updateConfig();
+            });
+            gui.debug_button.name('debug');
 
             // Enable/disable interactivity for all features
             var interactive_label = 'interactive';

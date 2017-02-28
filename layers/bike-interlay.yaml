@@ -8,7 +8,7 @@
 layers:
     mz_route_line_bicycle:
         data: { source: mz_route_line_bicycle }
-        filter: 
+        filter:
             function() { return global.sdk_directions; }
         draw:
             ux-bicycle-dot-overlay:
@@ -27,18 +27,20 @@ layers:
     roads:
         highway:
             bike: global.bike_draw_highway
+            non_bike: global.bike_hide_non_bike_roads
 
         major_road:
             trunk_primary:
                 bike: global.bike_draw_trunk_primary
+                non_bike: global.bike_hide_non_bike_roads
                 routes:
                     bike: global.bike_draw_trunk_primary
                 labels-trunk_primary-z11-up:
                     bike_labels: global.bike_draw_labels
 
-
             secondary:
                 bike: global.bike_draw_secondary
+                non_bike: global.bike_hide_non_bike_roads
                 routes:
                     bike: global.bike_draw_secondary
                 labels-secondary:
@@ -46,6 +48,7 @@ layers:
 
             tertiary:
                 bike: global.bike_draw_tertiary
+                non_bike: global.bike_hide_non_bike_roads
                 routes:
                     bike: global.bike_draw_tertiary
                 labels-tertiary:
@@ -54,6 +57,7 @@ layers:
         minor_road:
             bike: global.bike_draw_minor
             no_bike: global.no_bike_draw_minor
+            non_bike: global.bike_hide_non_bike_roads
             # this is for the z18+ road labels
             labels-minor_road:
                 bike_labels: global.bike_draw_labels
@@ -235,6 +239,14 @@ global:
     #
     sdk_bike_overlay: false #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
     sdk_bike_network_overlay: true         # should be false (true for dev)
+    sdk_bike_network_tier1_off_road_path: true
+    sdk_bike_network_tier1_off_road_track: true
+    sdk_bike_network_tier2_on_road_path: true
+    sdk_bike_network_tier2_on_road_protected: true
+    sdk_bike_network_tier2_on_road_protected_big_road: true
+    sdk_bike_network_tier3_on_road_not_protected: true
+
+    sdk_bike_overlay_hide_other_roads: false
 
     # COLORS
     bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
@@ -310,11 +322,16 @@ global:
     bike_tier1_off_road_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
+            - function() { return global.sdk_bike_network_tier1_off_road_path || global.sdk_bike_network_tier2_on_road_path; }
         any:
             - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps] }
             - cycleway: [sidepath, track, opposite_track]
-            - cycleway_left: [sidepath, track, opposite_track]
-            - cycleway_right: [sidepath, track, opposite_track]
+            - all:
+                - cycleway_left: [sidepath, track, opposite_track]
+                - function() { return global.sdk_bike_network_tier2_on_road_path; }
+            - all:
+                - cycleway_right: [sidepath, track, opposite_track]
+                - function() { return global.sdk_bike_network_tier2_on_road_path; }
     casing_bike_tier1_off_road_track_filter_left:
         cycleway_left: [sidepath, track, opposite_track]
     casing_bike_tier1_off_road_track_filter_right:
@@ -329,16 +346,22 @@ global:
     bike_tier1_off_road_track_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
+            - function() { return global.sdk_bike_network_tier1_off_road_track; }
             - { is_bicycle_related: true, kind_detail: [track, footway] }
 
     # orange
     bike_tier2_on_road_protected_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
+            - function() { return global.sdk_bike_network_tier2_on_road_protected || global.sdk_bike_network_tier2_on_road_protected_big_road; }
         any:
             - cycleway: [lane, opposite, opposite_lane]
-            - cycleway_left: [lane, opposite, opposite_lane]
-            - cycleway_right: [lane, opposite, opposite_lane]
+            - all:
+                - cycleway_left: [lane, opposite, opposite_lane]
+                - function() { return global.sdk_bike_network_tier2_on_road_protected_big_road; }
+            - all:
+                - cycleway_right: [lane, opposite, opposite_lane]
+                - function() { return global.sdk_bike_network_tier2_on_road_protected_big_road; }
     casing_bike_tier2_on_road_protected_filter_left:
         cycleway_left: [sidepath, track, opposite_track]
     casing_bike_tier2_on_road_protected_filter_right:
@@ -348,6 +371,7 @@ global:
     bike_tier3_on_road_not_protected_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
+            - function() { return global.sdk_bike_network_tier3_on_road_not_protected; }
             - is_bicycle_related: true
             - not:
                 any:
@@ -359,6 +383,11 @@ global:
         cycleway_left: [shared_lane]
     casing_bike_tier3_on_road_not_protected_filter_right:
         cycleway_right: [shared_lane]
+
+    filter_hide_non_bike_roads:
+        all:
+            - function() { return global.sdk_bike_overlay_hide_other_roads; }
+            - is_bicycle_related: false
 
     # DRAW STYLES
     bike_draw_highway:
@@ -477,7 +506,7 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: 
+                    color:
                     color: [[11, global.bike_tier3_on_road_not_protected_color], [12, global.bike_tier3_on_road_not_protected_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier3_on_road_not_protected_color]]
@@ -647,6 +676,12 @@ global:
                     color: [0.633,0.988,0.633] #global.bike_tier1_off_road_path_color_lite
                     width: [[15, 0.6], [16, 1px], [17, 2.5m]]
 
+    bike_hide_non_bike_roads:
+        hide_non_bike_roads:
+            filter: global.filter_hide_non_bike_roads
+            draw:
+                lines:
+                    width: 0px
 
     bike_draw_left_or_right_or_implied_tier1:
         filter:
