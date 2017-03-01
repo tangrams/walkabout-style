@@ -377,9 +377,9 @@ global:
             - cycleway_left: [lane, opposite, opposite_lane]
             - cycleway_right: [lane, opposite, opposite_lane]
     casing_bike_tier2_on_road_protected_filter_left:
-        cycleway_left: [sidepath, track, opposite_track]
+        cycleway_left: [lane, opposite, opposite_lane]
     casing_bike_tier2_on_road_protected_filter_right:
-        cycleway_right: [sidepath, track, opposite_track]
+        cycleway_right: [lane, opposite, opposite_lane]
 
     # blue
     bike_tier3_on_road_not_protected_filter:
@@ -854,36 +854,36 @@ global:
                         visible: true
                     casing_right:
                         visible: true
-            tier1_left:
-                filter: global.casing_bike_tier1_off_road_track_filter_left
-                draw:
-                    casing_left:
-                        color: global.bike_tier1_off_road_path_color_casing
-            tier1_right:
-                filter: global.casing_bike_tier1_off_road_track_filter_right
-                draw:
-                    casing_right:
-                        color: global.bike_tier1_off_road_path_color_casing
-            tier2_left:
-                filter: global.casing_bike_tier2_on_road_protected_filter_left
-                draw:
-                    casing_left:
-                        color: global.bike_tier2_on_road_protected_color_casing
-            tier2_right:
-                filter: global.casing_bike_tier2_on_road_protected_filter_right
-                draw:
-                    casing_right:
-                        color: global.bike_tier2_on_road_protected_color_casing
-            tier3_left:
-                filter: global.casing_bike_tier3_on_road_not_protected_filter_left
-                draw:
-                    casing_left:
-                        color: global.bike_tier3_on_road_not_protected_color_casing
-            tier3_right:
-                filter: global.casing_bike_tier3_on_road_not_protected_filter_right
-                draw:
-                    casing_right:
-                        color: global.bike_tier3_on_road_not_protected_color_casing
+        tier1_left:
+            filter: global.casing_bike_tier1_off_road_track_filter_left
+            draw:
+                casing_left:
+                    color: global.bike_tier1_off_road_path_color_casing
+        tier1_right:
+            filter: global.casing_bike_tier1_off_road_track_filter_right
+            draw:
+                casing_right:
+                    color: global.bike_tier1_off_road_path_color_casing
+        tier2_left:
+            filter: global.casing_bike_tier2_on_road_protected_filter_left
+            draw:
+                casing_left:
+                    color: global.bike_tier2_on_road_protected_color_casing
+        tier2_right:
+            filter: global.casing_bike_tier2_on_road_protected_filter_right
+            draw:
+                casing_right:
+                    color: global.bike_tier2_on_road_protected_color_casing
+        tier3_left:
+            filter: global.casing_bike_tier3_on_road_not_protected_filter_left
+            draw:
+                casing_left:
+                    color: global.bike_tier3_on_road_not_protected_color_casing
+        tier3_right:
+            filter: global.casing_bike_tier3_on_road_not_protected_filter_right
+            draw:
+                casing_right:
+                    color: global.bike_tier3_on_road_not_protected_color_casing
     bike_draw_labels:
         z18:
             filter:
