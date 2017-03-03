@@ -270,8 +270,8 @@ global:
     # TODO: temp
     sdk_directions: true
     #
-    sdk_bike_overlay: false #function() { if( $zoom < 16 ) { return false; } else { return true; } }          # should be false (true for dev)
-    sdk_bike_network_overlay: true         # should be false (true for dev)
+    sdk_bike_overlay: false                # should be false
+    sdk_bike_network_overlay: true         # should be true (isn't enabled unless sdk_bike_overlay is true)
 
     # COLORS
     bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
