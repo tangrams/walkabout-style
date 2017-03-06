@@ -76,6 +76,12 @@ layers:
                             size: 9px
                             stroke: { color: global.text_stroke, width: 4px }
 
+        service_road:
+            bike: global.bike_draw_service
+            no_bike: global.no_bike_draw_service
+            labels-service:
+                bike_labels: global.bike_draw_labels
+
         path:
             bike: global.bike_draw_path
             no_bike: global.no_bike_draw_path
@@ -707,6 +713,42 @@ global:
             casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_minor
 
+    bike_draw_service:
+        bike_tier1_off_road:
+            filter: global.bike_tier1_off_road_filter
+            draw:
+                lines:
+                    color: global.bike_tier2_on_road_protected_color_lite
+                    width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
+                    outline:
+                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier1_off_road_path_color]]
+                        width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
+            casing: global.bike_draw_left_or_right_or_implied_tier1_narrow
+            networks: global.bike_networks_minor
+        bike_tier2_on_road_protected:
+            filter: global.bike_tier2_on_road_protected_filter
+            draw:
+                lines:
+                    color: global.bike_tier2_on_road_protected_color_lite
+                    width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
+                    outline:
+                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier2_on_road_protected_color]]
+                        width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
+            casing: global.bike_draw_left_or_right_or_implied_tier2_narrow
+            networks: global.bike_networks_minor
+        bike_tier3_on_road_not_protected:
+            filter: global.bike_tier3_on_road_not_protected_filter
+            draw:
+                lines:
+                    color: global.bike_tier3_on_road_not_protected_color_lite
+                    width: [[14, 0.15px], [16, 2px], [18, 4.5m], [19, 5m]]
+                    outline:
+                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier3_on_road_not_protected_color]]
+                        width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
+            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+            networks: global.bike_networks_minor
+
+
     no_bike_draw_minor:
         filter: global.no_bike_tier4_filter
         draw:
@@ -717,6 +759,16 @@ global:
                     style: no_bike_dash
                     color: [[12, [0.900,0.900,0.900]], [13, global.bike_prohibited_color]]
                     width: [[11, 0px], [12, 0px], [13, 0.25px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
+
+    no_bike_draw_service:
+        filter: global.no_bike_tier4_filter
+        draw:
+            lines:
+                color: global.bike_prohibited_color_lite
+                width: [[14, 1px], [16, 2px], [18, 4m]]
+                outline:
+                    color: [[12, [0.900,0.900,0.900]], [14, global.bike_prohibited_color]]
+                    width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
 
     bike_draw_path:
         # thicken the widths
