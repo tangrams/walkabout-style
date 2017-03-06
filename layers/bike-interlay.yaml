@@ -765,7 +765,7 @@ global:
         draw:
             lines:
                 color: global.bike_prohibited_color_lite
-                width: [[14, 1px], [16, 2px], [18, 4m]]
+                width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
                 outline:
                     color: [[12, [0.900,0.900,0.900]], [14, global.bike_prohibited_color]]
                     width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
