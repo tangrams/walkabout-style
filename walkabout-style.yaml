@@ -249,7 +249,7 @@ global:
     text_visible_secondary:         true
     text_visible_secondary_e:       true            #true for default
     text_visible_tertiary:          true
-    text_visible_tertiary_e:        false           #true for default
+    text_visible_tertiary_e:        true            #true for default
     text_visible_minor_road:        true
     text_visible_minor_road_e:      true
     text_visible_service_road:      true
