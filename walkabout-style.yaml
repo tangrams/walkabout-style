@@ -426,7 +426,7 @@ cameras:
 
 scene:
     background:
-        color: [0.894,0.902,0.898]
+        color: [0.945,0.945,0.945]   #f2f2f2
     # animated: true
 
 fonts:
