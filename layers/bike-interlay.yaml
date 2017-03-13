@@ -381,7 +381,7 @@ global:
                 (feature.kind_detail == 'footway'  && feature.bicycle == 'yes' && feature.segregated == 'yes' )
             ) {
                 return name + " (sidepath)";
-            } else if( feature.bicycle == 'no' ) {
+            } else if( feature.bicycle == 'no' || feature.bicycle == 'dismount'  ) {
                 return name + " (walk your bike)";
             } else if( feature.kind_detail == "cycleway" && feature.cycleway != 'sidepath' ) {
                 return name + " (bike path)";
@@ -472,7 +472,7 @@ global:
     no_bike_tier4_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
-            - bicycle: no
+            - bicycle: [no, dismount]
 
     # DRAW STYLES
     bike_draw_highway:
