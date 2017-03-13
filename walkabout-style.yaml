@@ -3326,8 +3326,8 @@ layers:
                     $zoom: [2,3]
                 draw:
                     text-blend-order:
+                        priority: 10
                         font:
-                            priority: 10
                             buffer: 10px
                             weight: 200
                             size: 11px
@@ -3632,7 +3632,7 @@ layers:
                     text-blend-order:
                         priority: 6
                         font:
-                            size: [[2,11px],[6,17px],[8,19px],[12,21x],[13,0px]]
+                            size: [[2,11px],[6,17px],[8,19px],[12,21px],[13,0px]]
                 capital:
                     filter: { country_capital: true, $zoom: { min: 5 } }
                     draw:
