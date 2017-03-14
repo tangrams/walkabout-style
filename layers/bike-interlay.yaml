@@ -328,7 +328,7 @@ layers:
                             icons:
                                 visible: false
 
-sources:
+# sources:
     # # Bicycle route line
     # mz_route_line_bicycle:
     #     type: GeoJSON
@@ -628,7 +628,6 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color:
                     color: [[11, global.bike_tier3_on_road_not_protected_color], [12, global.bike_tier3_on_road_not_protected_color_lite]]
                     outline:
                         color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier3_on_road_not_protected_color]]
