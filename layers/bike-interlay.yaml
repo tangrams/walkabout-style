@@ -442,8 +442,8 @@ global:
             - function() { return global.sdk_bike_overlay; }
             - is_bicycle_related: true
         any:
-            - { kind_detail: [living_street], bicycle_network: true }
-            - { kind_detail: [living_street], walking_network: true }   # some funk in Portland, OR
+            - { kind_detail: [living_street, unclassified], bicycle_network: true }
+            - { kind_detail: [living_street, unclassified], walking_network: true }   # some funk in Portland, OR
             - { cycleway: cycleway_greenway }
 
     # brown
@@ -472,7 +472,7 @@ global:
             - is_bicycle_related: true
             - not:
                 any:
-                    - kind_detail: [cycleway, track, path, pedestrian, living_street, footway, steps]
+                    - kind_detail: [cycleway, track, path, pedestrian, living_street,unclassified, footway, steps]
                     - cycleway: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane, cycleway_greenway]
                     - cycleway_left: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
                     - cycleway_right: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
@@ -1287,7 +1287,7 @@ global:
                 color: global.regional_network_highlight
                 width: [[11, 0px], [12, 6px], [13, 7px], [14, 12px], [15, 15px], [17, 25px], [19, 25m]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 14 }, not: { kind_detail: living_street } }
+            filter: { bicycle_network: lcn, $zoom: { max: 14 }, not: { kind_detail: [living_street, unclassified] } }
             draw:
                 highlight:
                     visible: false
