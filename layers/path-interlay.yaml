@@ -272,8 +272,8 @@ layers:
 
 
 
-global:
-    sdk_path_overlay: true          # should be true for default walkabout
+#global:
+    #sdk_path_overlay: true          # should be true for default walkabout
 
 
 styles:
