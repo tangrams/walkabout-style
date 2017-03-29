@@ -891,7 +891,7 @@ styles:
     terrain:
         base: polygons
         lighting: false
-        raster: normal
+        raster: custom
         shaders:
             uniforms:
                 # u_envmap: images/relief-shading-environment-map.jpg
@@ -901,6 +901,10 @@ styles:
                 u_brightness: 1.
             blocks:
                 global: |
+                    varying vec2 v_tex_coord;
+                    #ifdef TANGRAM_VERTEX_SHADER
+                    uniform vec3 u_raster_offsets[TANGRAM_NUM_RASTER_SOURCES];
+                    #endif
                     // Simplified view-independent environment map
                     vec4 terrainEnvmap (in sampler2D _tex, in vec3 _normal) {
                         const vec3 eye = vec3(0.,0.,-1.);
@@ -911,17 +915,24 @@ styles:
                         return texture2D(_tex, uv);
                     }
                     const float e = 2.71828;
+                setup: |
+                    #ifdef TANGRAM_VERTEX_SHADER
+                    v_tex_coord = modelPositionBaseZoom().xy * u_raster_offsets[0].z + u_raster_offsets[0].xy;
+                    #endif
                 color: |
                     // scale up normals with a function
                     // https://www.desmos.com/calculator/bv4mzh8erz
                     //float scale = 10./(u_map_position.z-.7) + 1.8;
                     float scale1 = 20./(u_map_position.z) + 1.5;
-                    normal.z /= scale1; // turn terrain exaggeration up/down
+
+                    vec3 tex_normal = normalize(texture2D(u_rasters[0], v_tex_coord).xyz * 2.0 - 1.0);
+                    tex_normal.z /= scale1; // turn terrain exaggeration up/down
+
                     // fade out spheremap normals with a function
                     // https://www.desmos.com/calculator/ptgkzcnfyc
                     float m = 3.5 * (u_map_position.z - 0.8) * pow(e, u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
-                    color = terrainEnvmap(u_envmap, normal);
+                    color = terrainEnvmap(u_envmap, tex_normal);
 
                     // Apply contrast
                     float contrast = m;
