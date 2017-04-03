@@ -204,7 +204,7 @@ global:
     sdk_shield_text_color: white
     #
     # enable interactivity for key features
-    interactive: true
+    interactive: false
     #
     # default order for basemap features
     feature_order: function() { return feature.sort_rank; }
