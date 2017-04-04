@@ -6179,16 +6179,6 @@ layers:
                     outline:
                         color: [0.120,0.600,0.520]
                         width: [[15, 0.5px],[16, 1.5px],[17, 1.5px],[18, 2.5px],[19, 1m]]
-                casing_left:
-                    visible: false
-                    order: 486
-                    color: [0.120,0.600,0.520]
-                    width: [[15, 0.5px],[16, 5.5px],[17, 10px],[18, 9m],[19, 8m]]
-                casing_right:
-                    visible: false
-                    order: 486
-                    color: white
-                    width: [[15, 0.5px],[16, 6px],[17, 10px],[18, 9m],[19, 8m]]
         the_network:
             draw:
                 lines:
