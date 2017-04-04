@@ -3343,9 +3343,9 @@ layers:
                     $zoom: [2,3]
                 draw:
                     text-blend-order:
+                        priority: 10
+                        buffer: 10px
                         font:
-                            priority: 10
-                            buffer: 10px
                             weight: 200
                             size: 11px
                 early-ones-z2:
