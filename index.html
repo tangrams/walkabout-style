@@ -700,7 +700,7 @@
                             osm_zoom = '19'
                             // tilezen adds sort_key for any way or relation thing, but because we generate
                             // label positions for area features, we need to do two tests
-                            if( selection.feature.properties.sort_key || selection.feature.properties.area ) {
+                            if( selection.feature.properties.sort_rank || selection.feature.properties.area ) {
                                 osm_type = 'way';
                                 osm_zoom = Math.max( 17, map.getZoom() );
                             }
