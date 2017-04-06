@@ -509,6 +509,7 @@ textures:
             biergarten: [780, 210, 38, 38]
             brewery: [780, 210, 38, 38]
             bike_bicycle: [962, 168, 38, 38]
+            bike_bicycle_rental: [964, 126, 38, 38]
             bike_bicycle_parking: [92, 210, 38, 38]
             bike_bicycle_rental_station: [46, 210, 38, 38]
             bike_bicycle_repair_station: [0, 210, 38, 38]
