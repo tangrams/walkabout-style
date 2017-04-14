@@ -698,7 +698,7 @@
                             // enable iD to show properties sidebar for selected feature
                             osm_type = 'node';
                             osm_zoom = '19'
-                            // tilezen adds sort_key for any way or relation thing, but because we generate
+                            // tilezen adds sort_rank for any way or relation thing, but because we generate
                             // label positions for area features, we need to do two tests
                             if( selection.feature.properties.sort_rank || selection.feature.properties.area ) {
                                 osm_type = 'way';
