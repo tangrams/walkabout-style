@@ -1623,7 +1623,8 @@ layers:
             # oneway arrows and shields are distinct groups!
             filter: { oneway: yes, shield_text: false, $zoom: { min: 17 } }
             draw:
-                icons:
+                arrows:
+                    base: icons
                     flat: true
                     visible: true
                     sprite: arrow

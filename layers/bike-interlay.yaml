@@ -348,7 +348,7 @@ global:
     # GREENS
     # tier 1 offroad
     bike_darkgreen_color: [0.000,0.430,0.337] #green #[0.060,0.600,0.000] # green
-    bike_darkgreen_color_casing: green #[0.000,0.810,0.392]
+    bike_darkgreen_color_casing: [0.000,0.611,0.438] #[0.000,0.810,0.392]
     bike_darkgreen_color_lite: [0.000,0.750,0.538] #green #[0.749,0.894,0.298]
     # LABEL: tier 1 offroad
     bike_green_label: [0.063,0.474,0.294] #green
@@ -373,8 +373,7 @@ global:
     # ORANGES
     # tier 2 on-road protected
     bike_orange_color: [0.930,0.460,0.167] #orange #[0.000,0.530,0.398] # blue
-    bike_orange_color_medium: orange #[0.336,0.390,0.800]
-    bike_orange_color_casing: orange #[0.357,0.750,0.870]
+    bike_orange_color_casing: [0.976,0.631,0.541] #[0.357,0.750,0.870]
     bike_orange_color_lite: [0.980,0.792,0.706] #orange #[0.193,0.840,0.657]
     # LABEL: tier 2 on-road protected
     bike_orange_label: orangered #[0.253,0.307,0.719]
@@ -861,7 +860,7 @@ global:
                 lines:
                     color: [[11, global.bike_orange_color_lite], [12, global.bike_orange_color_lite]]
                     outline:
-                        color: [[11, [0.847,0.822,0.826]], [12, global.bike_orange_color_medium], [13, global.bike_orange_color]]
+                        color: [[11, [0.847,0.822,0.826]], [12, global.bike_orange_color], [13, global.bike_orange_color]]
                         width: [[10, 0px], [11, 0px], [12, 0.8px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_tertiary
@@ -1054,7 +1053,7 @@ global:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[12, global.bike_darkgreen_color_lite], [13, global.bike_darkgreen_color_lite], [14, global.bike_darkgreen_color_lite]]
+                    color: global.bike_darkgreen_color_lite
                     width: [[10, 0px], [12, 0.15px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, global.bike_darkgreen_color]]
@@ -1581,7 +1580,7 @@ global:
             filter: { bicycle_network: lcn }
             draw:
                 lines:
-                    color: [[12, global.bike_darkgreen_color], [13, global.bike_darkgreen_color], [14, global.bike_darkgreen_color_lite]]
+                    color: global.bike_darkgreen_color_lite
                     #width: [[12, 1.25px], [13, 2px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [13, global.bike_darkgreen_color]]
