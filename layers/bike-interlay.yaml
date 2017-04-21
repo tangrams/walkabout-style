@@ -1612,7 +1612,7 @@ global:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
             any:
-                - bicycle_network: true
+                - bicycle_network: [ncn, rcn]
                 - { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
@@ -1647,18 +1647,18 @@ global:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
             any:
-                - bicycle_network: true
+                - bicycle_network: [ncn, rcn]
                 - { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
-                width: [[12, 0.75px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                 outline:
-                    width: [[13, 0px], [14, 1px], [15, 1px], [17, 2px], [18, 3px]]
+                    width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[11, 0px], [12, 5px], [15, 10px], [17, 13px], [19, 30px]]
+                width: [[11, 0px], [12, 4px], [15, 7px], [17, 13px], [19, 30px]]
         local_network:
             filter: { bicycle_network: lcn, $zoom: { max: 14 } }
             draw:
