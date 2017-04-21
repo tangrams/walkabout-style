@@ -1584,7 +1584,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[11, 0px], [12, 6px], [13, 7px], [14, 12px], [15, 15px], [17, 25px], [19, 25m]]
+                width: [[11, 0px], [12, 4px], [15, 11px], [17, 24px], [19, 25m]]
         # local_network:
         #     filter: { bicycle_network: lcn, $zoom: { max: 14 }, not: { kind_detail: [living_street, unclassified] } }
         #     draw:
