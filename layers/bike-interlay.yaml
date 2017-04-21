@@ -350,6 +350,8 @@ global:
     bike_darkgreen_color: [0.000,0.487,0.430] #green #[0.060,0.600,0.000] # green
     bike_darkgreen_color_casing: [0.000,0.611,0.438] #[0.000,0.810,0.392]
     bike_darkgreen_color_lite: [0.000,0.720,0.636] #green #[0.749,0.894,0.298]
+    # LABEL: tier 1 off road
+    bike_darkgreen_label: [0.000,0.274,0.242]
     # LABEL: tier 1 offroad
     bike_green_label: [0.063,0.474,0.294] #green
     # tier 2 on-road protected
@@ -377,13 +379,15 @@ global:
     bike_orange_color_casing: [0.976,0.631,0.541] #[0.357,0.750,0.870]
     bike_orange_color_lite: [1.000,0.761,0.650] #orange #[0.193,0.840,0.657]
     # LABEL: tier 2 on-road protected
-    bike_orange_label: orangered #[0.253,0.307,0.719]
+    bike_orange_label: [0.780,0.366,0.109] #[0.253,0.307,0.719]
     #
     # tier 3 major roads get dashing in their casing
     # tier 3 on-road not protected
     bike_lightorange_color: [0.910,0.618,0.237] #wheat #[0.495,0.563,0.750] #[0.361,0.416,0.800] # lighter blue dash style
     bike_lightorange_color_casing: [0.980,0.690,0.617)] #[0.357,0.750,0.870]
     bike_lightorange_color_lite: [1.000,0.879,0.750] #wheat #[0.813,0.822,0.878] #[0.660,0.829,0.880]
+    # LABEL: tier 3 on road not protected
+    bike_lightorange_label: [0.810,0.543,0.194]
     #
     # OTHERS
     # other situations
@@ -584,41 +588,41 @@ global:
             draw:
                 icons:
                     priority: 56
-                    color: global.bike_green_label
+                    color: global.bike_green_color
         bike_tier1b:
             filter: global.bike_tier1_off_road_track_filter
             draw:
                 icons:
                     priority: 57
-                    color: global.bike_brown_label
+                    color: global.bike_brown_color
         bike_tier1c_greenway:
             filter: global.greenway_on_road_filter
             draw:
                 icons:
                     priority: 58
-                    color: global.bike_green_label
+                    color: global.bike_green_color
         bike_tier2:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 icons:
                     priority: 59
-                    color: global.bike_orange_label
+                    color: global.bike_orange_color
             minor_road:
                 filter: { kind: minor_road }
                 draw:
                     icons:
-                        color: global.bike_green_label
+                        color: global.bike_green_color
         bike_tier3:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 icons:
                     priority: 60
-                    color: global.bike_orange_label
+                    color: global.bike_orange_color
             minor_road:
                 filter: { kind: minor_road }
                 draw:
                     icons:
-                        color: global.bike_green_label
+                        color: global.bike_lightgreen_color
         no_bike:
             filter: global.no_bike_tier4_filter
             draw:
@@ -1389,10 +1393,10 @@ global:
                 text-blend-order:
                     priority: 50
                     font:
-                        fill: global.bike_green_label
+                        fill: global.bike_darkgreen_label
                         weight: 600
                         #size: 10px
-                        stroke: { color: global.bike_lightgreen_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+                        stroke: { color: global.bike_darkgreen_color_lite, width: [[13,0px],[16,3px],[18,0px]] }
             z18: global.z18_bike_labels
         bike_tier1b:
             filter: global.bike_tier1_off_road_track_filter
@@ -1414,7 +1418,7 @@ global:
                         fill: global.bike_green_label
                         weight: 600
                         #size: 10px
-                        stroke: { color: global.bike_lightgreen_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+                        stroke: { color: global.bike_green_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
             z18: global.z18_bike_labels
         bike_tier2:
             filter: global.bike_tier2_on_road_protected_filter
@@ -1441,7 +1445,7 @@ global:
                 text-blend-order:
                     priority: 54
                     font:
-                        fill: global.bike_orange_label
+                        fill: global.bike_lightorange_label
                         weight: 600
                         #size: 10px
                         stroke: { color: global.bike_lightorange_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
