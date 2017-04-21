@@ -1624,7 +1624,7 @@ layers:
             filter: { oneway: yes, shield_text: false, $zoom: { min: 17 } }
             draw:
                 arrows:
-                    base: icons
+                    style: icons
                     flat: true
                     visible: true
                     sprite: arrow
