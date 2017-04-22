@@ -221,14 +221,20 @@
         );
         map.setView(map_start_location.slice(0, 2), map_start_location[2]);
 
+        var dev_or_prod = 'dev';
+
+        // prod
+        var mapzen_api_key = 'vector-tiles-VyYjZGS';
+
+        if( dev_or_prod == 'dev' ) {
+            mapzen_api_key = 'mapzen-xkUbe6g';
+        }
+
         var layer = Tangram.leafletLayer({
             // more: 'vector-tiles-TMwazSG'
             // default (some): 'vector-tiles-VyYjZGS'
             // no: 'vector-tiles-2giCT1z'
-            // prod
-            //scene: { import: 'walkabout-style.yaml', global: { sdk_mapzen_api_key: 'vector-tiles-VyYjZGS' } },
-            // dev
-            scene: { import: 'walkabout-style.yaml', global: { sdk_mapzen_api_key: 'mapzen-xkUbe6g' } },
+            scene: { import: 'walkabout-style.yaml', global: { 'sdk_mapzen_api_key': mapzen_api_key } },
             attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>, &copy; OSM contributors'
         });
 
@@ -353,7 +359,11 @@
             var zoom = max_zoom < map.getZoom() ? max_zoom : Math.floor(map.getZoom());
             var tileCoords = { x : long2tile(latlng.lng,zoom), y: lat2tile(latlng.lat,zoom), z: zoom };
 
-            var url = 'http://tile.mapzen.com/mapzen/vector/v1/all/' + zoom + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson';
+            var url = 'http://tile.';
+            if( dev_or_prod == 'dev' ) {
+                url += 'dev.';
+            }
+            url += 'mapzen.com/mapzen/vector/v1/all/' + Math.min(15,zoom) + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson' + '?api_key=' + mapzen_api_key;
             return url;
         }
 
