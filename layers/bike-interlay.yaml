@@ -1393,10 +1393,10 @@ global:
                 text-blend-order:
                     priority: 50
                     font:
-                        fill: global.bike_darkgreen_label
+                        fill: global.bike_orange_label
                         weight: 600
                         #size: 10px
-                        stroke: { color: global.bike_darkgreen_color_lite, width: [[13,0px],[16,3px],[18,0px]] }
+                        stroke: { color: global.bike_orange_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
             z18: global.z18_bike_labels
         bike_tier1b:
             filter: global.bike_tier1_off_road_track_filter
