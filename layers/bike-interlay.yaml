@@ -355,9 +355,9 @@ global:
     # LABEL: tier 1 offroad
     bike_green_label: [0.063,0.474,0.294] #green
     # tier 2 on-road protected
-    bike_green_color: [0.000,0.600,0.450] #limegreen #[0.000,0.530,0.398] # blue
+    bike_green_color: [0.329,0.675,0.278] #limegreen #[0.000,0.530,0.398] # blue
     bike_green_color_casing: limegreen #[0.357,0.750,0.870]
-    bike_green_color_lite: [0.112,0.860,0.648] #limegreen #[0.193,0.840,0.657]
+    bike_green_color_lite: [0.580,0.835,0.278] #limegreen #[0.193,0.840,0.657]
     # tier 3 on-road minor road with or without sharrow / designation
     bike_lightgreen_color: [0.389,0.670,0.529] #lime #[0.000,0.530,0.398] # blue
     bike_lightgreen_color_casing: limegreen #[0.357,0.750,0.870]
