@@ -8,8 +8,7 @@
 layers:
     mz_route_line_bicycle:
         data: { source: mz_route_line_bicycle }
-        filter:
-            function() { return global.sdk_directions; }
+        visible: global.sdk_directions
         draw:
             ux-bicycle-dot-overlay:
                 color: black
@@ -107,20 +106,19 @@ layers:
 
     pois:
         bike-overlay-pois:
+            visible: global.sdk_bike_overlay
             filter:
-                all:
-                    - function() { return global.sdk_bike_overlay; }
-                    - kind:
-                        - bicycle
-                        - bicycle_rental
-                        - bicycle_rental_station
-                        - bicycle_junction
-                        - cafe                      # if we want to see more cafe or pub, then we need to mod
-                        - pub                       # the main pois: layer filter
-                        - drinking_water
-                        - toilets
-                        - cycle_barrier
-                        - bicycle_parking
+                kind:
+                    - bicycle
+                    - bicycle_rental
+                    - bicycle_rental_station
+                    - bicycle_junction
+                    - cafe                      # if we want to see more cafe or pub, then we need to mod
+                    - pub                       # the main pois: layer filter
+                    - drinking_water
+                    - toilets
+                    - cycle_barrier
+                    - bicycle_parking
             draw:
                 icons:
                     sprite: function() { return 'bike_' + feature.kind; }
@@ -157,18 +155,16 @@ layers:
                     filter: { kind: bicycle_parking }
                     draw: { icons: { priority: 34 } }
         bicycle:
+            visible: global.sdk_bike_overlay
             filter:
-                all:
-                    - kind: bicycle
-                    - function() { return global.sdk_bike_overlay; }
+                kind: bicycle
             draw:
                 icons:
                     priority: 20
         has-name:
             not-outdoor-not-landuse:
                 bike-priority:
-                    filter:
-                        - function() { return global.sdk_bike_overlay; }
+                    visible: global.sdk_bike_overlay
                     bicycle:
                         filter: { kind: bicycle }
                         draw: { icons: { priority: 20 } }
@@ -199,19 +195,17 @@ layers:
         z-server-friend:
             hide-until-z16-no-area:
                 bicycle:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: bicycle
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: bicycle
                     draw:
                         icons:
                             visible: true
             hide-until-z17-no-area:
                 bicycle_rental_station:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: bicycle_rental_station
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: bicycle_rental_station
                     draw:
                         icons:
                             visible: true
@@ -220,28 +214,25 @@ layers:
                             #     font:
                             #         size: [[18,0px],[18,11px]]
                 drinking_water:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: drinking_water
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: drinking_water
                     draw:
                         icons:
                             visible: true
             hide-until-z18-any:
                 drinking_water:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: drinking_water
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: drinking_water
                     draw:
                         icons:
                             visible: true
             hide-until-z19-any:
                 bicycle:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: bicycle_parking
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: bicycle_parking
                     draw:
                         icons:
                             priority: 66
@@ -249,28 +240,26 @@ layers:
         no-name:
             no-name-no-area:
                 cycle_barrier:
+                    visible: global.sdk_bike_overlay
                     filter:
-                        all:
-                            - kind: cycle_barrier
-                            - function() { return global.sdk_bike_overlay; }
+                        kind: cycle_barrier
                     draw:
                         icons:
                             priority: 31
                             visible: true
             drinking_water_toilets:
+                visible: global.sdk_bike_overlay
                 filter:
-                    all:
-                        - kind: [drinking_water,toilets]
-                        - function() { return global.sdk_bike_overlay; }
+                    kind: [drinking_water,toilets]
                 draw:
                     icons:
                         priority: 31
                         visible: true
             walking-or-bicycle_junction:
                 bicycle_junction:
+                    visible: global.sdk_bike_overlay
                     filter:
                         all:
-                            - function() { return global.sdk_bike_overlay; }
                             #- $zoom: { min: 16 }
                             - kind: bicycle_junction
                             - ref: true
@@ -414,8 +403,6 @@ global:
     #
     # green
     bike_tier1_off_road_filter:
-        all:
-            - function() { return global.sdk_bike_overlay; }
         any:
             - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps] }
             - cycleway: [sidepath, track, opposite_track, buffered_lane]
@@ -430,19 +417,17 @@ global:
     #green, but brown (I know, right)
     bike_tier1_off_road_footway_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
-            - { is_bicycle_related: true, kind_detail: [footway] }
+            - is_bicycle_related: true
+            - kind_detail: footway
 
     # brown
     bike_tier1_off_road_track_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
-            - { is_bicycle_related: true, kind_detail: [track, footway] }
+            - is_bicycle_related: true
+            - kind_detail: [track, footway]
 
     # orange
     bike_tier2_on_road_protected_filter:
-        all:
-            - function() { return global.sdk_bike_overlay; }
         any:
             - cycleway: [lane, opposite, opposite_lane]
             - cycleway_left: [lane, opposite, opposite_lane]
@@ -455,7 +440,6 @@ global:
     # blue
     bike_tier3_on_road_not_protected_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
             - is_bicycle_related: true
             - not:
                 any:
@@ -464,18 +448,17 @@ global:
                     - cycleway_left: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
                     - cycleway_right: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
     casing_bike_tier3_on_road_not_protected_filter_left:
-        cycleway_left: [shared_lane]
+        cycleway_left: shared_lane
     casing_bike_tier3_on_road_not_protected_filter_right:
-        cycleway_right: [shared_lane]
+        cycleway_right: shared_lane
 
     # no bike
     no_bike_tier4_filter:
-        all:
-            - function() { return global.sdk_bike_overlay; }
-            - bicycle: [no, dismount]
+        bicycle: [no, dismount]
 
     # DRAW STYLES
     bike_draw_highway:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -505,6 +488,7 @@ global:
             networks: global.bike_networks_highway
 
     bike_draw_highway_link:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -540,6 +524,7 @@ global:
             networks: global.bike_networks_link
 
     bike_draw_trunk_primary:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -575,6 +560,7 @@ global:
             networks: global.bike_networks_primary
 
     bike_draw_secondary:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -604,6 +590,7 @@ global:
             networks: global.bike_networks_secondary
 
     bike_draw_tertiary:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -636,6 +623,7 @@ global:
             networks: global.bike_networks_tertiary
 
     bike_draw_major_road_link:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -671,6 +659,7 @@ global:
             networks: global.bike_networks_link
 
     bike_draw_minor:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -693,7 +682,7 @@ global:
                         width: [[11, 0px], [12, 0px], [13, 0.5px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
             early:
                 filter:
-                    $zoom: [13]
+                    $zoom: 13
                 draw:
                     lines:
                         order: 360
@@ -713,6 +702,7 @@ global:
             networks: global.bike_networks_minor
 
     bike_draw_service:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -749,6 +739,7 @@ global:
 
 
     no_bike_draw_minor:
+        visible: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -760,6 +751,7 @@ global:
                     width: [[11, 0px], [12, 0px], [13, 0.25px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
 
     no_bike_draw_service:
+        visible: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -770,6 +762,7 @@ global:
                     width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
 
     bike_draw_path:
+        visible: global.sdk_bike_overlay
         # thicken the widths
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
@@ -811,6 +804,7 @@ global:
             networks: global.bike_networks_path
 
     bike_draw_footway:
+        visible: global.sdk_bike_overlay
         # todo: match the zoom stops from bike_tier1_off_road in this path section
         footway:
             filter: global.bike_tier1_off_road_footway_filter
@@ -834,6 +828,7 @@ global:
                             color: global.bike_tier1_off_road_path_color
 
     no_bike_draw_path:
+        visible: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -845,6 +840,7 @@ global:
                     width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
 
     no_bike_draw_footway:
+        visible: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -856,6 +852,7 @@ global:
                     width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
 
     bike_draw_track:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_track_filter
             draw:
@@ -868,6 +865,7 @@ global:
             networks: global.bike_networks_track
 
     bike_draw_steps:
+        visible: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_steps_filter
             draw:
@@ -1069,6 +1067,7 @@ global:
                 casing_right:
                     color: global.bike_tier3_on_road_not_protected_color_casing
     bike_draw_labels:
+        visible: global.sdk_bike_overlay
         z18:
             filter:
                 $zoom: { min: 18 }
@@ -1127,10 +1126,9 @@ global:
     # Bike Networks
     #
     bike_networks_highway:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1144,10 +1142,9 @@ global:
                     visible: false
 
     bike_networks_primary:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1161,10 +1158,9 @@ global:
                     visible: false
 
     bike_networks_secondary:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1178,10 +1174,9 @@ global:
                     visible: false
 
     bike_networks_tertiary:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             lines:
                 width: [[11, 1px], [12, 0.15px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
@@ -1199,10 +1194,9 @@ global:
                     visible: false
 
     bike_networks_link:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1216,10 +1210,9 @@ global:
                     visible: false
 
     bike_networks_minor:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1233,10 +1226,9 @@ global:
                     visible: false
 
     bike_networks_path:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             highlight:
                 base: lines
@@ -1259,10 +1251,9 @@ global:
                         visible: false
 
     bike_networks_track:
+        visible: global.sdk_bike_network_overlay
         filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+            bicycle_network: true
         draw:
             lines:
                 width: [[12, 0.75px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
