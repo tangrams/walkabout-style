@@ -588,7 +588,14 @@ global:
             draw:
                 icons:
                     priority: 56
-                    color: global.bike_green_color
+                    color: global.bike_orange_color
+            minor_road:
+                filter:
+                    any:
+                        - kind: minor_road
+                draw:
+                    icons:
+                        color: global.bike_green_color
             paths:
                 filter:
                     any:
