@@ -347,45 +347,45 @@ global:
     #
     # GREENS
     # tier 1 offroad
-    bike_darkgreen_color: [0.000,0.487,0.430] #green #[0.060,0.600,0.000] # green
-    bike_darkgreen_color_casing: [0.000,0.611,0.438] #[0.000,0.810,0.392]
-    bike_darkgreen_color_lite: [0.000,0.720,0.636] #green #[0.749,0.894,0.298]
+    bike_darkgreen_color: [0.000,0.487,0.430]
+    bike_darkgreen_color_casing: [0.000,0.611,0.438]
+    bike_darkgreen_color_lite: [0.000,0.720,0.636]
     # LABEL: tier 1 off road
     bike_darkgreen_label: [0.000,0.274,0.242]
     # LABEL: tier 1 offroad
-    bike_green_label: [0.063,0.474,0.294] #green
+    bike_green_label: [0.063,0.474,0.294]
     # tier 2 on-road protected
-    bike_green_color: [0.329,0.675,0.278] #limegreen #[0.000,0.530,0.398] # blue
-    bike_green_color_casing: limegreen #[0.357,0.750,0.870]
-    bike_green_color_lite: [0.515,0.830,0.274] #limegreen #[0.193,0.840,0.657]
+    bike_green_color: [0.329,0.675,0.278]
+    bike_green_color_casing: limegreen
+    bike_green_color_lite: [0.515,0.830,0.274]
     # tier 3 on-road minor road with or without sharrow / designation
-    bike_lightgreen_color: [0.388,0.667,0.525] #lime #[0.000,0.530,0.398] # blue
-    bike_lightgreen_color_casing: limegreen #[0.357,0.750,0.870]
-    bike_lightgreen_color_lite: [0.710,1.000,0.816] #lime #[0.193,0.840,0.657]
+    bike_lightgreen_color: [0.388,0.667,0.525]
+    bike_lightgreen_color_casing: limegreen
+    bike_lightgreen_color_lite: [0.710,1.000,0.816]
     #
     # BROWNS
     # tier 1 (dirt) wide tracks
-    bike_brown_color: [0.500,0.343,0.290]  # brown
+    bike_brown_color: [0.500,0.343,0.290]
     bike_brown_color_lite: [0.917,0.759,0.610]
     # LABEL: tier 1 (dirt) wide tracks
-    bike_brown_label: [0.559,0.338,0.269] #brown
+    bike_brown_label: [0.559,0.338,0.269]
     # tier 1 (dirt) narrow footway
-    bike_lightbrown_color: [0.690,0.547,0.504]  # lighter brown
+    bike_lightbrown_color: [0.690,0.547,0.504]
     bike_lightbrown_color_lite: [1.000,0.881,0.770]
     #
     # ORANGES
     # tier 2 on-road protected
-    bike_orange_color: [0.930,0.460,0.167] #orange #[0.000,0.530,0.398] # blue
-    bike_orange_color_casing: [0.976,0.631,0.541] #[0.357,0.750,0.870]
-    bike_orange_color_lite: [1.000,0.761,0.650] #orange #[0.193,0.840,0.657]
+    bike_orange_color: [0.930,0.460,0.167]
+    bike_orange_color_casing: [0.976,0.631,0.541]
+    bike_orange_color_lite: [1.000,0.761,0.650]
     # LABEL: tier 2 on-road protected
-    bike_orange_label: [0.780,0.366,0.109] #[0.253,0.307,0.719]
+    bike_orange_label: [0.780,0.366,0.109]
     #
     # tier 3 major roads get dashing in their casing
     # tier 3 on-road not protected
-    bike_lightorange_color: [0.910,0.618,0.237] #wheat #[0.495,0.563,0.750] #[0.361,0.416,0.800] # lighter blue dash style
-    bike_lightorange_color_casing: [0.980,0.690,0.617)] #[0.357,0.750,0.870]
-    bike_lightorange_color_lite: [1.000,0.879,0.750] #wheat #[0.813,0.822,0.878] #[0.660,0.829,0.880]
+    bike_lightorange_color: [0.910,0.618,0.237]
+    bike_lightorange_color_casing: [0.980,0.690,0.617)]
+    bike_lightorange_color_lite: [1.000,0.879,0.750]
     # LABEL: tier 3 on road not protected
     bike_lightorange_label: [0.810,0.543,0.194]
     #
