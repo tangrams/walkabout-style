@@ -355,17 +355,17 @@ global:
     # LABEL: tier 1 offroad
     bike_green_label: [0.063,0.474,0.294]
     # tier 2 on-road protected
-    bike_green_color: [0.329,0.675,0.278]
+    bike_green_color: [0.272,0.663,0.435]#[0.329,0.675,0.278]
     bike_green_color_casing: limegreen
-    bike_green_color_lite: [0.515,0.830,0.274]
+    bike_green_color_lite: [0.289,0.876,0.593]#[0.515,0.830,0.274]
     # tier 3 on-road minor road with or without sharrow / designation
-    bike_lightgreen_color: [0.388,0.667,0.525]
+    bike_lightgreen_color: [0.419,0.728,0.569]
     bike_lightgreen_color_casing: limegreen
     bike_lightgreen_color_lite: [0.710,1.000,0.816]
     #
     # BROWNS
     # tier 1 (dirt) wide tracks
-    bike_brown_color: [0.500,0.343,0.290]
+    bike_brown_color: [0.575,0.394,0.330]
     bike_brown_color_lite: [0.917,0.759,0.610]
     # LABEL: tier 1 (dirt) wide tracks
     bike_brown_label: [0.559,0.338,0.269]
@@ -391,13 +391,13 @@ global:
     #
     # OTHERS
     # other situations
-    bike_prohibited_color: [0.930,0.679,0.721]
-    bike_prohibited_color_lite: [1.000,1.000,1.000]
+    bike_prohibited_color: [1.000,0.590,0.891] #[0.930,0.679,0.721]
+    bike_prohibited_color_lite: [0.939,0.854,0.988]
     # NOTE: nvkelso 2017-04-19 what is this for?!
     left_right_lane: purple #[0.414,0.940,0.607]
     # end note
     regional_network_highlight: [1.000,1.000,0.549]
-    no_bike_label: [0.740,0.540,0.572]
+    no_bike_label: [1.000,0.510,0.869]
     no_bike_color_lite: [1.000,0.898,0.918]
 
     # bike_tier1_off_road_path_color: green #[0.060,0.600,0.000] # green
@@ -1142,6 +1142,27 @@ global:
                         outline:
                             color: global.bike_darkgreen_color
 
+    bike_draw_track:
+        bike_tier1_off_road:
+            filter: global.bike_tier1_off_road_track_filter
+            draw:
+                lines:
+                    color: global.bike_brown_color_lite
+                    width: [[12, 1px], [15, 1.5px], [17, 2.5m]]
+                    outline:
+                        color: global.bike_brown_color
+                        width: [[12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+            networks: global.bike_networks_track
+
+    bike_draw_steps:
+        bike_tier1_off_road:
+            filter: global.bike_tier1_off_road_steps_filter
+            draw:
+                dashed_steps:
+                    color: [0.633,0.988,0.633] #global.bike_darkgreen_color_lite
+                    width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+
+
     no_bike_draw_path:
         filter: global.no_bike_tier4_filter
         draw:
@@ -1163,26 +1184,6 @@ global:
                     # casing for footway starts at  z16
                     style: no_bike_dash
                     width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
-
-    bike_draw_track:
-        bike_tier1_off_road:
-            filter: global.bike_tier1_off_road_track_filter
-            draw:
-                lines:
-                    color: [[12, global.bike_brown_color], [13, global.bike_brown_color], [14, global.bike_brown_color_lite]]
-                    width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-                    outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_brown_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
-            networks: global.bike_networks_track
-
-    bike_draw_steps:
-        bike_tier1_off_road:
-            filter: global.bike_tier1_off_road_steps_filter
-            draw:
-                dashed_steps:
-                    color: [0.633,0.988,0.633] #global.bike_darkgreen_color_lite
-                    width: [[15, 0.6], [16, 1px], [17, 2.5m]]
 
 
     ## WIDE
@@ -1758,7 +1759,7 @@ global:
             filter: { kind_detail: footway }
             draw:
                 lines:
-                    width: [[8, 1px], [10, 1.5px], [12, 1.0px], [13, 1.2px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    width: [[8, 1px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                     order: function() { return feature.sort_rank + 200; }
                     outline:
                         width: [[8, 0.5px], [10, 0.5px], [12, 0.8px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
@@ -1773,9 +1774,9 @@ global:
                 - { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
-                width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                width: [[12, 1px], [15, 1.5px], [17, 2.5m]]
                 outline:
-                    width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+                    width: [[12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
@@ -1788,11 +1789,11 @@ global:
                     - walking_network: [iwn,nwn,rwn]
             draw:
                 lines:
-                    width: [[8, 1px], [10, 1.5px], [12, 1.8px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    width: [[12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                     outline:
-                        width: [[8, 0.5px], [10, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        width: [[12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[11, 4px], [12, 5px], [13, 6px], [15, 11px], [17, 13px], [19, 30px]]
+                    width: [[12, 5px], [13, 6px], [15, 11px], [17, 13px], [19, 30px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
