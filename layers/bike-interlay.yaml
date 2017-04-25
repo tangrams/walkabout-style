@@ -589,6 +589,16 @@ global:
                 icons:
                     priority: 56
                     color: global.bike_green_color
+            paths:
+                filter:
+                    any:
+                        - kind_detail: cycleway
+                        - all:
+                            - bicycle: [designated,yes]
+                            - kind: path
+                draw:
+                    icons:
+                        color: global.bike_darkgreen_color
         bike_tier1b:
             filter: global.bike_tier1_off_road_track_filter
             draw:
@@ -1586,14 +1596,14 @@ global:
                 - bicycle_network: true
         draw:
             lines:
-                width: [[10, 0px], [11, 1.5px], [12, 2px], [14, 2.5px], [16, 4px], [17, 7.5px], [18, 9m]]
+                width: [[10, 0px], [11, 1.5px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
                 outline:
                     width: [[10, 0.5px], [11, 0.5px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[10, 0px], [11, 7px], [12, 8px], [13, 7px], [15, 12px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[8, 1px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
