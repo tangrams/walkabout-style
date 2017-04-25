@@ -348,8 +348,8 @@ global:
     # GREENS
     # tier 1 offroad
     bike_darkgreen_color: [0.000,0.487,0.430]
-    bike_darkgreen_color_casing: [0.000,0.611,0.438]
-    bike_darkgreen_color_lite: [0.000,0.720,0.636]
+    bike_darkgreen_color_casing: [0.000,0.701,0.620]
+    bike_darkgreen_color_lite: [0.000,0.784,0.694]
     # LABEL: tier 1 off road
     bike_darkgreen_label: [0.000,0.233,0.206]
     # LABEL: tier 1 offroad
@@ -360,7 +360,7 @@ global:
     bike_green_color_lite: [0.289,0.876,0.593]#[0.515,0.830,0.274]
     # tier 3 on-road minor road with or without sharrow / designation
     bike_lightgreen_color: [0.419,0.728,0.569]
-    bike_lightgreen_color_casing: limegreen
+    bike_lightgreen_color_casing: [0.517,0.862,0.644]
     bike_lightgreen_color_lite: [0.710,1.000,0.816]
     #
     # BROWNS
@@ -1196,17 +1196,17 @@ global:
                 visible: true
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier2:
@@ -1217,17 +1217,17 @@ global:
                 visible: true
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier3:
@@ -1238,17 +1238,17 @@ global:
                 visible: true
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier3_minor_road:
@@ -1259,17 +1259,17 @@ global:
                 visible: true
                 color: global.bike_lightgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 7m
             casing_left:
                 visible: false
                 color: global.bike_lightgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 7m
             casing_right:
                 visible: false
                 color: global.bike_lightgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 7m
         special_casing: global.casing_bike_draw_on_off
 
     ## NARROW
@@ -1281,17 +1281,17 @@ global:
                 visible: true
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
                 color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier2_narrow:
@@ -1302,17 +1302,17 @@ global:
                 visible: true
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
                 color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier3_narrow:
@@ -1323,17 +1323,17 @@ global:
                 visible: true
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
                 color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     casing_bike_draw_on_off:
