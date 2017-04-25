@@ -384,7 +384,7 @@ global:
     # tier 3 major roads get dashing in their casing
     # tier 3 on-road not protected
     bike_lightorange_color: [0.910,0.618,0.237]
-    bike_lightorange_color_casing: [0.980,0.690,0.617)]
+    bike_lightorange_color_casing: [1.000,0.749,0.480]
     bike_lightorange_color_lite: [1.000,0.879,0.750]
     # LABEL: tier 3 on road not protected
     bike_lightorange_label: [0.810,0.543,0.194]
