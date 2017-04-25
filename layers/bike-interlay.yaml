@@ -400,45 +400,6 @@ global:
     no_bike_label: [1.000,0.510,0.869]
     no_bike_color_lite: [1.000,0.898,0.918]
 
-    # bike_tier1_off_road_path_color: green #[0.060,0.600,0.000] # green
-    # bike_tier1_off_road_path_color_casing: green #[0.000,0.810,0.392]
-    # bike_tier1_off_road_path_color_lite: green #[0.749,0.894,0.298]
-    # bike_tier1_off_road_path_color_dark: darkgreen #[0.000,0.561,0.000] #'#067a48'
-    # bike_tier1_off_road_footway_color: [0.690,0.547,0.504]  # lighter brown
-    # bike_tier1_off_road_footway_color_lite: [1.000,0.881,0.770]
-    # bike_tier1_off_road_track_color: [0.500,0.343,0.290]  # brown
-    # bike_tier1_off_road_track_color_lite: [0.917,0.759,0.610]
-    # bike_tier1a_label: [0.063,0.474,0.294] #green
-    # bike_tier1b_label: [0.559,0.338,0.269] #brown
-    # bike_tier2_on_greenway_protected_color: lime #[0.000,0.530,0.398] # blue
-    # bike_tier2_on_greenway_protected_color_medium: lime #[0.336,0.390,0.800]
-    # bike_tier2_on_greenway_protected_color_casing: lime #[0.357,0.750,0.870]
-    # bike_tier2_on_greenway_protected_color_lite: lime #[0.193,0.840,0.657]
-    # bike_tier2_on_minor_road_protected_color: limegreen #[0.000,0.530,0.398] # blue
-    # bike_tier2_on_minor_road_protected_color_medium: limegreen #[0.336,0.390,0.800]
-    # bike_tier2_on_minor_road_protected_color_casing: limegreen #[0.357,0.750,0.870]
-    # bike_tier2_on_minor_road_protected_color_lite: limegreen #[0.193,0.840,0.657]
-    # bike_tier2_on_road_protected_color: orange #[0.000,0.530,0.398] # blue
-    # bike_tier2_on_road_protected_color_medium: orange #[0.336,0.390,0.800]
-    # bike_tier2_on_road_protected_color_casing: orange #[0.357,0.750,0.870]
-    # bike_tier2_on_road_protected_color_lite: orange #[0.193,0.840,0.657]
-    # bike_tier2_label: [0.253,0.307,0.719]
-    # bike_tier3_on_minor_road_not_protected_color: aquamarine #[0.495,0.563,0.750] #[0.361,0.416,0.800] # lighter blue dash style
-    # bike_tier3_on_minor_road_not_protected_color_casing: aquamarine #[0.357,0.750,0.870]
-    # bike_tier3_on_minor_road_not_protected_color_lite: aquamarine #[0.813,0.822,0.878] #[0.660,0.829,0.880]
-    # bike_tier3_on_minor_road_not_protected_color_dark: aquamarine #[0.495,0.563,0.750] # [0.502,0.792,0.880] #[0.660,0.829,0.880]
-    # bike_tier3_on_road_not_protected_color: yellow #[0.495,0.563,0.750] #[0.361,0.416,0.800] # lighter blue dash style
-    # bike_tier3_on_road_not_protected_color_casing: yellow #[0.357,0.750,0.870]
-    # bike_tier3_on_road_not_protected_color_lite: yellow #[0.813,0.822,0.878] #[0.660,0.829,0.880]
-    # bike_tier3_on_road_not_protected_color_dark: [0.495,0.563,0.750] # [0.502,0.792,0.880] #[0.660,0.829,0.880]
-    # bike_tier3_label: [0.253,0.307,0.719]
-    # bike_prohibited_color: [0.930,0.679,0.721]
-    # bike_prohibited_color_lite: [1.000,1.000,1.000]
-    # left_right_lane: purple #[0.414,0.940,0.607]
-    # regional_network_highlight: [0.973,1.000,0.318]
-    # regional_network_highlight: [1.000,1.000,0.549]
-    # no_bike_label: [0.740,0.540,0.572]
-    # no_bike_color_lite: [1.000,0.898,0.918]
 
     # FILTERS
     # labels
@@ -634,12 +595,24 @@ global:
             draw:
                 icons:
                     priority: 60
-                    color: global.bike_orange_color
+                    color: global.bike_lightorange_color
             minor_road:
-                filter: { kind: minor_road }
+                filter:
+                    kind: minor_road
                 draw:
                     icons:
                         color: global.bike_lightgreen_color
+                bike_tier1c_greenway:
+                    filter: global.greenway_on_road_filter
+                    draw:
+                        icons:
+                            color: global.bike_green_color
+                bus:
+                    filter:
+                        is_bus_route: true
+                    draw:
+                        icons:
+                            color: global.bike_lightorange_color
         no_bike:
             filter: global.no_bike_tier4_filter
             draw:
@@ -754,7 +727,7 @@ global:
                     outline:
                         style: bike_dash
                         color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_lightorange_color]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_highway
 
     bike_draw_highway_link:
@@ -790,7 +763,7 @@ global:
                         style: bike_dash
                         color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_lightorange_color]]
                         width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
             networks: global.bike_networks_link
 
     bike_draw_trunk_primary:
@@ -828,7 +801,7 @@ global:
                         color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_lightorange_color]]
                         #width: [[8, 0.5px], [10, 0px], [12, 1.1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
                         width: [[10, 0px], [11, 0.5px], [12, 0.5px], [14, 0.6px], [16, 2px], [18, 4px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_primary
 
     bike_draw_secondary:
@@ -863,7 +836,7 @@ global:
                         color: [[9, [0.906,0.906,0.906]], [10, global.bike_lightorange_color]]
                         #width: [[8, 0.5px], [10, 0px], [12, 1.1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
                         width: [[10, 0px], [11, 0.5px], [12, 0.5px], [13, 1px], [16, 2px], [18, 4px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_secondary
 
     bike_draw_tertiary:
@@ -899,7 +872,7 @@ global:
                         color: [[10, [0.847,0.822,0.826]], [11, global.bike_lightorange_color]]
                         #width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                         width: [[8, 0.5px], [10, 0px], [12, 0.5px], [13, 1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_tertiary
 
     bike_draw_major_road_link:
@@ -935,7 +908,7 @@ global:
                         style: bike_dash
                         color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_lightorange_color]]
                         width: [[8, 0px], [9, 0px], [12, 0px], [13, 0.5px], [14, 0.6px], [16, 1.25px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
             networks: global.bike_networks_link
 
     bike_draw_minor:
@@ -1014,7 +987,7 @@ global:
                         outline:
                             style: bike_dash
                             color: [[12, [0.900,0.900,0.900]], [12, global.bike_lightorange_color]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_minor_road
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_minor_road
             networks: global.bike_networks_minor
             early_order:
                 filter: { $zoom: [12,13,14] }
@@ -1055,7 +1028,7 @@ global:
                     outline:
                         color: [[12, [0.900,0.900,0.900]], [14, global.bike_lightgreen_color]]
                         width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
             networks: global.bike_networks_service
 
 
