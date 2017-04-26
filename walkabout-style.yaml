@@ -1503,7 +1503,7 @@ layers:
             intermittent:
                 filter:
                     any:
-                        - intermittent: true
+                        - intermittent: [true]
                         - kind: drain
                 draw:
                     lines:
