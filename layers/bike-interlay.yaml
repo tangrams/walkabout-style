@@ -1354,7 +1354,12 @@ global:
                 filter:
                     all:
                         - cycleway_left: true
+                        - not:
+                            - global.casing_bike_tier3_on_road_not_protected_filter_left
+                    all:
                         - cycleway_right: true
+                        - not:
+                            - global.casing_bike_tier3_on_road_not_protected_filter_right
                 draw:
                     casing_left:
                         visible: true
@@ -1380,16 +1385,16 @@ global:
             draw:
                 casing_right:
                     color: global.bike_orange_color_casing
-        tier3_left:
-            filter: global.casing_bike_tier3_on_road_not_protected_filter_left
-            draw:
-                casing_left:
-                    color: global.bike_lightgreen_color_casing
-        tier3_right:
-            filter: global.casing_bike_tier3_on_road_not_protected_filter_right
-            draw:
-                casing_right:
-                    color: global.bike_lightgreen_color_casing
+        # tier3_left:
+        #     filter: global.casing_bike_tier3_on_road_not_protected_filter_left
+        #     draw:
+        #         casing_left:
+        #             color: global.bike_lightgreen_color_casing
+        # tier3_right:
+        #     filter: global.casing_bike_tier3_on_road_not_protected_filter_right
+        #     draw:
+        #         casing_right:
+        #             color: global.bike_lightgreen_color_casing
 
     bike_draw_labels:
         draw:
