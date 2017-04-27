@@ -1180,12 +1180,12 @@ global:
         filter: global.no_bike_tier4_filter
         draw:
             lines:
-                # footway is narrower than default
-                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [17, 2.5m]]
+                color: global.bike_prohibited_color_lite
+                width: [[13, 0.35px], [14, 0.5px], [15, 1px], [17, 2.5m]]
                 outline:
-                    # casing for footway starts at  z16
                     style: no_bike_dash
-                    width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
+                    color: global.bike_prohibited_color
+                    width: [[13, 0px], [14, 0.5px], [15, 1px], [17, 2px], [18, 3px]]
 
 
     ## WIDE
