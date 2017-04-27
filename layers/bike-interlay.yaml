@@ -865,7 +865,7 @@ global:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[11, global.bike_darkgreen_color], [12, global.bike_darkgreen_color], [13, global.bike_orange_color_lite]]
+                    color: [[11, global.bike_darkgreen_color], [12, global.bike_orange_color_lite]]
                     width: [[11, 0.25px], [12, 0.25px], [13, 1px], [16, 4px], [17, 6.25px], [18, 10m]]
                     outline:
                         color: global.bike_darkgreen_color
@@ -1546,6 +1546,7 @@ global:
                         text-blend-order:
                             font:
                                 fill: global.bike_green_color
+                                stroke: { color: global.bike_green_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
                 bus:
                     filter:
                         is_bus_route: true
@@ -1600,7 +1601,7 @@ global:
             lines:
                 width: [[8, 0.15px], [11, 0.15px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                 outline:
-                    width: [[9, 0.75px], [10, 1px], [11, 1.5px], [14, 1.75px], [16, 2.5px], [18, 4px]]
+                    width: [[9, 0.75px], [10, 1px], [11, 1.5px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
@@ -1619,7 +1620,7 @@ global:
                 - bicycle_network: [icn,ncn,rcn]
         draw:
             lines:
-                width: [[10, 0px], [11, 0.25px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
+                width: [[10, 0px], [11, 0.15px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
                 outline:
                     width: [[10, 1px], [11, 1.5px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
