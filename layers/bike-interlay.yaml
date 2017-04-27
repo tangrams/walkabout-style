@@ -1191,7 +1191,7 @@ global:
     ## WIDE
     bike_draw_left_or_right_or_implied_tier1:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1212,7 +1212,7 @@ global:
 
     bike_draw_left_or_right_or_implied_tier2:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1230,10 +1230,29 @@ global:
                 order: function() { return feature.sort_rank + 1; }
                 width: 8m
         special_casing: global.casing_bike_draw_on_off
+        minor_road:
+            filter:
+                kind: minor_road
+            draw:
+                casing_both:
+                    color: global.bike_lightgreen_color_casing
+                casing_left:
+                    color: global.bike_lightgreen_color_casing
+                casing_right:
+                    color: global.bike_lightgreen_color_casing
+            greenway:
+                filter: global.greenway_on_road_filter
+                draw:
+                    casing_both:
+                        color: global.bike_green_color_casing
+                    casing_left:
+                        color: global.bike_green_color_casing
+                    casing_right:
+                        color: global.bike_green_color_casing
 
     bike_draw_left_or_right_or_implied_tier3:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1254,7 +1273,7 @@ global:
 
     bike_draw_left_or_right_or_implied_tier3_minor_road:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1276,7 +1295,7 @@ global:
     ## NARROW
     bike_draw_left_or_right_or_implied_tier1_narrow:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1297,7 +1316,7 @@ global:
 
     bike_draw_left_or_right_or_implied_tier2_narrow:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1318,7 +1337,7 @@ global:
 
     bike_draw_left_or_right_or_implied_tier3_narrow:
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
@@ -1354,7 +1373,7 @@ global:
         left:
             filter:
                 any:
-                    - cycleway_left: true
+                    - cycleway_left: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
                     - cycleway: opposite
             draw:
                 casing_left:
@@ -1391,11 +1410,23 @@ global:
             draw:
                 casing_left:
                     color: global.bike_orange_color_casing
+            minor_road:
+                filter:
+                    kind: minor_road
+                draw:
+                    casing_right:
+                        color: global.bike_lightgreen_color_casing
         tier2_right:
             filter: global.casing_bike_tier2_on_road_protected_filter_right
             draw:
                 casing_right:
                     color: global.bike_orange_color_casing
+            minor_road:
+                filter:
+                    kind: minor_road
+                draw:
+                    casing_right:
+                        color: global.bike_lightgreen_color_casing
         # tier3_left:
         #     filter: global.casing_bike_tier3_on_road_not_protected_filter_left
         #     draw:
