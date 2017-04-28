@@ -1707,7 +1707,7 @@ global:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: 11 }
+            filter: { bicycle_network: rcn, $zoom: [10,11] }
             draw:
                 highlight:
                     visible: false
@@ -1716,10 +1716,10 @@ global:
             draw:
                 lines:
                     color: global.bike_green_color_lite
-                    width: [[8, 0.5px], [10, 0.5px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                    width: [[8, 0.5px], [11, 0.15px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
                     outline:
                         color: global.bike_green_color
-                        width: [[8, 0.5px], [10, 1px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        width: [[8, 0.5px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
                     width: [[10, 0px], [11, 7px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
@@ -1752,6 +1752,11 @@ global:
                     width: [[8, 1px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [10,11] }
             draw:
                 highlight:
                     visible: false
@@ -1802,7 +1807,7 @@ global:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: 11 }
+            filter: { bicycle_network: rcn, $zoom: [10,11] }
             draw:
                 highlight:
                     visible: false
