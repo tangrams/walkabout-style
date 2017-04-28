@@ -1054,6 +1054,10 @@ styles:
         base: points
         texture: pois
         blend_order: 1
+    background-icons:
+        base: points
+        texture: pois
+        blend_order: 0
     text-blend-order:
         base: text
         blend_order: 1
@@ -4372,10 +4376,12 @@ layers:
                 filter: { kind: tree, $zoom: { min: 18 } }
                 draw:
                     icons:
+                        style: background-icons
                         # TODO: put tree icons behind the buildings
                         # See SF State University #20/37.72314/-122.47772
                         color: [0.145,0.745,0.643]
                         visible: global.icon_visible_poi_landuse_e
+                        collide: false
                 z18:
                     filter: { $zoom: [18] }
                     draw:
