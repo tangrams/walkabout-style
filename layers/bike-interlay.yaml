@@ -697,8 +697,9 @@ global:
     no_bike_tier4_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
-            - bicycle: [no, dismount]
-            - surface: cobblestone
+            - any:
+                - bicycle: [no, dismount]
+                - surface: cobblestone
 
     # DRAW STYLES
     bike_draw_highway:
