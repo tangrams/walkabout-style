@@ -2730,7 +2730,9 @@ layers:
             filter:
                 kind: path
                 kind_detail: [track]
-                motor_vehicle: [false, no]
+                any:
+                    motor_vehicle: [false, no]
+                    is_bicycle_related: true
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }
