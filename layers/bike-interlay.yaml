@@ -1605,10 +1605,10 @@ global:
                 - bicycle_network: [icn,ncn,rcn]
         draw:
             lines:
-                color: [[9, global.bike_darkgreen_color], [10, global.bike_orange_color_lite]]
-                width: [[8, 0.15px], [10, 0.5px], [11, 0.75px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                # color: [[9, global.bike_darkgreen_color], [10, global.bike_orange_color_lite]]
+                width: [[8, 1px], [10, 1.75px], [11, 1.5px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                 outline:
-                    width: [[9, 0.75px], [10, 1px], [11, 1px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
+                    width: [[9, 0px], [10, 0px], [11, 0.25px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
@@ -1632,10 +1632,9 @@ global:
                 - bicycle_network: [icn,ncn,rcn]
         draw:
             lines:
-                color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
-                width: [[8, 0.15px], [10, 0.25px], [11, 0.5px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
+                width: [[8, 1px], [10, 1.5px], [11, 1.25px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
                 outline:
-                    width: [[9, 0.5px], [10, 1px], [11, 1px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
+                    width: [[9, 0px], [10, 0px], [11, 0.25px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
@@ -1661,7 +1660,7 @@ global:
                 #- { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
-                width: [[11, 1.25px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                width: [[10, 1px], [11, 1.25px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
                 outline:
                     width: [[10, 0px], [11, 0px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
@@ -1713,7 +1712,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[10, 0px], [11, 5px], [12, 7px], [15, 11px], [17, 24px], [19, 25m]]
+                width: [[10, 0px], [11, 3px], [12, 7px], [15, 11px], [17, 24px], [19, 25m]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1742,7 +1741,7 @@ global:
                         color: global.bike_green_color
                         width: [[8, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[10, 0px], [11, 7px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[10, 0px], [11, 4px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1761,7 +1760,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[11, 5px], [15, 5px], [17, 15px], [19, 36px]]
+                width: [[11, 3px], [15, 5px], [17, 15px], [19, 36px]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1770,7 +1769,7 @@ global:
                     outline:
                         width: [[8, 0.5px], [10, 0.5px], [11, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 1px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[10, 0px], [11, 3px], [12, 7px], [15, 11px], [17, 21px], [19, 25m]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1786,12 +1785,12 @@ global:
             draw:
                 lines:
                     color: [[10, global.bike_green_color], [11, global.bike_green_color_lite]]
-                    width: [[11, 1.5px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                    width: [[8, 0px], [10, 0.25px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
                     outline:
-                        color: [[10, [0.900,0.900,0.900]], [11, global.bike_green_color]]
-                        width: [[11, 0.5px], [12, 1.0px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        color: global.bike_green_color
+                        width: [[8, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[11, 5px], [12, 6px], [15, 13px], [17, 20px], [19, 60px]]
+                    width: [[10, 0px], [11, 4px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1807,17 +1806,18 @@ global:
                 #- { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
-                width: [[8, 1px], [10, 1.1px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                color: [[8, global.bike_darkgreen_color], [10, global.bike_darkgreen_color_lite]]
+                width: [[8, 0.5px], [10, 1px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                 order: function() { return feature.sort_rank + 100; }
                 outline:
-                    width: [[8, 0.5px], [10, 0.5px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                     color: global.bike_darkgreen_color
+                    width: [[8, 0px], [10, 0.5px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                     # TODO: Why does this fail on Anacostia Trail in Hyattsville, MD
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[10, 0px], [11, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[10, 0px], [11, 6px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1847,7 +1847,7 @@ global:
                     lines:
                         color: global.bike_brown_color_lite
                         outline:
-                            color: [[12, [0.900,0.900,0.900]], [13, global.bike_brown_color]]
+                            color: global.bike_brown_color
 
     bike_networks_track:
         filter:
