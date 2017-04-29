@@ -534,7 +534,12 @@ global:
                     visible: false
         #network_icn_ncn always visible, controlled by server
         network_rcn:
-            filter: { bicycle_network: rcn, $zoom: { max: 9 } }
+            filter: { bicycle_network: rcn, $zoom: { max: 12 } }
+            draw:
+                icons:
+                    visible: false
+        tracks_network_rcn:
+            filter: { $zoom: { max: 12 }, kind_detail: track }
             draw:
                 icons:
                     visible: false
@@ -1753,9 +1758,13 @@ global:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
             any:
-                - bicycle_network: [icn,ncn,rcn]
+                - bicycle_network: true
                 #- { walking_network: true, is_bicycle_related: true }
         draw:
+            lines:
+                width: [[8, 0px], [10, 0.25px], [12, 0.8px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                outline:
+                    width: [[8, 0px], [10, 0.25px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
@@ -1836,6 +1845,7 @@ global:
             filter: { kind_detail: footway }
             draw:
                 lines:
+                    color: global.bike_lightbrown_color_lite
                     width: [[8, 0.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                     order: function() { return feature.sort_rank + 200; }
                     outline:

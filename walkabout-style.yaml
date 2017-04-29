@@ -2700,7 +2700,7 @@ layers:
                                 color: [0.816,0.840,0.861]
 
                 labels-footpaths:
-                    filter: { $zoom: { min: 15 } }
+                    filter: { $zoom: { min: 11 } }
                     draw:
                         text-blend-order:
                             priority: 58
@@ -2720,7 +2720,7 @@ layers:
                         visible: true
 
                 labels-pedestrian:
-                    filter: { $zoom: { min: 14 } }
+                    filter: { $zoom: { min: 11 } }
                     draw:
                         text-blend-order:
                             priority: 58
