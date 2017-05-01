@@ -456,10 +456,10 @@ global:
                 # you need to match any custom shield to the vector tile `network` values
                 sprite: |
                     function() {
-                        return ('sdk_shield-' + feature.bicycle_shield_text.length + 'char');
+                        return ('sdk_solid_shield-' + feature.bicycle_shield_text.length + 'char');
                     }
                 color: black
-                sprite_default: sdk_shield_5char
+                sprite_default: sdk_solid_shield_5char
                 priority: 58
                 repeat_group: shields
                 repeat_distance: [[8,90px],[10,40px],[13,30px]]
