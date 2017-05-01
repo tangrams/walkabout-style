@@ -791,10 +791,10 @@ global:
             draw:
                 lines:
                     color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
-                    width: [[8, 0.15px], [10, 0.15px], [11, 0.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                    width: [[8, 1px], [10, 1px], [11, 0.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                     outline:
                         color: global.bike_darkgreen_color
-                        width: [[10, 0.75px], [11, 1px], [12, 1.1px], [13, 1.5px], [16, 2.5px], [18, 4px]]
+                        width: [[8, 0px], [10, 0px], [11, 1px], [12, 1.1px], [13, 1.5px], [16, 2.5px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_primary
         bike_tier2_on_road_protected:
