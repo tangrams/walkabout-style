@@ -491,7 +491,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
+                    size: [[6,[10px,10px]],[13,[14px,14px]],[16,[18px,18px]]]
         width_2char:
             filter: |
                 function() {
@@ -499,7 +499,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
+                    size: [[6,[13px,10px]],[13,[17px,14px]],[16,[24px,18px]]]
         width_3char:
             filter: |
                 function() {
@@ -507,7 +507,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
+                    size: [[6,[17px,10px]],[13,[24px,14px]],[16,[33px,18px]]]
         width_4char:
             filter: |
                 function() {
@@ -515,7 +515,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
+                    size: [[6,[20px,10px]],[13,[28px,14px]],[16,[38px,18px]]]
         width_5char:
             filter: |
                 function() {
@@ -523,7 +523,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
+                    size: [[6,[23px,10px]],[13,[32px,14px]],[16,[45px,18px]]]
         width_other:
             filter: |
                 function() {
@@ -1125,20 +1125,20 @@ global:
             draw:
                 lines:
                     color: [[12, global.bike_orange_color], [13, global.bike_orange_color], [14, global.bike_orange_color_lite]]
-                    width: [[12, 1.25px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    width: [[12, 0.15px], [13, 0.15px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_orange_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+                        color: global.bike_orange_color
+                        width: [[12, 0.5px], [13, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             networks: global.bike_networks_path
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
                     color: [[12, global.bike_lightorange_color], [13, global.bike_lightorange_color], [14, global.bike_lightorange_color_lite]]
-                    width: [[12, 1.25px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    width: [[12, 0.15px], [13, 0.15px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_lightorange_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+                        color: global.bike_lightorange_color
+                        width: [[12, 0.5px], [13, 0.6px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             networks: global.bike_networks_path
 
     bike_draw_footway:
@@ -1618,7 +1618,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[9, 6px], [10, 7px], [11, 8px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
+                width: [[9, 6px], [10, 7px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1645,7 +1645,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 7px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1671,7 +1671,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 7px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1705,7 +1705,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 30; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 5px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1727,7 +1727,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 5px], [12, 11px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1750,7 +1750,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 3px], [12, 7px], [15, 11px], [17, 24px], [19, 25m]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 11px], [17, 24px], [19, 25m]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1778,7 +1778,7 @@ global:
                         color: global.bike_green_color
                         width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [11, 4px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1801,7 +1801,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 3px], [15, 5px], [17, 15px], [19, 36px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1810,7 +1810,7 @@ global:
                     outline:
                         width: [[8, 0px], [10, 0px], [11, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [11, 3px], [12, 7px], [15, 11px], [17, 21px], [19, 25m]]
+                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 11px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1831,7 +1831,7 @@ global:
                         color: global.bike_green_color
                         width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [11, 4px], [12, 8px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1856,7 +1856,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 6px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1876,11 +1876,11 @@ global:
             draw:
                 lines:
                     color: global.bike_lightbrown_color_lite
-                    width: [[8, 1px], [10, 1.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    width: [[8, 0.5px], [10, 0.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                     order: function() { return feature.sort_rank + 200; }
                     outline:
                         color: global.bike_lightbrown_color
-                        width: [[8, 0px], [10, 0px], [12, 0.8px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        width: [[8, 0.25px], [10, 0.5px], [12, 0.8px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
             local_network:
                 filter: { bicycle_network: lcn }
                 draw:
@@ -1907,7 +1907,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [11, 5px], [12, 4px], [15, 7px], [17, 13px], [19, 30px]]
+                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         national_network:
             filter:
                 any:
@@ -1919,7 +1919,7 @@ global:
                     outline:
                         width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 7px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
