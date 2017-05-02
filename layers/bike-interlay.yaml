@@ -491,7 +491,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
+                    size: [[6,[10px,10px]],[13,[14px,14px]],[16,[18px,18px]]]
         width_2char:
             filter: |
                 function() {
@@ -499,7 +499,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
+                    size: [[6,[13px,10px]],[13,[17px,14px]],[16,[24px,18px]]]
         width_3char:
             filter: |
                 function() {
@@ -507,7 +507,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
+                    size: [[6,[17px,10px]],[13,[24px,14px]],[16,[33px,18px]]]
         width_4char:
             filter: |
                 function() {
@@ -515,7 +515,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
+                    size: [[6,[20px,10px]],[13,[28px,14px]],[16,[38px,18px]]]
         width_5char:
             filter: |
                 function() {
@@ -523,7 +523,7 @@ global:
                 }
             draw:
                 icons:
-                    size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
+                    size: [[6,[23px,10px]],[13,[32px,14px]],[16,[45px,18px]]]
         width_other:
             filter: |
                 function() {
