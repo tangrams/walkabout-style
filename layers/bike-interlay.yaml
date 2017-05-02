@@ -662,11 +662,19 @@ global:
             - { kind_detail: [living_street, unclassified], walking_network: true }   # some funk in Portland, OR
             - { kind_detail: [living_street, unclassified], cycleway: true }   # eg shared_lane – really the server should provide bicycle_network
             - { cycleway: cycleway_greenway }
+    greenway_on_road_casing_filter:
+        all:
+            - function() { return global.sdk_bike_overlay; }
+            - is_bicycle_related: true
+        any:
+            - { kind_detail: [residential, living_street, unclassified], cycleway_left: true }   # lane casings
+            - { kind_detail: [residential, living_street, unclassified], cycleway_right: true }  # lane casings
 
     # brown
     bike_tier1_off_road_track_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
+        any:
             - { is_bicycle_related: true, kind_detail: [track, footway] }
 
     # orange
@@ -1006,7 +1014,7 @@ global:
                     is_bus_route: true
                 draw:
                     lines:
-                        color: [[11, global.bike_lightorange_color], [12, global.bike_lightorange_color_lite]]
+                        # nvk (20170502): No line color here is a feature, not a bug for bus streets in SF like the Wiggle
                         outline:
                             style: bike_dash
                             color: global.bike_lightorange_color
@@ -1095,6 +1103,14 @@ global:
                         order: 382
                         outline:
                             order: 381
+            unpaved:
+                filter:
+                    - surface: [unpaved, dirt]
+                draw:
+                    lines:
+                        color: [[8, global.bike_brown_color], [10, global.bike_brown_color], [11, global.bike_brown_color_lite]]
+                        outline:
+                            color: global.bike_brown_color
             # footway:
             #     filter:
             #         kind_detail: footway
@@ -1428,6 +1444,12 @@ global:
                 draw:
                     casing_right:
                         color: global.bike_lightgreen_color_casing
+                greenway_casing:
+                    filter: global.greenway_on_road_casing_filter
+                    draw:
+                        casing_right:
+                            color: global.bike_green_color_casing
+
         tier2_right:
             filter: global.casing_bike_tier2_on_road_protected_filter_right
             draw:
@@ -1439,6 +1461,11 @@ global:
                 draw:
                     casing_right:
                         color: global.bike_lightgreen_color_casing
+                greenway_casing:
+                    filter: global.greenway_on_road_casing_filter
+                    draw:
+                        casing_right:
+                            color: global.bike_green_color_casing
         # tier3_left:
         #     filter: global.casing_bike_tier3_on_road_not_protected_filter_left
         #     draw:
@@ -1728,7 +1755,6 @@ global:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
                 lines:
-                    color: [[10, global.bike_green_color], [11, global.bike_green_color_lite]]
                     width: [[8, 1px], [10, 1.5px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                     outline:
                         width: [[8, 0px], [10, 0px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
