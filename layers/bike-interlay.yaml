@@ -638,7 +638,7 @@ global:
         all:
             - function() { return global.sdk_bike_overlay; }
         any:
-            - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps, raceway, corridor] }
+            - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps, bridleway, raceway, corridor] }
             - cycleway: [sidepath, track, opposite_track, buffered_lane]
             - cycleway_left: [sidepath, track, opposite_track, buffered_lane]
             - cycleway_right: [sidepath, track, opposite_track, buffered_lane]
@@ -674,7 +674,7 @@ global:
     bike_tier1_off_road_track_filter:
         all:
             - function() { return global.sdk_bike_overlay; }
-            - { is_bicycle_related: true, kind_detail: [track, footway, bridleway] }
+            - { is_bicycle_related: true, kind_detail: [track, footway] }
 
     # orange
     bike_tier2_on_road_protected_filter:
@@ -1104,7 +1104,9 @@ global:
                             order: 381
             unpaved:
                 filter:
-                    - surface: [unpaved, dirt]
+                    any:
+                        - surface: [unpaved, dirt]
+                        - kind_detail: [bridleway, corridor]
                 draw:
                     lines:
                         color: [[8, global.bike_brown_color], [10, global.bike_brown_color], [11, global.bike_brown_color_lite]]
