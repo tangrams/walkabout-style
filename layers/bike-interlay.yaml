@@ -1705,12 +1705,13 @@ global:
                 highlight:
                     visible: false
 
-            lines:
-                    color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
-                    width: [[11, 0.15px], [12, 0.25px], [13, 1px], [16, 4px], [17, 6.25px], [18, 10m]]
-                    outline:
-                        color: global.bike_darkgreen_color
-                        width: [[10, 0px], [11, 0.35px], [12, 0.5px], [13, 1.5px], [16, 2px], [18, 4px]]
+                # this seems to be a bad copy-paste job?
+                #lines:
+#                        color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
+#                        width: [[11, 0.15px], [12, 0.25px], [13, 1px], [16, 4px], [17, 6.25px], [18, 10m]]
+#                        outline:
+#                            color: global.bike_darkgreen_color
+#                            width: [[10, 0px], [11, 0.35px], [12, 0.5px], [13, 1.5px], [16, 2px], [18, 4px]]
     bike_networks_tertiary:
         enabled: global.sdk_bike_overlay
         filter:
