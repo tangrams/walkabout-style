@@ -659,7 +659,7 @@ global:
         { is_bicycle_related: true, kind_detail: [footway] }
     #blue ferry
     bike_tier1_ferry_filter:
-        { is_bicycle_related: true }
+        { kind: ferry, is_bicycle_related: true }
     greenway_on_road_filter:
         all:
             - is_bicycle_related: true
@@ -840,9 +840,14 @@ global:
 
     bike_draw_secondary:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         a-gray-default-bikes:
-            filter:
-                function() { return global.sdk_bike_overlay; }
+            enabled: global.sdk_bike_overlay
             draw:
                 lines:
                     color: [[12, [0.990,0.990,0.990]], [13, [1.00,1.00,1.00]]]
@@ -886,6 +891,12 @@ global:
 
     bike_draw_tertiary:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -923,6 +934,12 @@ global:
 
     bike_draw_major_road_link:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -960,6 +977,12 @@ global:
 
     bike_draw_minor:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -1042,6 +1065,12 @@ global:
     # Hamburg http://localhost:8000/#16/53.5518/10.0095
     bike_draw_service:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
@@ -1100,9 +1129,21 @@ global:
                     style: no_bike_dash
                     color: [[12, [0.900,0.900,0.900]], [14, global.bike_prohibited_color]]
                     width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
 
     bike_draw_path:
         enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         # thicken the widths
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
@@ -1172,6 +1213,12 @@ global:
                         order: 382
                         outline:
                             order: 381
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early-z9:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
             sidewalk-crossing:
                 bike:
                     filter:
@@ -1195,6 +1242,12 @@ global:
                     outline:
                         color: global.bike_brown_color
                         width: [[12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
             networks: global.bike_networks_track
 
     bike_draw_steps:
@@ -1205,6 +1258,12 @@ global:
                 dashed_steps:
                     color: [0.633,0.988,0.633] #global.bike_darkgreen_color_lite
                     width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_draw_ferry:
         enabled: global.sdk_bike_overlay
@@ -1213,6 +1272,12 @@ global:
             lines:
                 color: global.bike_blue_color
                 width: [[11, 0.4px], [12, 0.5px], [15, 1.5px], [17, 2.5m]]
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         networks: global.bike_networks_ferry
 
 
@@ -1677,7 +1742,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[9, 6px], [10, 7px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
+                width: [[9, 4px], [10, 7px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1688,6 +1753,11 @@ global:
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_networks_primary:
         enabled: global.sdk_bike_overlay
@@ -1705,7 +1775,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1716,6 +1786,11 @@ global:
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_networks_secondary:
         enabled: global.sdk_bike_overlay
@@ -1732,7 +1807,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1743,6 +1818,11 @@ global:
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
                 # this seems to be a bad copy-paste job?
                 #lines:
@@ -1768,7 +1848,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 30; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1779,6 +1859,11 @@ global:
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_networks_link:
         enabled: global.sdk_bike_overlay
@@ -1791,7 +1876,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1815,7 +1900,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 11px], [17, 24px], [19, 25m]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 11px], [17, 24px], [19, 25m]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1829,10 +1914,15 @@ global:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: [10] }
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
         greenway:
             filter: global.greenway_on_road_filter
             draw:
@@ -1843,7 +1933,7 @@ global:
                         color: global.bike_green_color
                         width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1867,7 +1957,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px]]
         national_network:
             filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
@@ -1876,17 +1966,22 @@ global:
                     outline:
                         width: [[8, 0px], [10, 0px], [11, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 11px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 3px], [10, 6px], [12, 9px], [15, 11px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: [10] }
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
         greenway:
             filter: global.greenway_on_road_filter
             draw:
@@ -1897,7 +1992,7 @@ global:
                         color: global.bike_green_color
                         width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
             early:
                 filter: { $zoom: { max: 15 } }
                 draw:
@@ -1923,7 +2018,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
@@ -1934,10 +2029,15 @@ global:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: [10] }
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
         footway:
             filter:
                 all:
@@ -1975,7 +2075,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         national_network:
             filter:
                 any:
@@ -1987,17 +2087,22 @@ global:
                     outline:
                         width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: [10] }
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_networks_ferry:
         enabled: global.sdk_bike_overlay
@@ -2015,7 +2120,7 @@ global:
                 base: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
-                width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         national_network:
             filter:
                 any:
@@ -2027,17 +2132,22 @@ global:
                     outline:
                         width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                 highlight:
-                    width: [[8, 5px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+                    width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
         regional_network:
-            filter: { bicycle_network: rcn, $zoom: [10] }
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
 
 styles:
