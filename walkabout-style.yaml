@@ -5870,8 +5870,7 @@ layers:
                         width: [[14,0px],[15,0.6px],[16,0.75px],[17,1.5px],[19,1m]]
 
         transit mode:
-            filter:
-                - function() { return global.sdk_transit_overlay; }
+            enabled: global.sdk_transit_overlay
             draw:
                 lines:
                     order: 499
@@ -5961,10 +5960,8 @@ layers:
             labels-transit-lines:
                 filter:
                     all:
-                        - function() { return global.sdk_transit_overlay; }
-                        - all:
-                            - $zoom: { min: 13 }
-                            - ref: true
+                        - $zoom: { min: 13 }
+                        - ref: true
                 draw:
                     icons:
                         priority: 20
@@ -6043,9 +6040,7 @@ layers:
 
             z19-show-long-route-name:
                     filter:
-                        all:
-                            - function() { return global.sdk_transit_overlay; }
-                            - $zoom: { min: 19 }
+                        $zoom: { min: 19 }
                     draw:
                         text:
                             font:
