@@ -815,8 +815,8 @@ sources:
         # prod
         #url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
         # dev
-        #url: https://tile.dev.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
-        url: https://d34o1q5y1d9is8.cloudfront.net/normal/{z}/{x}/{y}.png
+        url: https://tile.dev.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        #url: https://d34o1q5y1d9is8.cloudfront.net/normal/{z}/{x}/{y}.png
         url_params:
             api_key: global.sdk_mapzen_api_key
         max_zoom: 15
@@ -1360,7 +1360,7 @@ layers:
         data: { source: mapzen}
         draw:
             terrain:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 color: [1.0, 1.0, 1.0]
 
     water:
@@ -4311,8 +4311,8 @@ layers:
                     icons:
                         visible: false
         #end different icon sprites
-
-        #most POI icons without name should be hidden, except these
+        #
+        # most POI icons without name should be hidden, except these
         no-name:
             filter: { name: false }
             draw:
@@ -5124,12 +5124,13 @@ layers:
         data: { source: mapzen, layer: landuse }
         draw:
             terrain:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 visible: false
-
             terrain-park:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 visible: false
+            lines:
+                order: function() { return feature.sort_rank || 0; }
 
         landuse-labels:
             filter:
