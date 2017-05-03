@@ -808,11 +808,11 @@ global:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_orange_color], [12, global.bike_orange_color_lite]]
-                    width: [[8, 1px], [11, 1.5px], [12, 0.15px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                    color: [[10, global.bike_orange_color], [11, global.bike_orange_color_lite]]
+                    width: [[8, 0.5px], [11, 0.15px], [12, 0.15px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                     outline:
                         color: global.bike_orange_color
-                        width: [[10, 0px], [11, 0px], [12, 0.6px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        width: [[8, 0.5px], [11, 0.75px], [12, 0.6px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_primary
         bike_tier3_on_road_not_protected:
@@ -1639,9 +1639,9 @@ global:
         draw:
             lines:
                 # color: [[9, global.bike_darkgreen_color], [10, global.bike_orange_color_lite]]
-                width: [[8, 1px], [10, 1.5px], [11, 1.5px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                width: [[8, 0.5px], [10, 0.15px], [11, 0.15px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                 outline:
-                    width: [[9, 0px], [10, 0px], [11, 0.25px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
+                    width: [[8, 0.5px], [10, 0.75px], [11, 0.85px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             highlight:
                 base: lines
                 order: function() { return feature.sort_rank - 100; }
