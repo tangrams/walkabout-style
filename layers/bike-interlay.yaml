@@ -675,6 +675,9 @@ global:
 
     # orange
     bike_tier2_on_road_protected_filter:
+        all:
+            - not:
+                - kind_detail: [cycleway, track, path, pedestrian, living_street, unclassified, footway, steps, raceway, bridleway, corridor]
         any:
             - cycleway: [lane, opposite, opposite_lane]
             - cycleway_left: [lane, opposite, opposite_lane]
