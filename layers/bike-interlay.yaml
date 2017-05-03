@@ -1743,7 +1743,7 @@ global:
                 - bicycle_network: [icn,ncn,rcn]
         draw:
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
                 width: [[9, 4px], [10, 7px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
@@ -1776,7 +1776,7 @@ global:
                 outline:
                     width: [[8, 0.5px], [10, 0.75px], [11, 0.85px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
@@ -1808,7 +1808,7 @@ global:
                 outline:
                     width: [[8, 0.5px], [10, 0.75px], [11, 0.85px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
@@ -1849,7 +1849,7 @@ global:
                 outline:
                     width: [[8, 0.45px], [10, 0.75px], [11, 0.6px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 30; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
@@ -1877,7 +1877,7 @@ global:
                 - bicycle_network: [icn,ncn,rcn]
         draw:
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
@@ -1901,7 +1901,7 @@ global:
                 outline:
                     width: [[8, 0.7px], [10, 0.7px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 11px], [17, 24px], [19, 25m]]
@@ -1958,7 +1958,7 @@ global:
                 outline:
                     width: [[8, 0px], [10, 0px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px]]
@@ -2019,7 +2019,7 @@ global:
                     width: [[8, 0.5px], [10, 0.85px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                     # TODO: Why does this fail on Anacostia Trail in Hyattsville, MD
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
@@ -2076,7 +2076,7 @@ global:
                     color: global.bike_brown_color
                     width: [[8, 0px], [10, 0px], [12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
@@ -2121,7 +2121,7 @@ global:
                     color: global.bike_blue_color
                     width: [[8, 0px], [10, 0px], [12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 3; }
                 color: global.regional_network_highlight
                 width: [[8, 3px], [10, 6px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
