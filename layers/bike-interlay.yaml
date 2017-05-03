@@ -1090,7 +1090,7 @@ global:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[8, global.bike_darkgreen_color], [10, global.bike_darkgreen_color], [11, global.bike_darkgreen_color_lite]]
+                    color: [[8, global.bike_darkgreen_color], [9, global.bike_darkgreen_color], [10, global.bike_darkgreen_color_lite]]
                     width: [[10, 0px], [12, 0px], [13, 0.5px], [14, 1.5px], [16, 2px], [18, 3m]]
                     outline:
                         color: global.bike_darkgreen_color
@@ -1848,10 +1848,10 @@ global:
                 #- { walking_network: true, is_bicycle_related: true }
         draw:
             lines:
-                width: [[8, 0.25px], [10, 0.25px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                width: [[8, 0.15px], [10, 0.15px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
                 order: function() { return feature.sort_rank + 100; }
                 outline:
-                    width: [[8, 0.5px], [10, 1px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                    width: [[8, 0.5px], [10, 0.85px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
                     # TODO: Why does this fail on Anacostia Trail in Hyattsville, MD
             highlight:
                 base: lines
