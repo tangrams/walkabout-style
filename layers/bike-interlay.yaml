@@ -1843,7 +1843,7 @@ global:
     bike_networks_path:
         filter:
             all:
-                - function() { return (global.sdk_bike_network_overlay; }
+                - function() { return global.sdk_bike_network_overlay; }
             any:
                 - bicycle_network: true
                 #- { walking_network: true, is_bicycle_related: true }
