@@ -429,6 +429,8 @@ global:
                 return name + " (bike path)";
             } else if( feature.kind_detail == "living_street" ) {
                 return name + " (greenway)";
+            } else if( feature.kind_detail == "steps" && (feature.ramp_bicycle == 'yes') ) {
+                return name + " (bike ramp)";
             } else if( feature.kind_detail == "footway" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
                 return name + " (bikes okay)";
             } else if( feature.kind_detail == "steps" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
@@ -449,6 +451,8 @@ global:
                 return name + " (" + feature.cycleway_left + ")";
             } else if ( feature.cycleway_right ){
                 return name + " (" + feature.cycleway_right + ")";
+            } else if ( feature.surface == 'cobblestone' ){
+                return name + " (" + feature.surface + ")";
             } else {
                 return name + " (bike route)";
             }
