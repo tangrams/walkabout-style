@@ -2072,10 +2072,10 @@ layers:
                 draw:
                     lines:
                         color: [1.00, 1.00, 1.00]
-                        width: [[11, 0px], [12, 0px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                        width: [[11, 0.1px], [12, 0.1px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
                         outline:
                             color: [[11, [0.847,0.822,0.826]], [12, [0.797,0.770,0.775]], [14, [0.714,0.694,0.706]]]
-                            width: [[10, 0px], [11, 0px], [12, 0.3px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+                            width: [[11, 0.3px], [12, 0.3px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                 early:
                     filter: { $zoom: { max: 14 } }
                     draw:
@@ -2084,14 +2084,14 @@ layers:
                             outline:
                                 order: function() { return feature.sort_rank + 3; }
                 routes:
-                    filter: { ref: true, $zoom: { min: 12 } }
+                    filter: { ref: true, $zoom: { min: 11 } }
                     draw:
                         lines:
                             color: [1.00,1.00,1.00]
-                            width: [[11, 0px], [12, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                            width: [[11, 1px], [12, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
                             outline:
                                 color: [[11, [0.788,0.780,0.800]], [12, [0.797,0.770,0.775]]]
-                                width: [[11, 0.4px], [12, 1px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+                                width: [[11, 1px], [12, 1px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
                     early:
                         filter: { $zoom: { max: 14 } }
                         draw:
