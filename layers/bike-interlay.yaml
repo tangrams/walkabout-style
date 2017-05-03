@@ -458,7 +458,7 @@ global:
                         return ('sdk_solid_shield-' + feature.bicycle_shield_text.length + 'char');
                     }
                 color: black
-                sprite_default: sdk_solid_shield_5char
+                sprite_default: sdk_solid_shield-5char
                 priority: 58
                 repeat_group: shields
                 repeat_distance: [[8,90px],[10,40px],[13,30px]]
