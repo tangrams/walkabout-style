@@ -65,8 +65,10 @@ layers:
             # it would be nice to label these at 13, but the tiles don't have data for this
             bike-labels-z14:
                 filter:
-                    $zoom: [14]
-                    is_bicycle_related: true
+                    all:
+                        - function() { return global.sdk_bike_overlay; }
+                        - $zoom: [14]
+                        - is_bicycle_related: true
                 draw:
                     text-blend-order:
                         priority: 59
@@ -1112,14 +1114,6 @@ global:
                         color: [[8, global.bike_brown_color], [10, global.bike_brown_color], [11, global.bike_brown_color_lite]]
                         outline:
                             color: global.bike_brown_color
-            # footway:
-            #     filter:
-            #         kind_detail: footway
-            #     draw:
-            #         lines:
-            #             color: pink
-            #             outline:
-            #                 color: red
             networks: global.bike_networks_path
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
@@ -1156,22 +1150,27 @@ global:
                         color: global.bike_lightbrown_color
                         width: [[13, 0px], [14, 0.4px], [15, 1px], [17, 2px], [18, 3px]]
             early:
-                filter: { $zoom: { max: 16 } }
+                filter:
+                    all:
+                        - function() { return global.sdk_bike_overlay; }
+                        - $zoom: { max: 16 }
                 draw:
                     lines:
                         order: 382
                         outline:
                             order: 381
+            sidewalk-crossing:
+                bike:
+                    filter:
+                        all:
+                            - function() { return global.sdk_bike_overlay; }
+                            - is_bicycle_related: true
+                            - not: { kind_detail: footway }
+                    draw:
+                        lines:
+                            outline:
+                                color: global.bike_darkgreen_color
         networks: global.bike_networks_path
-        sidewalk-crossing:
-            bike:
-                filter:
-                    is_bicycle_related: true
-                    not: { kind_detail: footway }
-                draw:
-                    lines:
-                        outline:
-                            color: global.bike_darkgreen_color
 
     bike_draw_track:
         bike_tier1_off_road:
@@ -1479,6 +1478,8 @@ global:
         #             color: global.bike_lightgreen_color_casing
 
     bike_draw_labels:
+        filter:
+            function() { return global.sdk_bike_overlay; }
         draw:
             text-blend-order:
                 priority: 56
@@ -1842,7 +1843,7 @@ global:
     bike_networks_path:
         filter:
             all:
-                - function() { return global.sdk_bike_network_overlay; }
+                - function() { return (global.sdk_bike_network_overlay; }
             any:
                 - bicycle_network: true
                 #- { walking_network: true, is_bicycle_related: true }
@@ -1873,7 +1874,11 @@ global:
                 highlight:
                     visible: false
         footway:
-            filter: { kind_detail: footway }
+            filter:
+                all:
+                    # this this is a new layer based on kind_detail (not network), we need to restate the basic overlay filter function
+                    - function() { return global.sdk_bike_overlay; }
+                    - kind_detail: footway
             draw:
                 lines:
                     color: global.bike_lightbrown_color_lite
