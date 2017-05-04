@@ -74,7 +74,7 @@ layers:
                         priority: 59
                         visible: true
                         font:
-                            fill: global.bike_green_color
+                            fill: global.bike_green_label
                             size: 9px
                             stroke: { color: global.bike_lightgreen_color_lite, width: 2px }
 
