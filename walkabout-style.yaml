@@ -3406,36 +3406,6 @@ layers:
                             size: 9px
                             fill: [0.35,0.35,0.35]
                             transform: uppercase
-        city_walls:
-            filter: { kind: city_wall }
-            draw:
-                lines:
-                    color: global.city_wall
-                    width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
-        retaining_wall:
-            filter: { kind: retaining_wall }
-            draw:
-                lines:
-                    color: global.retaining_wall
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
-        snow_fence:
-            filter: { kind: snow_fence }
-            draw:
-                lines:
-                    color: global.snow_fence
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
-        fence:
-            filter: { kind: fence }
-            draw:
-                lines:
-                    color: [[14,[0.770,0.765,0.755]],[18,[0.770,0.765,0.755]],[19,[0.841,0.837,0.824]]]
-                    width: [[14, 0.5px], [15, 0.75px], [16, 0.75px], [18, 1.5px], [19, 1m]]
-        dam:
-            filter: { kind: dam }
-            draw:
-                lines:
-                    color: global.dam
-                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
 
     places:
         data: { source: mapzen, layer: places }
@@ -5837,6 +5807,38 @@ layers:
                     color: [0.602,0.860,0.722]
                     width: [[16,0.5px],[17,1px],[19,1m]]
                     visible: true
+
+        city_walls:
+            filter: { kind: city_wall }
+            draw:
+                lines:
+                    color: global.city_wall
+                    width: [[12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.0px], [16, 2.5px], [19, 6m]]
+        retaining_wall:
+            filter: { kind: retaining_wall }
+            draw:
+                lines:
+                    color: global.retaining_wall
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 4m]]
+        snow_fence:
+            filter: { kind: snow_fence }
+            draw:
+                lines:
+                    color: global.snow_fence
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+        fence:
+            filter: { kind: fence }
+            draw:
+                lines:
+                    color: [[14,[0.770,0.765,0.755]],[18,[0.770,0.765,0.755]],[19,[0.841,0.837,0.824]]]
+                    width: [[14, 0.5px], [15, 0.75px], [16, 0.75px], [18, 1.5px], [19, 1m]]
+        dam:
+            filter: { kind: dam }
+            draw:
+                lines:
+                    color: global.dam
+                    width: [[14, 0.5px], [15, 1.0px], [16, 1.5px], [17, 2.0px], [19, 1.5m]]
+
 
     transit:
         data: { source: mapzen, layer: transit }
