@@ -1589,6 +1589,9 @@ global:
         draw:
             text-blend-order:
                 priority: 56
+                ## for print label for postcard
+                # font:
+                #     size: 22px
         bike_shields: global.draw_bike_route_shields
         bike_tier1a:
             filter: global.bike_tier1_off_road_filter
