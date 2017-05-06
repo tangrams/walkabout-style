@@ -344,8 +344,7 @@ global:
     # TODO: temp
     sdk_directions: true
     #
-    sdk_bike_overlay: true                # should be false
-    sdk_path_overlay: false                # should be true, and not here
+    sdk_bike_overlay: false                # should be false
     sdk_bike_network_overlay: true         # should be true (isn't enabled unless sdk_bike_overlay is true)
 
     # COLORS
