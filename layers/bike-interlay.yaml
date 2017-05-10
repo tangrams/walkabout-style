@@ -64,17 +64,19 @@ layers:
             # this is to show more generic labels at zoom 14
             # it would be nice to label these at 13, but the tiles don't have data for this
             bike-labels-z14:
+                enabled: global.sdk_bike_overlay
                 filter:
-                    $zoom: [14]
-                    is_bicycle_related: true
+                    all:
+                        - $zoom: [14]
+                        - is_bicycle_related: true
                 draw:
                     text-blend-order:
                         priority: 59
                         visible: true
                         font:
-                            fill: [0.536,0.556,0.581]
+                            fill: global.bike_green_label
                             size: 9px
-                            stroke: { color: global.text_stroke, width: 4px }
+                            stroke: { color: global.bike_lightgreen_color_lite, width: 2px }
 
         service_road:
             bike: global.bike_draw_service
@@ -104,23 +106,27 @@ layers:
 
         steps:
             bike: global.bike_draw_steps
+            bike_labels: global.bike_draw_labels
+
+        ferry:
+            bike: global.bike_draw_ferry
+            bike_labels: global.bike_draw_labels
 
     pois:
         bike-overlay-pois:
+            enabled: global.sdk_bike_overlay
             filter:
-                all:
-                    - function() { return global.sdk_bike_overlay; }
-                    - kind:
-                        - bicycle
-                        - bicycle_rental
-                        - bicycle_rental_station
-                        - bicycle_junction
-                        - cafe                      # if we want to see more cafe or pub, then we need to mod
-                        - pub                       # the main pois: layer filter
-                        - drinking_water
-                        - toilets
-                        - cycle_barrier
-                        - bicycle_parking
+                kind:
+                    - bicycle
+                    - bicycle_rental
+                    - bicycle_rental_station
+                    - bicycle_junction
+                    - cafe                      # if we want to see more cafe or pub, then we need to mod
+                    - pub                       # the main pois: layer filter
+                    - drinking_water
+                    - toilets
+                    - cycle_barrier
+                    - bicycle_parking
             draw:
                 icons:
                     sprite: function() { return 'bike_' + feature.kind; }
@@ -167,8 +173,7 @@ layers:
         has-name:
             not-outdoor-not-landuse:
                 bike-priority:
-                    filter:
-                        - function() { return global.sdk_bike_overlay; }
+                    enabled: global.sdk_bike_overlay
                     bicycle:
                         filter: { kind: bicycle }
                         draw: { icons: { priority: 20 } }
@@ -343,34 +348,73 @@ global:
     sdk_bike_network_overlay: true         # should be true (isn't enabled unless sdk_bike_overlay is true)
 
     # COLORS
-    bike_tier1_off_road_path_color: [0.085,0.650,0.405] # green
-    bike_tier1_off_road_path_color_casing: [0.000,0.810,0.392]
-    bike_tier1_off_road_path_color_lite: [0.554,0.865,0.554]
-    bike_tier1_off_road_footway_color: [0.690,0.547,0.504]  # lighter brown
-    bike_tier1_off_road_footway_color_lite: [1.000,0.881,0.770]
-    bike_tier1_off_road_track_color: [0.500,0.343,0.290]  # brown
-    bike_tier1_off_road_track_color_lite: [0.917,0.759,0.610]
-    bike_tier1a_label: [0.063,0.474,0.294] #green
-    bike_tier1b_label: [0.559,0.338,0.269] #brown
-    bike_tier2_on_road_protected_color: [0.930,0.460,0.167] # orange
-    bike_tier2_on_road_protected_color_casing: [0.980,0.635,0.545]
-    bike_tier2_on_road_protected_color_lite: [0.980,0.792,0.706]
-    bike_tier2_label: [0.743,0.367,0.135]
-    bike_tier3_on_road_not_protected_color: [0.273,0.332,0.780] #[0.361,0.416,0.800] # blue
-    bike_tier3_on_road_not_protected_color_casing: [0.357,0.750,0.870]
-    bike_tier3_on_road_not_protected_color_lite: [0.502,0.792,0.880] #[0.660,0.829,0.880]
-    bike_tier3_label: [0.253,0.307,0.719]
-    bike_prohibited_color: [0.930,0.679,0.721]
-    bike_prohibited_color_lite: [1.000,1.000,1.000]
+    #
+    # GREENS
+    # tier 1 offroad
+    bike_darkgreen_color: [0.000,0.487,0.430]
+    bike_darkgreen_color_casing: [0.000,0.701,0.620]
+    bike_darkgreen_color_lite: [0.000,0.784,0.694]
+    # LABEL: tier 1 off road
+    bike_darkgreen_label: [0.000,0.233,0.206]
+    # LABEL: tier 1 offroad
+    bike_green_label: [0.063,0.474,0.294]
+    # tier 2 on-road protected
+    bike_green_color: [0.272,0.663,0.435]
+    bike_green_color_casing: [0.258,0.789,0.534]
+    bike_green_color_lite: [0.289,0.876,0.593]
+    # tier 3 on-road minor road with or without sharrow / designation
+    bike_lightgreen_color: [0.419,0.728,0.569]
+    bike_lightgreen_color_casing: [0.517,0.862,0.644]
+    bike_lightgreen_color_lite: [0.710,1.000,0.816]
+    # steps
+    bike_step_color: [0.633,0.988,0.633]
+    #
+    # BROWNS
+    # tier 1 (dirt) wide tracks
+    bike_brown_color: [0.575,0.394,0.330]
+    bike_brown_color_lite: [0.917,0.759,0.610]
+    # LABEL: tier 1 (dirt) wide tracks
+    bike_brown_label: [0.559,0.338,0.269]
+    # tier 1 (dirt) narrow footway
+    bike_lightbrown_color: [0.690,0.547,0.504]
+    bike_lightbrown_color_lite: [1.000,0.881,0.770]
+    #
+    # ORANGES
+    # tier 2 on-road protected
+    bike_orange_color: [0.930,0.460,0.167]
+    bike_orange_color_casing: [0.976,0.631,0.541]
+    bike_orange_color_lite: [1.000,0.761,0.650]
+    # LABEL: tier 2 on-road protected
+    bike_orange_label: [0.780,0.366,0.109]
+    #
+    # tier 3 major roads get dashing in their casing
+    # tier 3 on-road not protected
+    bike_lightorange_color: [0.910,0.618,0.237]
+    bike_lightorange_color_casing: [1.000,0.749,0.480]
+    bike_lightorange_color_lite: [1.000,0.879,0.750]
+    # LABEL: tier 3 on road not protected
+    bike_lightorange_label: [0.810,0.543,0.194]
+    #
+    # BLUES
+    bike_blue_color: [0.325,0.616,0.839] #[0.273,0.332,0.780]
+    bike_blue_color_lite: [0.431,0.886,0.957] #[0.357,0.750,0.870]
+    bike_blue_label: [0.502,0.792,0.880]
+    #
+    # OTHERS
+    # other situations
+    bike_prohibited_color: [1.000,0.590,0.891]
+    bike_prohibited_color_lite: [0.939,0.854,0.988]
+    # NOTE: nvkelso 2017-04-19 what is this for?!
     left_right_lane: purple #[0.414,0.940,0.607]
-    # regional_network_highlight: [0.973,1.000,0.318]
+    # end note
     regional_network_highlight: [1.000,1.000,0.549]
-    no_bike_label: [0.740,0.540,0.572]
+    no_bike_label: [1.000,0.510,0.869]
     no_bike_color_lite: [1.000,0.898,0.918]
+
 
     # FILTERS
     # labels
-    bike_labels: |
+    bike_labels_text_source: |
         function() {
             if(feature.name) {
                 name = feature.name + ' ';
@@ -385,6 +429,10 @@ global:
                 return name + " (walk your bike)";
             } else if( feature.kind_detail == "cycleway" && feature.cycleway != 'sidepath' ) {
                 return name + " (bike path)";
+            } else if( feature.kind_detail == "living_street" ) {
+                return name + " (greenway)";
+            } else if( feature.kind_detail == "steps" && (feature.ramp_bicycle == 'yes') ) {
+                return name + " (bike ramp)";
             } else if( feature.kind_detail == "footway" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
                 return name + " (bikes okay)";
             } else if( feature.kind_detail == "steps" && (feature.bicycle == 'designated' || feature.bicycle == 'yes') ) {
@@ -405,19 +453,204 @@ global:
                 return name + " (" + feature.cycleway_left + ")";
             } else if ( feature.cycleway_right ){
                 return name + " (" + feature.cycleway_right + ")";
+            } else if ( feature.surface == 'cobblestone' ){
+                return name + " (" + feature.surface + ")";
             } else {
                 return name + " (bike route)";
             }
         }
+    draw_bike_route_shields:
+        enabled: global.sdk_bike_overlay
+        filter:
+            all:
+                - bicycle_shield_text: true
+        # default
+        draw:
+            icons:
+                # you need to match any custom shield to the vector tile `network` values
+                sprite: |
+                    function() {
+                        return ('sdk_solid_shield-' + feature.bicycle_shield_text.length + 'char');
+                    }
+                color: black
+                sprite_default: sdk_solid_shield-5char
+                priority: 58
+                repeat_group: shields
+                repeat_distance: [[8,90px],[10,40px],[13,30px]]
+                placement: midpoint
+                placement_min_length_ratio:
+                    - [8, 0.1]
+                    - [9, 0.25]
+                    - [10, 0.25]
+                    - [11, 0.15]
+                    - [12, 1]
+                    - [13, 1.50]
+                    - [14, 2.0]
+                cull_from_tile: true
+                #visible: true
+                text:
+                    offset: [0px, -0.5px]
+                    repeat_distance: 200px
+                    anchor: center
+                    text_source: bicycle_shield_text
+                    font:
+                        family: Montserrat
+                        #fill: [0.308,0.308,0.308]
+                        fill: white #[0.320,0.320,0.320]
+                        size: [[7,7px],[12,8px],[16,11px]]
+        width_1char:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length === 1)
+                }
+            draw:
+                icons:
+                    size: [[6,[10px,10px]],[13,[14px,14px]],[16,[18px,18px]]]
+        width_2char:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length === 2)
+                }
+            draw:
+                icons:
+                    size: [[6,[13px,10px]],[13,[17px,14px]],[16,[24px,18px]]]
+        width_3char:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length === 3)
+                }
+            draw:
+                icons:
+                    size: [[6,[17px,10px]],[13,[24px,14px]],[16,[33px,18px]]]
+        width_4char:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length === 4)
+                }
+            draw:
+                icons:
+                    size: [[6,[20px,10px]],[13,[28px,14px]],[16,[38px,18px]]]
+        width_5char:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length === 5)
+                }
+            draw:
+                icons:
+                    size: [[6,[23px,10px]],[13,[32px,14px]],[16,[45px,18px]]]
+        width_other:
+            filter: |
+                function() {
+                    return (feature.bicycle_shield_text.length > 5)
+                }
+            draw:
+                icons:
+                    visible: false
+        #network_icn_ncn always visible, controlled by server
+        network_rcn:
+            filter: { bicycle_network: rcn, $zoom: { max: 12 } }
+            draw:
+                icons:
+                    visible: false
+        tracks_network_rcn:
+            filter: { $zoom: { max: 12 }, kind_detail: track }
+            draw:
+                icons:
+                    visible: false
+        network_lcn:
+            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+            draw:
+                icons:
+                    visible: false
 
+        bike_tier1a:
+            filter: global.bike_tier1_off_road_filter
+            draw:
+                icons:
+                    priority: 56
+                    color: global.bike_orange_color
+            minor_road:
+                filter:
+                    any:
+                        - kind: minor_road
+                draw:
+                    icons:
+                        color: global.bike_green_color
+            paths:
+                filter:
+                    any:
+                        - kind_detail: cycleway
+                        - all:
+                            #- bicycle: [designated,yes]
+                            - kind: path
+                draw:
+                    icons:
+                        color: global.bike_darkgreen_color
+        bike_tier1b:
+            filter: global.bike_tier1_off_road_track_filter
+            draw:
+                icons:
+                    priority: 57
+                    color: global.bike_brown_color
+        bike_tier1c_greenway:
+            filter: global.greenway_on_road_filter
+            draw:
+                icons:
+                    priority: 58
+                    color: global.bike_green_color
+        bike_tier2:
+            filter: global.bike_tier2_on_road_protected_filter
+            draw:
+                icons:
+                    priority: 59
+                    color: global.bike_orange_color
+            minor_road:
+                filter: { kind: minor_road }
+                draw:
+                    icons:
+                        color: global.bike_green_color
+        bike_tier3:
+            filter: global.bike_tier3_on_road_not_protected_filter
+            draw:
+                icons:
+                    priority: 60
+                    color: global.bike_lightorange_color
+            minor_road:
+                filter:
+                    kind: minor_road
+                draw:
+                    icons:
+                        color: global.bike_lightgreen_color
+                bike_tier1c_greenway:
+                    filter: global.greenway_on_road_filter
+                    draw:
+                        icons:
+                            color: global.bike_green_color
+                bus:
+                    filter:
+                        is_bus_route: true
+                    draw:
+                        icons:
+                            color: global.bike_lightorange_color
+        no_bike:
+            filter: global.no_bike_tier4_filter
+            draw:
+                icons:
+                    priority: 61
+                    color: global.no_bike_label
+
+    z18_bike_labels:
+        filter:
+            $zoom: { min: 18 }
+        draw:
+            text-blend-order:
+                text_source: global.bike_labels_text_source
 
     #
     # green
     bike_tier1_off_road_filter:
-        all:
-            - function() { return global.sdk_bike_overlay; }
         any:
-            - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps] }
+            - { is_bicycle_related: true, kind_detail: [cycleway, path, pedestrian, steps, bridleway, raceway, corridor] }
             - cycleway: [sidepath, track, opposite_track, buffered_lane]
             - cycleway_left: [sidepath, track, opposite_track, buffered_lane]
             - cycleway_right: [sidepath, track, opposite_track, buffered_lane]
@@ -429,20 +662,40 @@ global:
         { is_bicycle_related: true, kind_detail: [steps] }
     #green, but brown (I know, right)
     bike_tier1_off_road_footway_filter:
+        { is_bicycle_related: true, kind_detail: [footway] }
+    #blue ferry
+    bike_tier1_ferry_filter:
+        { kind: ferry, is_bicycle_related: true }
+    greenway_on_road_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
-            - { is_bicycle_related: true, kind_detail: [footway] }
+            - is_bicycle_related: true
+        any:
+            - { kind_detail: [living_street, unclassified], bicycle_network: true }
+            - { kind_detail: [living_street, unclassified], walking_network: true }   # some funk in Portland, OR
+            - { kind_detail: [living_street, unclassified], cycleway: true }   # eg shared_lane – really the server should provide bicycle_network
+            - { cycleway: cycleway_greenway }
+    greenway_on_road_casing_filter:
+        all:
+            - is_bicycle_related: true
+        any:
+            - { kind_detail: [residential, living_street, unclassified], cycleway_left: true }   # lane casings
+            - { kind_detail: [residential, living_street, unclassified], cycleway_right: true }  # lane casings
 
     # brown
     bike_tier1_off_road_track_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
             - { is_bicycle_related: true, kind_detail: [track, footway] }
+    bike_tier1_off_road_unpaved_filter:
+        any:
+            - surface: [unpaved, grass, ground, dirt, earth, sand, woodchips, pebblestones, compacted]
+            - kind_detail: [bridleway, corridor]
+
 
     # orange
     bike_tier2_on_road_protected_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
+            - not:
+                - kind_detail: [cycleway, track, path, pedestrian, living_street, unclassified, footway, steps, raceway, bridleway, corridor]
         any:
             - cycleway: [lane, opposite, opposite_lane]
             - cycleway_left: [lane, opposite, opposite_lane]
@@ -455,64 +708,70 @@ global:
     # blue
     bike_tier3_on_road_not_protected_filter:
         all:
-            - function() { return global.sdk_bike_overlay; }
             - is_bicycle_related: true
             - not:
                 any:
-                    - kind_detail: [cycleway, track, path, pedestrian, footway, steps]
-                    - cycleway: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
+                    - kind_detail: [cycleway, track, path, pedestrian, living_street, unclassified, footway, steps, raceway, bridleway, corridor]
+                    - cycleway: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane, cycleway_greenway]
                     - cycleway_left: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
                     - cycleway_right: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
     casing_bike_tier3_on_road_not_protected_filter_left:
-        cycleway_left: [shared_lane]
+        cycleway_left: [shared_lane, shared_busway, share_busway]
     casing_bike_tier3_on_road_not_protected_filter_right:
-        cycleway_right: [shared_lane]
+        cycleway_right: [shared_lane, shared_busway, share_busway]
 
     # no bike
     no_bike_tier4_filter:
-        all:
-            - function() { return global.sdk_bike_overlay; }
+        any:
             - bicycle: [no, dismount]
+            - surface: cobblestone
 
     # DRAW STYLES
     bike_draw_highway:
+        enabled: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[8, global.bike_tier2_on_road_protected_color], [10, global.bike_tier2_on_road_protected_color], [11, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[8, global.bike_orange_color], [10, global.bike_orange_color], [11, global.bike_orange_color_lite]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier1_off_road_path_color]]
+                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_darkgreen_color]]
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_highway
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[8, global.bike_tier2_on_road_protected_color], [10, global.bike_tier2_on_road_protected_color], [11, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[8, global.bike_orange_color], [10, global.bike_orange_color_lite]]
+                    width: [[8, 0.5px], [10, 0.15px], [12, 1.5px], [14, 2.5px], [16, 6.5px], [17, 10px], [18, 10m]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier2_on_road_protected_color]]
+                        color: global.bike_orange_color
+                        width: [[8, 0.5px], [10, 0.75px], [12, 1.5px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_highway
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[8, global.bike_tier3_on_road_not_protected_color], [10, global.bike_tier3_on_road_not_protected_color], [11, global.bike_tier3_on_road_not_protected_color_lite]]
+                    color: [[8, global.bike_lightorange_color], [10, global.bike_lightorange_color_lite], [11, global.bike_lightorange_color_lite]]
+                    width: [[8, 0.1px], [10, 0.5px], [12, 1.5px], [14, 2.5px], [16, 6.5px], [17, 10px], [18, 10m]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier3_on_road_not_protected_color]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0.75px], [10, 0.75px], [12, 1.5px], [14, 1.75px], [16, 2.5px], [18, 4px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_highway
 
     bike_draw_highway_link:
+        enabled: global.sdk_bike_overlay
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color], [14, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[11, global.bike_orange_color], [13, global.bike_orange_color], [14, global.bike_orange_color_lite]]
                     width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier1_off_road_path_color]]
+                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_darkgreen_color]]
                         width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1_narrow
             networks: global.bike_networks_link
@@ -520,10 +779,10 @@ global:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color], [14, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
+                    color: [[11, global.bike_orange_color], [13, global.bike_orange_color], [14, global.bike_orange_color_lite]]
+                    width: [[8, 0px], [11, 0.4px], [12, 0.15px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier2_on_road_protected_color]]
+                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_orange_color]]
                         width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2_narrow
             networks: global.bike_networks_link
@@ -531,119 +790,170 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier3_on_road_not_protected_color], [13, global.bike_tier3_on_road_not_protected_color], [14, global.bike_tier3_on_road_not_protected_color_lite]]
-                    width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
+                    color: [[11, global.bike_lightorange_color], [12, global.bike_lightorange_color_lite]]
+                    width: [[10, 0.1px], [11, 0.25px], [12, 0.15px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0.5px], [10, 0.75px], [12, 0.4px], [14, 0.6px], [16, 1.25px], [18, 2px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
             networks: global.bike_networks_link
 
     bike_draw_trunk_primary:
+        enabled: global.sdk_bike_overlay
+        a-gray-default-bikes:
+            filter:
+                function() { return global.sdk_bike_overlay; }
+            draw:
+                lines:
+                    color: [[10, [0.603,0.620,0.642]], [11, [0.970,0.970,0.970]], [12, [1.00,1.00,1.00]]]
+                    outline:
+                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, [0.829,0.812,0.815]], [14, [0.659,0.626,0.648]]]
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[10, global.bike_tier2_on_road_protected_color], [11, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[8, 1px], [10, 1.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                    color: [[8, global.bike_darkgreen_color], [9, global.bike_darkgreen_color], [10, global.bike_orange_color_lite]]
+                    width: [[8, 0.5px], [10, 0.15px], [11, 0.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier1_off_road_path_color]]
-                        width: [[8, 0.5px], [10, 0px], [12, 1.1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        color: global.bike_darkgreen_color
+                        width: [[8, 0.5px], [10, 1.35px], [13, 1.5px], [16, 2.5px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_primary
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[10, global.bike_tier2_on_road_protected_color], [11, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[8, 1px], [10, 1.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                    color: [[10, global.bike_orange_color], [11, global.bike_orange_color_lite]]
+                    width: [[8, 0.5px], [11, 0.15px], [12, 0.15px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier2_on_road_protected_color]]
-                        width: [[8, 0.5px], [10, 0px], [12, 1.1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
+                        color: global.bike_orange_color
+                        width: [[8, 0.5px], [11, 0.75px], [12, 0.6px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_primary
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[10, global.bike_tier3_on_road_not_protected_color], [11, global.bike_tier3_on_road_not_protected_color_lite]]
-                    width: [[8, 1px], [10, 1.5px], [12, 1px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
+                    color: [[11, global.bike_lightorange_color], [12, global.bike_lightorange_color_lite]]
+                    width: [[10, 0.1px], [11, 0.1px], [12, 0.15px], [13, 0.15px], [14, 1.0px], [16, 4px], [17, 7.5px], [18, 9m]]
                     outline:
-                        color: [[8, [0.969,0.969,0.969]], [10, [0.969,0.969,0.969]], [11, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[8, 0.5px], [10, 0px], [12, 1.1px], [14, 1.25px], [16, 2.25px], [17, 3px], [18, 4px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0.5px], [10, 0.75px], [11, 0.5px], [12, 0.5px], [14, 0.6px], [16, 2px], [18, 4px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_primary
 
     bike_draw_secondary:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
+        a-gray-default-bikes:
+            enabled: global.sdk_bike_overlay
+            draw:
+                lines:
+                    color: [[12, [0.990,0.990,0.990]], [13, [1.00,1.00,1.00]]]
+                    outline:
+                        color: [[9, [0.906,0.906,0.906]], [11, [0.857,0.832,0.836]], [14, [0.659,0.626,0.648]]]
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: global.bike_tier2_on_road_protected_color_lite
+                    color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
+                    width: [[10, 0.1px], [11, 0.25px], [12, 1px], [14, 2px], [16, 5px], [17, 7.5px], [18, 9m]]
                     outline:
-                        color: [[9, [0.906,0.906,0.906]], [10, global.bike_tier1_off_road_path_color]]
+                        color: global.bike_darkgreen_color
+                        width: [[10, 0.75px], [11, 1px], [12, 1px], [13, 1.5px], [16, 2.25px], [18, 4px]]
+                        # TODO: thicker outline at 14/15
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_secondary
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier2_on_road_protected_color_lite
+                    color: [[10, global.bike_orange_color], [11, global.bike_orange_color_lite]]
+                    width: [[10, 0.15px], [11, 0.15px], [12, 0.15px], [14, 2px], [16, 5px], [17, 7.5px], [18, 9m]]
                     outline:
-                        color: [[9, [0.906,0.906,0.906]], [10, global.bike_tier2_on_road_protected_color]]
+                        color: global.bike_orange_color
+                        width: [[10, 0.5px], [11, 0.6px], [12, 0.6px], [14, 1px], [16, 2.25px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_secondary
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier3_on_road_not_protected_color_lite
+                    color: [[10, global.bike_lightorange_color], [11, global.bike_lightorange_color_lite]]
+                    width: [[10, 0.1px], [11, 0.15px], [12, 0.15px], [13, 1px], [14, 2.5px], [16, 4px], [17, 7.5px], [18, 9m]]
                     outline:
-                        color: [[9, [0.906,0.906,0.906]], [10, global.bike_tier3_on_road_not_protected_color]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0.5px], [10, 0.5px], [11, 0.6px], [12, 0.6px], [13, 1px], [16, 2px], [18, 4px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_secondary
 
     bike_draw_tertiary:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [12, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
+                    width: [[11, 0.15px], [12, 0.25px], [13, 1px], [16, 4px], [17, 6.25px], [18, 10m]]
                     outline:
-                        color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier1_off_road_path_color]]
-                        width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+                        color: global.bike_darkgreen_color
+                        width: [[10, 0px], [11, 0.35px], [12, 0.5px], [13, 1.5px], [16, 2px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_tertiary
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [12, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[11, global.bike_orange_color], [12, global.bike_orange_color_lite]]
+                    width: [[11, 0.15px], [12, 0.15px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
                     outline:
-                        color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier2_on_road_protected_color]]
-                        width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+                        color: global.bike_orange_color
+                        width: [[10, 0.5px], [11, 0.5px], [12, 0.6px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_tertiary
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier3_on_road_not_protected_color], [12, global.bike_tier3_on_road_not_protected_color_lite]]
+                    color: [[11, global.bike_lightorange_color], [12, global.bike_lightorange_color_lite]]
+                    width: [[11, 0.1px], [12, 0.15px], [13, 1px], [14, 1.2px], [16, 3.5px], [17, 6px], [18, 9m]]
                     outline:
-                        color: [[11, [0.847,0.822,0.826]], [12, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0.5px], [10, 0.5px], [11, 0.5px], [12, 0.8px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3
             networks: global.bike_networks_tertiary
 
     bike_draw_major_road_link:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color], [14, global.bike_tier2_on_road_protected_color_lite]]
+                    color: [[11, global.bike_orange_color], [12, global.bike_orange_color_lite]]
                     width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier1_off_road_path_color]]
+                        color: global.bike_darkgreen_color
                         width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1_narrow
             networks: global.bike_networks_link
@@ -651,52 +961,83 @@ global:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color], [14, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
+                    color: [[11, global.bike_orange_color], [12, global.bike_orange_color_lite]]
+                    width: [[8, 0px], [11, 0.4px], [12, 0.15px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier2_on_road_protected_color]]
-                        width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
+                        color: global.bike_orange_color
+                        width: [[8, 0px], [9, 0px], [12, 0.25px], [13, 0.25px], [14, 0.6px], [16, 1.25px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2_narrow
             networks: global.bike_networks_link
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[11, global.bike_tier3_on_road_not_protected_color], [13, global.bike_tier3_on_road_not_protected_color], [14, global.bike_tier3_on_road_not_protected_color_lite]]
-                    width: [[8, 0px], [11, 0.4px], [12, 0.6px], [14, 1.25px], [16, 3px], [18, 5m]]
+                    color: [[11, global.bike_lightorange_color], [12, global.bike_lightorange_color_lite]]
+                    width: [[8, 0px], [11, 0.4px], [12, 0.15px], [13, 0.15px], [14, 1.25px], [16, 3px], [18, 5m]]
                     outline:
-                        color: [[11, [0.969,0.969,0.969]], [13, [0.969,0.969,0.969]], [14, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[8, 0px], [9, 0px], [13, 0px], [14, 0.6px], [16, 1.25px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+                        style: bike_dash
+                        color: global.bike_lightorange_color
+                        width: [[8, 0px], [9, 0px], [12, 0.25px], [13, 0.25px], [14, 0.6px], [16, 1.25px], [18, 2px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
             networks: global.bike_networks_link
 
     bike_draw_minor:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[10, 0px], [12, 1px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
+                    color: [[11, global.bike_orange_color], [12, global.bike_orange_color_lite]]
+                    width: [[8, 0px], [10, 0.25px], [12, 0.5px], [13, 1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_path_color]]
-                        width: [[11, 0px], [12, 0px], [13, 0.5px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
+                        color: global.bike_darkgreen_color
+                        width: [[8, 0px], [10, 0.25px], [12, 0.5px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1
             networks: global.bike_networks_minor
+        bike_tier1_on_road_greenway:
+            filter: global.greenway_on_road_filter
+            draw:
+                lines:
+                    color: [[8, global.bike_green_color], [11, global.bike_green_color], [12, global.bike_green_color_lite]]
+                    width: [[8, 1px], [10, 1px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                    outline:
+                        color: global.bike_green_color
+                        width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier1
+            networks: global.bike_networks_minor
+            early_order:
+                filter: { $zoom: [12,13] }
+                draw:
+                    lines:
+                        order: function() { return feature.sort_rank + 10; }
+
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[11, 0px], [12, 1px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
+                    color: [[8, global.bike_lightgreen_color], [11, global.bike_lightgreen_color], [12, global.bike_lightgreen_color_lite]]
+                    width: [[8, 0px], [10, 0.15px], [12, 0.15px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier2_on_road_protected_color]]
-                        width: [[11, 0px], [12, 0px], [13, 0.5px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
-            early:
-                filter:
-                    $zoom: [13]
+                        color: global.bike_lightgreen_color
+                        width: [[8, 0px], [10, 0.25px], [12, 0.5px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+            residential_unclassified:
+                filter: { kind_detail: [residential, unclassified] }
                 draw:
                     lines:
-                        order: 360
+                        width: [[8, 0.25px], [10, 0.15px], [12, 0.15px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                        outline:
+                            width: [[8, 0px], [10, 0.25px], [12, 0.6px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+            early:
+                filter: { $zoom: [12,13,14] }
+                draw:
+                    lines:
+                        order: function() { return feature.sort_rank + 10; }
 
             casing: global.bike_draw_left_or_right_or_implied_tier2
             networks: global.bike_networks_minor
@@ -704,51 +1045,75 @@ global:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier3_on_road_not_protected_color], [13, global.bike_tier3_on_road_not_protected_color_lite]]
-                    width: [[11, 0px], [12, 1px], [13, 0.15px], [14, 1px], [16, 3px], [18, 9m]]
+                    color: [[10, global.bike_lightgreen_color], [11, global.bike_lightgreen_color_lite]]
+                    width: [[8, 0px], [10, 0.15px], [12, 0.15px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[11, 0px], [12, 0px], [13, 0.5px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3
+                        # style: bike_dash
+                        color: global.bike_lightgreen_color
+                        width: [[8, 0px], [10, 0.25px], [12, 0.6px], [13, 0.7px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
+            bus:
+                filter:
+                    is_bus_route: true
+                draw:
+                    lines:
+                        # nvk (20170502): No line color here is a feature, not a bug for bus streets in SF like the Wiggle
+                        outline:
+                            style: bike_dash
+                            color: global.bike_lightorange_color
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_minor_road
             networks: global.bike_networks_minor
+            early_order:
+                filter: { $zoom: [12,13,14] }
+                draw:
+                    lines:
+                        order: function() { return feature.sort_rank + 10; }
 
+    # Hamburg http://localhost:8000/#16/53.5518/10.0095
     bike_draw_service:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: global.bike_tier2_on_road_protected_color_lite
+                    color: global.bike_lightgreen_color_lite
                     width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier1_off_road_path_color]]
+                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_darkgreen_color]]
                         width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier1_narrow
-            networks: global.bike_networks_minor
+            networks: global.bike_networks_service
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier2_on_road_protected_color_lite
+                    color: global.bike_lightorange_color_lite
                     width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier2_on_road_protected_color]]
+                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_orange_color]]
                         width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
             casing: global.bike_draw_left_or_right_or_implied_tier2_narrow
-            networks: global.bike_networks_minor
+            networks: global.bike_networks_service
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: global.bike_tier3_on_road_not_protected_color_lite
-                    width: [[14, 0.15px], [16, 2px], [18, 4.5m], [19, 5m]]
+                    color: [[8, global.bike_lightgreen_color], [10, global.bike_lightgreen_color], [11, global.bike_lightgreen_color_lite]]
+                    width: [[8, 0px], [10, 0px], [14, 0.15px], [16, 2px], [18, 4.5m], [19, 5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [14, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
-            casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
-            networks: global.bike_networks_minor
+                        color: global.bike_lightgreen_color
+                        width: [[8, 0px], [10, 0px], [13, 0px], [14, 0.4px], [16, 1px], [18, 2px]]
+            #casing: global.bike_draw_left_or_right_or_implied_tier3_narrow
+            networks: global.bike_networks_service
 
 
     no_bike_draw_minor:
+        enabled: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -760,80 +1125,170 @@ global:
                     width: [[11, 0px], [12, 0px], [13, 0.25px], [14, 1px], [16, 1.5px], [17, 2px], [18, 3px]]
 
     no_bike_draw_service:
+        enabled: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
                 color: global.bike_prohibited_color_lite
                 width: [[14, 1px], [16, 2px], [18, 4.5m], [19, 5m]]
                 outline:
+                    style: no_bike_dash
                     color: [[12, [0.900,0.900,0.900]], [14, global.bike_prohibited_color]]
                     width: [[13, 0px], [14, 0.5px], [16, 1px], [18, 2px]]
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
 
     bike_draw_path:
+        enabled: global.sdk_bike_overlay
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early-z9:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
         # thicken the widths
         bike_tier1_off_road:
             filter: global.bike_tier1_off_road_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier1_off_road_path_color], [13, global.bike_tier1_off_road_path_color], [14, global.bike_tier1_off_road_path_color_lite]]
-                    width: [[12, 1px], [13, 1.1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    color: [[8, global.bike_darkgreen_color], [9, global.bike_darkgreen_color], [10, global.bike_darkgreen_color_lite]]
+                    width: [[10, 0px], [12, 0px], [13, 0.5px], [14, 1.5px], [16, 2px], [18, 3m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_path_color]]
-                        width: [[13, 0px], [14, 0.65px], [15, 1px], [17, 2px], [18, 3px]]
-            # footway:
-            #     filter:
-            #         kind_detail: footway
-            #     draw:
-            #         lines:
-            #             color: pink
-            #             outline:
-            #                 color: red
+                        color: global.bike_darkgreen_color
+                        width: [[11, 0px], [12, 0px], [14, 0.5px], [16, 1px], [17, 2px], [18, 3px]]
+            early:
+                filter: { $zoom: { max: 16 } }
+                draw:
+                    lines:
+                        order: 382
+                        outline:
+                            order: 381
+            unpaved:
+                filter: global.bike_tier1_off_road_unpaved_filter
+                draw:
+                    lines:
+                        color: [[8, global.bike_brown_color], [10, global.bike_brown_color], [11, global.bike_brown_color_lite]]
+                        outline:
+                            color: global.bike_brown_color
             networks: global.bike_networks_path
         bike_tier2_on_road_protected:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier2_on_road_protected_color], [13, global.bike_tier2_on_road_protected_color], [14, global.bike_tier2_on_road_protected_color_lite]]
-                    width: [[12, 1.25px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    color: [[12, global.bike_orange_color], [13, global.bike_orange_color], [14, global.bike_orange_color_lite]]
+                    width: [[12, 0.15px], [13, 0.15px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier2_on_road_protected_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+                        color: global.bike_orange_color
+                        width: [[12, 0.5px], [13, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             networks: global.bike_networks_path
         bike_tier3_on_road_not_protected:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
                 lines:
-                    color: [[12, global.bike_tier3_on_road_not_protected_color], [13, global.bike_tier3_on_road_not_protected_color], [14, global.bike_tier3_on_road_not_protected_color_lite]]
-                    width: [[12, 1.25px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
+                    color: [[12, global.bike_lightorange_color], [13, global.bike_lightorange_color], [14, global.bike_lightorange_color_lite]]
+                    width: [[12, 0.15px], [13, 0.15px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
                     outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier3_on_road_not_protected_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+                        color: global.bike_lightorange_color
+                        width: [[12, 0.5px], [13, 0.6px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
             networks: global.bike_networks_path
 
     bike_draw_footway:
+        enabled: global.sdk_bike_overlay
         # todo: match the zoom stops from bike_tier1_off_road in this path section
         footway:
             filter: global.bike_tier1_off_road_footway_filter
             draw:
                 lines:
                     # footway is narrower than default
-                    color: global.bike_tier1_off_road_footway_color_lite
+                    color: global.bike_lightbrown_color_lite
                     width: [[13, 0.35px], [14, 0.5px], [15, 1px], [17, 2.5m]]
                     outline:
                         # casing for footway starts at  z16
-                        color: global.bike_tier1_off_road_footway_color
+                        color: global.bike_lightbrown_color
                         width: [[13, 0px], [14, 0.4px], [15, 1px], [17, 2px], [18, 3px]]
-        sidewalk-crossing:
-            bike:
+            early:
                 filter:
-                    is_bicycle_related: true
-                    not: { kind_detail: footway }
+                    all:
+                        - $zoom: { max: 16 }
                 draw:
                     lines:
+                        order: 382
                         outline:
-                            color: global.bike_tier1_off_road_path_color
+                            order: 381
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early-z9:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
+            sidewalk-crossing:
+                bike:
+                    filter:
+                        all:
+                            - is_bicycle_related: true
+                            - not: { kind_detail: footway }
+                    draw:
+                        lines:
+                            outline:
+                                color: global.bike_darkgreen_color
+        networks: global.bike_networks_path
+
+    bike_draw_track:
+        enabled: global.sdk_bike_overlay
+        bike_tier1_off_road:
+            filter: global.bike_tier1_off_road_track_filter
+            draw:
+                lines:
+                    color: global.bike_brown_color_lite
+                    width: [[11, 0.15px], [12, 1px], [15, 1.5px], [17, 2.5m]]
+                    outline:
+                        color: global.bike_brown_color
+                        width: [[12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
+            networks: global.bike_networks_track
+
+    bike_draw_steps:
+        enabled: global.sdk_bike_overlay
+        bike_tier1_off_road:
+            filter: global.bike_tier1_off_road_steps_filter
+            draw:
+                dashed_steps:
+                    color: global.bike_step_color
+                    width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+            # sometimes there's a feature part of a walking network not cycling network: hide those early
+            early:
+                filter: { bicycle_network: false, $zoom: [8,9,10] }
+                draw:
+                    lines:
+                        visible: false
+
+    bike_draw_ferry:
+        enabled: global.sdk_bike_overlay
+        filter: global.bike_tier1_ferry_filter
+        draw:
+            lines:
+                color: global.bike_blue_color
+                width: [[11, 0.4px], [12, 0.5px], [15, 1.5px], [17, 2.5m]]
+        # sometimes there's a feature part of a walking network not cycling network: hide those early
+        early:
+            filter: { bicycle_network: false, $zoom: [8,9,10] }
+            draw:
+                lines:
+                    visible: false
+        networks: global.bike_networks_ferry
+
 
     no_bike_draw_path:
+        enabled: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
@@ -845,166 +1300,195 @@ global:
                     width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
 
     no_bike_draw_footway:
+        enabled: global.sdk_bike_overlay
         filter: global.no_bike_tier4_filter
         draw:
             lines:
-                # footway is narrower than default
-                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [17, 2.5m]]
+                color: global.bike_prohibited_color_lite
+                width: [[13, 0.35px], [14, 0.5px], [15, 1px], [17, 2.5m]]
                 outline:
-                    # casing for footway starts at  z16
                     style: no_bike_dash
-                    width: [[14, 0px], [15, 0px], [16, 1px], [17, 1px], [18, 3px]]
-
-    bike_draw_track:
-        bike_tier1_off_road:
-            filter: global.bike_tier1_off_road_track_filter
-            draw:
-                lines:
-                    color: [[12, global.bike_tier1_off_road_track_color], [13, global.bike_tier1_off_road_track_color], [14, global.bike_tier1_off_road_track_color_lite]]
-                    width: [[12, 0.75px], [13, 1px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-                    outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_track_color]]
-                        width: [[13, 0px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
-            networks: global.bike_networks_track
-
-    bike_draw_steps:
-        bike_tier1_off_road:
-            filter: global.bike_tier1_off_road_steps_filter
-            draw:
-                dashed_steps:
-                    color: [0.633,0.988,0.633] #global.bike_tier1_off_road_path_color_lite
-                    width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+                    color: global.bike_prohibited_color
+                    width: [[13, 0px], [14, 0.5px], [15, 1px], [17, 2px], [18, 3px]]
 
 
     ## WIDE
     bike_draw_left_or_right_or_implied_tier1:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier2:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
         special_casing: global.casing_bike_draw_on_off
+        minor_road:
+            filter:
+                kind: minor_road
+            draw:
+                casing_both:
+                    color: global.bike_lightgreen_color_casing
+                casing_left:
+                    color: global.bike_lightgreen_color_casing
+                casing_right:
+                    color: global.bike_lightgreen_color_casing
+            greenway:
+                filter: global.greenway_on_road_filter
+                draw:
+                    casing_both:
+                        color: global.bike_green_color_casing
+                    casing_left:
+                        color: global.bike_green_color_casing
+                    casing_right:
+                        color: global.bike_green_color_casing
 
     bike_draw_left_or_right_or_implied_tier3:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_left:
                 visible: false
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
             casing_right:
                 visible: false
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 9m], [19, 9m]]
+                width: 8m
+        special_casing: global.casing_bike_draw_on_off
+
+    bike_draw_left_or_right_or_implied_tier3_minor_road:
+        enabled: global.sdk_bike_overlay
+        filter:
+            $zoom: { min: 17 }
+        draw:
+            casing_both:
+                visible: true
+                color: global.bike_lightgreen_color_casing
+                order: function() { return feature.sort_rank + 1; }
+                width: 7m
+            casing_left:
+                visible: false
+                color: global.bike_lightgreen_color_casing
+                order: function() { return feature.sort_rank + 1; }
+                width: 7m
+            casing_right:
+                visible: false
+                color: global.bike_lightgreen_color_casing
+                order: function() { return feature.sort_rank + 1; }
+                width: 7m
         special_casing: global.casing_bike_draw_on_off
 
     ## NARROW
     bike_draw_left_or_right_or_implied_tier1_narrow:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
-                color: global.bike_tier1_off_road_path_color_casing
+                color: global.bike_darkgreen_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier2_narrow:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
-                color: global.bike_tier2_on_road_protected_color_casing
+                color: global.bike_orange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     bike_draw_left_or_right_or_implied_tier3_narrow:
+        enabled: global.sdk_bike_overlay
         filter:
-            $zoom: { min: 18 }
+            $zoom: { min: 17 }
         draw:
             casing_both:
                 visible: true
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_left:
                 visible: false
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
             casing_right:
                 visible: false
-                color: global.bike_tier3_on_road_not_protected_color_casing
+                color: global.bike_lightorange_color_casing
                 order: function() { return feature.sort_rank + 1; }
-                width: [[13, 0px], [14, 1px], [16, 2px], [17, 3.5px], [18, 5m]]
+                width: 5m
         special_casing: global.casing_bike_draw_on_off
 
     casing_bike_draw_on_off:
+        enabled: global.sdk_bike_overlay
         filter:
             - any:
                 - cycleway_left: true
@@ -1021,7 +1505,7 @@ global:
         left:
             filter:
                 any:
-                    - cycleway_left: true
+                    - cycleway_left: [lane, opposite, opposite_lane, sidepath, track, opposite_track, buffered_lane]
                     - cycleway: opposite
             draw:
                 casing_left:
@@ -1032,7 +1516,12 @@ global:
                 filter:
                     all:
                         - cycleway_left: true
+                        - not:
+                            - global.casing_bike_tier3_on_road_not_protected_filter_left
+                    all:
                         - cycleway_right: true
+                        - not:
+                            - global.casing_bike_tier3_on_road_not_protected_filter_right
                 draw:
                     casing_left:
                         visible: true
@@ -1042,242 +1531,642 @@ global:
             filter: global.casing_bike_tier1_off_road_track_filter_left
             draw:
                 casing_left:
-                    color: global.bike_tier1_off_road_path_color_casing
+                    color: global.bike_darkgreen_color_casing
         tier1_right:
             filter: global.casing_bike_tier1_off_road_track_filter_right
             draw:
                 casing_right:
-                    color: global.bike_tier1_off_road_path_color_casing
+                    color: global.bike_darkgreen_color_casing
         tier2_left:
             filter: global.casing_bike_tier2_on_road_protected_filter_left
             draw:
                 casing_left:
-                    color: global.bike_tier2_on_road_protected_color_casing
+                    color: global.bike_orange_color_casing
+            minor_road:
+                filter:
+                    kind: minor_road
+                draw:
+                    casing_right:
+                        color: global.bike_lightgreen_color_casing
+                greenway_casing:
+                    filter: global.greenway_on_road_casing_filter
+                    draw:
+                        casing_right:
+                            color: global.bike_green_color_casing
+
         tier2_right:
             filter: global.casing_bike_tier2_on_road_protected_filter_right
             draw:
                 casing_right:
-                    color: global.bike_tier2_on_road_protected_color_casing
-        tier3_left:
-            filter: global.casing_bike_tier3_on_road_not_protected_filter_left
-            draw:
-                casing_left:
-                    color: global.bike_tier3_on_road_not_protected_color_casing
-        tier3_right:
-            filter: global.casing_bike_tier3_on_road_not_protected_filter_right
-            draw:
-                casing_right:
-                    color: global.bike_tier3_on_road_not_protected_color_casing
+                    color: global.bike_orange_color_casing
+            minor_road:
+                filter:
+                    kind: minor_road
+                draw:
+                    casing_right:
+                        color: global.bike_lightgreen_color_casing
+                greenway_casing:
+                    filter: global.greenway_on_road_casing_filter
+                    draw:
+                        casing_right:
+                            color: global.bike_green_color_casing
+        # tier3_left:
+        #     filter: global.casing_bike_tier3_on_road_not_protected_filter_left
+        #     draw:
+        #         casing_left:
+        #             color: global.bike_lightgreen_color_casing
+        # tier3_right:
+        #     filter: global.casing_bike_tier3_on_road_not_protected_filter_right
+        #     draw:
+        #         casing_right:
+        #             color: global.bike_lightgreen_color_casing
+
     bike_draw_labels:
-        z18:
-            filter:
-                $zoom: { min: 18 }
-            bike_tier1a:
-                filter: global.bike_tier1_off_road_filter
+        enabled: global.sdk_bike_overlay
+        filter:
+            function() { return global.sdk_bike_overlay; }
+        draw:
+            text-blend-order:
+                priority: 56
+                ## for print label for postcard
+                # font:
+                #     size: 22px
+        bike_shields: global.draw_bike_route_shields
+        bike_tier1a:
+            filter: global.bike_tier1_off_road_filter
+            draw:
+                text-blend-order:
+                    priority: 50
+                    font:
+                        fill: global.bike_orange_label
+                        weight: 600
+                        #size: 10px
+                        stroke: { color: global.bike_orange_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            minor_road:
+                filter:
+                    any:
+                        - kind: minor_road
                 draw:
                     text-blend-order:
-                        text_source: global.bike_labels
                         font:
-                            fill: global.bike_tier1a_label
-                            weight: 600
-                            #size: 10px
-                            stroke: { color: global.bike_tier1_off_road_path_color_lite }
-            bike_tier1b:
-                filter: global.bike_tier1_off_road_track_filter
+                            fill: global.bike_green_label
+                            stroke: { color: global.bike_green_color_lite, width: [[13,2px],[16,2px],[17,5px]] }
+            paths:
+                filter:
+                    any:
+                        - kind_detail: cycleway
+                        - all:
+                            - bicycle: [designated,yes]
+                            - kind: path
                 draw:
                     text-blend-order:
-                        text_source: global.bike_labels
                         font:
-                            fill: global.bike_tier1b_label
-                            weight: 600
-                            #size: 10px
-                            stroke: { color: global.bike_tier1_off_road_track_color_lite }
-            bike_tier2:
-                filter: global.bike_tier2_on_road_protected_filter
+                            fill: global.bike_darkgreen_label
+                            stroke: { color: global.bike_darkgreen_color_lite, width: [[13,2px],[16,2px],[17,5px]] }
+                unpaved:
+                    filter: global.bike_tier1_off_road_unpaved_filter
+                    draw:
+                        text-blend-order:
+                            font:
+                                fill: global.bike_brown_label
+                                stroke: { color: global.bike_brown_color_lite, width: [[13,2px],[16,2px],[17,5px]] }
+            steps:
+                filter:
+                    kind_detail: steps
+                    ramp_bicycle: yes
                 draw:
                     text-blend-order:
-                        text_source: global.bike_labels
                         font:
-                            fill: global.bike_tier2_label
-                            weight: 600
-                            #size: 10px
-                            stroke: { color: global.bike_tier2_on_road_protected_color_lite }
-            bike_tier3:
-                filter: global.bike_tier3_on_road_not_protected_filter
+                            fill: global.bike_darkgreen_label
+                            stroke: { color: global.bike_step_color, width: [[13,2px],[16,2px],[17,5px]] }
+
+            z18: global.z18_bike_labels
+        bike_tier1b:
+            filter: global.bike_tier1_off_road_track_filter
+            draw:
+                text-blend-order:
+                    priority: 52
+                    font:
+                        fill: global.bike_brown_label
+                        weight: 600
+                        #size: 10px
+                        stroke: { color: global.bike_brown_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            z18: global.z18_bike_labels
+        bike_tier1c_greenway:
+            filter: global.greenway_on_road_filter
+            draw:
+                text-blend-order:
+                    priority: 51
+                    font:
+                        fill: global.bike_green_label
+                        weight: 600
+                        #size: 10px
+                        stroke: { color: global.bike_green_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            z18: global.z18_bike_labels
+        bike_tier2:
+            filter: global.bike_tier2_on_road_protected_filter
+            draw:
+                text-blend-order:
+                    priority: 53
+                    font:
+                        fill: global.bike_orange_label
+                        weight: 600
+                        #size: 10px
+                        stroke: { color: global.bike_orange_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            minor_road:
+                filter:
+                    kind: minor_road
                 draw:
                     text-blend-order:
-                        text_source: global.bike_labels
                         font:
-                            fill: global.bike_tier3_label
-                            weight: 600
-                            #size: 10px
-                            stroke: { color: global.bike_tier3_on_road_not_protected_color_lite }
-            no_bike:
-                filter: global.no_bike_tier4_filter
+                            fill: global.bike_green_label
+                            stroke: { color: global.bike_lightgreen_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            z18: global.z18_bike_labels
+        bike_tier3:
+            filter: global.bike_tier3_on_road_not_protected_filter
+            draw:
+                text-blend-order:
+                    priority: 54
+                    font:
+                        fill: global.bike_lightorange_label
+                        weight: 600
+                        #size: 10px
+                        stroke: { color: global.bike_lightorange_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+            minor_road:
+                filter:
+                    kind: minor_road
                 draw:
                     text-blend-order:
-                        text_source: global.bike_labels
+                        font:
+                            fill: global.bike_green_label
+                            stroke: { color: global.bike_lightgreen_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+                bike_tier1c_greenway:
+                    filter: global.greenway_on_road_filter
+                    draw:
+                        text-blend-order:
+                            font:
+                                fill: global.bike_green_color
+                                stroke: { color: global.bike_green_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+                bus:
+                    filter:
+                        is_bus_route: true
+                    draw:
+                        text-blend-order:
+                            font:
+                                fill: global.bike_orange_label
+                                stroke: { color: global.bike_lightorange_color_lite, width: 2px }
+            z18: global.z18_bike_labels
+        no_bike:
+            filter: global.no_bike_tier4_filter
+            draw:
+                text-blend-order:
+                    priority: 55
+            z18: global.z18_bike_labels
+            z18-colors:
+                filter: { $zoom: { min: 18 } }
+                draw:
+                    text-blend-order:
                         font:
                             fill: global.no_bike_label
                             weight: 600
                             #size: 10px
-                            stroke: { color: global.no_bike_color_lite }
+                            stroke: { color: global.no_bike_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
+        ferry:
+            filter: global.bike_tier1_ferry_filter
+            draw:
+                text-blend-order:
+                    priority: 56
+            z18: global.z18_bike_labels
+            z18-colors:
+                filter: { $zoom: { min: 18 } }
+                draw:
+                    text-blend-order:
+                        font:
+                            fill: global.bike_blue_label
+                            weight: 600
+                            #size: 10px
+                            stroke: { color: global.bike_blue_color_lite, width: [[13,2px],[16,4px],[17,5px]] }
 
     #
     # Bike Networks
     #
     bike_networks_highway:
+        enabled: global.sdk_bike_overlay
         filter:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+                - bicycle_network: [icn,ncn,rcn]
         draw:
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[9, 6px], [10, 7px], [11, 8px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
+                width: [[8, 5px], [10, 7px], [12, 11px], [13, 13px], [15, 18px], [17, 30px], [19, 60px], [20, 96px]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+            filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
     bike_networks_primary:
+        enabled: global.sdk_bike_overlay
         filter:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
-        draw:
-            highlight:
-                base: lines
-                order: function() { return feature.sort_rank - 100; }
-                color: global.regional_network_highlight
-                width: [[9, 6px], [10, 7px], [11, 8px], [12, 11px], [13, 13px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
-        local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
-            draw:
-                highlight:
-                    visible: false
-
-    bike_networks_secondary:
-        filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
-        draw:
-            highlight:
-                base: lines
-                order: function() { return feature.sort_rank - 100; }
-                color: global.regional_network_highlight
-                width: [[10, 0px], [11, 7px], [12, 10px], [13, 12px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
-        local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
-            draw:
-                highlight:
-                    visible: false
-
-    bike_networks_tertiary:
-        filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+                - bicycle_network: [icn,ncn,rcn]
         draw:
             lines:
-                width: [[11, 1px], [12, 0.15px], [13, 1px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                # color: [[9, global.bike_darkgreen_color], [10, global.bike_orange_color_lite]]
+                width: [[8, 0.5px], [10, 0.15px], [11, 0.15px], [12, 1.5px], [14, 2.5px], [16, 6px], [17, 8.25px], [18, 10m]]
                 outline:
-                    width: [[10, 0px], [11, 0px], [12, 0.5px], [14, 1px], [16, 2px], [17, 2px], [18, 4px]]
+                    width: [[8, 0.5px], [10, 0.75px], [11, 0.85px], [12, 1px], [14, 1.75px], [16, 2.5px], [18, 4px]]
             highlight:
-                base: lines
-                order: function() { return feature.sort_rank - 30; }
+                style: lines
+                order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[11, 4px], [12, 5px], [13, 7px], [15, 13px], [17, 18px], [19, 50px], [20, 90px]]
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+            filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
-    bike_networks_link:
+    bike_networks_secondary:
+        enabled: global.sdk_bike_overlay
         filter:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
+                - bicycle_network: [icn,ncn,rcn]
         draw:
+            lines:
+                width: [[8, 0.25px], [10, 0.5px], [11, 0.5px], [12, 2px], [14, 2.5px], [16, 5px], [17, 7.5px], [18, 9m]]
+                outline:
+                    width: [[8, 0.5px], [10, 0.75px], [11, 0.85px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 100; }
                 color: global.regional_network_highlight
-                width: [[9, 6px], [12, 11px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 15px], [17, 24px], [19, 60px], [20, 96px]]
         local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+            filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+
+                # this seems to be a bad copy-paste job?
+                #lines:
+#                        color: [[10, global.bike_darkgreen_color], [11, global.bike_orange_color_lite]]
+#                        width: [[11, 0.15px], [12, 0.25px], [13, 1px], [16, 4px], [17, 6.25px], [18, 10m]]
+#                        outline:
+#                            color: global.bike_darkgreen_color
+#                            width: [[10, 0px], [11, 0.35px], [12, 0.5px], [13, 1.5px], [16, 2px], [18, 4px]]
+    bike_networks_tertiary:
+        enabled: global.sdk_bike_overlay
+        filter:
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+            any:
+                - bicycle_network: [icn,ncn,rcn]
+                #- { walking_network: true, is_bicycle_related: true }
+        draw:
+            lines:
+                width: [[8, 0.25px], [10, 0.5px], [11, 0.5px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                outline:
+                    width: [[8, 0.45px], [10, 0.75px], [11, 0.6px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 30; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        local_network:
+            filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+
+    bike_networks_link:
+        enabled: global.sdk_bike_overlay
+        filter:
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+                - bicycle_network: [icn,ncn,rcn]
+        draw:
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 100; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [13, 13px], [15, 11px], [17, 20px], [19, 40px], [20, 70px]]
+        local_network:
+            filter: { bicycle_network: lcn }
             draw:
                 highlight:
                     visible: false
 
     bike_networks_minor:
+        enabled: global.sdk_bike_overlay
         filter:
             all:
                 - function() { return global.sdk_bike_network_overlay; }
+            any:
                 - bicycle_network: true
+                #- { walking_network: true, is_bicycle_related: true }
         draw:
+            lines:
+                width: [[8, 0px], [10, 0.15px], [12, 0.8px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                outline:
+                    width: [[8, 0.7px], [10, 0.7px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
             highlight:
-                base: lines
+                style: lines
                 order: function() { return feature.sort_rank - 20; }
                 color: global.regional_network_highlight
-                width: [[11, 0px], [12, 5px], [13, 6px], [15, 11px], [17, 18px], [19, 50px], [20, 90px]]
-        local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 11px], [17, 24px], [19, 25m]]
+        national_network:
+            filter: { bicycle_network: [icn,ncn,rcn] }
             draw:
-                highlight:
-                    visible: false
-
-    bike_networks_path:
-        filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
-        draw:
-            highlight:
-                base: lines
-                order: function() { return feature.sort_rank - 3; }
-                color: global.regional_network_highlight
-                width: [[11, 0px], [12, 5px], [15, 10px], [17, 13px], [19, 30px]]
+                lines:
+                    width: [[8, 1px], [10, 0.15px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    outline:
+                        width: [[8, 0px], [10, 0.75px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
         local_network:
             filter: { bicycle_network: lcn }
             draw:
-                lines:
-                    color: [[12, global.bike_tier1_off_road_path_color], [13, global.bike_tier1_off_road_path_color], [14, global.bike_tier1_off_road_path_color_lite]]
-                    width: [[12, 1.25px], [13, 2px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-                    outline:
-                        color: [[12, [0.900,0.900,0.900]], [13, global.bike_tier1_off_road_path_color]]
-                        width: [[13, 0px], [14, 1px], [15, 1px], [17, 2px], [18, 3px]]
-            highlight-later:
-                filter: { $zoom: { max: 15 } }
-                draw:
-                    highlight:
-                        visible: false
-
-    bike_networks_track:
-        filter:
-            all:
-                - function() { return global.sdk_bike_network_overlay; }
-                - bicycle_network: true
-        draw:
-            lines:
-                width: [[12, 0.75px], [13, 1.25px], [14, 0.15px], [15, 1.5px], [17, 2.5m]]
-                outline:
-                    width: [[13, 0px], [14, 1px], [15, 1px], [17, 2px], [18, 3px]]
-            highlight:
-                base: lines
-                order: function() { return feature.sort_rank - 3; }
-                color: global.regional_network_highlight
-                width: [[11, 0px], [12, 5px], [15, 10px], [17, 13px], [19, 30px]]
-        local_network:
-            filter: { bicycle_network: lcn, $zoom: { max: 15 } }
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
             draw:
                 highlight:
                     visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+        greenway:
+            filter: global.greenway_on_road_filter
+            draw:
+                lines:
+                    color: global.bike_green_color_lite
+                    width: [[8, 1px], [10, 1px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                    outline:
+                        color: global.bike_green_color
+                        width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                highlight:
+                    width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+            early:
+                filter: { $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        order: function() { return feature.sort_rank + 200; }
+
+    bike_networks_service:
+        enabled: global.sdk_bike_overlay
+        filter:
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+            any:
+                - bicycle_network: true
+                #- { walking_network: true, is_bicycle_related: true }
+        draw:
+            lines:
+                width: [[8, 1px], [10, 1.5px], [12, 0.8px], [14, 2px], [16, 3.5px], [17, 6px], [18, 9m]]
+                outline:
+                    width: [[8, 0px], [10, 0px], [12, 1px], [14, 1.3px], [16, 2px], [18, 4px]]
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 20; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px]]
+        national_network:
+            filter: { bicycle_network: [icn,ncn,rcn] }
+            draw:
+                lines:
+                    width: [[8, 1px], [10, 1.5px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    outline:
+                        width: [[8, 0px], [10, 0px], [11, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                highlight:
+                    width: [[8, 5px], [10, 7px], [12, 9px], [15, 11px], [17, 21px], [19, 46px], [20, 90px]]
+        local_network:
+            filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+        greenway:
+            filter: global.greenway_on_road_filter
+            draw:
+                lines:
+                    color: [[10, global.bike_green_color], [11, global.bike_green_color_lite]]
+                    width: [[8, 1px], [10, 1.5px], [12, 0.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 9m]]
+                    outline:
+                        color: global.bike_green_color
+                        width: [[8, 0px], [10, 0px], [11, 0.5px], [12, 1px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                highlight:
+                    width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+            early:
+                filter: { $zoom: { max: 15 } }
+                draw:
+                    lines:
+                        order: function() { return feature.sort_rank + 200; }
+
+    bike_networks_path:
+        enabled: global.sdk_bike_overlay
+        filter:
+            all:
+                - function() { return global.sdk_bike_network_overlay; }
+            any:
+                - bicycle_network: true
+                #- { walking_network: true, is_bicycle_related: true }
+        draw:
+            lines:
+                width: [[8, 0.15px], [10, 0.15px], [12, 1.8px], [13, 1.8px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                order: function() { return feature.sort_rank + 100; }
+                outline:
+                    width: [[8, 0.5px], [10, 0.85px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                    # TODO: Why does this fail on Anacostia Trail in Hyattsville, MD
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 3; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        local_network:
+            filter: { bicycle_network: lcn }
+            draw:
+                # lines:
+                #     color: global.bike_darkgreen_color_lite
+                #     outline:
+                #         color: global.bike_darkgreen_color
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+        footway:
+            filter:
+                all:
+                    # this this is a new layer based on kind_detail (not network), we need to restate the basic overlay filter function
+                    - kind_detail: footway
+            draw:
+                lines:
+                    color: global.bike_lightbrown_color_lite
+                    width: [[8, 0.5px], [10, 0.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    order: function() { return feature.sort_rank + 200; }
+                    outline:
+                        color: global.bike_lightbrown_color
+                        width: [[8, 0.25px], [10, 0.5px], [12, 0.8px], [13, 1.0px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+            local_network:
+                filter: { bicycle_network: lcn }
+                draw:
+                    lines:
+                        color: global.bike_brown_color_lite
+                        outline:
+                            color: global.bike_brown_color
+
+    bike_networks_track:
+        enabled: global.sdk_bike_overlay
+        filter:
+            bicycle_network: true
+            #{ walking_network: true, is_bicycle_related: true }
+        draw:
+            lines:
+                color: [[8, global.bike_brown_color], [10, global.bike_brown_color], [11, global.bike_brown_color_lite]]
+                width: [[8, 1px], [10, 1.5px], [12, 1px], [15, 1.5px], [17, 2.5m]]
+                outline:
+                    color: global.bike_brown_color
+                    width: [[8, 0px], [10, 0px], [12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 3; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        national_network:
+            filter:
+                any:
+                    - bicycle_network: [icn,ncn,rcn]
+                    #- walking_network: [iwn,nwn,rwn]
+            draw:
+                lines:
+                    width: [[8, 1px], [10, 1.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    outline:
+                        width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                highlight:
+                    width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        local_network:
+            filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
+
+    bike_networks_ferry:
+        enabled: global.sdk_bike_overlay
+        filter:
+            bicycle_network: true
+            #{ walking_network: true, is_bicycle_related: true }
+        draw:
+            lines:
+                color: [[8, global.bike_blue_color], [10, global.bike_blue_color], [11, global.bike_blue_color_lite]]
+                width: [[8, 1px], [10, 1.5px], [15, 2px], [17, 2.5m]]
+                outline:
+                    color: global.bike_blue_color
+                    width: [[8, 0px], [10, 0px], [12, 0.5px], [14, 0.6px], [15, 1px], [17, 2px], [18, 3px]]
+            highlight:
+                style: lines
+                order: function() { return feature.sort_rank - 3; }
+                color: global.regional_network_highlight
+                width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        national_network:
+            filter:
+                any:
+                    - bicycle_network: [icn,ncn,rcn]
+                    #- walking_network: [iwn,nwn,rwn]
+            draw:
+                lines:
+                    width: [[8, 1px], [10, 1.5px], [12, 1px], [13, 1.1px], [14, 2.0px], [16, 6px], [17, 8.25px], [18, 8m]]
+                    outline:
+                        width: [[8, 0px], [10, 0px], [12, 1px], [13, 1px], [14, 1.5px], [16, 2.25px], [17, 3px], [18, 4px]]
+                highlight:
+                    width: [[8, 5px], [10, 7px], [12, 9px], [15, 13px], [17, 21px], [19, 46px], [20, 90px]]
+        local_network:
+            filter: { bicycle_network: lcn }
+            draw:
+                highlight:
+                    visible: false
+        regional_network:
+            filter: { bicycle_network: rcn, $zoom: [8,9,10] }
+            draw:
+                highlight:
+                    visible: false
+            z9:
+                filter: { $zoom: [8,9] }
+                draw:
+                    lines:
+                        visible: false
 
 
 styles:
@@ -1302,6 +2191,10 @@ styles:
         base: lines
         #blend: overlay
         #blend_order: 0
+    bike_dash:
+        base: lines
+        dash: [1.50, 0.675]
+        dash_background_color: [0.980,0.831,0.671]
     no_bike_dash:
         base: lines
         dash: [1.00, 0.75]
