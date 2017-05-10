@@ -270,6 +270,128 @@ layers:
                             width: [[12, 2.5px], [14, 4px], [15, 6px], [16, 7px], [18, 16px], [20, 26px]]
 
 
+        walking_route_shields:
+            #enabled: function() { return global.sdk_path_overlay; }
+            filter:
+                all:
+                    - walking_shield_text: true
+                    - function() { return global.sdk_path_overlay; }
+            # default
+            draw:
+                icons:
+                    # you need to match any custom shield to the vector tile `network` values
+                    sprite: |
+                        function() {
+                            return ('sdk_shield-' + feature.walking_shield_text.length + 'char');
+                        }
+                    color: green
+                    sprite_default: sdk_shield_5char
+                    priority: 58
+                    repeat_group: shields
+                    repeat_distance: [[8,90px],[10,40px],[13,30px]]
+                    placement: midpoint
+                    placement_min_length_ratio:
+                        - [8, 0.1]
+                        - [9, 0.25]
+                        - [10, 0.25]
+                        - [11, 0.15]
+                        - [12, 1]
+                        - [13, 1.50]
+                        - [14, 2.0]
+                    cull_from_tile: true
+                    visible: true
+                    text:
+                        offset: [0px, -0.5px]
+                        repeat_distance: 200px
+                        anchor: center
+                        text_source: walking_shield_text
+                        font:
+                            family: Montserrat
+                            #fill: [0.308,0.308,0.308]
+                            fill: white #[0.320,0.320,0.320]
+                            size: [[7,7px],[12,8px],[16,11px]]
+            width_1char:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length === 1)
+                    }
+                draw:
+                    icons:
+                        size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
+            width_2char:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length === 2)
+                    }
+                draw:
+                    icons:
+                        size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
+            width_3char:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length === 3)
+                    }
+                draw:
+                    icons:
+                        size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
+            width_4char:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length === 4)
+                    }
+                draw:
+                    icons:
+                        size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
+            width_5char:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length === 5)
+                    }
+                draw:
+                    icons:
+                        size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
+            width_other:
+                filter: |
+                    function() {
+                        return (feature.walking_shield_text.length > 5)
+                    }
+                draw:
+                    icons:
+                        visible: false
+            network_iwn:
+                filter: { walking_network: iwn }
+                draw:
+                    icons:
+                        priority: 56
+                        visible: true
+            network_nwn:
+                filter: { walking_network: nwn }
+                draw:
+                    icons:
+                        priority: 57
+                        visible: true
+            network_rwn:
+                filter: { walking_network: rwn }
+                draw:
+                    icons:
+                        priority: 58
+                        visible: true
+                early:
+                    filter: { $zoom: { max: 9 } }
+                    draw:
+                        icons:
+                            visible: false
+            network_lwn:
+                filter: { walking_network: lwn }
+                draw:
+                    icons:
+                        priority: 59
+                        visible: true
+                early:
+                    filter: { $zoom: { max: 15 } }
+                    draw:
+                        icons:
+                            visible: false
 
 
 global:

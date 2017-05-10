@@ -221,11 +221,20 @@
         );
         map.setView(map_start_location.slice(0, 2), map_start_location[2]);
 
+        var dev_or_prod = 'prod';
+
+        // prod
+        var mapzen_api_key = 'vector-tiles-VyYjZGS';
+
+        if( dev_or_prod == 'dev' ) {
+            mapzen_api_key = 'mapzen-xkUbe6g';
+        }
+
         var layer = Tangram.leafletLayer({
             // more: 'vector-tiles-TMwazSG'
             // default (some): 'vector-tiles-VyYjZGS'
             // no: 'vector-tiles-2giCT1z'
-            scene: { import: 'walkabout-style.yaml', global: { sdk_mapzen_api_key: 'vector-tiles-VyYjZGS' } },
+            scene: { import: 'walkabout-style.yaml', global: { 'sdk_mapzen_api_key': mapzen_api_key } },
             attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>, &copy; OSM contributors'
         });
 
@@ -350,7 +359,11 @@
             var zoom = max_zoom < map.getZoom() ? max_zoom : Math.floor(map.getZoom());
             var tileCoords = { x : long2tile(latlng.lng,zoom), y: lat2tile(latlng.lat,zoom), z: zoom };
 
-            var url = 'http://tile.mapzen.com/mapzen/vector/v1/all/' + zoom + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson';
+            var url = 'http://tile.';
+            if( dev_or_prod == 'dev' ) {
+                url += 'dev.';
+            }
+            url += 'mapzen.com/mapzen/vector/v1/all/' + Math.min(15,zoom) + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson' + '?api_key=' + mapzen_api_key;
             return url;
         }
 
@@ -511,6 +524,7 @@
                 if (value === 'true' || value === true) {
                     scene.config.global.sdk_road_shields = false;
                     scene.config.global.sdk_bike_overlay = false;
+                    scene.config.global.sdk_bike_network_overlay = false;
                     scene.config.global.sdk_path_overlay = false;
                 } else {
                     if( scene.config.global.text_visible_roads ) {
@@ -531,6 +545,7 @@
             gui.bike_overlay = query.bike_overlay || false;
             gui.bike_button = gui.add(gui, 'bike_overlay', bike_overlay).onChange(function(value) {
                 scene.config.global.sdk_bike_overlay = (value === 'true' || value === true); // dat.gui passes a string
+                scene.config.global.sdk_bike_network_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_path_overlay = false;
                 scene.updateConfig();
@@ -549,6 +564,7 @@
                 scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_bike_overlay = false;
+                scene.config.global.sdk_bike_network_overlay = false;
                 scene.updateConfig();
             });
             gui.path_button.name('path');
