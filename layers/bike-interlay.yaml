@@ -72,7 +72,9 @@ layers:
                 draw:
                     text-blend-order:
                         priority: 59
-                        visible: true
+                        # this needs to be contextual for no-labels
+                        # right now it re-uses the global, but should be custom
+                        visible: global.sdk_bike_shields
                         font:
                             fill: global.bike_green_label
                             size: 9px
@@ -116,24 +118,26 @@ layers:
         bike-overlay-pois:
             enabled: global.sdk_bike_overlay
             filter:
-                kind:
-                    - bicycle
-                    - bicycle_rental
-                    - bicycle_rental_station
-                    - bicycle_junction
-                    - cafe                      # if we want to see more cafe or pub, then we need to mod
-                    - pub                       # the main pois: layer filter
-                    - drinking_water
-                    - toilets
-                    - cycle_barrier
-                    - bicycle_parking
+                all:
+                    - kind:
+                        - bicycle
+                        - bicycle_rental
+                        - bicycle_rental_station
+                        - bicycle_junction
+                        - cafe                      # if we want to see more cafe or pub, then we need to mod
+                        - pub                       # the main pois: layer filter
+                        - drinking_water
+                        - toilets
+                        - cycle_barrier
+                        - bicycle_parking
+                    - function() { return global.sdk_bike_overlay; }
             draw:
                 icons:
                     sprite: function() { return 'bike_' + feature.kind; }
                     #priority: 30
-                    visible: true
+                    visible: global.sdk_bike_shields
                     text:
-                        visible: true
+                        visible: global.sdk_bike_shields
             bike-priority:
                 bicycle:
                     filter: { kind: bicycle }
@@ -210,7 +214,7 @@ layers:
                             - function() { return global.sdk_bike_overlay; }
                     draw:
                         icons:
-                            visible: true
+                            visible: global.sdk_bike_shields
             hide-until-z17-no-area:
                 bicycle_rental_station:
                     filter:
@@ -219,7 +223,7 @@ layers:
                             - function() { return global.sdk_bike_overlay; }
                     draw:
                         icons:
-                            visible: true
+                            visible: global.sdk_bike_shields
                             # if we wanted to have icon only labels...
                             # text:
                             #     font:
@@ -231,7 +235,7 @@ layers:
                             - function() { return global.sdk_bike_overlay; }
                     draw:
                         icons:
-                            visible: true
+                            visible: global.sdk_bike_shields
             hide-until-z18-any:
                 drinking_water:
                     filter:
@@ -240,7 +244,7 @@ layers:
                             - function() { return global.sdk_bike_overlay; }
                     draw:
                         icons:
-                            visible: true
+                            visible: global.sdk_bike_shields
             hide-until-z19-any:
                 bicycle:
                     filter:
@@ -250,7 +254,7 @@ layers:
                     draw:
                         icons:
                             priority: 66
-                            visible: true
+                            visible: global.sdk_bike_shields
         no-name:
             no-name-no-area:
                 cycle_barrier:
@@ -261,7 +265,7 @@ layers:
                     draw:
                         icons:
                             priority: 31
-                            visible: true
+                            visible: global.sdk_bike_shields
             drinking_water_toilets:
                 filter:
                     all:
@@ -270,7 +274,7 @@ layers:
                 draw:
                     icons:
                         priority: 31
-                        visible: true
+                        visible: global.sdk_bike_shields
             walking-or-bicycle_junction:
                 bicycle_junction:
                     filter:
@@ -288,13 +292,13 @@ layers:
                             sprite: function() { return ('sdk_shield-' + feature.ref.length + 'char'); }
                             # Size is specified below, and limited to 5 char in another filter
                             size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
-                            visible: true
+                            visible: global.sdk_bike_shields
                             color: [0.306,0.353,0.679]
                             text:
                                 offset: [0px, -1px]
                                 anchor: center
                                 text_source: ref
-                                visible: true
+                                visible: global.sdk_bike_shields
                                 font:
                                     family: Montserrat
                                     fill: white
@@ -346,6 +350,7 @@ global:
     #
     sdk_bike_overlay: false                # should be false
     sdk_bike_network_overlay: true         # should be true (isn't enabled unless sdk_bike_overlay is true)
+    sdk_bike_shields: true                 # should be true, except false for no-labels
 
     # COLORS
     #
