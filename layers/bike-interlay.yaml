@@ -33,6 +33,7 @@ layers:
         major_road:
             trunk_primary:
                 bike: global.bike_draw_trunk_primary
+                #no_bike: global.no_bike_draw_minor
                 routes:
                     bike: global.bike_draw_trunk_primary
                 labels-trunk_primary-z11-up:
@@ -40,6 +41,7 @@ layers:
 
             secondary:
                 bike: global.bike_draw_secondary
+                #no_bike: global.no_bike_draw_minor
                 routes:
                     bike: global.bike_draw_secondary
                 labels-secondary:
@@ -47,6 +49,7 @@ layers:
 
             tertiary:
                 bike: global.bike_draw_tertiary
+                #no_bike: global.no_bike_draw_minor
                 routes:
                     bike: global.bike_draw_tertiary
                 labels-tertiary:
@@ -432,6 +435,8 @@ global:
                 return name + " (sidepath)";
             } else if( feature.bicycle == 'no' || feature.bicycle == 'dismount'  ) {
                 return name + " (walk your bike)";
+            } else if ( feature.bicycle == 'use_sidepath' ){
+                return name + " (" + feature.bicycle + ")";
             } else if( feature.kind_detail == "cycleway" && feature.cycleway != 'sidepath' ) {
                 return name + " (bike path)";
             } else if( feature.kind_detail == "living_street" ) {
@@ -642,7 +647,10 @@ global:
             draw:
                 icons:
                     priority: 61
-                    color: global.no_bike_label
+                    # don't ever show pink shields on the map, instead use cascading logic
+                    #color: global.no_bike_label
+                    # maybe these should never be visible? but they are part of cycle relations...
+                    #visible: false
 
     z18_bike_labels:
         filter:
@@ -728,7 +736,8 @@ global:
     # no bike
     no_bike_tier4_filter:
         any:
-            - bicycle: [no, dismount]
+            # https://www.openstreetmap.org/way/280439276#map=18/46.56290/15.62873&layers=C
+            - bicycle: [no, dismount, use_sidepath]
             - surface: cobblestone
 
     # DRAW STYLES
