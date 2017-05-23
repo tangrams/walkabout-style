@@ -1439,7 +1439,12 @@ layers:
                     # color: [0.528,0.902,0.960] ## more saturated
                     color: [0.432,0.890,0.960] ## even more saturated
         playas:
-            filter: { kind: playa, $zoom: {min: 6} }
+            filter:
+                all:
+                    - $zoom: {min: 6}
+                any:
+                    - kind: playa
+                    - { kind: [lake, water, reservoir], intermittent: [true] }
             draw:
                 dashed_small:
                     order: function() { return feature.sort_rank; }
@@ -1447,6 +1452,10 @@ layers:
                     width: 1px
                 polygons_transparent:
                     color: [0.85,0.85,0.85, 0.5]
+                polygons:
+                    visible: false
+                lines:
+                    visible: false
         other-water-areas:
             filter: { not: { kind: [ocean, lake, water, reservoir, playa] }, $zoom: { min: 11 }, area: { min: 100 } }
             draw:
@@ -1478,7 +1487,9 @@ layers:
             filter:
                 all:
                     - boundary: true
-                    - not: { kind: [ocean,playa] }
+                    - not:
+                        - kind: [ocean,playa]
+                        - { kind: [lake, water, reservoir], intermittent: [true] }
                     - $zoom: { min: 8}
                 # WARNING: any area filters here must match the area filters in the lakes layer
                 any:
