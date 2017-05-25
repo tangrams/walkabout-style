@@ -569,6 +569,20 @@
             });
             gui.path_button.name('path');
 
+            // Bathymetry selector
+            var bathymetry = {
+                '(default)': false,
+                'Yes': true,
+                'No': false
+            };
+            // use transit ux, else default to false
+            gui.bathymetry = query.bathymetry || false;
+            gui.bathymetry_button = gui.add(gui, 'bathymetry', bathymetry).onChange(function(value) {
+                scene.config.global.sdk_bathymetry = (value === 'true' || value === true); // dat.gui passes a string
+                scene.updateConfig();
+            });
+            gui.bathymetry_button.name( 'bathymetry' );
+
             // Building extrusion selector
             var building_3d = {
                 '(default)': true,

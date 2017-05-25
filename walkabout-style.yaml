@@ -204,6 +204,11 @@ global:
     # or app logic sets other booleans that triggers auto behavior later
     sdk_transit_overlay: false
     #
+    # BATHYMETRY
+    # Show relief shading under water
+    # should default to "false", with SDK overriding it to true or false,
+    sdk_bathymetry: false
+    #
     # SHIELDS
     sdk_shield_color: black
     sdk_shield_text_color: white
@@ -924,8 +929,9 @@ styles:
             uniforms:
                 u_envmap: images/draw-test10.jpg
                 u_contrast: 1.
-                u_brightness: 1.
                 u_zoom_scale: 3.5
+                u_brightness_base: 0.5
+                u_brightness_scaler: 0.5
             blocks:
                 global: |
                     // Simplified view-independent environment map
@@ -944,7 +950,7 @@ styles:
                     // apply contrast and brightness
                     float contrast = m;
                     color.rgb = ((color.rgb - 0.5) * max(contrast, 0.)) + 0.5;
-                    float brightness = .5 - m * .5;
+                    float brightness = u_brightness_base - m * u_brightness_scaler;
                     color.rgb += brightness;
 
                     // apply layer color
@@ -956,6 +962,13 @@ styles:
             uniforms:
                 u_envmap: images/walkabout-green1.jpg
                 u_zoom_scale: 3.95
+
+    terrain-water:
+        mix: terrain
+        shaders:
+            uniforms:
+                u_brightness_base: 0.52
+                u_brightness_scaler: 0.45
 
     # HSV/RGB functions
     hsv:
@@ -1403,7 +1416,17 @@ layers:
         draw:
             polygons:
                 order: function() { return feature.sort_rank; }
-                #color: [0.608,0.925,0.965]
+                # color: [0.608,0.925,0.965] ## original color
+                # color: [0.528,0.902,0.960] ## more saturated
+                # color: [0.432,0.890,0.960] ## even more saturated
+                color: [0.608,0.925,0.965]
+                visible: false
+        bathymetry:
+            enabled: global.sdk_bathymetry
+            draw:
+                polygons:
+                    style: terrain-water
+                    #color: '#70ecfd' #[0.608,0.925,0.965]
         later:
             filter: { $zoom: { min: 12 } }
             draw:
@@ -1426,19 +1449,22 @@ layers:
                     - { $zoom: { min: 5 },  area: { min: 700000000 } }
                     - { $zoom: { min: 6 },  area: { min: 500000000 } }
                     - { $zoom: { min: 7 },  area: { min: 160000000 } }
-                    - { $zoom: { min: 8 },  area: { min: 40000000 } }
-                    - { $zoom: { min: 9 },  area: { min: 10000000 } }
-                    - { $zoom: { min: 10 }, area: { min: 8000000 } }
-                    - { $zoom: { min: 11 }, area: { min: 2000000 } }
-                    - { $zoom: { min: 12 }, area: { min: 200000 } }
-                    - { $zoom: { min: 13 }, area: { min: 100000 } }
-                    - { $zoom: { min: 14 }, area: { min: 2000 } }
-                    - { $zoom: { min: 15 } }
+                    - { $zoom: { min: 8 },  area: { min: 20000000 } }
+                    - { $zoom: { min: 9 },  area: { min: 5000000 } }
+                    - { $zoom: { min: 10 }, area: { min: 1000000 } }
+                    - { $zoom: { min: 11 }, area: { min: 200000 } }
+                    - { $zoom: { min: 12 }, area: { min: 50000 } }
+                    - { $zoom: { min: 13 }, area: { min: 20000 } }
+                    - { $zoom: { min: 14 } }
             draw:
                 polygons:
-                    # color: [0.608,0.925,0.965] ## original color
-                    # color: [0.528,0.902,0.960] ## more saturated
-                    color: [0.432,0.890,0.960] ## even more saturated
+                    visible: true
+                lines:
+                    visible: true
+                dashed_small:
+                    visible: true
+                polygons_transparent:
+                    visible: true
         playas:
             filter:
                 all:
@@ -1457,16 +1483,16 @@ layers:
                     visible: false
                 lines:
                     visible: false
-        other-water-areas:
-            filter: { not: { kind: [ocean, lake, water, reservoir, playa] }, $zoom: { min: 11 }, area: { min: 100 } }
-            draw:
-                polygons:
-                    color: [0.432,0.890,0.960]
-        swimming_pool:
-            filter: { kind: swimming_pool }
-            draw:
-                polygons:
-                    color: [0.432,0.890,0.960]
+        #other-water-areas:
+#            filter: { not: { kind: [ocean, lake, water, reservoir, playa] }, $zoom: { min: 11 }, area: { min: 100 } }
+#            draw:
+#                polygons:
+#                    color: [0.432,0.890,0.960]
+        #swimming_pool:
+#            filter: { kind: swimming_pool }
+#            draw:
+#                polygons:
+#                    color: [0.432,0.890,0.960]
         water-boundary-ocean-early:
             filter: { boundary: true, kind: ocean, $zoom: {min: 1, max: 17} }
             draw:
@@ -1495,7 +1521,7 @@ layers:
                 # WARNING: any area filters here must match the area filters in the lakes layer
                 any:
                     # limit show smaller landuse areas to higher zooms
-                    - { $zoom: { min: 1 },  area: { min: 40000000000 } }
+                    - { $zoom: { min: 0 },  area: { min: 40000000000 } }
                     - { $zoom: { min: 2 },  area: { min: 20000000000 } }
                     # some weird natural earth scale set transition
                     - { $zoom: { min: 3 },  area: { min: 80000000000 } }
@@ -1503,21 +1529,21 @@ layers:
                     - { $zoom: { min: 5 },  area: { min: 700000000 } }
                     - { $zoom: { min: 6 },  area: { min: 500000000 } }
                     - { $zoom: { min: 7 },  area: { min: 160000000 } }
-                    - { $zoom: { min: 8 },  area: { min: 40000000 } }
-                    - { $zoom: { min: 9 },  area: { min: 10000000 } }
-                    - { $zoom: { min: 10 }, area: { min: 8000000 } }
-                    - { $zoom: { min: 11 }, area: { min: 2000000 } }
-                    - { $zoom: { min: 12 }, area: { min: 200000 } }
-                    - { $zoom: { min: 13 }, area: { min: 100000 } }
-                    - { $zoom: { min: 14 }, area: { min: 2000 } }
-                    - { $zoom: { min: 15 } }
+                    - { $zoom: { min: 8 },  area: { min: 20000000 } }
+                    - { $zoom: { min: 9 },  area: { min: 5000000 } }
+                    - { $zoom: { min: 10 }, area: { min: 1000000 } }
+                    - { $zoom: { min: 11 }, area: { min: 200000 } }
+                    - { $zoom: { min: 12 }, area: { min: 50000 } }
+                    - { $zoom: { min: 13 }, area: { min: 20000 } }
+                    - { $zoom: { min: 14 } }
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }
                     # color: [0.625,0.806,0.822]
                     color: [0.431,0.806,0.914]
-                    width: 1px
+                    width: [[10,0.5px],[11,1px]]
                     join: round
+                    visible: true
             early:
                 filter: { $zoom: { min: 14 } }
                 draw:
@@ -1535,12 +1561,14 @@ layers:
                     lines:
                         color: [0.431,0.806,0.914]
                         width: 1px
+                        visible: true
         river:
             #river center lines, not boundaries for polygons
             filter: { kind: [river,canal,stream,dam,ditch,drain], $zoom: { min: 11 }, not: { is_tunnel: true } }
             draw:
                 lines:
                     order: function() { return feature.sort_rank; }
+                    visible: true
                     color: [[10,[0.472,0.834,0.890]],[14,[0.511,0.877,0.930]]]
                     # color: [0.592,0.929,0.961]
                     #color: [[11,[0.753,0.820,0.835]],[12,[0.710,0.800,0.824]],[13,[0.886,0.937,0.988]]]
@@ -1611,19 +1639,18 @@ layers:
                     - { $zoom: { min: 7 },  area: { min: 400000000 } }
                     - { $zoom: { min: 8 },  area: { min: 200000000 } }
                     - { $zoom: { min: 9 },  area: { min: 100000000 } }
-                    - { $zoom: { min: 10 }, area: { min: 100000000 } }
-                    - { $zoom: { min: 11 }, area: { min: 10000000 } }
-                    - { $zoom: { min: 12 }, area: { min: 2000000 } }
-                    - { $zoom: { min: 13 }, area: { min: 1000000 } }
-                    - { $zoom: { min: 14 }, area: { min: 500000 } }
-                    - { $zoom: { min: 15 }, area: { min: 100000 } }
-                    - { $zoom: { min: 15 }, area: { min: 50000 } }
-                    - { $zoom: { min: 16 }, area: { min: 20000 } }
-                    - { $zoom: { min: 17 } }
+                    - { $zoom: { min: 10 }, area: { min: 10000000 } }
+                    - { $zoom: { min: 11 }, area: { min: 4000000 } }
+                    - { $zoom: { min: 12 }, area: { min: 750000 } }
+                    - { $zoom: { min: 13 }, area: { min: 100000 } }
+                    - { $zoom: { min: 14 }, area: { min: 50000 } }
+                    - { $zoom: { min: 15 }, area: { min: 10000 } }
+                    - { $zoom: { min: 16 } }
             default-label-text:
                 draw:
                     text-blend-order:
                         text_source: global.ux_language_text_source
+                        text_wrap: 10
                         font:
                             fill: global.text_fill_water
                             family: global.text_font_family
@@ -1780,6 +1807,11 @@ layers:
                         width: 0.5px
                         outline:
                             width: 0px
+                bathymetry:
+                    enabled: global.sdk_bathymetry
+                    draw:
+                        lines:
+                            color: '#ebf8fa'
         highway:
             filter: { kind: highway, $zoom: { min: 8 } }
             draw:
@@ -3022,6 +3054,11 @@ layers:
                 lines:
                     color: [0.451,0.804,0.878]
                     width: [[12, 0.5px], [13, 0.75px], [15, 1.0px]]
+            bathymetry:
+                enabled: global.sdk_bathymetry
+                draw:
+                    lines:
+                        color: '#ebf8fa'
         aerialway:
             filter: { kind: aerialway }
             draw:
@@ -5706,12 +5743,12 @@ layers:
                     color: [1.000,0.973,0.930]
                     # color: [0.975,0.975,0.828]
                     visible: true
-            later:
-                filter: { $zoom: { min: 15 } }
-                draw:
-                    lines:
-                        color: blue
-                        width: 0.5px
+            #later:
+#                filter: { $zoom: { min: 15 } }
+#                draw:
+#                    lines:
+#                        color: blue
+#                        width: 0.5px
 
         minor_other_stuff:
             filter:
@@ -5720,12 +5757,12 @@ layers:
                 terrain:
                     color: [1.000,0.953,0.900]
                     visible: true
-            later:
-                filter: { $zoom: { min: 15 } }
-                draw:
-                    lines:
-                        color: red
-                        width: 0.5px
+            #later:
+#                filter: { $zoom: { min: 15 } }
+#                draw:
+#                    lines:
+#                        color: red
+#                        width: 0.5px
 
             place_of_worship:
                 filter:
