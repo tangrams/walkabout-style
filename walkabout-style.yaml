@@ -1431,8 +1431,9 @@ layers:
             enabled: global.sdk_bathymetry
             draw:
                 polygons:
+                    # reuse the inherited base color, but use modified shader
+                    # that adjusts brightness / contrast to match original color
                     style: terrain-water
-                    #color: '#70ecfd' #[0.608,0.925,0.965]
         later:
             filter: { $zoom: { min: 12 } }
             draw:
