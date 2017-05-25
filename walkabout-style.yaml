@@ -1421,6 +1421,12 @@ layers:
                 # color: [0.432,0.890,0.960] ## even more saturated
                 color: [0.608,0.925,0.965]
                 visible: false
+            lines:
+                order: function() { return feature.sort_rank; }
+            dashed_small:
+                order: function() { return feature.sort_rank; }
+            polygons_transparent:
+                order: function() { return feature.sort_rank; }
         bathymetry:
             enabled: global.sdk_bathymetry
             draw:
