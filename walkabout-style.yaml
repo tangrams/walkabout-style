@@ -5001,18 +5001,18 @@ layers:
                         font:
                             style: italic
 
-        # TODO: this isn't working, should see small icons near the transbay terminal in SF
         bus_stop:
             filter:
                 kind: [bus_stop]
             draw:
                 icons:
-                    size: 14px
+                    size: [[18,12px],[20,18px]]
                     text:
+                        optional: true
                         font:
                             size: 11px
                             weight: normal
-            later:
+            early:
                 filter: { $zoom: { max: 19 } }
                 draw:
                     icons:
