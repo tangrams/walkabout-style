@@ -819,9 +819,15 @@ sources:
     normals: # normals
         type: Raster
         # prod
-        url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        #url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
         # dev
-        #url: https://tile.dev.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        # url: https://tile.dev.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        # Seth's
+        # url: https://d34o1q5y1d9is8.cloudfront.net/normal/{z}/{x}/{y}.png
+        # Mapzen
+        url: https://k6yfeg1cx6.execute-api.us-east-1.amazonaws.com/Prod/normal/{z}/{x}/{y}.png
+        # url: https://s3.amazonaws.com/elevation-tiles-batchdev/biggertest/normal/{z}/{x}/{y}.png
+        # url: https://s3.amazonaws.com/elevation-tiles-batchdev/20170629/normal/{z}/{x}/{y}.png
         url_params:
             api_key: global.sdk_mapzen_api_key
         max_zoom: 15
@@ -5688,7 +5694,7 @@ layers:
 
         pedestrian:
             filter:
-                kind: [pedestrian,common]
+                kind: [pedestrian,common,footway]
             draw:
                 terrain:
                     color: [0.945,0.995,0.945]
