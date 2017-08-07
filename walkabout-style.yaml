@@ -212,6 +212,20 @@ global:
     sdk_order_under_everything_8: 8
     sdk_order_under_everything_9: 9
     #
+    # APPLICATION STATE
+    # Browsing the map, viewing search results, route planning (mobility), turn-by-turn navigation
+    # https://mapzen.com/documentation/cartography/api-reference/#user-experience
+    # values: browse, search, route-plan, route-navigation
+    sdk_application_state: browse
+    #private
+    app_state_function: function() { if global.application_state === 'route-plan' ||  global.application_state == 'route-navigation' ) { return true; } else { return false; } }
+    # but...
+    # Tangram doesn't seem to accept functions for enabled :\
+    sdk_application_state_browse: true
+    sdk_application_state_search: false
+    sdk_application_state_route_plan: false
+    sdk_application_state_route_navigate: false
+    #
     # TRANSIT OVERLAY
     # should default to "auto", with SDK overriding it to true or false,
     # or app logic sets other booleans that triggers auto behavior later
@@ -1179,6 +1193,7 @@ layers:
                 width: [[0,3.5px],[5,5px],[9,7px],[10,6px],[11,6px],[13,8px],[14,9px],[15,10px],[16,11px],[17,12px],[18,10px]]
     mz_current_location_gem:
         data: { source: mz_current_location }
+        enabled: global.sdk_application_state_browse
         draw:
             ux-location-gem-overlay:
                 interactive: global.sdk_interactive
@@ -1188,6 +1203,7 @@ layers:
                 transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_route_location:
         data: { source: mz_route_location }
+        enabled: global.sdk_application_state_route_navigate
         draw:
             ux-location-gem-overlay:
                 interactive: global.sdk_interactive
@@ -1197,6 +1213,7 @@ layers:
                 transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_route_start:
         data: { source: mz_route_start }
+        #enabled: global.sdk_application_state_route_navigate
         draw:
             ux-icons-overlay:
                 interactive: global.sdk_interactive
@@ -1208,6 +1225,7 @@ layers:
                 transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_route_destination:
         data: { source: mz_route_destination }
+        #enabled: global.sdk_application_state_route_navigate
         draw:
             ux-icons-overlay:
                 interactive: global.sdk_interactive
@@ -1219,6 +1237,7 @@ layers:
                 transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_route_transit_stop:
         data: { source: mz_route_transit_stop }
+        enabled: global.sdk_application_state_route_plan
         draw:
             ux-icons-overlay:
                 interactive: global.sdk_interactive
@@ -1228,6 +1247,7 @@ layers:
                 transition: { show: { time: 0s }, hide: { time: 0s } }
     mz_search_result:
         data: { source: mz_search_result }
+        enabled: global.sdk_application_state_search
         draw:
             ux-icons-overlay:
                 interactive: global.sdk_interactive
@@ -1243,6 +1263,7 @@ layers:
                     sprite: ux-search-inactive
     mz_dropped_pin:
         data: { source: mz_dropped_pin }
+        enabled: global.sdk_application_state_browse
         draw:
             ux-icons-overlay:
                 interactive: global.sdk_interactive
@@ -6147,7 +6168,9 @@ layers:
     transit-bus-roads:
         enabled: global.sdk_transit_overlay
         data: { source: mapzen, layer: roads }
-        filter: { is_bus_route: true }
+        filter:
+            all:
+                - is_bus_route: true
         draw:
             lines:
                 color: [[12,'#8e8eff'],[14,blue],[16,'#673eff']]
@@ -6157,12 +6180,23 @@ layers:
                 # but give them all the same outline
                 outline:
                     order: 487
-
+        planning:
+            filter:
+                all:
+                    - function() { return global.sdk_application_state_route_plan; }
+            draw:
+                lines:
+                    color: global.dimmed_gray
 
     transit-platforms:
         enabled: global.sdk_transit_overlay
         data: { source: mapzen, layer: transit }
-        filter: { kind: platform, $zoom: { min: 15 }, $geometry: [polygon,line] }
+        filter:
+            all:
+                - kind: platform
+                - $zoom: { min: 15 }
+                - $geometry: [polygon,line]
+                - function() { return global.sdk_application_state_route_plan; }
         draw:
             lines_transparent:
                 color: '#bc8f96'
@@ -6176,10 +6210,10 @@ layers:
         polygon_geom:
             filter: { $geometry: polygon }
             draw:
-                polygons:
+                polygons_transparent:
                     color: '#bc8f96'
                     outline:
                         color: '#bc8f96'
                         width: [[15,0px],[16,0.5px],[17,1px],[19,2px]]
-                lines:
+                lines_transparent:
                     visible: false
