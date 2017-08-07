@@ -12,8 +12,8 @@
 
 import:
     # Layers
-    - layers/bike-interlay.yaml
     - layers/path-interlay.yaml
+    - layers/bike-interlay.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
@@ -438,7 +438,44 @@ global:
     text_stroke_address:   [0.913,0.925,0.933]  # address stroke color
     townspot_sprite:    townspot-m-rev          # depends on land color and text settings
     text_font_family:   'Open Sans'             # branding in asperational Unicode, yo (or Helvetica)
+    #
+    # GRAY
+    dimmed_gray: '#d0d0d0'
+    dimmed_gray_casing: '#6c6c6c'
+    dimmed_gray_casing_light: '#aeaeae'
+    dimmed_gray_casing_left_right: '#b7b7b7'
+    dimmed_gray_lite: '#d1d1d1'
+    dimmed_gray_dash: '#bababa'
+    dimmed_gray_dash_lite: '#ececec'
+    dimmed_gray_text: '#6a6a6a'
+    dimmed_gray_text_stroke: '#e6e6e6'
+    dimmed_gray_shield: '#6c6c6c'
 
+    draw_app_state_transit_routing:
+        enabled: global.sdk_directions
+        routing:
+            draw:
+                lines:
+                    color: global.dimmed_gray_casing
+    draw_app_state_transit_routing_labels:
+        enabled: global.sdk_directions
+        routing:
+            draw:
+                text:
+                    font:
+                        fill: global.dimmed_gray_text
+    draw_app_state_transit_routing_shields:
+        enabled: global.sdk_directions
+        routing:
+            draw:
+                icons:
+                    visible: false
+                    color: global.dimmed_gray_shield
+            z17:
+                filter: { $zoom: { min: 16 } }
+                draw:
+                    icons:
+                        visible: true
 cameras:
     camera1: global.camera_settings
 
@@ -832,13 +869,13 @@ sources:
     normals: # normals
         type: Raster
         # prod
-        #url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
+        url: https://tile.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
         # dev
         # url: https://tile.dev.mapzen.com/mapzen/terrain/v1/normal/{z}/{x}/{y}.png
-        # Seth's
+        # dev 2(s)
         # url: https://d34o1q5y1d9is8.cloudfront.net/normal/{z}/{x}/{y}.png
-        # Mapzen
-        url: https://k6yfeg1cx6.execute-api.us-east-1.amazonaws.com/Prod/normal/{z}/{x}/{y}.png
+        # dev 2(m)
+        #url: https://k6yfeg1cx6.execute-api.us-east-1.amazonaws.com/Prod/normal/{z}/{x}/{y}.png
         # url: https://s3.amazonaws.com/elevation-tiles-batchdev/biggertest/normal/{z}/{x}/{y}.png
         # url: https://s3.amazonaws.com/elevation-tiles-batchdev/20170629/normal/{z}/{x}/{y}.png
         url_params:
@@ -5964,6 +6001,7 @@ layers:
                         outline:
                             #color: [[11,white],[12,black]]
                             width: [[12,0.25px],[13,0.5px],[14,1px],[16,2px]]
+            zapplication-transit-route-line: global.draw_app_state_transit_routing
             has-data-color:
                 filter: { colour: true }
                 draw:
@@ -5989,6 +6027,7 @@ layers:
                     draw:
                         lines:
                             order: 512
+                zapplication-transit-route-line: global.draw_app_state_transit_routing
             missing-colour:
                 filter: { colour: false }
                 train-missing-color:
@@ -6091,56 +6130,56 @@ layers:
                     draw:
                         icons:
                             visible: false
+                z_draw_app_state_transit_routing_labels: global.draw_app_state_transit_routing_shields
 
             z19-show-long-route-name:
-                    filter:
-                        $zoom: { min: 19 }
-                    draw:
-                        text:
-                            font:
-                                fill: black
-                                style: italic
-                                stroke: { color: white, width: 3px }
+                filter:
+                    $zoom: { min: 19 }
+                draw:
+                    text:
+                        font:
+                            fill: black
+                            style: italic
+                            stroke: { color: white, width: 3px }
+                z_draw_app_state_transit_routing_labels: global.draw_app_state_transit_routing_labels
 
 
-#    transit-bus-roads:
-#        data: { source: mapzen, layer: roads }
-#        filter: { is_bus_route: true }
-#        draw:
-#            lines:
-#                visible: global.sdk_transit_overlay
-#                interactive: false
-#                color: [[13,[0,0,1,0.5]],[15,blue]]
-#                width: [[11,0.5px],[12,0.8px],[16,1.25px],[18,1m]]
-#                # let roads sort themselves past zoom 14
-#                order: 488
-#                # but give them all the same outline
-#                outline:
-#                    order: 487
+    transit-bus-roads:
+        enabled: global.sdk_transit_overlay
+        data: { source: mapzen, layer: roads }
+        filter: { is_bus_route: true }
+        draw:
+            lines:
+                color: [[12,'#8e8eff'],[14,blue],[16,'#673eff']]
+                width: [[12,0.5px],[16,1.25px],[18,1m]]
+                # let roads sort themselves past zoom 14
+                order: 488
+                # but give them all the same outline
+                outline:
+                    order: 487
 
 
-
-#    transit-platforms:
-#        data: { source: mapzen, layer: transit }
-#        filter: { kind: platform, $zoom: { min: 15 }, $geometry: [polygon,line] }
-#        draw:
-#            lines:
-#                visible: global.sdk_transit_overlay
-#                color: '#bc8f96'
-#                width: 10m          # something fishy here with the #include syntax in v0.7 tangram?
-#                order: 1000         # this selection should sort above basemap, but grey Zinc color still applies
-#                outline:
-#                    order: 1002
-#            polygons:
-#                visible: global.sdk_transit_overlay
-#                order: 1001
-#        polygon_geom:
-#            filter: { $geometry: polygon }
-#            draw:
-#                polygons:
-#                    color: '#bc8f96'
-#                    outline:
-#                        color: '#bc8f96'
-#                        width: [[15,0px],[16,0.5px],[17,1px],[19,2px]]
-#                lines:
-#                    visible: false
+    transit-platforms:
+        enabled: global.sdk_transit_overlay
+        data: { source: mapzen, layer: transit }
+        filter: { kind: platform, $zoom: { min: 15 }, $geometry: [polygon,line] }
+        draw:
+            lines_transparent:
+                color: '#bc8f96'
+                width: 10m          # something fishy here with the #include syntax in v0.7 tangram?
+                order: 1000         # this selection should sort above basemap, but grey Zinc color still applies
+                outline:
+                    order: 1002
+            polygons_transparent:
+                visible: global.sdk_transit_overlay
+                order: 1001
+        polygon_geom:
+            filter: { $geometry: polygon }
+            draw:
+                polygons:
+                    color: '#bc8f96'
+                    outline:
+                        color: '#bc8f96'
+                        width: [[15,0px],[16,0.5px],[17,1px],[19,2px]]
+                lines:
+                    visible: false
