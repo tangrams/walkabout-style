@@ -466,20 +466,20 @@ global:
     dimmed_gray_shield: '#6c6c6c'
 
     draw_app_state_transit_routing:
-        enabled: global.sdk_directions
+        enabled: global.sdk_application_state_route_plan
         routing:
             draw:
                 lines:
                     color: global.dimmed_gray_casing
     draw_app_state_transit_routing_labels:
-        enabled: global.sdk_directions
+        enabled: global.sdk_application_state_route_plan
         routing:
             draw:
                 text:
                     font:
                         fill: global.dimmed_gray_text
     draw_app_state_transit_routing_shields:
-        enabled: global.sdk_directions
+        enabled: global.sdk_application_state_route_plan
         routing:
             draw:
                 icons:
