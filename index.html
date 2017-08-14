@@ -455,6 +455,7 @@
                 scene.config.global.text_visible_island = _default;
 
                 scene.config.global.sdk_road_shields = _road_shields;
+                scene.config.global.sdk_path_shields = _road_shields;
 
                 scene.config.global.text_visible_roads = _default;
                 scene.config.global.text_visible_highway = _default;
@@ -526,6 +527,7 @@
                     scene.config.global.sdk_bike_overlay = false;
                     scene.config.global.sdk_bike_network_overlay = false;
                     scene.config.global.sdk_path_overlay = false;
+                    scene.config.global.sdk_path_shields = false;
                 } else {
                     if( scene.config.global.text_visible_roads ) {
                         scene.config.global.sdk_road_shields = true;
@@ -548,6 +550,7 @@
                 scene.config.global.sdk_bike_network_overlay = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_path_overlay = false;
+                scene.config.global.sdk_path_shields = false;
                 scene.updateConfig();
             });
             gui.bike_button.name('bike');
@@ -562,6 +565,7 @@
             gui.path_overlay = query.path_overlay || true;
             gui.path_button = gui.add(gui, 'path_overlay', path_overlay).onChange(function(value) {
                 scene.config.global.sdk_path_overlay = (value === 'true' || value === true); // dat.gui passes a string
+                scene.config.global.sdk_path_shields = (value === 'true' || value === true); // dat.gui passes a string
                 scene.config.global.sdk_transit_overlay = false;
                 scene.config.global.sdk_bike_overlay = false;
                 scene.config.global.sdk_bike_network_overlay = false;
