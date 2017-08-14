@@ -8,10 +8,11 @@ layers:
                         function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
-                            width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                            color: [[14, [0.400,0.740,0.672]],[15,[1.00,1.00,1.00]]]
+                            width: [[14, 0.3px], [15, 1px], [17, 2.5m]]
                             outline:
                                 color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
-                                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                                width: [[13, 0px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                     networked:
                         filter: { walking_network: true }
@@ -98,10 +99,11 @@ layers:
                         function() { return global.sdk_path_overlay; }
                     draw:
                         lines:
-                            width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                            color: [[14, [0.400,0.740,0.672]],[15,[1.00,1.00,1.00]]]
+                            width: [[14, 0.3px], [15, 1px], [17, 2.5m]]
                             outline:
                                 color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
-                                width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                                width: [[13, 0px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                     networked:
                         filter: { walking_network: true }
@@ -135,10 +137,11 @@ layers:
                     function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
-                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                        color: [[14, [0.400,0.740,0.672]],[15,[1.00,1.00,1.00]]]
+                        width: [[14, 0.3px], [15, 1px], [17, 2.5m]]
                         outline:
                             color: [[14, [0.682,0.690,0.616]], [16, [0.710,0.553,0.522]]]
-                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            width: [[13, 0px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                 networked:
                     filter: { walking_network: true }
@@ -173,10 +176,11 @@ layers:
                     function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
-                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                        color: [[14, [0.682,0.690,0.616]],[15,[1.00,1.00,1.00]]]
+                        width: [[14, 0.3px], [15, 1px], [17, 2.5m]]
                         outline:
                             color: [[14, [0.682,0.690,0.616]], [16, [0.710,0.553,0.522]]]
-                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            width: [[13, 0px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                 networked:
                     filter: { walking_network: true }
@@ -209,10 +213,11 @@ layers:
                     function() { return global.sdk_path_overlay; }
                 draw:
                     lines:
-                        width: [[14, 0.15], [15, 1px], [17, 2.5m]]
+                        color: [[14, [0.400,0.740,0.672]],[15,[1.00,1.00,1.00]]]
+                        width: [[14, 0.3px], [15, 1px], [17, 2.5m]]
                         outline:
                             color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
-                            width: [[13, 0.25px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
+                            width: [[13, 0px], [14, 0.5px], [15, 1px], [16, 1px], [17, 1px], [18, 2px]]
 
                 networked:
                     filter: { walking_network: [lwn,rwn] }
@@ -243,7 +248,7 @@ layers:
             #     #order: function() { return feature.sort_rank; }
             #     order: 1005
             #     color: red #[0.118,0.600,0.518]
-            #     width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+            #     width: [[15, 0.6px], [16, 1px], [17, 2.5m]]
         steps:
             steps-overlay:
                 filter:
@@ -256,7 +261,7 @@ layers:
                             color: [[14, [0.400,0.740,0.672]], [16, [0.118,0.600,0.518]]]
                     dashed_steps:
                         color: white #[0.633,0.988,0.633] #global.bike_tier1_off_road_path_color_lite
-                        width: [[15, 0.6], [16, 1px], [17, 2.5m]]
+                        width: [[15, 0.6px], [16, 1px], [17, 2.5m]]
 
                 networked:
                     filter: { walking_network: true }
