@@ -307,7 +307,7 @@ layers:
                                 font:
                                     family: Montserrat
                                     fill: white
-                                    weight: bold
+                                    weight: 500
                                     size: [[7,7px],[12,8px],[16,11px]]
                                     stroke: { width: 0px }
                     width_1char:
@@ -508,6 +508,7 @@ global:
                     font:
                         family: Montserrat
                         #fill: [0.308,0.308,0.308]
+                        weight: 500
                         fill: white #[0.320,0.320,0.320]
                         size: [[7,7px],[12,8px],[16,11px]]
                         stroke: { width: 0px }
