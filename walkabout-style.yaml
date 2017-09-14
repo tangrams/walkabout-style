@@ -15,6 +15,7 @@ import:
     - layers/bike-interlay.yaml
     - layers/path-interlay.yaml
     - walkabout-icons.yaml
+    - themes/label-5.yaml
 
 global:
     # Sign up for a Mapzen API key to enjoy higher rate limits
