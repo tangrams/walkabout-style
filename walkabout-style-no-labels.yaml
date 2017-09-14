@@ -1,0 +1,67 @@
+# Walkabout is an outdoor style perfect for hiking or getting out and about, with
+# mountains, ski trails, biking paths, and transit stops.
+#
+# Give OpenStreetMap data a professional basemap skin using the Tangram graphics library
+# and Mapzen's versatile Vector Tiles.
+#
+# Please use and adapt the open source scene file in your own projects!
+#
+# Authors: Geraldine Sarmiento, Nathaniel V. Kelso
+# Read more: https://github.com/tangrams/walkabout-style
+#
+
+import:
+    # Basemap
+    - walkabout-style.yaml
+    - walkabout-icons.yaml
+    # Layers
+    - layers/bike-interlay.yaml
+    - layers/path-interlay.yaml
+
+
+global:
+    text_visible_continent:         false
+    text_visible_island:            false
+    text_visible_admin:             false
+    text_visible_populated_places:  false
+    icon_visible_populated_places:  false
+    text_visible_neighbourhoods:    false
+    text_visible_neighbourhoods_e:  false
+    text_visible_building:          false           # false for default
+    text_visible_address:           false           # false for default
+    text_visible_water_labels:      false
+    label_visible_landuse_green:    false            #this needs work
+    icon_visible_landuse_green:     false            #this needs work
+    icon_size_green:                [[0, '0px']]    # 0px for no, default, more  [[13, 14px], [16, 18px], [18, 19px]]
+    icon_size_green_l:              [[0, '0px']]    # 0px for no, default, more  [[14,24px],[16,32px]]
+    text_visible_landuse_green:     false
+    label_visible_poi_landuse:      false
+    icon_visible_poi_landuse:       false           #false for default
+    text_visible_poi_landuse:       false           #false for default
+    label_visible_poi_landuse_e:    false
+    icon_visible_poi_landuse_e:     false           #false for default
+    text_visible_poi_landuse_e:     false
+    text_visible_landuse_generic:   false
+    label_visible_station:          false           #false for default
+    icon_visible_station:           false           #false for default
+    text_visible_station:           false           #false for default
+    text_visible_highway:           false
+    text_visible_highway_e:         false           #false for default
+    text_visible_trunk_primary:     false
+    text_visible_trunk_primary_e2:  false           #false for default
+    text_visible_trunk_primary_e:   false           #false for default
+    text_visible_secondary:         false
+    text_visible_secondary_e:       false           #false for default
+    text_visible_tertiary:          false
+    text_visible_tertiary_e:        false           #false for default
+    text_visible_minor_road:        false
+    text_visible_minor_road_e:      false
+    text_visible_service_road:      false
+    text_visible_path:              false
+    text_visible_piste:             false
+    text_visible_steps:             false
+    text_visible_aerialway:         false
+    sdk_road_shields:               false            # see also: sdk_bike_shields
+    text_visible_exits:             false
+    text_visible_exits_e:           false           #false for default
+    text_visible_airport_gate:      false
