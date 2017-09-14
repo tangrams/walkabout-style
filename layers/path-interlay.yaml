@@ -275,6 +275,7 @@ layers:
             filter:
                 all:
                     - walking_shield_text: true
+                    - function() { return global.sdk_road_shields; }
                     - function() { return global.sdk_path_overlay; }
             # default
             draw:
