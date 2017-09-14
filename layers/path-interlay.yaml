@@ -280,10 +280,11 @@ layers:
             filter:
                 all:
                     - walking_shield_text: true
+                    - function() { return global.sdk_road_shields; }
                     - function() { return global.sdk_path_overlay; }
             # default
             draw:
-                icons:
+                mapzen_icon_library:
                     # you need to match any custom shield to the vector tile `network` values
                     sprite: |
                         function() {
@@ -316,15 +317,17 @@ layers:
                         font:
                             family: Montserrat
                             #fill: [0.308,0.308,0.308]
+                            weight: 500
                             fill: white #[0.320,0.320,0.320]
                             size: [[7,7px],[12,8px],[16,11px]]
+                            stroke: { width: 0px }
             width_1char:
                 filter: |
                     function() {
                         return (feature.walking_shield_text.length === 1)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
             width_2char:
                 filter: |
@@ -332,7 +335,7 @@ layers:
                         return (feature.walking_shield_text.length === 2)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         size: [[6,[18px,14px]],[13,[20px,15px]],[16,[24px,18px]]]
             width_3char:
                 filter: |
@@ -340,7 +343,7 @@ layers:
                         return (feature.walking_shield_text.length === 3)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         size: [[6,[25px,14px]],[13,[27px,15px]],[16,[33px,18px]]]
             width_4char:
                 filter: |
@@ -348,7 +351,7 @@ layers:
                         return (feature.walking_shield_text.length === 4)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
             width_5char:
                 filter: |
@@ -356,7 +359,7 @@ layers:
                         return (feature.walking_shield_text.length === 5)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
             width_other:
                 filter: |
@@ -364,41 +367,41 @@ layers:
                         return (feature.walking_shield_text.length > 5)
                     }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         visible: false
             network_iwn:
                 filter: { walking_network: iwn }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         priority: 56
                         visible: global.sdk_path_shields
             network_nwn:
                 filter: { walking_network: nwn }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         priority: 57
                         visible: global.sdk_path_shields
             network_rwn:
                 filter: { walking_network: rwn }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         priority: 58
                         visible: global.sdk_path_shields
                 early:
                     filter: { $zoom: { max: 9 } }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: false
             network_lwn:
                 filter: { walking_network: lwn }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         priority: 59
                         visible: global.sdk_path_shields
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: false
 
 

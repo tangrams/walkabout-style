@@ -135,47 +135,49 @@ layers:
                         - bicycle_parking
                     - function() { return global.sdk_bike_overlay; }
             draw:
-                icons:
+                mapzen_icon_library:
                     sprite: function() { return 'bike_' + feature.kind; }
                     #priority: 30
                     visible: global.sdk_bike_shields
                     text:
                         visible: global.sdk_bike_shields
+                        font:
+                            stroke: { width: 3px }
             bike-priority:
                 bicycle:
                     filter: { kind: bicycle }
-                    draw: { icons: { priority: 20 } }
+                    draw: { mapzen_icon_library: { priority: 20 } }
                 bicycle_rental:
                     filter: { kind: bicycle_rental }
-                    draw: { icons: { priority: 21 } }
+                    draw: { mapzen_icon_library: { priority: 21 } }
                 bicycle_rental_station:
                     filter: { kind: bicycle_rental_station }
-                    draw: { icons: { priority: 22 } }
+                    draw: { mapzen_icon_library: { priority: 22 } }
                 bicycle_junction:
                     filter: { kind: bicycle_junction }
-                    draw: { icons: { priority: 22 } }
+                    draw: { mapzen_icon_library: { priority: 22 } }
                 cafe:
                     filter: { kind: cafe }
-                    draw: { icons: { priority: 30 } }
+                    draw: { mapzen_icon_library: { priority: 30 } }
                 pub:
                     filter: { kind: pub }
-                    draw: { icons: { priority: 31 } }
+                    draw: { mapzen_icon_library: { priority: 31 } }
                 drinking_water:
                     filter: { kind: drinking_water }
-                    draw: { icons: { priority: 32 } }
+                    draw: { mapzen_icon_library: { priority: 32 } }
                 toilets:
                     filter: { kind: toilets }
-                    draw: { icons: { priority: 33 } }
+                    draw: { mapzen_icon_library: { priority: 33 } }
                 bicycle_parking:
                     filter: { kind: bicycle_parking }
-                    draw: { icons: { priority: 34 } }
+                    draw: { mapzen_icon_library: { priority: 34 } }
         bicycle:
             filter:
                 all:
                     - kind: bicycle
                     - function() { return global.sdk_bike_overlay; }
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 20
         has-name:
             not-outdoor-not-landuse:
@@ -183,31 +185,31 @@ layers:
                     enabled: global.sdk_bike_overlay
                     bicycle:
                         filter: { kind: bicycle }
-                        draw: { icons: { priority: 20 } }
+                        draw: { mapzen_icon_library: { priority: 20 } }
                     bicycle_rental:
                         filter: { kind: bicycle_rental }
-                        draw: { icons: { priority: 21 } }
+                        draw: { mapzen_icon_library: { priority: 21 } }
                     bicycle_rental_station:
                         filter: { kind: bicycle_rental_station }
-                        draw: { icons: { priority: 22 } }
+                        draw: { mapzen_icon_library: { priority: 22 } }
                     bicycle_junction:
                         filter: { kind: bicycle_junction }
-                        draw: { icons: { priority: 22 } }
+                        draw: { mapzen_icon_library: { priority: 22 } }
                     cafe:
                         filter: { kind: cafe }
-                        draw: { icons: { priority: 30 } }
+                        draw: { mapzen_icon_library: { priority: 30 } }
                     pub:
                         filter: { kind: pub }
-                        draw: { icons: { priority: 31 } }
+                        draw: { mapzen_icon_library: { priority: 31 } }
                     drinking_water:
                         filter: { kind: drinking_water }
-                        draw: { icons: { priority: 32 } }
+                        draw: { mapzen_icon_library: { priority: 32 } }
                     toilets:
                         filter: { kind: toilets }
-                        draw: { icons: { priority: 33 } }
+                        draw: { mapzen_icon_library: { priority: 33 } }
                     bicycle_parking:
                         filter: { kind: bicycle_parking }
-                        draw: { icons: { priority: 34 } }
+                        draw: { mapzen_icon_library: { priority: 34 } }
         z-server-friend:
             hide-until-z16-no-area:
                 bicycle:
@@ -216,7 +218,7 @@ layers:
                             - kind: bicycle
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: global.sdk_bike_shields
             hide-until-z17-no-area:
                 bicycle_rental_station:
@@ -225,7 +227,7 @@ layers:
                             - kind: bicycle_rental_station
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: global.sdk_bike_shields
                             # if we wanted to have icon only labels...
                             # text:
@@ -237,7 +239,7 @@ layers:
                             - kind: drinking_water
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: global.sdk_bike_shields
             hide-until-z18-any:
                 drinking_water:
@@ -246,7 +248,7 @@ layers:
                             - kind: drinking_water
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             visible: global.sdk_bike_shields
             hide-until-z19-any:
                 bicycle:
@@ -255,7 +257,7 @@ layers:
                             - kind: bicycle_parking
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             priority: 66
                             visible: global.sdk_bike_shields
         no-name:
@@ -266,7 +268,7 @@ layers:
                             - kind: cycle_barrier
                             - function() { return global.sdk_bike_overlay; }
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             priority: 31
                             visible: global.sdk_bike_shields
             drinking_water_toilets:
@@ -275,7 +277,7 @@ layers:
                         - kind: [drinking_water,toilets]
                         - function() { return global.sdk_bike_overlay; }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         priority: 31
                         visible: global.sdk_bike_shields
             walking-or-bicycle_junction:
@@ -289,7 +291,7 @@ layers:
                             # - name: [true, false]
                             #- bicycle_network: [icn, ncn, rcn, lcn]
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             priority: 21
                             # you need to match any custom shield to the vector tile `network` values
                             sprite: function() { return ('sdk_shield-' + feature.ref.length + 'char'); }
@@ -305,39 +307,39 @@ layers:
                                 font:
                                     family: Montserrat
                                     fill: white
-                                    weight: bold
+                                    weight: 500
                                     size: [[7,7px],[12,8px],[16,11px]]
                                     stroke: { width: 0px }
                     width_1char:
                         filter: function() { return (feature.ref.length === 1); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 size: [[6,[16px,16px]],[13,[18px,18px]],[16,[21px,21px]]]
                     width_2char:
                         filter: function() { return (feature.ref.length === 2); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 size: [[6,[21px,16px]],[13,[24px,18px]],[16,[28px,21px]]]
                     width_3char:
                         filter: function() { return (feature.ref.length === 3); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 size: [[6,[27px,16px]],[13,[31px,18px]],[16,[36px,21px]]]
                     width_4char:
                         filter: function() { return (feature.ref.length === 4); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 size: [[6,[32px,16px]],[13,[36px,18px]],[16,[41px,21px]]]
                     width_5char:
                         filter: function() { return (feature.ref.length === 5); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 size: [[6,[37px,16px]],[13,[41px,18px]],[16,[48px,21px]]]
                     # this is kinda a hack
                     width_longggggg:
                         filter: function() { return (feature.ref.length > 5); }
                         draw:
-                            icons:
+                            mapzen_icon_library:
                                 visible: false
 
 # sources:
@@ -476,7 +478,7 @@ global:
                 - bicycle_shield_text: true
         # default
         draw:
-            icons:
+            mapzen_icon_library:
                 # you need to match any custom shield to the vector tile `network` values
                 sprite: |
                     function() {
@@ -506,15 +508,17 @@ global:
                     font:
                         family: Montserrat
                         #fill: [0.308,0.308,0.308]
+                        weight: 500
                         fill: white #[0.320,0.320,0.320]
                         size: [[7,7px],[12,8px],[16,11px]]
+                        stroke: { width: 0px }
         width_1char:
             filter: |
                 function() {
                     return (feature.bicycle_shield_text.length === 1)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     size: [[6,[10px,10px]],[13,[14px,14px]],[16,[18px,18px]]]
         width_2char:
             filter: |
@@ -522,7 +526,7 @@ global:
                     return (feature.bicycle_shield_text.length === 2)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     size: [[6,[13px,10px]],[13,[17px,14px]],[16,[24px,18px]]]
         width_3char:
             filter: |
@@ -530,7 +534,7 @@ global:
                     return (feature.bicycle_shield_text.length === 3)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     size: [[6,[17px,10px]],[13,[24px,14px]],[16,[33px,18px]]]
         width_4char:
             filter: |
@@ -538,7 +542,7 @@ global:
                     return (feature.bicycle_shield_text.length === 4)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     size: [[6,[20px,10px]],[13,[28px,14px]],[16,[38px,18px]]]
         width_5char:
             filter: |
@@ -546,7 +550,7 @@ global:
                     return (feature.bicycle_shield_text.length === 5)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     size: [[6,[23px,10px]],[13,[32px,14px]],[16,[45px,18px]]]
         width_other:
             filter: |
@@ -554,29 +558,29 @@ global:
                     return (feature.bicycle_shield_text.length > 5)
                 }
             draw:
-                icons:
+                mapzen_icon_library:
                     visible: false
         #network_icn_ncn always visible, controlled by server
         network_rcn:
             filter: { bicycle_network: rcn, $zoom: { max: 12 } }
             draw:
-                icons:
+                mapzen_icon_library:
                     visible: false
         tracks_network_rcn:
             filter: { $zoom: { max: 12 }, kind_detail: track }
             draw:
-                icons:
+                mapzen_icon_library:
                     visible: false
         network_lcn:
             filter: { bicycle_network: lcn, $zoom: { max: 15 } }
             draw:
-                icons:
+                mapzen_icon_library:
                     visible: false
 
         bike_tier1a:
             filter: global.bike_tier1_off_road_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 56
                     color: global.bike_orange_color
             minor_road:
@@ -584,7 +588,7 @@ global:
                     any:
                         - kind: minor_road
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         color: global.bike_green_color
             paths:
                 filter:
@@ -594,58 +598,58 @@ global:
                             #- bicycle: [designated,yes]
                             - kind: path
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         color: global.bike_darkgreen_color
         bike_tier1b:
             filter: global.bike_tier1_off_road_track_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 57
                     color: global.bike_brown_color
         bike_tier1c_greenway:
             filter: global.greenway_on_road_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 58
                     color: global.bike_green_color
         bike_tier2:
             filter: global.bike_tier2_on_road_protected_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 59
                     color: global.bike_orange_color
             minor_road:
                 filter: { kind: minor_road }
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         color: global.bike_green_color
         bike_tier3:
             filter: global.bike_tier3_on_road_not_protected_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 60
                     color: global.bike_lightorange_color
             minor_road:
                 filter:
                     kind: minor_road
                 draw:
-                    icons:
+                    mapzen_icon_library:
                         color: global.bike_lightgreen_color
                 bike_tier1c_greenway:
                     filter: global.greenway_on_road_filter
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             color: global.bike_green_color
                 bus:
                     filter:
                         is_bus_route: true
                     draw:
-                        icons:
+                        mapzen_icon_library:
                             color: global.bike_lightorange_color
         no_bike:
             filter: global.no_bike_tier4_filter
             draw:
-                icons:
+                mapzen_icon_library:
                     priority: 61
                     # don't ever show pink shields on the map, instead use cascading logic
                     #color: global.no_bike_label
