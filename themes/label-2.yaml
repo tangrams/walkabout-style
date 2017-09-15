@@ -19,6 +19,7 @@ global:
     text_visible_landuse_generic:   true
     icon_visible_station:           false           #false for default
     text_visible_station:           true           #false for default
+    icon_visible_arrows:            false
     text_visible_highway:           true
     text_visible_trunk_primary:     false
     text_visible_trunk_primary_e2:  false           #true for default

@@ -1378,7 +1378,7 @@ layers:
                 arrows:
                     style: mapzen_icon_library
                     flat: true
-                    visible: true
+                    visible: global.icon_visible_arrows
                     sprite: arrow
                     size: [[17, 6px], [20, 14px]]
                     placement: spaced
