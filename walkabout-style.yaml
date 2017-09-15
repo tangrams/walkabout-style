@@ -14,7 +14,7 @@ import:
     # Layers
     - layers/bike-interlay.yaml
     - layers/path-interlay.yaml
-    - walkabout-icons.yaml
+    - themes/walkabout-icons.yaml
     - themes/label-5.yaml
 
 global:
@@ -5655,9 +5655,10 @@ layers:
                             text_source: function() { if( feature.ref.length < 6 ) { return feature.ref; } else { return ''; } }
                             font:
                                 family: Montserrat
+                                weight: 700
                                 fill: function() { if(feature.colour == 'yellow') { return '#555'; } else { return 'white'; } }
-                                style: bold
                                 size: [[7,7px],[12,8px],[16,11px]]
+                                stroke: { width: 0px }
 
                 width_1char:
                     filter: function() { return (feature.ref.length === 1); }

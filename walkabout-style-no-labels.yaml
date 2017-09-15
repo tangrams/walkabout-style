@@ -13,7 +13,6 @@
 import:
     # Basemap
     - walkabout-style.yaml
-    - walkabout-icons.yaml
     # Layers
     - layers/bike-interlay.yaml
     - layers/path-interlay.yaml
