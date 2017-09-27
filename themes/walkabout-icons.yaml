@@ -1,3 +1,21 @@
+global:
+    # To allow standalone icon use let's define core terms that
+    # are otherwise defined in the root {style}-style.yaml,
+    # themes/color-{theme}.yaml or themes/label-{step} files.
+    # This also means {style}-icons.yaml should be imported first.
+    icon_size:          [[13, '18px'], [16, '18px'], [18, '22px']]
+    text_font_family:   'Open Sans'
+    #black_color:        [0.00,0.00,0.00]
+    #dark_color:         [0.250,0.250,0.250]
+    #white_color:        [1.00,1.00,1.00]
+    text_stroke:        [0.913,0.925,0.933]
+
+    # To make Refill's colorize-able icons play nice with other styles.
+    # Walkabout defaults to "" null (don't color). If colorized icons are desired
+    # than set sdk_icon_color_style property value to "colorized_icons",
+    # or import the Refill color theme *after* Walkabout icons
+    sdk_icon_color_style:
+
 styles:
     background-icons:
         base: points
@@ -8,10 +26,10 @@ styles:
         base: points
         texture: mapzen_icon_library
         # To make Refill's colorize-able icons play nice with other styles
-        mix:             # intentionally blank, is parsed as null (no mix)
+        mix: global.sdk_icon_color_style
         blend_order: 1
         draw:
-            size: [[13, 18px], [16, 18px], [18, 22px]]
+            size: global.icon_size
             sprite: function() { return feature.kind; }
             sprite_default: generic
             buffer: 7px
