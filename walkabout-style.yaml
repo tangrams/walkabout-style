@@ -575,8 +575,8 @@ styles:
                 color: |
                     // turn terrain exaggeration up/down
                     // fade out spheremap normals with a function
-                    float scale1 = 20./(u_map_position.z) + 1.5;
-                    float m = u_zoom_scale * (u_map_position.z - 0.8) * exp(u_map_position.z * -.29);
+                    float scale1 = 20./(u_map_position.z + 1.0) + 1.5;
+                    float m = u_zoom_scale * (u_map_position.z + 0.4) * exp(u_map_position.z * -.29);
                     m = clamp(m, 0., 1.5);
                     color = applyEnvmap(u_envmap, normal, 1./scale1);
 
