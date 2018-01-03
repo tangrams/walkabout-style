@@ -1867,24 +1867,25 @@ layers:
 
         shields:
             filter:
-                - $zoom: { min: 6 }
-                #
-                # United State looks great with shield_text alone, but...
-                #
-                #shield_text: true    # some roads don't have shield text, deal with that later
-                #
-                # Europe doesn't have many network relations set, so we could look for either
-                # shield_text or ref (with no shield_text) but...
-                # that makes United States look a bit funky with `(xxx)` and generic shields
-                # showing up in fields of custom state shields like US:CA and US:NY
-                #
-                - function() { return global.sdk_road_shields; }
-                - any:
-                    - shield_text: true    # some roads don't have shield text, deal with that later
-                    - all:
-                        - shield_text: false    # some roads don't have shield text, deal with that later
-                        - ref: true
-                        - kind_detail: [motorway, trunk, primary, secondary, tertiary]
+                all:
+                    - $zoom: { min: 6 }
+                    #
+                    # United State looks great with shield_text alone, but...
+                    #
+                    #shield_text: true    # some roads don't have shield text, deal with that later
+                    #
+                    # Europe doesn't have many network relations set, so we could look for either
+                    # shield_text or ref (with no shield_text) but...
+                    # that makes United States look a bit funky with `(xxx)` and generic shields
+                    # showing up in fields of custom state shields like US:CA and US:NY
+                    #
+                    - function() { return global.sdk_road_shields; }
+                    - any:
+                        - shield_text: true    # some roads don't have shield text, deal with that later
+                        - all:
+                            - shield_text: false    # some roads don't have shield text, deal with that later
+                            - ref: true
+                            - kind_detail: [motorway, trunk, primary, secondary, tertiary]
             # default
             draw:
                 mapzen_icon_library:
@@ -1893,12 +1894,13 @@ layers:
                         function() {
                             if( feature.shield_text ) {
                                 return ('generic_shield-' + feature.shield_text.length + 'char');
-                            } else if( feature.ref ) {
+                            } else {
                                 return ('generic_shield-' + feature.ref.length + 'char');
                             }
                         }
                     sprite_default: generic_shield_5char
                     size: [[7,[90%,90%]],[12,[100%,100%]],[15,[110%,110%]]]
+                    #size: [[6,[14px,14px]],[13,[16px,16px]],[16,[18px,18px]]]
                     priority: 58
                     repeat_group: shields
                     repeat_distance: [[8,90px],[10,40px],[13,30px]]
@@ -2033,11 +2035,11 @@ layers:
                     function() {
                         if( feature.shield_text ) {
                             return (feature.shield_text.length === 4)
-                        } else if( feature.ref ) {
+                        } else {
                             return (feature.ref.length === 4)
                         }
                     }
-                draw:
+                #draw:
                     # mapzen_icon_library:
                     #     size: [[6,[29px,14px]],[13,[31px,15px]],[16,[38px,18px]]]
                 # London sucks
@@ -2051,11 +2053,11 @@ layers:
                     function() {
                         if( feature.shield_text ) {
                             return (feature.shield_text.length === 5)
-                        } else if ( feature.ref ) {
+                        } else {
                             return (feature.ref.length === 5)
                         }
                     }
-                draw:
+                #draw:
                     # mapzen_icon_library:
                     #     size: [[6,[34px,14px]],[13,[37px,15px]],[16,[45px,18px]]]
                 # London sucks
@@ -2070,7 +2072,7 @@ layers:
                     function() {
                         if( feature.shield_text ) {
                             return (feature.shield_text.length > 5)
-                        } else if( feature.ref ) {
+                        } else {
                             return (feature.ref.length > 5)
                         }
                     }
