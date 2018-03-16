@@ -226,13 +226,13 @@
         var dev_or_prod = 'prod';
 
         // prod
-        var mapzen_api_key = 'vector-tiles-VyYjZGS';
+        var sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
 
         if( dev_or_prod == 'dev' ) {
-            mapzen_api_key = 'mapzen-xkUbe6g';
+            sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
         }
 
-        var tg_global = { sdk_mapzen_api_key: mapzen_api_key };
+        var tg_global = { sdk_api_key: sdk_api_key };
 
         var layer = Tangram.leafletLayer({
             // more: 'vector-tiles-TMwazSG'
@@ -367,7 +367,7 @@
             if( dev_or_prod == 'dev' ) {
                 url += 'dev.';
             }
-            url += 'nextzen.org/tilezen/vector/v1/all/' + Math.min(15,zoom) + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson' + '?api_key=' + mapzen_api_key;
+            url += 'nextzen.org/tilezen/vector/v1/512/all/' + Math.min(15,zoom) + '/' + tileCoords.x  + '/' + tileCoords.y + '.topojson' + '?api_key=' + sdk_api_key;
             return url;
         }
 
