@@ -17,10 +17,13 @@ global:
     sdk_icon_color_style:
 
 styles:
-    background-icons:
+    background_icons:
         base: points
         texture: mapzen_icon_library
         blend_order: 0
+        draw:
+            sprite: function() { return feature.kind; }
+            sprite_default: generic
 
     mapzen_icon_library:
         base: points

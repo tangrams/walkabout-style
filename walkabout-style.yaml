@@ -6944,7 +6944,7 @@ layers:
             tree:
                 filter: { kind: tree, $zoom: { min: 18 } }
                 draw:
-                    background-icons:
+                    background_icons:
                         # TODO: put tree icons behind the buildings
                         # See SF State University #20/37.72314/-122.47772
                         color: [0.145,0.745,0.643]
@@ -6953,9 +6953,10 @@ layers:
                 z18:
                     filter: { $zoom: [18] }
                     draw:
-                        mapzen_icon_library:
+                        background_icons:
                             color: [0.459,0.765,0.722]
                             sprite: tree-s
+                            visible: global.icon_visible_poi_landuse_e
             gate:
                 filter: { kind: gate, $zoom: { min: 19 } }
                 draw:
