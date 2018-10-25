@@ -1639,7 +1639,7 @@ layers:
                             text:
                                 offset: [0px, 2px]
                                 font:
-                                    fill: [0.400,0.400,0.400]
+                                    fill: [1.000,1.000,1.000]
 
                 CN-expressway-regional:
                     filter: { network: 'CN:expressway:regional' }
@@ -1684,7 +1684,7 @@ layers:
                 ### GERMANY
                 ###
                 DE:BAB:
-                    filter: { network: 'DE:BAB' }
+                    filter: { network: ['DE:BAB', 'DE:BS'] }
                     draw:
                         mapzen_icon_library:
                             text:
