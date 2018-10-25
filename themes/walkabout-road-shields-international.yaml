@@ -1684,12 +1684,20 @@ layers:
                 ### GERMANY
                 ###
                 DE:BAB:
-                    filter: { network: ['DE:BAB', 'DE:BS'] }
+                    filter: { network: 'DE:BAB' }
                     draw:
                         mapzen_icon_library:
                             text:
                                 font:
                                     fill: white
+
+                DE:BS:
+                    filter: { network: 'DE:BS' }
+                    draw:
+                        mapzen_icon_library:
+                            text:
+                                font:
+                                    fill: [0.300,0.300,0.300]
 
                 ###
                 ### AUSTRIA
