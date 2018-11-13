@@ -1493,7 +1493,7 @@ layers:
                         mapzen_icon_library:
                             text:
                                 font:
-                                    fill: white
+                                    fill: black
 
                 ###
                 ### BRAZIL
@@ -1730,8 +1730,8 @@ layers:
                         mapzen_icon_library:
                             text:
                                 font:
-                                    fill: [0.000,0.000,0.000]
-                
+                                    fill: white
+
                 GR:national:
                     filter: { network: 'GR:national' }
                     draw:

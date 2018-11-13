@@ -229,7 +229,7 @@
         var sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
 
         if( dev_or_prod == 'dev' ) {
-            sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
+            sdk_api_key = '1YJOees7QwmlS0uYDTc8zg';
         }
 
         var tg_global = { sdk_api_key: sdk_api_key };
@@ -240,7 +240,7 @@
             // no: 'vector-tiles-2giCT1z'
             scene: { import: [	tg_baseScene,
                                 'themes/walkabout-road-shields-usa.yaml',
-                                'themes/walkabout-road-shields-international.yaml'], 
+                                'themes/walkabout-road-shields-international.yaml'],
             					global: tg_global },
             attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>, &copy; OSM contributors'
         });
@@ -478,7 +478,7 @@
                 }
                 update_scene_with_themes();
             });
-            
+
             // Enable/disable international road shields
             var shields_international = 'International shields';
             gui[shields_international] = true;

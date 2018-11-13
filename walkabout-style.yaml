@@ -438,11 +438,12 @@ textures:
 
 sources:
     mapzen:
-        type: MVT
-        # prod
-        #url:  https://tile.nextzen.org/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
+        type: MVT #GeoJSON, MVT, TopoJSON
         # TODO: strip the dev URL
-        url: http://localhost:8050/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
+        # prod
+        url:  https://tile.nextzen.org/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
+        # dev
+        #url: https://dev-tile.nextzen.org/tilezen/vector/v1/512/all/{z}/{x}/{y}.mvt
         url_params:
             api_key: global.sdk_api_key
         rasters: [normals]
