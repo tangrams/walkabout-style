@@ -22,9 +22,9 @@
 
         <!-- Main tangram library -->
         <!-- production -->
-        <script src="https://www.nextzen.org/tangram/0.14/tangram.min.js"></script>
+        <script src="https://www.nextzen.org/tangram/0.15/tangram.min.js"></script>
         <!-- production debug -->
-        <!-- <script src="https://www.nextzen.org/tangram/0.14/tangram.debug.js"></script> -->
+        <!-- <script src="https://mapzen.com/tangram/0.15/tangram.debug.js"></script> -->
         <!-- dev -->
         <!-- <script src="https://precog.mapzen.com/tangrams/tangram/master/dist/tangram.debug.js"></script> -->
         <!-- dev branch -->
@@ -229,7 +229,7 @@
         var sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
 
         if( dev_or_prod == 'dev' ) {
-            sdk_api_key = 'tNosrxAMTeSV01zHuX-vbg';
+            sdk_api_key = '1YJOees7QwmlS0uYDTc8zg';
         }
 
         var tg_global = { sdk_api_key: sdk_api_key };
@@ -238,7 +238,10 @@
             // more: 'vector-tiles-TMwazSG'
             // default (some): 'vector-tiles-VyYjZGS'
             // no: 'vector-tiles-2giCT1z'
-            scene: { import: [tg_baseScene], global: tg_global },
+            scene: { import: [	tg_baseScene,
+                                'themes/walkabout-road-shields-usa.yaml',
+                                'themes/walkabout-road-shields-international.yaml'],
+            					global: tg_global },
             attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a>, &copy; OSM contributors'
         });
 
@@ -391,7 +394,7 @@
                 'español (Spanish)': 'es',
                 'বাংলা (Bengali)': 'bn',
                 'Deutsch (German)': 'de',
-                'ελληνικά (Greek)': 'gr',
+                'ελληνικά (Greek)': 'el',
                 'हिन्दी (Hindi)': 'hi',
                 'Bahasa Indonesia (Indonesian)': 'id',
                 'italiano (Italian)': 'it',
@@ -419,7 +422,11 @@
             gui.fallback_button.name('lang fallback');
 
             // So many themes
-            var all_theme_imports = { color: null, detail: null, label: null };
+            var all_theme_imports = { color: null,
+                                      detail: null,
+                                      label: null,
+                                      road_shields_usa: 'themes/walkabout-road-shields-usa.yaml',
+                                      road_shields_international: 'themes/walkabout-road-shields-international.yaml' };
 
             function update_scene_with_themes() {
                 //console.log( all_theme_imports );
@@ -432,6 +439,12 @@
                 }
                 if( all_theme_imports.label ) {
                     themes_as_array.push( all_theme_imports.label );
+                }
+                if( all_theme_imports.road_shields_usa ) {
+                    themes_as_array.push( all_theme_imports.road_shields_usa );
+                }
+                if( all_theme_imports.road_shields_international ) {
+                    themes_as_array.push( all_theme_imports.road_shields_international );
                 }
 
                 scene.load({ import: themes_as_array, global: tg_global });
@@ -451,6 +464,34 @@
 
                 //window.location.search = 'language=' + value;
             });
+
+
+            // Enable/disable USA state road shields
+            var shields_usa = 'USA shields';
+            gui[shields_usa] = true;
+            gui.add(gui, shields_usa).onChange(function(value) {
+                var import_theme = 'themes/walkabout-road-shields-usa.yaml'
+                if( value ) {
+                    all_theme_imports.road_shields_usa = import_theme;
+                } else {
+                    all_theme_imports.road_shields_usa = null;
+                }
+                update_scene_with_themes();
+            });
+
+            // Enable/disable international road shields
+            var shields_international = 'International shields';
+            gui[shields_international] = true;
+            gui.add(gui, shields_international).onChange(function(value) {
+                var import_theme = 'themes/walkabout-road-shields-international.yaml'
+                if( value ) {
+                    all_theme_imports.road_shields_international = import_theme;
+                } else {
+                    all_theme_imports.road_shields_international = null;
+                }
+                update_scene_with_themes();
+            });
+
 
             // Transit selector
             var transit_overlay = {
